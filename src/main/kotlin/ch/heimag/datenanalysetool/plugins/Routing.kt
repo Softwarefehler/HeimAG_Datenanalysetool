@@ -1,4 +1,4 @@
-package com.example.plugins
+package ch.heimag.datenanalysetool.plugins
 
 import io.ktor.http.content.*
 import io.ktor.server.application.*

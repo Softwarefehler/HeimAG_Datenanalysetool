@@ -1,6 +1,7 @@
-package com.example
+package ch.heimag.datenanalysetool
 
-import com.example.plugins.*
+import ch.heimag.datenanalysetool.*
+import ch.heimag.datenanalysetool.plugins.configureRouting
 import freemarker.cache.*
 import io.ktor.server.application.*
 import io.ktor.server.engine.*
