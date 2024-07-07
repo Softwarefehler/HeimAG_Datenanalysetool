@@ -1,21 +1,65 @@
 <script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
+
+import { ref } from 'vue'
+import { useTheme } from 'vuetify'
+
+
+const drawer = ref<boolean | null>(null)
+const appTitle = ref('HeimAG Datenanalysetool')
+const appSubtitle = ref('NDS SWE Semesterarbeit 2')
+const theme = ref('light')
+
+function onClick() {
+  theme.value = theme.value === 'light' ? 'dark' : 'light'
+}
+
+
 </script>
-
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
+  <v-responsive class="border rounded">
+    <v-app :theme="theme">
+      <v-app-bar class="px-3">
+        <v-spacer></v-spacer>
 
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-    </div>
-  </header>
+        <v-btn
+          :prepend-icon="theme === 'light' ? 'mdi-weather-sunny' : 'mdi-weather-night'"
+          text="light/dark"
+          slim
+          @click="onClick"
+        ></v-btn>
+      </v-app-bar>
 
-  <main>
-    <TheWelcome />
-  </main>
+      <v-main>
+        <v-container>
+          <h1>Login</h1>
+          <p>Benutzername</p>
+          <v-responsive
+            class="mx-auto"
+            max-width="344"
+          >
+            <v-text-field
+              hint="Benutzername eingeben"
+              label="Benutzer"
+              type="input"
+            ></v-text-field>
+          </v-responsive>
+          <p>Passwort</p>
+          <v-responsive
+            class="mx-auto"
+            max-width="344"
+          >
+            <v-text-field
+              hint="Passwort eingeben"
+              label="Passwort"
+              type="input"
+            ></v-text-field>
+          </v-responsive>
+        </v-container>
+      </v-main>
+    </v-app>
+  </v-responsive>
 </template>
+
 
 <style scoped>
 header {

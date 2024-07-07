@@ -1,5 +1,7 @@
 package ch.heimag.datenanalysetool.plugins
 
+import ch.heimag.datenanalysetool.routes.Datenanalyse
+import ch.heimag.datenanalysetool.routes.SinglePageApplication
 import io.ktor.http.content.*
 import io.ktor.server.application.*
 import io.ktor.server.freemarker.*
@@ -22,7 +24,9 @@ data class Foto(val name: String, val fullName: String)
 data class Fotoalbum(val fotos: List<Foto>, val rootUrl: String)
 
 fun Application.configureRouting() {
-    routing {
+   SinglePageApplication()
+    Datenanalyse()
+  /*  routing {
         singlePageApplication {vue("src/main/vue-project/dist")}
 
         get("/") { call.respond(FreeMarkerContent("index.ftl", null)) }
@@ -112,5 +116,5 @@ fun Application.configureRouting() {
 
             call.respond(FreeMarkerContent("fotoalbum.ftl", mapOf("model" to model)))
         }
-    }
+    }*/
 }
