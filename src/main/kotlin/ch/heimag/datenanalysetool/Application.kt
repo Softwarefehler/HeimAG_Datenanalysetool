@@ -1,7 +1,9 @@
 package ch.heimag.datenanalysetool
 
-import ch.heimag.datenanalysetool.*
+
 import ch.heimag.datenanalysetool.plugins.configureRouting
+import ch.heimag_datenanalysetool.plugins.configureSerialization
+import ch.heimag_datenanalysetool.plugins.configureTemplating
 import freemarker.cache.*
 import io.ktor.server.application.*
 import io.ktor.server.engine.*
@@ -18,4 +20,6 @@ fun Application.module() {
         templateLoader = ClassTemplateLoader(this::class.java.classLoader, "templates")
     }
     configureRouting()
+    configureSerialization()
+    //   configureTemplating() // doppelt gemoppelt
 }
