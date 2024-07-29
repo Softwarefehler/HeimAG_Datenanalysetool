@@ -37,34 +37,53 @@ dependencies {
     testImplementation("io.ktor:ktor-server-tests-jvm")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version")
     testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutines_version")
-
 }
-tasks.register<Exec>("build-vue") {
-    group = "build"
-    description = "builds the vue project."
+
+data class CommandLineConfig(val cmd: String, val windowsCmd: String? = null)
+
+fun getPid(): Long {
+    return ProcessHandle.current().pid()
+}
+
+fun Exec.runCommandLine(commandLineConfig: CommandLineConfig) {
+    val isWindows = System.getProperty("os.name").lowercase().contains("windows")
+
+    if (isWindows) {
+        commandLine("cmd.exe", "/C", commandLineConfig.windowsCmd ?: commandLineConfig.cmd)
+    } else {
+        commandLine(commandLineConfig.cmd.splitToSequence(' ').toList())
+    }
+}
+
+fun Exec.runCommandLine(vararg arguments: String) {
+    runCommandLine(CommandLineConfig(arguments.joinToString(" ")))
+}
+
+fun Exec.runNpmCommand(vararg npmArguments: String) {
     workingDir = File("src/main/vue-project")
 
-    val npmScript = "build"
+    runCommandLine("npm " + npmArguments.joinToString(" "))
+}
 
-    if (System.getProperty("os.name").lowercase().contains("windows")) {
-        commandLine("cmd.exe", "/C", "npm run $npmScript")
-    }
-    else {
-        commandLine("npm", "run", npmScript)
-    }
+tasks.register<Exec>("install-vue") {
+    group = "build setup"
+    description = "installs all the npm packages for the the vue-project."
+
+    runNpmCommand("ci")
+}
+
+tasks.register<Exec>("build-vue") {
+    group = "build"
+    description = "builds the vue-project."
+    runNpmCommand("run", "build")
 }
 
 tasks.register<Exec>("run-vue-watch") {
     group = "application"
-    description = "builds the vue project continuously."
-    workingDir = File("src/main/vue-project")
+    description = "builds the vue-project continuously."
 
-    val npmScript = "build-watch"
-
-    if (System.getProperty("os.name").lowercase().contains("windows")) {
-        commandLine("cmd.exe", "/C", "npm run $npmScript")
-    }
-    else {
-        commandLine("npm", "run", npmScript)
-    }
+    // The PID of the current jvm instance for the 'syncLifetimeToPidPlugin' in the vue-project.
+    // -> See reasoning within the plugin.
+    environment("PID", getPid())
+    runNpmCommand("run", "build-watch")
 }

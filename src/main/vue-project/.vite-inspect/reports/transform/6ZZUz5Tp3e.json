@@ -1,0 +1,124 @@
+{
+  "resolvedId": "C:/Users/MAG/IdeaProjects/Datenanalysetool/src/main/vue-project/src/views/Datenanalyse.vue?vue&type=script&setup=true&lang.ts",
+  "transforms": [
+    {
+      "name": "vite:vue",
+      "result": "import { defineComponent as _defineComponent } from 'vue'\nimport { resolveComponent as _resolveComponent, createVNode as _createVNode, createTextVNode as _createTextVNode, withCtx as _withCtx, toDisplayString as _toDisplayString, openBlock as _openBlock, createBlock as _createBlock } from \"vue\"\n\nimport { ref } from 'vue'\r\nimport { useTheme } from 'vuetify'\r\n\r\n\r\n\nexport default /*#__PURE__*/_defineComponent({\n  __name: 'Datenanalyse',\n  setup(__props) {\n\r\nconst theme = useTheme()\r\nconst drawer = ref<boolean | null>(null)\r\nconst appTitle = ref('HeimAG Datenanalysetool')\r\nconst appSubtitle = ref('NDS SWE Semesterarbeit 2')\r\n\r\nfunction toggleTheme() {\r\n  theme.global.name.value = theme.global.current.value.dark ? 'light' : 'dark'\r\n}\r\n\nreturn (_ctx: any,_cache: any) => {\n  const _component_v_list_item = _resolveComponent(\"v-list-item\")!\n  const _component_v_divider = _resolveComponent(\"v-divider\")!\n  const _component_v_navigation_drawer = _resolveComponent(\"v-navigation-drawer\")!\n  const _component_v_app_bar_nav_icon = _resolveComponent(\"v-app-bar-nav-icon\")!\n  const _component_v_app_bar_title = _resolveComponent(\"v-app-bar-title\")!\n  const _component_v_btn = _resolveComponent(\"v-btn\")!\n  const _component_v_app_bar = _resolveComponent(\"v-app-bar\")!\n  const _component_RouterView = _resolveComponent(\"RouterView\")!\n  const _component_v_container = _resolveComponent(\"v-container\")!\n  const _component_v_main = _resolveComponent(\"v-main\")!\n  const _component_v_app = _resolveComponent(\"v-app\")!\n\n  return (_openBlock(), _createBlock(_component_v_app, null, {\n    default: _withCtx(() => [\n      _createVNode(_component_v_navigation_drawer, {\n        modelValue: drawer.value,\n        \"onUpdate:modelValue\": _cache[0] || (_cache[0] = ($event: any) => ((drawer).value = $event))\n      }, {\n        default: _withCtx(() => [\n          _createVNode(_component_v_list_item, {\n            title: appTitle.value,\n            subtitle: appSubtitle.value\n          }, null, 8, [\"title\", \"subtitle\"]),\n          _createVNode(_component_v_divider),\n          _createVNode(_component_v_list_item, {\n            link: \"\",\n            to: \"/\"\n          }, {\n            default: _withCtx(() => [\n              _createTextVNode(\"Home\")\n            ]),\n            _: 1\n          }),\n          _createVNode(_component_v_list_item, {\n            link: \"\",\n            to: \"/datenanalyse\"\n          }, {\n            default: _withCtx(() => [\n              _createTextVNode(\"Datenanalyse\")\n            ]),\n            _: 1\n          })\n        ]),\n        _: 1\n      }, 8, [\"modelValue\"]),\n      _createVNode(_component_v_app_bar, null, {\n        default: _withCtx(() => [\n          _createVNode(_component_v_app_bar_nav_icon, {\n            onClick: _cache[1] || (_cache[1] = ($event: any) => (drawer.value = !drawer.value))\n          }),\n          _createVNode(_component_v_app_bar_title, null, {\n            default: _withCtx(() => [\n              _createTextVNode(_toDisplayString(appTitle.value), 1)\n            ]),\n            _: 1\n          }),\n          _createVNode(_component_v_btn, {\n            onClick: toggleTheme,\n            icon: \"mdi-theme-light-dark\"\n          })\n        ]),\n        _: 1\n      }),\n      _createVNode(_component_v_main, null, {\n        default: _withCtx(() => [\n          _createVNode(_component_v_container, null, {\n            default: _withCtx(() => [\n              _createVNode(_component_RouterView)\n            ]),\n            _: 1\n          })\n        ]),\n        _: 1\n      })\n    ]),\n    _: 1\n  }))\n}\n}\n\n})",
+      "start": 1722262859229,
+      "end": 1722262859229,
+      "sourcemaps": {
+        "version": 3,
+        "sources": [
+          "C:/Users/MAG/IdeaProjects/Datenanalysetool/src/main/vue-project/src/views/Datenanalyse.vue"
+        ],
+        "sourcesContent": [
+          "<script setup lang=\"ts\">\r\nimport { ref } from 'vue'\r\nimport { useTheme } from 'vuetify'\r\n\r\n\r\nconst theme = useTheme()\r\nconst drawer = ref<boolean | null>(null)\r\nconst appTitle = ref('HeimAG Datenanalysetool')\r\nconst appSubtitle = ref('NDS SWE Semesterarbeit 2')\r\n\r\nfunction toggleTheme() {\r\n  theme.global.name.value = theme.global.current.value.dark ? 'light' : 'dark'\r\n}\r\n</script>\r\n\r\n\r\n  <template>\r\n    <v-app>\r\n      <v-navigation-drawer v-model=\"drawer\">\r\n        <v-list-item :title=\"appTitle\" :subtitle=\"appSubtitle\" />\r\n        <v-divider />\r\n        <v-list-item link to=\"/\">Home</v-list-item>\r\n        <v-list-item link to=\"/datenanalyse\">Datenanalyse</v-list-item>\r\n      </v-navigation-drawer>\r\n      <v-app-bar>\r\n        <v-app-bar-nav-icon @click=\"drawer = !drawer\"></v-app-bar-nav-icon>\r\n        <v-app-bar-title>{{ appTitle }}</v-app-bar-title>\r\n        <v-btn @click=\"toggleTheme\" icon=\"mdi-theme-light-dark\" />\r\n      </v-app-bar>\r\n      <v-main>\r\n        <v-container>\r\n          <RouterView />\r\n        </v-container>\r\n      </v-main>\r\n    </v-app>\r\n  </template>\r\n\r\n\r\n<style scoped>\r\n\r\n</style>"
+        ],
+        "names": [],
+        "mappings": ";;;AACA,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AAC1B,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACnC,CAAC;AACD,CAAC;;;;;AAJuB,CAAC;AAKzB,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACzB,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACzC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AAChD,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACpD,CAAC;AACD,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACzB,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AAC/E,CAAC,CAAC;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;"
+      }
+    },
+    {
+      "name": "vite:css",
+      "start": 1722262859230,
+      "end": 1722262859230,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "result": "import { defineComponent as _defineComponent } from \"vue\";\nimport { resolveComponent as _resolveComponent, createVNode as _createVNode, createTextVNode as _createTextVNode, withCtx as _withCtx, toDisplayString as _toDisplayString, openBlock as _openBlock, createBlock as _createBlock } from \"vue\";\nimport { ref } from \"vue\";\nimport { useTheme } from \"vuetify\";\nexport default /* @__PURE__ */ _defineComponent({\n  __name: \"Datenanalyse\",\n  setup(__props) {\n    const theme = useTheme();\n    const drawer = ref(null);\n    const appTitle = ref(\"HeimAG Datenanalysetool\");\n    const appSubtitle = ref(\"NDS SWE Semesterarbeit 2\");\n    function toggleTheme() {\n      theme.global.name.value = theme.global.current.value.dark ? \"light\" : \"dark\";\n    }\n    return (_ctx, _cache) => {\n      const _component_v_list_item = _resolveComponent(\"v-list-item\");\n      const _component_v_divider = _resolveComponent(\"v-divider\");\n      const _component_v_navigation_drawer = _resolveComponent(\"v-navigation-drawer\");\n      const _component_v_app_bar_nav_icon = _resolveComponent(\"v-app-bar-nav-icon\");\n      const _component_v_app_bar_title = _resolveComponent(\"v-app-bar-title\");\n      const _component_v_btn = _resolveComponent(\"v-btn\");\n      const _component_v_app_bar = _resolveComponent(\"v-app-bar\");\n      const _component_RouterView = _resolveComponent(\"RouterView\");\n      const _component_v_container = _resolveComponent(\"v-container\");\n      const _component_v_main = _resolveComponent(\"v-main\");\n      const _component_v_app = _resolveComponent(\"v-app\");\n      return _openBlock(), _createBlock(_component_v_app, null, {\n        default: _withCtx(() => [\n          _createVNode(_component_v_navigation_drawer, {\n            modelValue: drawer.value,\n            \"onUpdate:modelValue\": _cache[0] || (_cache[0] = ($event) => drawer.value = $event)\n          }, {\n            default: _withCtx(() => [\n              _createVNode(_component_v_list_item, {\n                title: appTitle.value,\n                subtitle: appSubtitle.value\n              }, null, 8, [\"title\", \"subtitle\"]),\n              _createVNode(_component_v_divider),\n              _createVNode(_component_v_list_item, {\n                link: \"\",\n                to: \"/\"\n              }, {\n                default: _withCtx(() => [\n                  _createTextVNode(\"Home\")\n                ]),\n                _: 1\n              }),\n              _createVNode(_component_v_list_item, {\n                link: \"\",\n                to: \"/datenanalyse\"\n              }, {\n                default: _withCtx(() => [\n                  _createTextVNode(\"Datenanalyse\")\n                ]),\n                _: 1\n              })\n            ]),\n            _: 1\n          }, 8, [\"modelValue\"]),\n          _createVNode(_component_v_app_bar, null, {\n            default: _withCtx(() => [\n              _createVNode(_component_v_app_bar_nav_icon, {\n                onClick: _cache[1] || (_cache[1] = ($event) => drawer.value = !drawer.value)\n              }),\n              _createVNode(_component_v_app_bar_title, null, {\n                default: _withCtx(() => [\n                  _createTextVNode(_toDisplayString(appTitle.value), 1)\n                ]),\n                _: 1\n              }),\n              _createVNode(_component_v_btn, {\n                onClick: toggleTheme,\n                icon: \"mdi-theme-light-dark\"\n              })\n            ]),\n            _: 1\n          }),\n          _createVNode(_component_v_main, null, {\n            default: _withCtx(() => [\n              _createVNode(_component_v_container, null, {\n                default: _withCtx(() => [\n                  _createVNode(_component_RouterView)\n                ]),\n                _: 1\n              })\n            ]),\n            _: 1\n          })\n        ]),\n        _: 1\n      });\n    };\n  }\n});\n",
+      "start": 1722262859230,
+      "end": 1722262859270,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "sources": [
+          "C:/Users/MAG/IdeaProjects/Datenanalysetool/src/main/vue-project/src/views/Datenanalyse.vue?vue&type=script&setup=true&lang.ts"
+        ],
+        "sourcesContent": [
+          "import { defineComponent as _defineComponent } from 'vue'\nimport { resolveComponent as _resolveComponent, createVNode as _createVNode, createTextVNode as _createTextVNode, withCtx as _withCtx, toDisplayString as _toDisplayString, openBlock as _openBlock, createBlock as _createBlock } from \"vue\"\n\nimport { ref } from 'vue'\r\nimport { useTheme } from 'vuetify'\r\n\r\n\r\n\nexport default /*#__PURE__*/_defineComponent({\n  __name: 'Datenanalyse',\n  setup(__props) {\n\r\nconst theme = useTheme()\r\nconst drawer = ref<boolean | null>(null)\r\nconst appTitle = ref('HeimAG Datenanalysetool')\r\nconst appSubtitle = ref('NDS SWE Semesterarbeit 2')\r\n\r\nfunction toggleTheme() {\r\n  theme.global.name.value = theme.global.current.value.dark ? 'light' : 'dark'\r\n}\r\n\nreturn (_ctx: any,_cache: any) => {\n  const _component_v_list_item = _resolveComponent(\"v-list-item\")!\n  const _component_v_divider = _resolveComponent(\"v-divider\")!\n  const _component_v_navigation_drawer = _resolveComponent(\"v-navigation-drawer\")!\n  const _component_v_app_bar_nav_icon = _resolveComponent(\"v-app-bar-nav-icon\")!\n  const _component_v_app_bar_title = _resolveComponent(\"v-app-bar-title\")!\n  const _component_v_btn = _resolveComponent(\"v-btn\")!\n  const _component_v_app_bar = _resolveComponent(\"v-app-bar\")!\n  const _component_RouterView = _resolveComponent(\"RouterView\")!\n  const _component_v_container = _resolveComponent(\"v-container\")!\n  const _component_v_main = _resolveComponent(\"v-main\")!\n  const _component_v_app = _resolveComponent(\"v-app\")!\n\n  return (_openBlock(), _createBlock(_component_v_app, null, {\n    default: _withCtx(() => [\n      _createVNode(_component_v_navigation_drawer, {\n        modelValue: drawer.value,\n        \"onUpdate:modelValue\": _cache[0] || (_cache[0] = ($event: any) => ((drawer).value = $event))\n      }, {\n        default: _withCtx(() => [\n          _createVNode(_component_v_list_item, {\n            title: appTitle.value,\n            subtitle: appSubtitle.value\n          }, null, 8, [\"title\", \"subtitle\"]),\n          _createVNode(_component_v_divider),\n          _createVNode(_component_v_list_item, {\n            link: \"\",\n            to: \"/\"\n          }, {\n            default: _withCtx(() => [\n              _createTextVNode(\"Home\")\n            ]),\n            _: 1\n          }),\n          _createVNode(_component_v_list_item, {\n            link: \"\",\n            to: \"/datenanalyse\"\n          }, {\n            default: _withCtx(() => [\n              _createTextVNode(\"Datenanalyse\")\n            ]),\n            _: 1\n          })\n        ]),\n        _: 1\n      }, 8, [\"modelValue\"]),\n      _createVNode(_component_v_app_bar, null, {\n        default: _withCtx(() => [\n          _createVNode(_component_v_app_bar_nav_icon, {\n            onClick: _cache[1] || (_cache[1] = ($event: any) => (drawer.value = !drawer.value))\n          }),\n          _createVNode(_component_v_app_bar_title, null, {\n            default: _withCtx(() => [\n              _createTextVNode(_toDisplayString(appTitle.value), 1)\n            ]),\n            _: 1\n          }),\n          _createVNode(_component_v_btn, {\n            onClick: toggleTheme,\n            icon: \"mdi-theme-light-dark\"\n          })\n        ]),\n        _: 1\n      }),\n      _createVNode(_component_v_main, null, {\n        default: _withCtx(() => [\n          _createVNode(_component_v_container, null, {\n            default: _withCtx(() => [\n              _createVNode(_component_RouterView)\n            ]),\n            _: 1\n          })\n        ]),\n        _: 1\n      })\n    ]),\n    _: 1\n  }))\n}\n}\n\n})"
+        ],
+        "mappings": "AAAA,SAAS,mBAAmB,wBAAwB;AACpD,SAAS,oBAAoB,mBAAmB,eAAe,cAAc,mBAAmB,kBAAkB,WAAW,UAAU,mBAAmB,kBAAkB,aAAa,YAAY,eAAe,oBAAoB;AAExO,SAAS,WAAW;AACpB,SAAS,gBAAgB;AAIzB,eAA4B,iCAAiB;AAAA,EAC3C,QAAQ;AAAA,EACR,MAAM,SAAS;AAEjB,UAAM,QAAQ,SAAS;AACvB,UAAM,SAAS,IAAoB,IAAI;AACvC,UAAM,WAAW,IAAI,yBAAyB;AAC9C,UAAM,cAAc,IAAI,0BAA0B;AAElD,aAAS,cAAc;AACrB,YAAM,OAAO,KAAK,QAAQ,MAAM,OAAO,QAAQ,MAAM,OAAO,UAAU;AAAA,IACxE;AAEA,WAAO,CAAC,MAAU,WAAgB;AAChC,YAAM,yBAAyB,kBAAkB,aAAa;AAC9D,YAAM,uBAAuB,kBAAkB,WAAW;AAC1D,YAAM,iCAAiC,kBAAkB,qBAAqB;AAC9E,YAAM,gCAAgC,kBAAkB,oBAAoB;AAC5E,YAAM,6BAA6B,kBAAkB,iBAAiB;AACtE,YAAM,mBAAmB,kBAAkB,OAAO;AAClD,YAAM,uBAAuB,kBAAkB,WAAW;AAC1D,YAAM,wBAAwB,kBAAkB,YAAY;AAC5D,YAAM,yBAAyB,kBAAkB,aAAa;AAC9D,YAAM,oBAAoB,kBAAkB,QAAQ;AACpD,YAAM,mBAAmB,kBAAkB,OAAO;AAElD,aAAQ,WAAW,GAAG,aAAa,kBAAkB,MAAM;AAAA,QACzD,SAAS,SAAS,MAAM;AAAA,UACtB,aAAa,gCAAgC;AAAA,YAC3C,YAAY,OAAO;AAAA,YACnB,uBAAuB,OAAO,CAAC,MAAM,OAAO,CAAC,IAAI,CAAC,WAAkB,OAAQ,QAAQ;AAAA,UACtF,GAAG;AAAA,YACD,SAAS,SAAS,MAAM;AAAA,cACtB,aAAa,wBAAwB;AAAA,gBACnC,OAAO,SAAS;AAAA,gBAChB,UAAU,YAAY;AAAA,cACxB,GAAG,MAAM,GAAG,CAAC,SAAS,UAAU,CAAC;AAAA,cACjC,aAAa,oBAAoB;AAAA,cACjC,aAAa,wBAAwB;AAAA,gBACnC,MAAM;AAAA,gBACN,IAAI;AAAA,cACN,GAAG;AAAA,gBACD,SAAS,SAAS,MAAM;AAAA,kBACtB,iBAAiB,MAAM;AAAA,gBACzB,CAAC;AAAA,gBACD,GAAG;AAAA,cACL,CAAC;AAAA,cACD,aAAa,wBAAwB;AAAA,gBACnC,MAAM;AAAA,gBACN,IAAI;AAAA,cACN,GAAG;AAAA,gBACD,SAAS,SAAS,MAAM;AAAA,kBACtB,iBAAiB,cAAc;AAAA,gBACjC,CAAC;AAAA,gBACD,GAAG;AAAA,cACL,CAAC;AAAA,YACH,CAAC;AAAA,YACD,GAAG;AAAA,UACL,GAAG,GAAG,CAAC,YAAY,CAAC;AAAA,UACpB,aAAa,sBAAsB,MAAM;AAAA,YACvC,SAAS,SAAS,MAAM;AAAA,cACtB,aAAa,+BAA+B;AAAA,gBAC1C,SAAS,OAAO,CAAC,MAAM,OAAO,CAAC,IAAI,CAAC,WAAiB,OAAO,QAAQ,CAAC,OAAO;AAAA,cAC9E,CAAC;AAAA,cACD,aAAa,4BAA4B,MAAM;AAAA,gBAC7C,SAAS,SAAS,MAAM;AAAA,kBACtB,iBAAiB,iBAAiB,SAAS,KAAK,GAAG,CAAC;AAAA,gBACtD,CAAC;AAAA,gBACD,GAAG;AAAA,cACL,CAAC;AAAA,cACD,aAAa,kBAAkB;AAAA,gBAC7B,SAAS;AAAA,gBACT,MAAM;AAAA,cACR,CAAC;AAAA,YACH,CAAC;AAAA,YACD,GAAG;AAAA,UACL,CAAC;AAAA,UACD,aAAa,mBAAmB,MAAM;AAAA,YACpC,SAAS,SAAS,MAAM;AAAA,cACtB,aAAa,wBAAwB,MAAM;AAAA,gBACzC,SAAS,SAAS,MAAM;AAAA,kBACtB,aAAa,qBAAqB;AAAA,gBACpC,CAAC;AAAA,gBACD,GAAG;AAAA,cACL,CAAC;AAAA,YACH,CAAC;AAAA,YACD,GAAG;AAAA,UACL,CAAC;AAAA,QACH,CAAC;AAAA,QACD,GAAG;AAAA,MACL,CAAC;AAAA,IACH;AAAA,EACA;AAEA,CAAC;",
+        "names": []
+      }
+    },
+    {
+      "name": "vite:json",
+      "start": 1722262859270,
+      "end": 1722262859270,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1722262859270,
+      "end": 1722262859270,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1722262859270,
+      "end": 1722262859270,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1722262859270,
+      "end": 1722262859270,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1722262859270,
+      "end": 1722262859270,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1722262859270,
+      "end": 1722262859270,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1722262859270,
+      "end": 1722262859270,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1722262859270,
+      "end": 1722262859270,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1722262859270,
+      "end": 1722262859270,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1722262859270,
+      "end": 1722262859270,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1722262859271,
+      "end": 1722262859271,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1722262859271,
+      "end": 1722262859271,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1722262859271,
+      "end": 1722262859271,
+      "order": "normal"
+    }
+  ]
+}

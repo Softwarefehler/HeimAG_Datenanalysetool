@@ -1,0 +1,108 @@
+{
+  "resolvedId": "C:/Users/MAG/IdeaProjects/Datenanalysetool/src/main/vue-project/node_modules/vuetify/lib/components/VSelect/VSelect.css",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": ".v-select .v-field .v-text-field__prefix,\n.v-select .v-field .v-text-field__suffix,\n.v-select .v-field .v-field__input, .v-select .v-field.v-field {\n  cursor: pointer;\n}\n.v-select .v-field .v-field__input > input {\n  align-self: flex-start;\n  opacity: 1;\n  flex: 0 0;\n  position: absolute;\n  width: 100%;\n  transition: none;\n  pointer-events: none;\n  caret-color: transparent;\n}\n.v-select .v-field--dirty .v-select__selection {\n  margin-inline-end: 2px;\n}\n.v-select .v-select__selection-text {\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}\n.v-select__content {\n  overflow: hidden;\n  box-shadow: 0px 2px 4px -1px var(--v-shadow-key-umbra-opacity, rgba(0, 0, 0, 0.2)), 0px 4px 5px 0px var(--v-shadow-key-penumbra-opacity, rgba(0, 0, 0, 0.14)), 0px 1px 10px 0px var(--v-shadow-key-ambient-opacity, rgba(0, 0, 0, 0.12));\n  border-radius: 4px;\n}\n.v-select__selection {\n  display: inline-flex;\n  align-items: center;\n  letter-spacing: inherit;\n  line-height: inherit;\n  max-width: 100%;\n}\n.v-select .v-select__selection:first-child {\n  margin-inline-start: 0;\n}\n.v-select--selected .v-field .v-field__input > input {\n  opacity: 0;\n}\n.v-select__menu-icon {\n  margin-inline-start: 4px;\n  transition: 0.2s cubic-bezier(0.4, 0, 0.2, 1);\n}\n.v-select--active-menu .v-select__menu-icon {\n  opacity: var(--v-high-emphasis-opacity);\n  transform: rotate(180deg);\n}",
+      "start": 1722262860443,
+      "end": 1722262860471,
+      "sourcemaps": null
+    },
+    {
+      "name": "vite:css",
+      "result": ".v-select .v-field .v-text-field__prefix,\n.v-select .v-field .v-text-field__suffix,\n.v-select .v-field .v-field__input, .v-select .v-field.v-field {\n  cursor: pointer;\n}\n.v-select .v-field .v-field__input > input {\n  align-self: flex-start;\n  opacity: 1;\n  flex: 0 0;\n  position: absolute;\n  width: 100%;\n  transition: none;\n  pointer-events: none;\n  caret-color: transparent;\n}\n.v-select .v-field--dirty .v-select__selection {\n  margin-inline-end: 2px;\n}\n.v-select .v-select__selection-text {\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}\n.v-select__content {\n  overflow: hidden;\n  box-shadow: 0px 2px 4px -1px var(--v-shadow-key-umbra-opacity, rgba(0, 0, 0, 0.2)), 0px 4px 5px 0px var(--v-shadow-key-penumbra-opacity, rgba(0, 0, 0, 0.14)), 0px 1px 10px 0px var(--v-shadow-key-ambient-opacity, rgba(0, 0, 0, 0.12));\n  border-radius: 4px;\n}\n.v-select__selection {\n  display: inline-flex;\n  align-items: center;\n  letter-spacing: inherit;\n  line-height: inherit;\n  max-width: 100%;\n}\n.v-select .v-select__selection:first-child {\n  margin-inline-start: 0;\n}\n.v-select--selected .v-field .v-field__input > input {\n  opacity: 0;\n}\n.v-select__menu-icon {\n  margin-inline-start: 4px;\n  transition: 0.2s cubic-bezier(0.4, 0, 0.2, 1);\n}\n.v-select--active-menu .v-select__menu-icon {\n  opacity: var(--v-high-emphasis-opacity);\n  transform: rotate(180deg);\n}",
+      "start": 1722262860471,
+      "end": 1722262860471,
+      "order": "normal",
+      "sourcemaps": null
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1722262860471,
+      "end": 1722262860471,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1722262860471,
+      "end": 1722262860471,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1722262860471,
+      "end": 1722262860471,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1722262860471,
+      "end": 1722262860471,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1722262860471,
+      "end": 1722262860471,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "result": "",
+      "start": 1722262860471,
+      "end": 1722262860471,
+      "order": "normal",
+      "sourcemaps": {
+        "mappings": ""
+      }
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1722262860471,
+      "end": 1722262860471,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1722262860471,
+      "end": 1722262860471,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1722262860471,
+      "end": 1722262860471,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1722262860471,
+      "end": 1722262860471,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1722262860471,
+      "end": 1722262860471,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1722262860471,
+      "end": 1722262860471,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1722262860471,
+      "end": 1722262860471,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1722262860471,
+      "end": 1722262860471,
+      "order": "normal"
+    }
+  ]
+}

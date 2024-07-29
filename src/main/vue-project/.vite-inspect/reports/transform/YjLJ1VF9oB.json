@@ -1,0 +1,102 @@
+{
+  "resolvedId": "C:/Users/MAG/IdeaProjects/Datenanalysetool/src/main/vue-project/node_modules/vuetify/lib/components/VOverlay/requestNewFrame.mjs",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "let clean = true;\nconst frames = [];\n\n/**\n * Schedule a task to run in an animation frame on its own\n * This is useful for heavy tasks that may cause jank if all ran together\n */\nexport function requestNewFrame(cb) {\n  if (!clean || frames.length) {\n    frames.push(cb);\n    run();\n  } else {\n    clean = false;\n    cb();\n    run();\n  }\n}\nlet raf = -1;\nfunction run() {\n  cancelAnimationFrame(raf);\n  raf = requestAnimationFrame(() => {\n    const frame = frames.shift();\n    if (frame) frame();\n    if (frames.length) run();else clean = true;\n  });\n}\n//# sourceMappingURL=requestNewFrame.mjs.map",
+      "start": 1722262860492,
+      "end": 1722262860507,
+      "sourcemaps": null
+    },
+    {
+      "name": "vite:css",
+      "start": 1722262860507,
+      "end": 1722262860507,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1722262860507,
+      "end": 1722262860507,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1722262860507,
+      "end": 1722262860507,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1722262860507,
+      "end": 1722262860507,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1722262860507,
+      "end": 1722262860507,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1722262860507,
+      "end": 1722262860507,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1722262860507,
+      "end": 1722262860507,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1722262860507,
+      "end": 1722262860507,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1722262860507,
+      "end": 1722262860507,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1722262860507,
+      "end": 1722262860507,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1722262860507,
+      "end": 1722262860507,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1722262860507,
+      "end": 1722262860507,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1722262860507,
+      "end": 1722262860507,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1722262860507,
+      "end": 1722262860507,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1722262860507,
+      "end": 1722262860507,
+      "order": "normal"
+    }
+  ]
+}
