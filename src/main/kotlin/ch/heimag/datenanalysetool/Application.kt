@@ -1,25 +1,43 @@
 package ch.heimag.datenanalysetool
 
-
-import ch.heimag.datenanalysetool.plugins.configureRouting
-import ch.heimag_datenanalysetool.plugins.configureSerialization
-import ch.heimag_datenanalysetool.plugins.configureTemplating
-import freemarker.cache.*
-import io.ktor.server.application.*
+import ch.heimag.datenanalysetool.plugins.*
 import io.ktor.server.engine.*
-import io.ktor.server.freemarker.*
 import io.ktor.server.netty.*
+import kotlinx.coroutines.coroutineScope
 
-fun main() {
-    embeddedServer(Netty, port = 8080, host = "0.0.0.0", module = Application::module)
+suspend fun main() {
+    val enableHttps = System.getenv("DISABLE_HTTPS") != "true"
+    val httpPort = System.getenv("HTTP_PORT")?.toIntOrNull() ?: 8080
+    val httpsPort = System.getenv("HTTPS_PORT")?.toIntOrNull() ?: 8443
+    val hostBinding = System.getenv("HOST_BINDING") ?: "0.0.0.0"
+
+    coroutineScope {
+        val appEnginEnv = applicationEngineEnvironment {
+            module {
+                installKoinDependencyInjection()
+
+                if (enableHttps) {
+                    installHttpsRedirect(httpsPort)
+                }
+
+                installForwardedHeaders()
+                installSessionAndAuthentication()
+                installFreeMarkerTemplating()
+                installSerialization()
+
+                configureRouting()
+            }
+            configureHttp(hostBinding, httpPort)
+
+            if (enableHttps) {
+                configureHttps(hostBinding, httpsPort)
+            }
+
+            watchPaths = listOf("classes", "resources")
+        }
+
+        embeddedServer(Netty, appEnginEnv)
             .start(wait = true)
+    }
 }
 
-fun Application.module() {
-    install(FreeMarker) {
-        templateLoader = ClassTemplateLoader(this::class.java.classLoader, "templates")
-    }
-    configureRouting()
-    configureSerialization()
-    //   configureTemplating() // doppelt gemoppelt
-}

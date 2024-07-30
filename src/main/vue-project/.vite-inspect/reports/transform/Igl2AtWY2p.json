@@ -4,98 +4,98 @@
     {
       "name": "vite:load-fallback",
       "result": "export function calculateUpdatedTarget(_ref) {\n  let {\n    selectedElement,\n    containerElement,\n    isRtl,\n    isHorizontal\n  } = _ref;\n  const containerSize = getOffsetSize(isHorizontal, containerElement);\n  const scrollPosition = getScrollPosition(isHorizontal, isRtl, containerElement);\n  const childrenSize = getOffsetSize(isHorizontal, selectedElement);\n  const childrenStartPosition = getOffsetPosition(isHorizontal, selectedElement);\n  const additionalOffset = childrenSize * 0.4;\n  if (scrollPosition > childrenStartPosition) {\n    return childrenStartPosition - additionalOffset;\n  } else if (scrollPosition + containerSize < childrenStartPosition + childrenSize) {\n    return childrenStartPosition - containerSize + childrenSize + additionalOffset;\n  }\n  return scrollPosition;\n}\nexport function calculateCenteredTarget(_ref2) {\n  let {\n    selectedElement,\n    containerElement,\n    isHorizontal\n  } = _ref2;\n  const containerOffsetSize = getOffsetSize(isHorizontal, containerElement);\n  const childrenOffsetPosition = getOffsetPosition(isHorizontal, selectedElement);\n  const childrenOffsetSize = getOffsetSize(isHorizontal, selectedElement);\n  return childrenOffsetPosition - containerOffsetSize / 2 + childrenOffsetSize / 2;\n}\nexport function getScrollSize(isHorizontal, element) {\n  const key = isHorizontal ? 'scrollWidth' : 'scrollHeight';\n  return element?.[key] || 0;\n}\nexport function getClientSize(isHorizontal, element) {\n  const key = isHorizontal ? 'clientWidth' : 'clientHeight';\n  return element?.[key] || 0;\n}\nexport function getScrollPosition(isHorizontal, rtl, element) {\n  if (!element) {\n    return 0;\n  }\n  const {\n    scrollLeft,\n    offsetWidth,\n    scrollWidth\n  } = element;\n  if (isHorizontal) {\n    return rtl ? scrollWidth - offsetWidth + scrollLeft : scrollLeft;\n  }\n  return element.scrollTop;\n}\nexport function getOffsetSize(isHorizontal, element) {\n  const key = isHorizontal ? 'offsetWidth' : 'offsetHeight';\n  return element?.[key] || 0;\n}\nexport function getOffsetPosition(isHorizontal, element) {\n  const key = isHorizontal ? 'offsetLeft' : 'offsetTop';\n  return element?.[key] || 0;\n}\n//# sourceMappingURL=helpers.mjs.map",
-      "start": 1722262860445,
-      "end": 1722262860473,
+      "start": 1722351595154,
+      "end": 1722351595168,
       "sourcemaps": null
     },
     {
       "name": "vite:css",
-      "start": 1722262860473,
-      "end": 1722262860473,
+      "start": 1722351595168,
+      "end": 1722351595168,
       "order": "normal"
     },
     {
       "name": "vite:esbuild",
-      "start": 1722262860473,
-      "end": 1722262860473,
+      "start": 1722351595168,
+      "end": 1722351595168,
       "order": "normal"
     },
     {
       "name": "vite:json",
-      "start": 1722262860473,
-      "end": 1722262860473,
+      "start": 1722351595168,
+      "end": 1722351595168,
       "order": "normal"
     },
     {
       "name": "vite:worker",
-      "start": 1722262860473,
-      "end": 1722262860473,
+      "start": 1722351595168,
+      "end": 1722351595168,
       "order": "normal"
     },
     {
       "name": "vite:vue",
-      "start": 1722262860473,
-      "end": 1722262860473,
+      "start": 1722351595168,
+      "end": 1722351595168,
       "order": "normal"
     },
     {
       "name": "vite:define",
-      "start": 1722262860473,
-      "end": 1722262860473,
+      "start": 1722351595168,
+      "end": 1722351595168,
       "order": "normal"
     },
     {
       "name": "vite:css-post",
-      "start": 1722262860473,
-      "end": 1722262860473,
+      "start": 1722351595168,
+      "end": 1722351595168,
       "order": "normal"
     },
     {
       "name": "vite:build-html",
-      "start": 1722262860473,
-      "end": 1722262860473,
+      "start": 1722351595168,
+      "end": 1722351595168,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1722262860473,
-      "end": 1722262860473,
+      "start": 1722351595168,
+      "end": 1722351595168,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1722262860473,
-      "end": 1722262860473,
+      "start": 1722351595168,
+      "end": 1722351595168,
       "order": "normal"
     },
     {
       "name": "commonjs",
-      "start": 1722262860473,
-      "end": 1722262860473,
+      "start": 1722351595168,
+      "end": 1722351595168,
       "order": "normal"
     },
     {
       "name": "vite:dynamic-import-vars",
-      "start": 1722262860473,
-      "end": 1722262860473,
+      "start": 1722351595168,
+      "end": 1722351595168,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1722262860473,
-      "end": 1722262860473,
+      "start": 1722351595168,
+      "end": 1722351595168,
       "order": "normal"
     },
     {
       "name": "vite:build-import-analysis",
-      "start": 1722262860473,
-      "end": 1722262860473,
+      "start": 1722351595168,
+      "end": 1722351595168,
       "order": "normal"
     },
     {
       "name": "vite:reporter",
-      "start": 1722262860473,
-      "end": 1722262860473,
+      "start": 1722351595168,
+      "end": 1722351595168,
       "order": "normal"
     }
   ]

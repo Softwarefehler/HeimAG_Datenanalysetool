@@ -3,6 +3,7 @@ val ktor_version: String by project
 val kotlin_version: String by project
 val logback_version: String by project
 val coroutines_version: String by project
+val koin_version: String by project
 
 plugins {
     kotlin("jvm") version "2.0.0"
@@ -33,6 +34,14 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines_version")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-jdk8:$coroutines_version")
     implementation("io.ktor:ktor-server-content-negotiation:$ktor_version")
+    implementation("io.ktor:ktor-server-http-redirect:$ktor_version")
+    implementation("io.ktor:ktor-server-sessions:$ktor_version")
+    implementation("io.insert-koin:koin-ktor:$koin_version")
+    implementation("io.ktor:ktor-server-auth:$ktor_version")
+    implementation("io.ktor:ktor-server-html-builder:$ktor_version")
+    implementation("io.ktor:ktor-client-content-negotiation:$ktor_version")
+    implementation("io.ktor:ktor-server-forwarded-header:$ktor_version")
+    implementation("io.ktor:ktor-network-tls-certificates:$ktor_version")
     implementation("com.mysql:mysql-connector-j:8.2.0")
     testImplementation("io.ktor:ktor-server-tests-jvm")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version")

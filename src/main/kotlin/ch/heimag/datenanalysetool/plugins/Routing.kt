@@ -2,30 +2,15 @@ package ch.heimag.datenanalysetool.plugins
 
 import ch.heimag.datenanalysetool.routes.Datenanalyse
 import ch.heimag.datenanalysetool.routes.SinglePageApplication
-import io.ktor.http.content.*
 import io.ktor.server.application.*
-import io.ktor.server.freemarker.*
-import io.ktor.server.http.content.*
-import io.ktor.server.request.*
-import io.ktor.server.response.*
-import io.ktor.server.routing.*
-import java.io.File
-import java.nio.file.Files
-import java.nio.file.StandardOpenOption
-
-data class User(val id: Int, val name: String)
-
-data class SimpleFormUser(val fname: String, val lname: String)
-
-data class MultipartFormData(val fname: String, val fileName: String)
-
-data class Foto(val name: String, val fullName: String)
-
-data class Fotoalbum(val fotos: List<Foto>, val rootUrl: String)
 
 fun Application.configureRouting() {
    SinglePageApplication()
     Datenanalyse()
+
+
+
+
   /*  routing {
         singlePageApplication {vue("src/main/vue-project/dist")}
 

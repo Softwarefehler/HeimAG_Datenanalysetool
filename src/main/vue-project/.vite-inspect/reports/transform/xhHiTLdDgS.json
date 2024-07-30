@@ -4,8 +4,8 @@
     {
       "name": "vite:vue",
       "result": "import { defineComponent as _defineComponent } from 'vue'\nimport { resolveComponent as _resolveComponent, createVNode as _createVNode, withCtx as _withCtx, createElementVNode as _createElementVNode, openBlock as _openBlock, createBlock as _createBlock, pushScopeId as _pushScopeId, popScopeId as _popScopeId } from \"vue\"\n\nconst _withScopeId = n => (_pushScopeId(\"data-v-6fc19b11\"),n=n(),_popScopeId(),n)\nconst _hoisted_1 = /*#__PURE__*/ _withScopeId(() => /*#__PURE__*/_createElementVNode(\"h1\", null, \"Login\", -1))\nconst _hoisted_2 = /*#__PURE__*/ _withScopeId(() => /*#__PURE__*/_createElementVNode(\"p\", null, \"Benutzername\", -1))\nconst _hoisted_3 = /*#__PURE__*/ _withScopeId(() => /*#__PURE__*/_createElementVNode(\"p\", null, \"Passwort\", -1))\n\nimport { ref } from 'vue'\nimport { useTheme } from 'vuetify'\n\n\n\nexport default /*#__PURE__*/_defineComponent({\n  __name: 'App',\n  setup(__props) {\n\n\nconst drawer = ref<boolean | null>(null)\nconst appTitle = ref('HeimAG Datenanalysetool')\nconst appSubtitle = ref('NDS SWE Semesterarbeit 2')\nconst theme = ref('light')\n\nfunction onClick() {\n  theme.value = theme.value === 'light' ? 'dark' : 'light'\n}\n\n\n\nreturn (_ctx: any,_cache: any) => {\n  const _component_v_spacer = _resolveComponent(\"v-spacer\")!\n  const _component_v_btn = _resolveComponent(\"v-btn\")!\n  const _component_v_app_bar = _resolveComponent(\"v-app-bar\")!\n  const _component_v_text_field = _resolveComponent(\"v-text-field\")!\n  const _component_v_responsive = _resolveComponent(\"v-responsive\")!\n  const _component_v_container = _resolveComponent(\"v-container\")!\n  const _component_v_main = _resolveComponent(\"v-main\")!\n  const _component_v_app = _resolveComponent(\"v-app\")!\n\n  return (_openBlock(), _createBlock(_component_v_responsive, { class: \"border rounded\" }, {\n    default: _withCtx(() => [\n      _createVNode(_component_v_app, { theme: theme.value }, {\n        default: _withCtx(() => [\n          _createVNode(_component_v_app_bar, { class: \"px-3\" }, {\n            default: _withCtx(() => [\n              _createVNode(_component_v_spacer),\n              _createVNode(_component_v_btn, {\n                \"prepend-icon\": theme.value === 'light' ? 'mdi-weather-sunny' : 'mdi-weather-night',\n                text: \"light/dark\",\n                slim: \"\",\n                onClick: onClick\n              }, null, 8, [\"prepend-icon\"])\n            ]),\n            _: 1\n          }),\n          _createVNode(_component_v_main, null, {\n            default: _withCtx(() => [\n              _createVNode(_component_v_container, null, {\n                default: _withCtx(() => [\n                  _hoisted_1,\n                  _hoisted_2,\n                  _createVNode(_component_v_responsive, {\n                    class: \"mx-auto\",\n                    \"max-width\": \"344\"\n                  }, {\n                    default: _withCtx(() => [\n                      _createVNode(_component_v_text_field, {\n                        hint: \"Benutzername eingeben\",\n                        label: \"Benutzer\",\n                        type: \"input\"\n                      })\n                    ]),\n                    _: 1\n                  }),\n                  _hoisted_3,\n                  _createVNode(_component_v_responsive, {\n                    class: \"mx-auto\",\n                    \"max-width\": \"344\"\n                  }, {\n                    default: _withCtx(() => [\n                      _createVNode(_component_v_text_field, {\n                        hint: \"Passwort eingeben\",\n                        label: \"Passwort\",\n                        type: \"input\"\n                      })\n                    ]),\n                    _: 1\n                  })\n                ]),\n                _: 1\n              })\n            ]),\n            _: 1\n          })\n        ]),\n        _: 1\n      }, 8, [\"theme\"])\n    ]),\n    _: 1\n  }))\n}\n}\n\n})",
-      "start": 1722262858867,
-      "end": 1722262858867,
+      "start": 1722351593591,
+      "end": 1722351593591,
       "sourcemaps": {
         "version": 3,
         "sources": [
@@ -20,15 +20,15 @@
     },
     {
       "name": "vite:css",
-      "start": 1722262858867,
-      "end": 1722262858868,
+      "start": 1722351593591,
+      "end": 1722351593592,
       "order": "normal"
     },
     {
       "name": "vite:esbuild",
       "result": "import { defineComponent as _defineComponent } from \"vue\";\nimport { resolveComponent as _resolveComponent, createVNode as _createVNode, withCtx as _withCtx, createElementVNode as _createElementVNode, openBlock as _openBlock, createBlock as _createBlock, pushScopeId as _pushScopeId, popScopeId as _popScopeId } from \"vue\";\nconst _withScopeId = (n) => (_pushScopeId(\"data-v-6fc19b11\"), n = n(), _popScopeId(), n);\nconst _hoisted_1 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ _createElementVNode(\"h1\", null, \"Login\", -1));\nconst _hoisted_2 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ _createElementVNode(\"p\", null, \"Benutzername\", -1));\nconst _hoisted_3 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ _createElementVNode(\"p\", null, \"Passwort\", -1));\nimport { ref } from \"vue\";\nimport { useTheme } from \"vuetify\";\nexport default /* @__PURE__ */ _defineComponent({\n  __name: \"App\",\n  setup(__props) {\n    const drawer = ref(null);\n    const appTitle = ref(\"HeimAG Datenanalysetool\");\n    const appSubtitle = ref(\"NDS SWE Semesterarbeit 2\");\n    const theme = ref(\"light\");\n    function onClick() {\n      theme.value = theme.value === \"light\" ? \"dark\" : \"light\";\n    }\n    return (_ctx, _cache) => {\n      const _component_v_spacer = _resolveComponent(\"v-spacer\");\n      const _component_v_btn = _resolveComponent(\"v-btn\");\n      const _component_v_app_bar = _resolveComponent(\"v-app-bar\");\n      const _component_v_text_field = _resolveComponent(\"v-text-field\");\n      const _component_v_responsive = _resolveComponent(\"v-responsive\");\n      const _component_v_container = _resolveComponent(\"v-container\");\n      const _component_v_main = _resolveComponent(\"v-main\");\n      const _component_v_app = _resolveComponent(\"v-app\");\n      return _openBlock(), _createBlock(_component_v_responsive, { class: \"border rounded\" }, {\n        default: _withCtx(() => [\n          _createVNode(_component_v_app, { theme: theme.value }, {\n            default: _withCtx(() => [\n              _createVNode(_component_v_app_bar, { class: \"px-3\" }, {\n                default: _withCtx(() => [\n                  _createVNode(_component_v_spacer),\n                  _createVNode(_component_v_btn, {\n                    \"prepend-icon\": theme.value === \"light\" ? \"mdi-weather-sunny\" : \"mdi-weather-night\",\n                    text: \"light/dark\",\n                    slim: \"\",\n                    onClick\n                  }, null, 8, [\"prepend-icon\"])\n                ]),\n                _: 1\n              }),\n              _createVNode(_component_v_main, null, {\n                default: _withCtx(() => [\n                  _createVNode(_component_v_container, null, {\n                    default: _withCtx(() => [\n                      _hoisted_1,\n                      _hoisted_2,\n                      _createVNode(_component_v_responsive, {\n                        class: \"mx-auto\",\n                        \"max-width\": \"344\"\n                      }, {\n                        default: _withCtx(() => [\n                          _createVNode(_component_v_text_field, {\n                            hint: \"Benutzername eingeben\",\n                            label: \"Benutzer\",\n                            type: \"input\"\n                          })\n                        ]),\n                        _: 1\n                      }),\n                      _hoisted_3,\n                      _createVNode(_component_v_responsive, {\n                        class: \"mx-auto\",\n                        \"max-width\": \"344\"\n                      }, {\n                        default: _withCtx(() => [\n                          _createVNode(_component_v_text_field, {\n                            hint: \"Passwort eingeben\",\n                            label: \"Passwort\",\n                            type: \"input\"\n                          })\n                        ]),\n                        _: 1\n                      })\n                    ]),\n                    _: 1\n                  })\n                ]),\n                _: 1\n              })\n            ]),\n            _: 1\n          }, 8, [\"theme\"])\n        ]),\n        _: 1\n      });\n    };\n  }\n});\n",
-      "start": 1722262858868,
-      "end": 1722262858877,
+      "start": 1722351593592,
+      "end": 1722351593613,
       "order": "normal",
       "sourcemaps": {
         "version": 3,
@@ -44,80 +44,80 @@
     },
     {
       "name": "vite:json",
-      "start": 1722262858877,
-      "end": 1722262858877,
+      "start": 1722351593613,
+      "end": 1722351593613,
       "order": "normal"
     },
     {
       "name": "vite:worker",
-      "start": 1722262858877,
-      "end": 1722262858877,
+      "start": 1722351593613,
+      "end": 1722351593613,
       "order": "normal"
     },
     {
       "name": "vite:vue",
-      "start": 1722262858877,
-      "end": 1722262858877,
+      "start": 1722351593613,
+      "end": 1722351593613,
       "order": "normal"
     },
     {
       "name": "vite:define",
-      "start": 1722262858877,
-      "end": 1722262858877,
+      "start": 1722351593613,
+      "end": 1722351593613,
       "order": "normal"
     },
     {
       "name": "vite:css-post",
-      "start": 1722262858877,
-      "end": 1722262858877,
+      "start": 1722351593613,
+      "end": 1722351593613,
       "order": "normal"
     },
     {
       "name": "vite:build-html",
-      "start": 1722262858877,
-      "end": 1722262858877,
+      "start": 1722351593613,
+      "end": 1722351593613,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1722262858877,
-      "end": 1722262858877,
+      "start": 1722351593613,
+      "end": 1722351593613,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1722262858877,
-      "end": 1722262858877,
+      "start": 1722351593613,
+      "end": 1722351593613,
       "order": "normal"
     },
     {
       "name": "commonjs",
-      "start": 1722262858877,
-      "end": 1722262858877,
+      "start": 1722351593614,
+      "end": 1722351593614,
       "order": "normal"
     },
     {
       "name": "vite:dynamic-import-vars",
-      "start": 1722262858877,
-      "end": 1722262858877,
+      "start": 1722351593614,
+      "end": 1722351593614,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1722262858877,
-      "end": 1722262858877,
+      "start": 1722351593614,
+      "end": 1722351593614,
       "order": "normal"
     },
     {
       "name": "vite:build-import-analysis",
-      "start": 1722262858877,
-      "end": 1722262858877,
+      "start": 1722351593614,
+      "end": 1722351593615,
       "order": "normal"
     },
     {
       "name": "vite:reporter",
-      "start": 1722262858877,
-      "end": 1722262858877,
+      "start": 1722351593615,
+      "end": 1722351593615,
       "order": "normal"
     }
   ]
