@@ -3,40 +3,40 @@
   "transforms": [
     {
       "name": "vite:load-fallback",
-      "result": "<script setup lang=\"ts\">\r\nimport { ref } from 'vue'\r\nimport type { PropType } from 'vue'\r\n\r\n\r\n// Typen definieren\r\nexport type DatesCategory1 = { date: string; temperatur: string }\r\n\r\n\r\n// Props-Definition\r\ndefineProps({\r\n  fotos: {\r\n    default: null,\r\n    required: false,\r\n    type: Array as PropType<DatesCategory1[]>\r\n  }\r\n})\r\n\r\n// Reaktive Variablen für die Date-Picker\r\nconst startDate = ref<string | null>(null)\r\nconst endDate = ref<string | null>(null)\r\n\r\n</script>\r\n\r\n<template>\r\n  <v-container>\r\n    <h4 class=\"text-h5 font-weight-bold mb-4\">Suchkriterien</h4>\r\n    <br>\r\n    <br>\r\n    <v-select\r\n      label=\"Select\"\r\n      :items=\"['California', 'Colorado', 'Florida', 'Georgia', 'Texas', 'Wyoming']\"\r\n    ></v-select>\r\n\r\n\r\n  </v-container>\r\n</template>\r\n\r\n<style scoped>\r\n\r\n</style>",
-      "start": 1722581516674,
-      "end": 1722581516683,
+      "result": "<script setup lang=\"ts\">\r\nimport { ref } from 'vue'\r\nimport type { PropType } from 'vue'\r\nimport { VDateInput } from 'vuetify/labs/VDateInput'\r\n\r\n// Typen definieren\r\nexport type DatesCategory1 = { date: string; temperatur: string }\r\n\r\n\r\n\r\n\r\n\r\n// Props-Definition\r\ndefineProps({\r\n  fotos: {\r\n    default: null,\r\n    required: false,\r\n    type: Array as PropType<DatesCategory1[]>\r\n  }\r\n})\r\n\r\n// Reaktive Variablen für die Date-Picker\r\nconst startDate = ref<string | null>(null)\r\nconst endDate = ref<string | null>(null)\r\n\r\n</script>\r\n\r\n<template>\r\n  <v-container>\r\n    <h4 class=\"text-h5 font-weight-bold mb-4\">Suchkriterien</h4>\r\n    <br>\r\n    <br>\r\n    <v-select\r\n      label=\"Select\"\r\n      :items=\"['California', 'Colorado', 'Florida', 'Georgia', 'Texas', 'Wyoming']\"\r\n    ></v-select>\r\n    <v-row dense>\r\n      <v-col cols=\"12\" md=\"6\">\r\n        <v-date-input\r\n          label=\"Select a date\"\r\n          prepend-icon=\"\"\r\n          prepend-inner-icon=\"$calendar\"\r\n        ></v-date-input>\r\n      </v-col>\r\n      <v-col cols=\"12\" md=\"6\">\r\n        <v-date-input\r\n          label=\"Select a date\"\r\n          prepend-icon=\"\"\r\n        ></v-date-input>\r\n      </v-col>\r\n    </v-row>\r\n\r\n\r\n  </v-container>\r\n</template>\r\n\r\n<style scoped>\r\n\r\n</style>",
+      "start": 1722584659805,
+      "end": 1722584659820,
       "sourcemaps": null
     },
     {
       "name": "vite:css",
-      "start": 1722581516683,
-      "end": 1722581516683,
+      "start": 1722584659821,
+      "end": 1722584659821,
       "order": "normal"
     },
     {
       "name": "vite:esbuild",
-      "start": 1722581516683,
-      "end": 1722581516683,
+      "start": 1722584659821,
+      "end": 1722584659821,
       "order": "normal"
     },
     {
       "name": "vite:json",
-      "start": 1722581516683,
-      "end": 1722581516683,
+      "start": 1722584659821,
+      "end": 1722584659821,
       "order": "normal"
     },
     {
       "name": "vite:worker",
-      "start": 1722581516683,
-      "end": 1722581516683,
+      "start": 1722584659821,
+      "end": 1722584659821,
       "order": "normal"
     },
     {
       "name": "vite:vue",
       "result": "import _sfc_main from \"C:/Users/MAG/IdeaProjects/Datenanalysetool/src/main/vue-project/src/routes/HomeView.vue?vue&type=script&setup=true&lang.ts\";\nexport * from \"C:/Users/MAG/IdeaProjects/Datenanalysetool/src/main/vue-project/src/routes/HomeView.vue?vue&type=script&setup=true&lang.ts\";\nexport default _sfc_main;\n",
-      "start": 1722581516683,
-      "end": 1722581516743,
+      "start": 1722584659821,
+      "end": 1722584659838,
       "order": "normal",
       "sourcemaps": {
         "mappings": ""
@@ -44,62 +44,62 @@
     },
     {
       "name": "vite:define",
-      "start": 1722581516743,
-      "end": 1722581516743,
+      "start": 1722584659838,
+      "end": 1722584659838,
       "order": "normal"
     },
     {
       "name": "vite:css-post",
-      "start": 1722581516743,
-      "end": 1722581516743,
+      "start": 1722584659838,
+      "end": 1722584659838,
       "order": "normal"
     },
     {
       "name": "vite:build-html",
-      "start": 1722581516743,
-      "end": 1722581516743,
+      "start": 1722584659838,
+      "end": 1722584659838,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1722581516743,
-      "end": 1722581516744,
+      "start": 1722584659838,
+      "end": 1722584659838,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1722581516744,
-      "end": 1722581516754,
+      "start": 1722584659838,
+      "end": 1722584659838,
       "order": "normal"
     },
     {
       "name": "commonjs",
-      "start": 1722581516754,
-      "end": 1722581516754,
+      "start": 1722584659838,
+      "end": 1722584659838,
       "order": "normal"
     },
     {
       "name": "vite:dynamic-import-vars",
-      "start": 1722581516754,
-      "end": 1722581516754,
+      "start": 1722584659838,
+      "end": 1722584659838,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1722581516754,
-      "end": 1722581516754,
+      "start": 1722584659838,
+      "end": 1722584659838,
       "order": "normal"
     },
     {
       "name": "vite:build-import-analysis",
-      "start": 1722581516754,
-      "end": 1722581516754,
+      "start": 1722584659838,
+      "end": 1722584659838,
       "order": "normal"
     },
     {
       "name": "vite:reporter",
-      "start": 1722581516756,
-      "end": 1722581516756,
+      "start": 1722584659838,
+      "end": 1722584659838,
       "order": "normal"
     }
   ]

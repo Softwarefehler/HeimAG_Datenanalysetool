@@ -1,10 +1,13 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import type { PropType } from 'vue'
-
+import { VDateInput } from 'vuetify/labs/VDateInput'
 
 // Typen definieren
 export type DatesCategory1 = { date: string; temperatur: string }
+
+
+
 
 
 // Props-Definition
@@ -31,7 +34,24 @@ const endDate = ref<string | null>(null)
       label="Select"
       :items="['California', 'Colorado', 'Florida', 'Georgia', 'Texas', 'Wyoming']"
     ></v-select>
+    <v-row dense>
+      <v-col cols="12" md="6">
+        <v-date-input
+          label="Select a date"
+          prepend-icon=""
+          prepend-inner-icon="$calendar"
+        ></v-date-input>
+      </v-col>
+      <v-col cols="12" md="6">
+        <v-date-input
+          label="Select a date"
+          prepend-icon=""
+        ></v-date-input>
+      </v-col>
+    </v-row>
+    <v-row dense>
 
+    </v-row>
 
   </v-container>
 </template>

@@ -4,8 +4,8 @@
     {
       "name": "vite:vue",
       "result": "\nheader {\n  line-height: 1.5;\n}\n\n.logo {\n  display: block;\n  margin: 0 auto 2rem;\n}\n\n@media (min-width: 1024px) {\n  header {\n    display: flex;\n    place-items: center;\n    padding-right: calc(var(--section-gap) / 2);\n  }\n\n  .logo {\n    margin: 0 2rem 0 0;\n  }\n\n  header .wrapper {\n    display: flex;\n    place-items: flex-start;\n    flex-wrap: wrap;\n  }\n}\n",
-      "start": 1722581516650,
-      "end": 1722581516650,
+      "start": 1722584659799,
+      "end": 1722584659799,
       "sourcemaps": {
         "version": 3,
         "sources": [
@@ -19,106 +19,6 @@
           "<script setup lang=\"ts\">\nimport {  ref } from 'vue'\nimport { useTheme } from 'vuetify'\n\n\n\n// Theme-Setup\nconst theme = useTheme()\nconst appTitle = ref('HeimAG Datenanalysetool')\n\n// Funktion zum Umschalten des Themas\nfunction toggleTheme() {\n  theme.global.name.value = theme.global.current.value.dark ? 'light' : 'dark'\n}\n\nfunction logout() {\n  location.href = '/logout'\n}\n\n\n</script>\n\n<template>\n    <v-app>\n      <v-responsive class=\"border rounded\">\n      <v-app-bar class=\"px-3\">\n        <v-app-bar-title>{{ appTitle }}</v-app-bar-title>\n        <v-btn @click=\"toggleTheme\" icon=\"mdi-theme-light-dark\" />\n        <v-btn @click=\"logout\" icon=\"mdi-logout\" />\n      </v-app-bar>\n      <v-main>\n        <v-container>\n          <RouterView />\n        </v-container>\n      </v-main>\n      </v-responsive>\n    </v-app>\n</template>\n\n<style scoped>\nheader {\n  line-height: 1.5;\n}\n\n.logo {\n  display: block;\n  margin: 0 auto 2rem;\n}\n\n@media (min-width: 1024px) {\n  header {\n    display: flex;\n    place-items: center;\n    padding-right: calc(var(--section-gap) / 2);\n  }\n\n  .logo {\n    margin: 0 2rem 0 0;\n  }\n\n  header .wrapper {\n    display: flex;\n    place-items: flex-start;\n    flex-wrap: wrap;\n  }\n}\n</style>\n\n"
         ]
       }
-    },
-    {
-      "name": "vite:css",
-      "result": "\nheader {\n  line-height: 1.5;\n}\n\n.logo {\n  display: block;\n  margin: 0 auto 2rem;\n}\n\n@media (min-width: 1024px) {\n  header {\n    display: flex;\n    place-items: center;\n    padding-right: calc(var(--section-gap) / 2);\n  }\n\n  .logo {\n    margin: 0 2rem 0 0;\n  }\n\n  header .wrapper {\n    display: flex;\n    place-items: flex-start;\n    flex-wrap: wrap;\n  }\n}\n",
-      "start": 1722581516650,
-      "end": 1722581516848,
-      "order": "normal",
-      "sourcemaps": null
-    },
-    {
-      "name": "vite:esbuild",
-      "start": 1722581516848,
-      "end": 1722581516848,
-      "order": "normal"
-    },
-    {
-      "name": "vite:json",
-      "start": 1722581516848,
-      "end": 1722581516848,
-      "order": "normal"
-    },
-    {
-      "name": "vite:worker",
-      "start": 1722581516848,
-      "end": 1722581516848,
-      "order": "normal"
-    },
-    {
-      "name": "vite:vue",
-      "result": "\nheader[data-v-534b43b4] {\n  line-height: 1.5;\n}\n.logo[data-v-534b43b4] {\n  display: block;\n  margin: 0 auto 2rem;\n}\n@media (min-width: 1024px) {\nheader[data-v-534b43b4] {\n    display: flex;\n    place-items: center;\n    padding-right: calc(var(--section-gap) / 2);\n}\n.logo[data-v-534b43b4] {\n    margin: 0 2rem 0 0;\n}\nheader .wrapper[data-v-534b43b4] {\n    display: flex;\n    place-items: flex-start;\n    flex-wrap: wrap;\n}\n}\n",
-      "start": 1722581516848,
-      "end": 1722581516856,
-      "order": "normal",
-      "sourcemaps": {
-        "mappings": ""
-      }
-    },
-    {
-      "name": "vite:define",
-      "start": 1722581516856,
-      "end": 1722581516856,
-      "order": "normal"
-    },
-    {
-      "name": "vite:css-post",
-      "result": "",
-      "start": 1722581516856,
-      "end": 1722581516856,
-      "order": "normal",
-      "sourcemaps": {
-        "mappings": ""
-      }
-    },
-    {
-      "name": "vite:build-html",
-      "start": 1722581516856,
-      "end": 1722581516856,
-      "order": "normal"
-    },
-    {
-      "name": "vite:worker-import-meta-url",
-      "start": 1722581516856,
-      "end": 1722581516856,
-      "order": "normal"
-    },
-    {
-      "name": "vite:asset-import-meta-url",
-      "start": 1722581516856,
-      "end": 1722581516856,
-      "order": "normal"
-    },
-    {
-      "name": "commonjs",
-      "start": 1722581516856,
-      "end": 1722581516856,
-      "order": "normal"
-    },
-    {
-      "name": "vite:dynamic-import-vars",
-      "start": 1722581516856,
-      "end": 1722581516856,
-      "order": "normal"
-    },
-    {
-      "name": "vite:import-glob",
-      "start": 1722581516856,
-      "end": 1722581516856,
-      "order": "normal"
-    },
-    {
-      "name": "vite:build-import-analysis",
-      "start": 1722581516857,
-      "end": 1722581516857,
-      "order": "normal"
-    },
-    {
-      "name": "vite:reporter",
-      "start": 1722581516857,
-      "end": 1722581516857,
-      "order": "normal"
     }
   ]
 }

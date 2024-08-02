@@ -12,7 +12,7 @@ data class seachParameter(val date: String, val temp: String)
 fun Application.configureDatenanalyse() {
     routing {
         authenticate("auth-session") {
-            get("/Datenanalyse") {
+            get("/datenanalyse") {
 
 
             }
