@@ -4,9 +4,105 @@
     {
       "name": "vite:load-fallback",
       "result": ".v-calendar-internal-event {\n  overflow: hidden;\n  padding: 4px;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}",
-      "start": 1722584660029,
-      "end": 1722584660095,
+      "start": 1722590364655,
+      "end": 1722590365246,
       "sourcemaps": null
+    },
+    {
+      "name": "vite:css",
+      "result": ".v-calendar-internal-event {\n  overflow: hidden;\n  padding: 4px;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}",
+      "start": 1722590365246,
+      "end": 1722590365247,
+      "order": "normal",
+      "sourcemaps": null
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1722590365247,
+      "end": 1722590365247,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1722590365247,
+      "end": 1722590365247,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1722590365247,
+      "end": 1722590365247,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1722590365247,
+      "end": 1722590365247,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1722590365248,
+      "end": 1722590365248,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "result": "",
+      "start": 1722590365248,
+      "end": 1722590365248,
+      "order": "normal",
+      "sourcemaps": {
+        "mappings": ""
+      }
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1722590365248,
+      "end": 1722590365248,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1722590365248,
+      "end": 1722590365248,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1722590365248,
+      "end": 1722590365248,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1722590365248,
+      "end": 1722590365248,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1722590365248,
+      "end": 1722590365248,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1722590365248,
+      "end": 1722590365248,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1722590365248,
+      "end": 1722590365248,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1722590365248,
+      "end": 1722590365248,
+      "order": "normal"
     }
   ]
 }

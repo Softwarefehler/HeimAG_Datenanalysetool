@@ -4,9 +4,99 @@
     {
       "name": "vite:load-fallback",
       "result": "import { createVNode as _createVNode, Fragment as _Fragment } from \"vue\";\n// Styles\nimport \"./VApp.css\";\n\n// Composables\nimport { makeComponentProps } from \"../../composables/component.mjs\";\nimport { createLayout, makeLayoutProps } from \"../../composables/layout.mjs\";\nimport { useRtl } from \"../../composables/locale.mjs\";\nimport { makeThemeProps, provideTheme } from \"../../composables/theme.mjs\"; // Utilities\nimport { Suspense } from 'vue';\nimport { genericComponent, propsFactory, useRender } from \"../../util/index.mjs\";\nexport const makeVAppProps = propsFactory({\n  ...makeComponentProps(),\n  ...makeLayoutProps({\n    fullHeight: true\n  }),\n  ...makeThemeProps()\n}, 'VApp');\nexport const VApp = genericComponent()({\n  name: 'VApp',\n  props: makeVAppProps(),\n  setup(props, _ref) {\n    let {\n      slots\n    } = _ref;\n    const theme = provideTheme(props);\n    const {\n      layoutClasses,\n      getLayoutItem,\n      items,\n      layoutRef\n    } = createLayout(props);\n    const {\n      rtlClasses\n    } = useRtl();\n    useRender(() => _createVNode(\"div\", {\n      \"ref\": layoutRef,\n      \"class\": ['v-application', theme.themeClasses.value, layoutClasses.value, rtlClasses.value, props.class],\n      \"style\": [props.style]\n    }, [_createVNode(\"div\", {\n      \"class\": \"v-application__wrap\"\n    }, [_createVNode(Suspense, null, {\n      default: () => [_createVNode(_Fragment, null, [slots.default?.()])]\n    })])]));\n    return {\n      getLayoutItem,\n      items,\n      theme\n    };\n  }\n});\n//# sourceMappingURL=VApp.mjs.map",
-      "start": 1722584659946,
-      "end": 1722584659979,
+      "start": 1722590365548,
+      "end": 1722590365651,
       "sourcemaps": null
+    },
+    {
+      "name": "vite:css",
+      "start": 1722590365651,
+      "end": 1722590365651,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1722590365651,
+      "end": 1722590365651,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1722590365651,
+      "end": 1722590365651,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1722590365651,
+      "end": 1722590365651,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1722590365651,
+      "end": 1722590365651,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1722590365651,
+      "end": 1722590365651,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1722590365651,
+      "end": 1722590365651,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1722590365651,
+      "end": 1722590365651,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1722590365651,
+      "end": 1722590365651,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1722590365651,
+      "end": 1722590365651,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1722590365651,
+      "end": 1722590365651,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1722590365652,
+      "end": 1722590365652,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1722590365652,
+      "end": 1722590365652,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1722590365652,
+      "end": 1722590365652,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1722590365652,
+      "end": 1722590365652,
+      "order": "normal"
     }
   ]
 }

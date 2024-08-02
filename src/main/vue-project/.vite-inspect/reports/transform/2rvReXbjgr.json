@@ -4,9 +4,105 @@
     {
       "name": "vite:load-fallback",
       "result": ".v-calendar-month__day {\n  position: relative;\n  display: flex;\n  flex-direction: column;\n  min-width: 0;\n  min-height: 150px;\n  border-right: thin solid #e0e0e0;\n  border-bottom: thin solid #e0e0e0;\n  flex: 1 1 auto;\n  border-inline-end: thin solid #e0e0e0;\n}\n\n.v-calendar-weekly__day {\n  flex: 1;\n  width: 0;\n  overflow: hidden;\n  user-select: none;\n  position: relative;\n  padding: 0px 0px 0px 0px;\n  min-width: 0;\n  min-height: 150px;\n  border-right: thin solid #e0e0e0;\n  border-bottom: thin solid #e0e0e0;\n  flex: 1 1 auto;\n  border-inline-end: thin solid #e0e0e0;\n  text-align: center;\n}\n.v-calendar-weekly__day.v-present .v-calendar-weekly__day-month {\n  color: currentColor;\n}\n\n.v-calendar-weekly__day-label {\n  text-decoration: none;\n  user-select: none;\n  cursor: pointer;\n  box-shadow: none;\n  text-align: center;\n}\n.v-calendar-weekly__day-label .v-btn {\n  font-size: 12px;\n  text-transform: none !important;\n}\n.v-calendar-weekly__day-label .v-btn.v-calendar-weekly__day-label__today {\n  background: rgba(var(--v-theme-surface-variant), var(--v-medium-emphasis-opacity));\n  color: rgb(var(--v-theme-on-surface-variant));\n}\n\n.v-calendar-weekly__day-month {\n  position: absolute;\n  text-decoration: none;\n  user-select: none;\n  box-shadow: none;\n  top: 0;\n  left: 36px;\n  height: 32px;\n  line-height: 32px;\n}\n\n.v-calendar-weekly__day-alldayevents-container {\n  min-height: 24px;\n}",
-      "start": 1722584660030,
-      "end": 1722584660101,
+      "start": 1722590364655,
+      "end": 1722590365249,
       "sourcemaps": null
+    },
+    {
+      "name": "vite:css",
+      "result": ".v-calendar-month__day {\n  position: relative;\n  display: flex;\n  flex-direction: column;\n  min-width: 0;\n  min-height: 150px;\n  border-right: thin solid #e0e0e0;\n  border-bottom: thin solid #e0e0e0;\n  flex: 1 1 auto;\n  border-inline-end: thin solid #e0e0e0;\n}\n\n.v-calendar-weekly__day {\n  flex: 1;\n  width: 0;\n  overflow: hidden;\n  user-select: none;\n  position: relative;\n  padding: 0px 0px 0px 0px;\n  min-width: 0;\n  min-height: 150px;\n  border-right: thin solid #e0e0e0;\n  border-bottom: thin solid #e0e0e0;\n  flex: 1 1 auto;\n  border-inline-end: thin solid #e0e0e0;\n  text-align: center;\n}\n.v-calendar-weekly__day.v-present .v-calendar-weekly__day-month {\n  color: currentColor;\n}\n\n.v-calendar-weekly__day-label {\n  text-decoration: none;\n  user-select: none;\n  cursor: pointer;\n  box-shadow: none;\n  text-align: center;\n}\n.v-calendar-weekly__day-label .v-btn {\n  font-size: 12px;\n  text-transform: none !important;\n}\n.v-calendar-weekly__day-label .v-btn.v-calendar-weekly__day-label__today {\n  background: rgba(var(--v-theme-surface-variant), var(--v-medium-emphasis-opacity));\n  color: rgb(var(--v-theme-on-surface-variant));\n}\n\n.v-calendar-weekly__day-month {\n  position: absolute;\n  text-decoration: none;\n  user-select: none;\n  box-shadow: none;\n  top: 0;\n  left: 36px;\n  height: 32px;\n  line-height: 32px;\n}\n\n.v-calendar-weekly__day-alldayevents-container {\n  min-height: 24px;\n}",
+      "start": 1722590365249,
+      "end": 1722590365249,
+      "order": "normal",
+      "sourcemaps": null
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1722590365249,
+      "end": 1722590365249,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1722590365249,
+      "end": 1722590365249,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1722590365249,
+      "end": 1722590365249,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1722590365249,
+      "end": 1722590365249,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1722590365249,
+      "end": 1722590365250,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "result": "",
+      "start": 1722590365250,
+      "end": 1722590365250,
+      "order": "normal",
+      "sourcemaps": {
+        "mappings": ""
+      }
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1722590365250,
+      "end": 1722590365250,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1722590365250,
+      "end": 1722590365250,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1722590365250,
+      "end": 1722590365250,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1722590365250,
+      "end": 1722590365250,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1722590365250,
+      "end": 1722590365250,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1722590365250,
+      "end": 1722590365250,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1722590365250,
+      "end": 1722590365250,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1722590365250,
+      "end": 1722590365250,
+      "order": "normal"
     }
   ]
 }

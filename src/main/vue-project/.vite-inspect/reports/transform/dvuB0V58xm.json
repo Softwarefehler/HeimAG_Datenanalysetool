@@ -4,9 +4,105 @@
     {
       "name": "vite:load-fallback",
       "result": ".v-calendar-day__row-with-label {\n  display: grid;\n  grid-template-columns: 48px 8px 1fr;\n  border-right: thin solid #e0e0e0;\n}\n.v-calendar-day__row-with-label .v-calendar-day__row-hairline {\n  position: relative;\n  border-right: thin solid #e0e0e0;\n}\n.v-calendar-day__row-with-label .v-calendar-day__row-hairline:after {\n  content: \"\";\n  border-bottom: thin solid #e0e0e0;\n  position: absolute;\n  width: 100%;\n  margin-top: -1px;\n  z-index: 3;\n  pointer-events: none;\n}\n.v-calendar-day__row-with-label .v-calendar-day__row-label {\n  font-size: 10px;\n  text-align: center;\n  position: relative;\n  top: -8px;\n}\n.v-calendar-day__row-with-label .v-calendar-day__row-content {\n  border-bottom: thin solid #e0e0e0;\n}\n.v-calendar-day__row-with-label .v-calendar-day__row-content.v-calendar-day__row-content-through {\n  border-bottom: none;\n}\n\n.v-calendar-day__row-without-label {\n  display: grid;\n  grid-template-columns: 1fr;\n  border-right: thin solid #e0e0e0;\n}\n.v-calendar-day__row-without-label .v-calendar-day__row-content {\n  overflow: hidden;\n  border-bottom: thin solid #e0e0e0;\n}\n.v-calendar-day__row-without-label .v-calendar-day__row-content.v-calendar-day__row-content-through {\n  border-bottom: none;\n}",
-      "start": 1722584660027,
-      "end": 1722584660094,
+      "start": 1722590364650,
+      "end": 1722590365213,
       "sourcemaps": null
+    },
+    {
+      "name": "vite:css",
+      "result": ".v-calendar-day__row-with-label {\n  display: grid;\n  grid-template-columns: 48px 8px 1fr;\n  border-right: thin solid #e0e0e0;\n}\n.v-calendar-day__row-with-label .v-calendar-day__row-hairline {\n  position: relative;\n  border-right: thin solid #e0e0e0;\n}\n.v-calendar-day__row-with-label .v-calendar-day__row-hairline:after {\n  content: \"\";\n  border-bottom: thin solid #e0e0e0;\n  position: absolute;\n  width: 100%;\n  margin-top: -1px;\n  z-index: 3;\n  pointer-events: none;\n}\n.v-calendar-day__row-with-label .v-calendar-day__row-label {\n  font-size: 10px;\n  text-align: center;\n  position: relative;\n  top: -8px;\n}\n.v-calendar-day__row-with-label .v-calendar-day__row-content {\n  border-bottom: thin solid #e0e0e0;\n}\n.v-calendar-day__row-with-label .v-calendar-day__row-content.v-calendar-day__row-content-through {\n  border-bottom: none;\n}\n\n.v-calendar-day__row-without-label {\n  display: grid;\n  grid-template-columns: 1fr;\n  border-right: thin solid #e0e0e0;\n}\n.v-calendar-day__row-without-label .v-calendar-day__row-content {\n  overflow: hidden;\n  border-bottom: thin solid #e0e0e0;\n}\n.v-calendar-day__row-without-label .v-calendar-day__row-content.v-calendar-day__row-content-through {\n  border-bottom: none;\n}",
+      "start": 1722590365213,
+      "end": 1722590365213,
+      "order": "normal",
+      "sourcemaps": null
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1722590365213,
+      "end": 1722590365213,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1722590365213,
+      "end": 1722590365213,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1722590365213,
+      "end": 1722590365213,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1722590365213,
+      "end": 1722590365213,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1722590365213,
+      "end": 1722590365213,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "result": "",
+      "start": 1722590365213,
+      "end": 1722590365213,
+      "order": "normal",
+      "sourcemaps": {
+        "mappings": ""
+      }
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1722590365213,
+      "end": 1722590365213,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1722590365213,
+      "end": 1722590365213,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1722590365213,
+      "end": 1722590365213,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1722590365213,
+      "end": 1722590365213,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1722590365213,
+      "end": 1722590365213,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1722590365213,
+      "end": 1722590365213,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1722590365213,
+      "end": 1722590365213,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1722590365213,
+      "end": 1722590365213,
+      "order": "normal"
     }
   ]
 }

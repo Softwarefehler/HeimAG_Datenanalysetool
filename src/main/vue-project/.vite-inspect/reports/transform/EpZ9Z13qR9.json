@@ -4,9 +4,99 @@
     {
       "name": "vite:load-fallback",
       "result": "import { mergeProps as _mergeProps, withDirectives as _withDirectives, resolveDirective as _resolveDirective, createVNode as _createVNode, Fragment as _Fragment } from \"vue\";\n// Styles\nimport \"./VTreeviewItem.css\";\n\n// Components\nimport { VBtn } from \"../../components/VBtn/index.mjs\";\nimport { VListItemAction, VListItemSubtitle, VListItemTitle } from \"../../components/VList/index.mjs\";\nimport { makeVListItemProps, VListItem } from \"../../components/VList/VListItem.mjs\";\nimport { VProgressCircular } from \"../../components/VProgressCircular/index.mjs\"; // Composables\nimport { useDensity } from \"../../composables/density.mjs\";\nimport { IconValue } from \"../../composables/icons.mjs\";\nimport { useNestedItem } from \"../../composables/nested/nested.mjs\";\nimport { useLink } from \"../../composables/router.mjs\";\nimport { genOverlays } from \"../../composables/variant.mjs\"; // Utilities\nimport { computed, inject, ref } from 'vue';\nimport { genericComponent, propsFactory, useRender } from \"../../util/index.mjs\"; // Types\nimport { VTreeviewSymbol } from \"./shared.mjs\";\nexport const makeVTreeviewItemProps = propsFactory({\n  loading: Boolean,\n  toggleIcon: IconValue,\n  ...makeVListItemProps({\n    slim: true\n  })\n}, 'VTreeviewItem');\nexport const VTreeviewItem = genericComponent()({\n  name: 'VTreeviewItem',\n  props: makeVTreeviewItemProps(),\n  setup(props, _ref) {\n    let {\n      attrs,\n      slots,\n      emit\n    } = _ref;\n    const link = useLink(props, attrs);\n    const rawId = computed(() => props.value === undefined ? link.href.value : props.value);\n    const vListItemRef = ref();\n    const {\n      activate,\n      isActivated,\n      select,\n      isSelected,\n      isIndeterminate,\n      isGroupActivator,\n      root,\n      id\n    } = useNestedItem(rawId, false);\n    const isActivatableGroupActivator = computed(() => root.activatable.value && isGroupActivator);\n    const {\n      densityClasses\n    } = useDensity(props, 'v-list-item');\n    const slotProps = computed(() => ({\n      isActive: isActivated.value,\n      select,\n      isSelected: isSelected.value,\n      isIndeterminate: isIndeterminate.value\n    }));\n    const isClickable = computed(() => !props.disabled && props.link !== false && (props.link || link.isClickable.value || props.value != null && !!vListItemRef.value?.list));\n    function activateItem(e) {\n      if (!isClickable.value || !isActivatableGroupActivator.value && isGroupActivator) return;\n      if (root.activatable.value) {\n        if (isActivatableGroupActivator.value) {\n          activate(!isActivated.value, e);\n        } else {\n          vListItemRef.value?.activate(!vListItemRef.value?.isActivated, e);\n        }\n      }\n    }\n    function onKeyDown(e) {\n      if (e.key === 'Enter' || e.key === ' ') {\n        e.preventDefault();\n        activateItem(e);\n      }\n    }\n    const visibleIds = inject(VTreeviewSymbol, {\n      visibleIds: ref()\n    }).visibleIds;\n    useRender(() => {\n      const hasTitle = slots.title || props.title != null;\n      const hasSubtitle = slots.subtitle || props.subtitle != null;\n      const listItemProps = VListItem.filterProps(props);\n      const hasPrepend = slots.prepend || props.toggleIcon;\n      return isActivatableGroupActivator.value ? _withDirectives(_createVNode(\"div\", {\n        \"class\": ['v-list-item', 'v-list-item--one-line', 'v-treeview-item', 'v-treeview-item--activetable-group-activator', {\n          'v-list-item--active': isActivated.value || isSelected.value,\n          'v-treeview-item--filtered': visibleIds.value && !visibleIds.value.has(id.value)\n        }, densityClasses.value, props.class],\n        \"onClick\": activateItem\n      }, [_createVNode(_Fragment, null, [genOverlays(isActivated.value || isSelected.value, 'v-list-item'), props.toggleIcon && _createVNode(VListItemAction, {\n        \"start\": false\n      }, {\n        default: () => [_createVNode(VBtn, {\n          \"density\": \"compact\",\n          \"icon\": props.toggleIcon,\n          \"loading\": props.loading,\n          \"variant\": \"text\",\n          \"onClick\": props.onClick\n        }, {\n          loader() {\n            return _createVNode(VProgressCircular, {\n              \"indeterminate\": \"disable-shrink\",\n              \"size\": \"20\",\n              \"width\": \"2\"\n            }, null);\n          }\n        })]\n      })]), _createVNode(\"div\", {\n        \"class\": \"v-list-item__content\",\n        \"data-no-activator\": \"\"\n      }, [hasTitle && _createVNode(VListItemTitle, {\n        \"key\": \"title\"\n      }, {\n        default: () => [slots.title?.({\n          title: props.title\n        }) ?? props.title]\n      }), hasSubtitle && _createVNode(VListItemSubtitle, {\n        \"key\": \"subtitle\"\n      }, {\n        default: () => [slots.subtitle?.({\n          subtitle: props.subtitle\n        }) ?? props.subtitle]\n      }), slots.default?.(slotProps.value)])]), [[_resolveDirective(\"ripple\"), isClickable.value && props.ripple]]) : _createVNode(VListItem, _mergeProps({\n        \"ref\": vListItemRef\n      }, listItemProps, {\n        \"class\": ['v-treeview-item', {\n          'v-treeview-item--filtered': visibleIds.value && !visibleIds.value.has(id.value)\n        }, props.class],\n        \"value\": id.value,\n        \"onClick\": activateItem,\n        \"onKeydown\": isClickable.value && onKeyDown\n      }), {\n        ...slots,\n        prepend: hasPrepend ? slotProps => {\n          return _createVNode(_Fragment, null, [props.toggleIcon && _createVNode(VListItemAction, {\n            \"start\": false\n          }, {\n            default: () => [_createVNode(VBtn, {\n              \"density\": \"compact\",\n              \"icon\": props.toggleIcon,\n              \"loading\": props.loading,\n              \"variant\": \"text\"\n            }, {\n              loader() {\n                return _createVNode(VProgressCircular, {\n                  \"indeterminate\": \"disable-shrink\",\n                  \"size\": \"20\",\n                  \"width\": \"2\"\n                }, null);\n              }\n            })]\n          }), slots.prepend?.(slotProps)]);\n        } : undefined\n      });\n    });\n    return {};\n  }\n});\n//# sourceMappingURL=VTreeviewItem.mjs.map",
-      "start": 1722584659945,
-      "end": 1722584659952,
+      "start": 1722590363850,
+      "end": 1722590364004,
       "sourcemaps": null
+    },
+    {
+      "name": "vite:css",
+      "start": 1722590364004,
+      "end": 1722590364004,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1722590364004,
+      "end": 1722590364004,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1722590364004,
+      "end": 1722590364004,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1722590364004,
+      "end": 1722590364004,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1722590364004,
+      "end": 1722590364004,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1722590364004,
+      "end": 1722590364004,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1722590364004,
+      "end": 1722590364004,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1722590364004,
+      "end": 1722590364004,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1722590364004,
+      "end": 1722590364004,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1722590364004,
+      "end": 1722590364004,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1722590364004,
+      "end": 1722590364004,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1722590364004,
+      "end": 1722590364004,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1722590364004,
+      "end": 1722590364004,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1722590364004,
+      "end": 1722590364004,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1722590364004,
+      "end": 1722590364004,
+      "order": "normal"
     }
   ]
 }

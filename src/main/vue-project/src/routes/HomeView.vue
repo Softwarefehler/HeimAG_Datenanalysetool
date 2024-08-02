@@ -7,9 +7,6 @@ import { VDateInput } from 'vuetify/labs/VDateInput'
 export type DatesCategory1 = { date: string; temperatur: string }
 
 
-
-
-
 // Props-Definition
 defineProps({
   fotos: {
@@ -18,6 +15,13 @@ defineProps({
     type: Array as PropType<DatesCategory1[]>
   }
 })
+const items = [
+  {
+    date: 'African Elephant',
+    temperature: 'Loxodonta africana'
+  }
+  // ... more items
+]
 
 // Reaktive Variablen für die Date-Picker
 const startDate = ref<string | null>(null)
@@ -28,8 +32,6 @@ const endDate = ref<string | null>(null)
 <template>
   <v-container>
     <h4 class="text-h5 font-weight-bold mb-4">Suchkriterien</h4>
-    <br>
-    <br>
     <v-select
       label="Select"
       :items="['California', 'Colorado', 'Florida', 'Georgia', 'Texas', 'Wyoming']"
@@ -49,9 +51,26 @@ const endDate = ref<string | null>(null)
         ></v-date-input>
       </v-col>
     </v-row>
-    <v-row dense>
-
+    <br>
+    <br>
+    <v-row>
+      <v-col cols="12" md="12">
+        <v-sheet class="mb-4">
+          <v-data-table :items="items"></v-data-table>
+        </v-sheet>
+      </v-col>
+      <v-col cols="12" md="12">
+        <v-sheet class="mb-4">
+          <v-data-table :items="items"></v-data-table>
+        </v-sheet>
+      </v-col>
+      <v-col cols="12" md="12">
+        <v-sheet>
+          <v-data-table :items="items"></v-data-table>
+        </v-sheet>
+      </v-col>
     </v-row>
+
 
   </v-container>
 </template>

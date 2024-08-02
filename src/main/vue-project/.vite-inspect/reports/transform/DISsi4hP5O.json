@@ -4,9 +4,99 @@
     {
       "name": "vite:load-fallback",
       "result": "import { mergeProps as _mergeProps, Fragment as _Fragment, createVNode as _createVNode } from \"vue\";\n// Components\nimport { VDataTableColumn } from \"./VDataTableColumn.mjs\";\nimport { VBtn } from \"../VBtn/index.mjs\";\nimport { VCheckboxBtn } from \"../VCheckbox/index.mjs\"; // Composables\nimport { useExpanded } from \"./composables/expand.mjs\";\nimport { useHeaders } from \"./composables/headers.mjs\";\nimport { useSelection } from \"./composables/select.mjs\";\nimport { useSort } from \"./composables/sort.mjs\";\nimport { makeDisplayProps, useDisplay } from \"../../composables/display.mjs\"; // Utilities\nimport { toDisplayString, withModifiers } from 'vue';\nimport { EventProp, genericComponent, getObjectValueByPath, propsFactory, useRender } from \"../../util/index.mjs\"; // Types\nexport const makeVDataTableRowProps = propsFactory({\n  index: Number,\n  item: Object,\n  cellProps: [Object, Function],\n  onClick: EventProp(),\n  onContextmenu: EventProp(),\n  onDblclick: EventProp(),\n  ...makeDisplayProps()\n}, 'VDataTableRow');\nexport const VDataTableRow = genericComponent()({\n  name: 'VDataTableRow',\n  props: makeVDataTableRowProps(),\n  setup(props, _ref) {\n    let {\n      slots\n    } = _ref;\n    const {\n      displayClasses,\n      mobile\n    } = useDisplay(props, 'v-data-table__tr');\n    const {\n      isSelected,\n      toggleSelect,\n      someSelected,\n      allSelected,\n      selectAll\n    } = useSelection();\n    const {\n      isExpanded,\n      toggleExpand\n    } = useExpanded();\n    const {\n      toggleSort,\n      sortBy,\n      isSorted\n    } = useSort();\n    const {\n      columns\n    } = useHeaders();\n    useRender(() => _createVNode(\"tr\", {\n      \"class\": ['v-data-table__tr', {\n        'v-data-table__tr--clickable': !!(props.onClick || props.onContextmenu || props.onDblclick)\n      }, displayClasses.value],\n      \"onClick\": props.onClick,\n      \"onContextmenu\": props.onContextmenu,\n      \"onDblclick\": props.onDblclick\n    }, [props.item && columns.value.map((column, i) => {\n      const item = props.item;\n      const slotName = `item.${column.key}`;\n      const headerSlotName = `header.${column.key}`;\n      const slotProps = {\n        index: props.index,\n        item: item.raw,\n        internalItem: item,\n        value: getObjectValueByPath(item.columns, column.key),\n        column,\n        isSelected,\n        toggleSelect,\n        isExpanded,\n        toggleExpand\n      };\n      const columnSlotProps = {\n        column,\n        selectAll,\n        isSorted,\n        toggleSort,\n        sortBy: sortBy.value,\n        someSelected: someSelected.value,\n        allSelected: allSelected.value,\n        getSortIcon: () => ''\n      };\n      const cellProps = typeof props.cellProps === 'function' ? props.cellProps({\n        index: slotProps.index,\n        item: slotProps.item,\n        internalItem: slotProps.internalItem,\n        value: slotProps.value,\n        column\n      }) : props.cellProps;\n      const columnCellProps = typeof column.cellProps === 'function' ? column.cellProps({\n        index: slotProps.index,\n        item: slotProps.item,\n        internalItem: slotProps.internalItem,\n        value: slotProps.value\n      }) : column.cellProps;\n      return _createVNode(VDataTableColumn, _mergeProps({\n        \"align\": column.align,\n        \"class\": {\n          'v-data-table__td--expanded-row': column.key === 'data-table-expand',\n          'v-data-table__td--select-row': column.key === 'data-table-select'\n        },\n        \"fixed\": column.fixed,\n        \"fixedOffset\": column.fixedOffset,\n        \"lastFixed\": column.lastFixed,\n        \"maxWidth\": !mobile.value ? column.maxWidth : undefined,\n        \"noPadding\": column.key === 'data-table-select' || column.key === 'data-table-expand',\n        \"nowrap\": column.nowrap,\n        \"width\": !mobile.value ? column.width : undefined\n      }, cellProps, columnCellProps), {\n        default: () => {\n          if (slots[slotName] && !mobile.value) return slots[slotName]?.(slotProps);\n          if (column.key === 'data-table-select') {\n            return slots['item.data-table-select']?.(slotProps) ?? _createVNode(VCheckboxBtn, {\n              \"disabled\": !item.selectable,\n              \"modelValue\": isSelected([item]),\n              \"onClick\": withModifiers(() => toggleSelect(item), ['stop'])\n            }, null);\n          }\n          if (column.key === 'data-table-expand') {\n            return slots['item.data-table-expand']?.(slotProps) ?? _createVNode(VBtn, {\n              \"icon\": isExpanded(item) ? '$collapse' : '$expand',\n              \"size\": \"small\",\n              \"variant\": \"text\",\n              \"onClick\": withModifiers(() => toggleExpand(item), ['stop'])\n            }, null);\n          }\n          const displayValue = toDisplayString(slotProps.value);\n          return !mobile.value ? displayValue : _createVNode(_Fragment, null, [_createVNode(\"div\", {\n            \"class\": \"v-data-table__td-title\"\n          }, [slots[headerSlotName]?.(columnSlotProps) ?? column.title]), _createVNode(\"div\", {\n            \"class\": \"v-data-table__td-value\"\n          }, [slots[slotName]?.(slotProps) ?? displayValue])]);\n        }\n      });\n    })]));\n  }\n});\n//# sourceMappingURL=VDataTableRow.mjs.map",
-      "start": 1722584659995,
-      "end": 1722584660000,
+      "start": 1722590365807,
+      "end": 1722590365873,
       "sourcemaps": null
+    },
+    {
+      "name": "vite:css",
+      "start": 1722590365873,
+      "end": 1722590365873,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1722590365873,
+      "end": 1722590365873,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1722590365873,
+      "end": 1722590365873,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1722590365873,
+      "end": 1722590365873,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1722590365873,
+      "end": 1722590365873,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1722590365873,
+      "end": 1722590365873,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1722590365873,
+      "end": 1722590365873,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1722590365873,
+      "end": 1722590365873,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1722590365873,
+      "end": 1722590365873,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1722590365873,
+      "end": 1722590365873,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1722590365873,
+      "end": 1722590365873,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1722590365873,
+      "end": 1722590365873,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1722590365873,
+      "end": 1722590365873,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1722590365873,
+      "end": 1722590365873,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1722590365873,
+      "end": 1722590365873,
+      "order": "normal"
     }
   ]
 }

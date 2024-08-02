@@ -4,9 +4,99 @@
     {
       "name": "vite:load-fallback",
       "result": "// Utilities\nimport { getCurrentInstance } from \"../util/index.mjs\";\nexport function useScopeId() {\n  const vm = getCurrentInstance('useScopeId');\n  const scopeId = vm.vnode.scopeId;\n  return {\n    scopeId: scopeId ? {\n      [scopeId]: ''\n    } : undefined\n  };\n}\n//# sourceMappingURL=scopeId.mjs.map",
-      "start": 1722584660487,
-      "end": 1722584660568,
+      "start": 1722590366144,
+      "end": 1722590366209,
       "sourcemaps": null
+    },
+    {
+      "name": "vite:css",
+      "start": 1722590366209,
+      "end": 1722590366209,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1722590366209,
+      "end": 1722590366209,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1722590366209,
+      "end": 1722590366209,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1722590366209,
+      "end": 1722590366209,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1722590366209,
+      "end": 1722590366209,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1722590366209,
+      "end": 1722590366209,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1722590366209,
+      "end": 1722590366209,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1722590366209,
+      "end": 1722590366209,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1722590366209,
+      "end": 1722590366209,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1722590366209,
+      "end": 1722590366209,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1722590366209,
+      "end": 1722590366209,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1722590366209,
+      "end": 1722590366209,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1722590366209,
+      "end": 1722590366209,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1722590366209,
+      "end": 1722590366209,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1722590366209,
+      "end": 1722590366209,
+      "order": "normal"
     }
   ]
 }
