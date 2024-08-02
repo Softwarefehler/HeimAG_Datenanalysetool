@@ -1,65 +1,41 @@
 <script setup lang="ts">
-
-import { ref } from 'vue'
+import {  ref } from 'vue'
 import { useTheme } from 'vuetify'
 
 
-const drawer = ref<boolean | null>(null)
-const appTitle = ref('HeimAG Datenanalysetool')
-const appSubtitle = ref('NDS SWE Semesterarbeit 2')
-const theme = ref('light')
 
-function onClick() {
-  theme.value = theme.value === 'light' ? 'dark' : 'light'
+// Theme-Setup
+const theme = useTheme()
+const appTitle = ref('HeimAG Datenanalysetool')
+
+// Funktion zum Umschalten des Themas
+function toggleTheme() {
+  theme.global.name.value = theme.global.current.value.dark ? 'light' : 'dark'
+}
+
+function logout() {
+  location.href = '/logout'
 }
 
 
 </script>
+
 <template>
-  <v-responsive class="border rounded">
-    <v-app :theme="theme">
+    <v-app>
+      <v-responsive class="border rounded">
       <v-app-bar class="px-3">
-        <v-spacer></v-spacer>
-
-        <v-btn
-          :prepend-icon="theme === 'light' ? 'mdi-weather-sunny' : 'mdi-weather-night'"
-          text="light/dark"
-          slim
-          @click="onClick"
-        ></v-btn>
+        <v-app-bar-title>{{ appTitle }}</v-app-bar-title>
+        <v-btn @click="toggleTheme" icon="mdi-theme-light-dark" />
+        <v-btn @click="logout" icon="mdi-logout" />
       </v-app-bar>
-
       <v-main>
         <v-container>
-          <h1>Login</h1>
-          <p>Benutzername</p>
-          <v-responsive
-            class="mx-auto"
-            max-width="344"
-          >
-            <v-text-field
-              hint="Benutzername eingeben"
-              label="Benutzer"
-              type="input"
-            ></v-text-field>
-          </v-responsive>
-          <p>Passwort</p>
-          <v-responsive
-            class="mx-auto"
-            max-width="344"
-          >
-            <v-text-field
-              hint="Passwort eingeben"
-              label="Passwort"
-              type="input"
-            ></v-text-field>
-          </v-responsive>
+          <RouterView />
         </v-container>
       </v-main>
+      </v-responsive>
     </v-app>
-  </v-responsive>
 </template>
-
 
 <style scoped>
 header {
@@ -89,3 +65,4 @@ header {
   }
 }
 </style>
+

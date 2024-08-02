@@ -4,53 +4,53 @@
     {
       "name": "vite:load-fallback",
       "result": ".v-window {\n  overflow: hidden;\n}\n.v-window__container {\n  display: flex;\n  flex-direction: column;\n  height: inherit;\n  position: relative;\n  transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);\n}\n.v-window__controls {\n  position: absolute;\n  left: 0;\n  top: 0;\n  width: 100%;\n  height: 100%;\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  padding: 0 16px;\n  pointer-events: none;\n}\n.v-window__controls > * {\n  pointer-events: auto;\n}\n.v-window--show-arrows-on-hover {\n  overflow: hidden;\n}\n.v-window--show-arrows-on-hover .v-window__left {\n  transform: translateX(-200%);\n}\n.v-window--show-arrows-on-hover .v-window__right {\n  transform: translateX(200%);\n}\n.v-window--show-arrows-on-hover:hover .v-window__left,\n.v-window--show-arrows-on-hover:hover .v-window__right {\n  transform: translateX(0);\n}\n\n.v-window-x-transition-enter-active, .v-window-x-transition-leave-active, .v-window-x-reverse-transition-enter-active, .v-window-x-reverse-transition-leave-active, .v-window-y-transition-enter-active, .v-window-y-transition-leave-active, .v-window-y-reverse-transition-enter-active, .v-window-y-reverse-transition-leave-active {\n  transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);\n}\n.v-window-x-transition-leave-from, .v-window-x-transition-leave-to, .v-window-x-reverse-transition-leave-from, .v-window-x-reverse-transition-leave-to, .v-window-y-transition-leave-from, .v-window-y-transition-leave-to, .v-window-y-reverse-transition-leave-from, .v-window-y-reverse-transition-leave-to {\n  position: absolute !important;\n  top: 0;\n  width: 100%;\n}\n.v-window-x-transition-enter-from {\n  transform: translateX(100%);\n}\n.v-window-x-transition-leave-to {\n  transform: translateX(-100%);\n}\n.v-window-x-reverse-transition-enter-from {\n  transform: translateX(-100%);\n}\n.v-window-x-reverse-transition-leave-to {\n  transform: translateX(100%);\n}\n.v-window-y-transition-enter-from {\n  transform: translateY(100%);\n}\n.v-window-y-transition-leave-to {\n  transform: translateY(-100%);\n}\n.v-window-y-reverse-transition-enter-from {\n  transform: translateY(-100%);\n}\n.v-window-y-reverse-transition-leave-to {\n  transform: translateY(100%);\n}",
-      "start": 1722351595168,
-      "end": 1722351595185,
+      "start": 1722581518171,
+      "end": 1722581518178,
       "sourcemaps": null
     },
     {
       "name": "vite:css",
       "result": ".v-window {\n  overflow: hidden;\n}\n.v-window__container {\n  display: flex;\n  flex-direction: column;\n  height: inherit;\n  position: relative;\n  transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);\n}\n.v-window__controls {\n  position: absolute;\n  left: 0;\n  top: 0;\n  width: 100%;\n  height: 100%;\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  padding: 0 16px;\n  pointer-events: none;\n}\n.v-window__controls > * {\n  pointer-events: auto;\n}\n.v-window--show-arrows-on-hover {\n  overflow: hidden;\n}\n.v-window--show-arrows-on-hover .v-window__left {\n  transform: translateX(-200%);\n}\n.v-window--show-arrows-on-hover .v-window__right {\n  transform: translateX(200%);\n}\n.v-window--show-arrows-on-hover:hover .v-window__left,\n.v-window--show-arrows-on-hover:hover .v-window__right {\n  transform: translateX(0);\n}\n\n.v-window-x-transition-enter-active, .v-window-x-transition-leave-active, .v-window-x-reverse-transition-enter-active, .v-window-x-reverse-transition-leave-active, .v-window-y-transition-enter-active, .v-window-y-transition-leave-active, .v-window-y-reverse-transition-enter-active, .v-window-y-reverse-transition-leave-active {\n  transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);\n}\n.v-window-x-transition-leave-from, .v-window-x-transition-leave-to, .v-window-x-reverse-transition-leave-from, .v-window-x-reverse-transition-leave-to, .v-window-y-transition-leave-from, .v-window-y-transition-leave-to, .v-window-y-reverse-transition-leave-from, .v-window-y-reverse-transition-leave-to {\n  position: absolute !important;\n  top: 0;\n  width: 100%;\n}\n.v-window-x-transition-enter-from {\n  transform: translateX(100%);\n}\n.v-window-x-transition-leave-to {\n  transform: translateX(-100%);\n}\n.v-window-x-reverse-transition-enter-from {\n  transform: translateX(-100%);\n}\n.v-window-x-reverse-transition-leave-to {\n  transform: translateX(100%);\n}\n.v-window-y-transition-enter-from {\n  transform: translateY(100%);\n}\n.v-window-y-transition-leave-to {\n  transform: translateY(-100%);\n}\n.v-window-y-reverse-transition-enter-from {\n  transform: translateY(-100%);\n}\n.v-window-y-reverse-transition-leave-to {\n  transform: translateY(100%);\n}",
-      "start": 1722351595185,
-      "end": 1722351595186,
+      "start": 1722581518178,
+      "end": 1722581518178,
       "order": "normal",
       "sourcemaps": null
     },
     {
       "name": "vite:esbuild",
-      "start": 1722351595186,
-      "end": 1722351595186,
+      "start": 1722581518178,
+      "end": 1722581518178,
       "order": "normal"
     },
     {
       "name": "vite:json",
-      "start": 1722351595186,
-      "end": 1722351595186,
+      "start": 1722581518178,
+      "end": 1722581518178,
       "order": "normal"
     },
     {
       "name": "vite:worker",
-      "start": 1722351595186,
-      "end": 1722351595186,
+      "start": 1722581518178,
+      "end": 1722581518178,
       "order": "normal"
     },
     {
       "name": "vite:vue",
-      "start": 1722351595186,
-      "end": 1722351595186,
+      "start": 1722581518178,
+      "end": 1722581518178,
       "order": "normal"
     },
     {
       "name": "vite:define",
-      "start": 1722351595186,
-      "end": 1722351595186,
+      "start": 1722581518178,
+      "end": 1722581518178,
       "order": "normal"
     },
     {
       "name": "vite:css-post",
       "result": "",
-      "start": 1722351595186,
-      "end": 1722351595186,
+      "start": 1722581518178,
+      "end": 1722581518178,
       "order": "normal",
       "sourcemaps": {
         "mappings": ""
@@ -58,50 +58,50 @@
     },
     {
       "name": "vite:build-html",
-      "start": 1722351595186,
-      "end": 1722351595186,
+      "start": 1722581518178,
+      "end": 1722581518178,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1722351595186,
-      "end": 1722351595186,
+      "start": 1722581518178,
+      "end": 1722581518178,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1722351595186,
-      "end": 1722351595186,
+      "start": 1722581518178,
+      "end": 1722581518178,
       "order": "normal"
     },
     {
       "name": "commonjs",
-      "start": 1722351595186,
-      "end": 1722351595186,
+      "start": 1722581518178,
+      "end": 1722581518178,
       "order": "normal"
     },
     {
       "name": "vite:dynamic-import-vars",
-      "start": 1722351595186,
-      "end": 1722351595186,
+      "start": 1722581518178,
+      "end": 1722581518178,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1722351595186,
-      "end": 1722351595186,
+      "start": 1722581518178,
+      "end": 1722581518178,
       "order": "normal"
     },
     {
       "name": "vite:build-import-analysis",
-      "start": 1722351595186,
-      "end": 1722351595186,
+      "start": 1722581518178,
+      "end": 1722581518178,
       "order": "normal"
     },
     {
       "name": "vite:reporter",
-      "start": 1722351595186,
-      "end": 1722351595186,
+      "start": 1722581518178,
+      "end": 1722581518178,
       "order": "normal"
     }
   ]

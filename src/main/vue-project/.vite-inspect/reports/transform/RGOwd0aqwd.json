@@ -1,0 +1,124 @@
+{
+  "resolvedId": "C:/Users/MAG/IdeaProjects/Datenanalysetool/src/main/vue-project/src/routes/HomeView.vue?vue&type=script&setup=true&lang.ts",
+  "transforms": [
+    {
+      "name": "vite:vue",
+      "result": "import { defineComponent as _defineComponent } from 'vue'\nimport { createElementVNode as _createElementVNode, resolveComponent as _resolveComponent, createVNode as _createVNode, withCtx as _withCtx, openBlock as _openBlock, createBlock as _createBlock } from \"vue\"\n\nconst _hoisted_1 = /*#__PURE__*/_createElementVNode(\"h4\", { class: \"text-h5 font-weight-bold mb-4\" }, \"Suchkriterien\", -1)\nconst _hoisted_2 = /*#__PURE__*/_createElementVNode(\"br\", null, null, -1)\nconst _hoisted_3 = /*#__PURE__*/_createElementVNode(\"br\", null, null, -1)\n\nimport { ref } from 'vue'\r\nimport type { PropType } from 'vue'\r\n\r\n\r\n// Typen definieren\r\nexport type DatesCategory1 = { date: string; temperatur: string }\r\n\r\n\r\n// Props-Definition\r\n\nexport default /*#__PURE__*/_defineComponent({\n  __name: 'HomeView',\n  props: {\r\n  fotos: {\r\n    default: null,\r\n    required: false,\r\n    type: Array as PropType<DatesCategory1[]>\r\n  }\r\n},\n  setup(__props) {\n\r\n\r\n\r\n// Reaktive Variablen für die Date-Picker\r\nconst startDate = ref<string | null>(null)\r\nconst endDate = ref<string | null>(null)\r\n\r\n\nreturn (_ctx: any,_cache: any) => {\n  const _component_v_select = _resolveComponent(\"v-select\")!\n  const _component_v_container = _resolveComponent(\"v-container\")!\n\n  return (_openBlock(), _createBlock(_component_v_container, null, {\n    default: _withCtx(() => [\n      _hoisted_1,\n      _hoisted_2,\n      _hoisted_3,\n      _createVNode(_component_v_select, {\n        label: \"Select\",\n        items: ['California', 'Colorado', 'Florida', 'Georgia', 'Texas', 'Wyoming']\n      })\n    ]),\n    _: 1\n  }))\n}\n}\n\n})",
+      "start": 1722581516979,
+      "end": 1722581516979,
+      "sourcemaps": {
+        "version": 3,
+        "sources": [
+          "C:/Users/MAG/IdeaProjects/Datenanalysetool/src/main/vue-project/src/routes/HomeView.vue"
+        ],
+        "sourcesContent": [
+          "<script setup lang=\"ts\">\r\nimport { ref } from 'vue'\r\nimport type { PropType } from 'vue'\r\n\r\n\r\n// Typen definieren\r\nexport type DatesCategory1 = { date: string; temperatur: string }\r\n\r\n\r\n// Props-Definition\r\ndefineProps({\r\n  fotos: {\r\n    default: null,\r\n    required: false,\r\n    type: Array as PropType<DatesCategory1[]>\r\n  }\r\n})\r\n\r\n// Reaktive Variablen für die Date-Picker\r\nconst startDate = ref<string | null>(null)\r\nconst endDate = ref<string | null>(null)\r\n\r\n</script>\r\n\r\n<template>\r\n  <v-container>\r\n    <h4 class=\"text-h5 font-weight-bold mb-4\">Suchkriterien</h4>\r\n    <br>\r\n    <br>\r\n    <v-select\r\n      label=\"Select\"\r\n      :items=\"['California', 'Colorado', 'Florida', 'Georgia', 'Texas', 'Wyoming']\"\r\n    ></v-select>\r\n\r\n\r\n  </v-container>\r\n</template>\r\n\r\n<style scoped>\r\n\r\n</style>"
+        ],
+        "names": [],
+        "mappings": ";;;;;;;AACA,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AAC1B,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACpC,CAAC;AACD,CAAC;AACD,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACpB,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AAClE,CAAC;AACD,CAAC;AACD,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;;;;;;;;;;;;AATI,CAAC;AAgBvB,CAAC;AACH,CAAC;AACD,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AAC1C,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AAC3C,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACzC,CAAC;;;;;;;;;;;;;;;;;;;;;"
+      }
+    },
+    {
+      "name": "vite:css",
+      "start": 1722581516979,
+      "end": 1722581516979,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "result": "import { defineComponent as _defineComponent } from \"vue\";\nimport { createElementVNode as _createElementVNode, resolveComponent as _resolveComponent, createVNode as _createVNode, withCtx as _withCtx, openBlock as _openBlock, createBlock as _createBlock } from \"vue\";\nconst _hoisted_1 = /* @__PURE__ */ _createElementVNode(\"h4\", { class: \"text-h5 font-weight-bold mb-4\" }, \"Suchkriterien\", -1);\nconst _hoisted_2 = /* @__PURE__ */ _createElementVNode(\"br\", null, null, -1);\nconst _hoisted_3 = /* @__PURE__ */ _createElementVNode(\"br\", null, null, -1);\nimport { ref } from \"vue\";\nexport default /* @__PURE__ */ _defineComponent({\n  __name: \"HomeView\",\n  props: {\n    fotos: {\n      default: null,\n      required: false,\n      type: Array\n    }\n  },\n  setup(__props) {\n    const startDate = ref(null);\n    const endDate = ref(null);\n    return (_ctx, _cache) => {\n      const _component_v_select = _resolveComponent(\"v-select\");\n      const _component_v_container = _resolveComponent(\"v-container\");\n      return _openBlock(), _createBlock(_component_v_container, null, {\n        default: _withCtx(() => [\n          _hoisted_1,\n          _hoisted_2,\n          _hoisted_3,\n          _createVNode(_component_v_select, {\n            label: \"Select\",\n            items: [\"California\", \"Colorado\", \"Florida\", \"Georgia\", \"Texas\", \"Wyoming\"]\n          })\n        ]),\n        _: 1\n      });\n    };\n  }\n});\n",
+      "start": 1722581516979,
+      "end": 1722581517004,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "sources": [
+          "C:/Users/MAG/IdeaProjects/Datenanalysetool/src/main/vue-project/src/routes/HomeView.vue?vue&type=script&setup=true&lang.ts"
+        ],
+        "sourcesContent": [
+          "import { defineComponent as _defineComponent } from 'vue'\nimport { createElementVNode as _createElementVNode, resolveComponent as _resolveComponent, createVNode as _createVNode, withCtx as _withCtx, openBlock as _openBlock, createBlock as _createBlock } from \"vue\"\n\nconst _hoisted_1 = /*#__PURE__*/_createElementVNode(\"h4\", { class: \"text-h5 font-weight-bold mb-4\" }, \"Suchkriterien\", -1)\nconst _hoisted_2 = /*#__PURE__*/_createElementVNode(\"br\", null, null, -1)\nconst _hoisted_3 = /*#__PURE__*/_createElementVNode(\"br\", null, null, -1)\n\nimport { ref } from 'vue'\r\nimport type { PropType } from 'vue'\r\n\r\n\r\n// Typen definieren\r\nexport type DatesCategory1 = { date: string; temperatur: string }\r\n\r\n\r\n// Props-Definition\r\n\nexport default /*#__PURE__*/_defineComponent({\n  __name: 'HomeView',\n  props: {\r\n  fotos: {\r\n    default: null,\r\n    required: false,\r\n    type: Array as PropType<DatesCategory1[]>\r\n  }\r\n},\n  setup(__props) {\n\r\n\r\n\r\n// Reaktive Variablen für die Date-Picker\r\nconst startDate = ref<string | null>(null)\r\nconst endDate = ref<string | null>(null)\r\n\r\n\nreturn (_ctx: any,_cache: any) => {\n  const _component_v_select = _resolveComponent(\"v-select\")!\n  const _component_v_container = _resolveComponent(\"v-container\")!\n\n  return (_openBlock(), _createBlock(_component_v_container, null, {\n    default: _withCtx(() => [\n      _hoisted_1,\n      _hoisted_2,\n      _hoisted_3,\n      _createVNode(_component_v_select, {\n        label: \"Select\",\n        items: ['California', 'Colorado', 'Florida', 'Georgia', 'Texas', 'Wyoming']\n      })\n    ]),\n    _: 1\n  }))\n}\n}\n\n})"
+        ],
+        "mappings": "AAAA,SAAS,mBAAmB,wBAAwB;AACpD,SAAS,sBAAsB,qBAAqB,oBAAoB,mBAAmB,eAAe,cAAc,WAAW,UAAU,aAAa,YAAY,eAAe,oBAAoB;AAEzM,MAAM,aAA0B,oCAAoB,MAAM,EAAE,OAAO,gCAAgC,GAAG,iBAAiB,EAAE;AACzH,MAAM,aAA0B,oCAAoB,MAAM,MAAM,MAAM,EAAE;AACxE,MAAM,aAA0B,oCAAoB,MAAM,MAAM,MAAM,EAAE;AAExE,SAAS,WAAW;AAUpB,eAA4B,iCAAiB;AAAA,EAC3C,QAAQ;AAAA,EACR,OAAO;AAAA,IACP,OAAO;AAAA,MACL,SAAS;AAAA,MACT,UAAU;AAAA,MACV,MAAM;AAAA,IACR;AAAA,EACF;AAAA,EACE,MAAM,SAAS;AAKjB,UAAM,YAAY,IAAmB,IAAI;AACzC,UAAM,UAAU,IAAmB,IAAI;AAGvC,WAAO,CAAC,MAAU,WAAgB;AAChC,YAAM,sBAAsB,kBAAkB,UAAU;AACxD,YAAM,yBAAyB,kBAAkB,aAAa;AAE9D,aAAQ,WAAW,GAAG,aAAa,wBAAwB,MAAM;AAAA,QAC/D,SAAS,SAAS,MAAM;AAAA,UACtB;AAAA,UACA;AAAA,UACA;AAAA,UACA,aAAa,qBAAqB;AAAA,YAChC,OAAO;AAAA,YACP,OAAO,CAAC,cAAc,YAAY,WAAW,WAAW,SAAS,SAAS;AAAA,UAC5E,CAAC;AAAA,QACH,CAAC;AAAA,QACD,GAAG;AAAA,MACL,CAAC;AAAA,IACH;AAAA,EACA;AAEA,CAAC;",
+        "names": []
+      }
+    },
+    {
+      "name": "vite:json",
+      "start": 1722581517004,
+      "end": 1722581517004,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1722581517004,
+      "end": 1722581517004,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1722581517004,
+      "end": 1722581517004,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1722581517004,
+      "end": 1722581517004,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1722581517004,
+      "end": 1722581517004,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1722581517004,
+      "end": 1722581517004,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1722581517004,
+      "end": 1722581517004,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1722581517004,
+      "end": 1722581517004,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1722581517004,
+      "end": 1722581517004,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1722581517004,
+      "end": 1722581517004,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1722581517004,
+      "end": 1722581517004,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1722581517004,
+      "end": 1722581517004,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1722581517004,
+      "end": 1722581517004,
+      "order": "normal"
+    }
+  ]
+}

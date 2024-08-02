@@ -4,98 +4,98 @@
     {
       "name": "vite:load-fallback",
       "result": "import { createCssTransition, createJavascriptTransition } from \"./createTransition.mjs\";\nimport ExpandTransitionGenerator from \"./expand-transition.mjs\"; // Component specific transitions\nexport const VFabTransition = createCssTransition('fab-transition', 'center center', 'out-in');\n\n// Generic transitions\nexport const VDialogBottomTransition = createCssTransition('dialog-bottom-transition');\nexport const VDialogTopTransition = createCssTransition('dialog-top-transition');\nexport const VFadeTransition = createCssTransition('fade-transition');\nexport const VScaleTransition = createCssTransition('scale-transition');\nexport const VScrollXTransition = createCssTransition('scroll-x-transition');\nexport const VScrollXReverseTransition = createCssTransition('scroll-x-reverse-transition');\nexport const VScrollYTransition = createCssTransition('scroll-y-transition');\nexport const VScrollYReverseTransition = createCssTransition('scroll-y-reverse-transition');\nexport const VSlideXTransition = createCssTransition('slide-x-transition');\nexport const VSlideXReverseTransition = createCssTransition('slide-x-reverse-transition');\nexport const VSlideYTransition = createCssTransition('slide-y-transition');\nexport const VSlideYReverseTransition = createCssTransition('slide-y-reverse-transition');\n\n// Javascript transitions\nexport const VExpandTransition = createJavascriptTransition('expand-transition', ExpandTransitionGenerator());\nexport const VExpandXTransition = createJavascriptTransition('expand-x-transition', ExpandTransitionGenerator('', true));\nexport { VDialogTransition } from \"./dialog-transition.mjs\";\n//# sourceMappingURL=index.mjs.map",
-      "start": 1722351593933,
-      "end": 1722351593951,
+      "start": 1722581516961,
+      "end": 1722581516986,
       "sourcemaps": null
     },
     {
       "name": "vite:css",
-      "start": 1722351593951,
-      "end": 1722351593951,
+      "start": 1722581516986,
+      "end": 1722581516986,
       "order": "normal"
     },
     {
       "name": "vite:esbuild",
-      "start": 1722351593951,
-      "end": 1722351593951,
+      "start": 1722581516986,
+      "end": 1722581516986,
       "order": "normal"
     },
     {
       "name": "vite:json",
-      "start": 1722351593951,
-      "end": 1722351593951,
+      "start": 1722581516986,
+      "end": 1722581516986,
       "order": "normal"
     },
     {
       "name": "vite:worker",
-      "start": 1722351593951,
-      "end": 1722351593951,
+      "start": 1722581516986,
+      "end": 1722581516986,
       "order": "normal"
     },
     {
       "name": "vite:vue",
-      "start": 1722351593951,
-      "end": 1722351593951,
+      "start": 1722581516986,
+      "end": 1722581516986,
       "order": "normal"
     },
     {
       "name": "vite:define",
-      "start": 1722351593951,
-      "end": 1722351593951,
+      "start": 1722581516986,
+      "end": 1722581516986,
       "order": "normal"
     },
     {
       "name": "vite:css-post",
-      "start": 1722351593951,
-      "end": 1722351593951,
+      "start": 1722581516986,
+      "end": 1722581516986,
       "order": "normal"
     },
     {
       "name": "vite:build-html",
-      "start": 1722351593951,
-      "end": 1722351593951,
+      "start": 1722581516986,
+      "end": 1722581516986,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1722351593951,
-      "end": 1722351593951,
+      "start": 1722581516986,
+      "end": 1722581516986,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1722351593952,
-      "end": 1722351593952,
+      "start": 1722581516986,
+      "end": 1722581516986,
       "order": "normal"
     },
     {
       "name": "commonjs",
-      "start": 1722351593952,
-      "end": 1722351593952,
+      "start": 1722581516986,
+      "end": 1722581516986,
       "order": "normal"
     },
     {
       "name": "vite:dynamic-import-vars",
-      "start": 1722351593952,
-      "end": 1722351593952,
+      "start": 1722581516986,
+      "end": 1722581516986,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1722351593952,
-      "end": 1722351593952,
+      "start": 1722581516986,
+      "end": 1722581516986,
       "order": "normal"
     },
     {
       "name": "vite:build-import-analysis",
-      "start": 1722351593952,
-      "end": 1722351593952,
+      "start": 1722581516986,
+      "end": 1722581516986,
       "order": "normal"
     },
     {
       "name": "vite:reporter",
-      "start": 1722351593952,
-      "end": 1722351593952,
+      "start": 1722581516986,
+      "end": 1722581516986,
       "order": "normal"
     }
   ]

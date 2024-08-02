@@ -1,23 +1,24 @@
 package ch.heimag.datenanalysetool.routes
 
 import io.ktor.server.application.*
+import io.ktor.server.auth.*
 import io.ktor.server.routing.*
 import kotlinx.serialization.Serializable
 
 
 @Serializable
-data class Foto(val url: String, val name: String)
+data class seachParameter(val date: String, val temp: String)
 
-fun Application.Datenanalyse(){
-routing {
-    get("/Datenanalyse"){
+fun Application.configureDatenanalyse() {
+    routing {
+        authenticate("auth-session") {
+            get("/Datenanalyse") {
 
+
+            }
+
+
+        }
 
     }
-
-
-
-
-}
-
 }

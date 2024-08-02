@@ -3,22 +3,22 @@
   "transforms": [
     {
       "name": "vite:load-fallback",
-      "result": "import { createRouter, createWebHashHistory } from 'vue-router'\r\nimport HomeVue from '@/views/Homeview.vue'\r\nimport DatenanalyseVUE from '@/views/Datenanalyse.vue'\r\nconst routes = [\r\n  { path: '/', component: HomeVue },\r\n  { path: '/datenanalyse', component: DatenanalyseVUE }\r\n]\r\n\r\nexport const router = createRouter({\r\n  routes,\r\n  history: createWebHashHistory()\r\n})\r\n",
-      "start": 1722351593547,
-      "end": 1722351593582,
+      "result": "import { createRouter, createWebHashHistory } from 'vue-router'\r\nimport HomeVue from '@/routes/HomeView.vue'\r\n\r\nconst routes = [\r\n { path: '/', component: HomeVue },\r\n]\r\n\r\nexport const router = createRouter({\r\n  routes,\r\n  history: createWebHashHistory()\r\n})\r\n",
+      "start": 1722581516613,
+      "end": 1722581516642,
       "sourcemaps": null
     },
     {
       "name": "vite:css",
-      "start": 1722351593583,
-      "end": 1722351593583,
+      "start": 1722581516642,
+      "end": 1722581516642,
       "order": "normal"
     },
     {
       "name": "vite:esbuild",
-      "result": "import { createRouter, createWebHashHistory } from \"vue-router\";\nimport HomeVue from \"@/views/Homeview.vue\";\nimport DatenanalyseVUE from \"@/views/Datenanalyse.vue\";\nconst routes = [\n  { path: \"/\", component: HomeVue },\n  { path: \"/datenanalyse\", component: DatenanalyseVUE }\n];\nexport const router = createRouter({\n  routes,\n  history: createWebHashHistory()\n});\n",
-      "start": 1722351593583,
-      "end": 1722351593593,
+      "result": "import { createRouter, createWebHashHistory } from \"vue-router\";\nimport HomeVue from \"@/routes/HomeView.vue\";\nconst routes = [\n  { path: \"/\", component: HomeVue }\n];\nexport const router = createRouter({\n  routes,\n  history: createWebHashHistory()\n});\n",
+      "start": 1722581516642,
+      "end": 1722581516652,
       "order": "normal",
       "sourcemaps": {
         "version": 3,
@@ -26,88 +26,88 @@
           "C:/Users/MAG/IdeaProjects/Datenanalysetool/src/main/vue-project/src/routes/router.ts"
         ],
         "sourcesContent": [
-          "import { createRouter, createWebHashHistory } from 'vue-router'\r\nimport HomeVue from '@/views/Homeview.vue'\r\nimport DatenanalyseVUE from '@/views/Datenanalyse.vue'\r\nconst routes = [\r\n  { path: '/', component: HomeVue },\r\n  { path: '/datenanalyse', component: DatenanalyseVUE }\r\n]\r\n\r\nexport const router = createRouter({\r\n  routes,\r\n  history: createWebHashHistory()\r\n})\r\n"
+          "import { createRouter, createWebHashHistory } from 'vue-router'\r\nimport HomeVue from '@/routes/HomeView.vue'\r\n\r\nconst routes = [\r\n { path: '/', component: HomeVue },\r\n]\r\n\r\nexport const router = createRouter({\r\n  routes,\r\n  history: createWebHashHistory()\r\n})\r\n"
         ],
-        "mappings": "AAAA,SAAS,cAAc,4BAA4B;AACnD,OAAO,aAAa;AACpB,OAAO,qBAAqB;AAC5B,MAAM,SAAS;AAAA,EACb,EAAE,MAAM,KAAK,WAAW,QAAQ;AAAA,EAChC,EAAE,MAAM,iBAAiB,WAAW,gBAAgB;AACtD;AAEO,aAAM,SAAS,aAAa;AAAA,EACjC;AAAA,EACA,SAAS,qBAAqB;AAChC,CAAC;",
+        "mappings": "AAAA,SAAS,cAAc,4BAA4B;AACnD,OAAO,aAAa;AAEpB,MAAM,SAAS;AAAA,EACd,EAAE,MAAM,KAAK,WAAW,QAAQ;AACjC;AAEO,aAAM,SAAS,aAAa;AAAA,EACjC;AAAA,EACA,SAAS,qBAAqB;AAChC,CAAC;",
         "names": []
       }
     },
     {
       "name": "vite:json",
-      "start": 1722351593593,
-      "end": 1722351593593,
+      "start": 1722581516652,
+      "end": 1722581516652,
       "order": "normal"
     },
     {
       "name": "vite:worker",
-      "start": 1722351593593,
-      "end": 1722351593593,
+      "start": 1722581516652,
+      "end": 1722581516652,
       "order": "normal"
     },
     {
       "name": "vite:vue",
-      "start": 1722351593593,
-      "end": 1722351593593,
+      "start": 1722581516652,
+      "end": 1722581516652,
       "order": "normal"
     },
     {
       "name": "vite:define",
-      "start": 1722351593593,
-      "end": 1722351593593,
+      "start": 1722581516652,
+      "end": 1722581516652,
       "order": "normal"
     },
     {
       "name": "vite:css-post",
-      "start": 1722351593595,
-      "end": 1722351593595,
+      "start": 1722581516654,
+      "end": 1722581516654,
       "order": "normal"
     },
     {
       "name": "vite:build-html",
-      "start": 1722351593595,
-      "end": 1722351593595,
+      "start": 1722581516654,
+      "end": 1722581516654,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1722351593595,
-      "end": 1722351593595,
+      "start": 1722581516654,
+      "end": 1722581516654,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1722351593595,
-      "end": 1722351593595,
+      "start": 1722581516654,
+      "end": 1722581516654,
       "order": "normal"
     },
     {
       "name": "commonjs",
-      "start": 1722351593595,
-      "end": 1722351593595,
+      "start": 1722581516654,
+      "end": 1722581516654,
       "order": "normal"
     },
     {
       "name": "vite:dynamic-import-vars",
-      "start": 1722351593595,
-      "end": 1722351593595,
+      "start": 1722581516655,
+      "end": 1722581516655,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1722351593595,
-      "end": 1722351593595,
+      "start": 1722581516655,
+      "end": 1722581516655,
       "order": "normal"
     },
     {
       "name": "vite:build-import-analysis",
-      "start": 1722351593595,
-      "end": 1722351593595,
+      "start": 1722581516655,
+      "end": 1722581516655,
       "order": "normal"
     },
     {
       "name": "vite:reporter",
-      "start": 1722351593595,
-      "end": 1722351593595,
+      "start": 1722581516655,
+      "end": 1722581516655,
       "order": "normal"
     }
   ]
