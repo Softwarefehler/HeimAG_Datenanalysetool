@@ -1,0 +1,12 @@
+{
+  "resolvedId": "C:/Users/MAG/IdeaProjects/Datenanalysetool/src/main/vue-project/node_modules/vuetify/lib/labs/VTimePicker/index.mjs",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "export { VTimePicker } from \"./VTimePicker.mjs\";\nexport { VTimePickerClock } from \"./VTimePickerClock.mjs\";\nexport { VTimePickerControls } from \"./VTimePickerControls.mjs\";\n//# sourceMappingURL=index.mjs.map",
+      "start": 1722584659814,
+      "end": 1722584659840,
+      "sourcemaps": null
+    }
+  ]
+}

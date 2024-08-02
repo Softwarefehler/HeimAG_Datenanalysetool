@@ -1,0 +1,12 @@
+{
+  "resolvedId": "C:/Users/MAG/IdeaProjects/Datenanalysetool/src/main/vue-project/node_modules/vuetify/lib/labs/components.mjs",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "export * from \"./VCalendar/index.mjs\";\nexport * from \"./VDateInput/index.mjs\";\nexport * from \"./VNumberInput/index.mjs\";\nexport * from \"./VPicker/index.mjs\";\nexport * from \"./VStepperVertical/index.mjs\";\nexport * from \"./VPullToRefresh/index.mjs\";\nexport * from \"./VSnackbarQueue/index.mjs\";\nexport * from \"./VTimePicker/index.mjs\";\nexport * from \"./VTreeview/index.mjs\";\n//# sourceMappingURL=components.mjs.map",
+      "start": 1722584659795,
+      "end": 1722584659805,
+      "sourcemaps": null
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "resolvedId": "C:/Users/MAG/IdeaProjects/Datenanalysetool/src/main/vue-project/node_modules/vuetify/lib/labs/VTimePicker/VTimePicker.css",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": ".v-time-picker.v-picker {\n  padding: 24px;\n  width: 328px;\n}\n.v-time-picker.v-picker .v-picker-title {\n  padding: 0;\n  margin-bottom: 20px;\n}",
+      "start": 1722584660092,
+      "end": 1722584660145,
+      "sourcemaps": null
+    }
+  ]
+}

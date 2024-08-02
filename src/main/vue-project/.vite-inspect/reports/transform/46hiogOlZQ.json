@@ -1,0 +1,12 @@
+{
+  "resolvedId": "C:/Users/MAG/IdeaProjects/Datenanalysetool/src/main/vue-project/node_modules/vuetify/lib/labs/VDateInput/index.mjs",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "export { VDateInput } from \"./VDateInput.mjs\";\n//# sourceMappingURL=index.mjs.map",
+      "start": 1722584659805,
+      "end": 1722584659830,
+      "sourcemaps": null
+    }
+  ]
+}

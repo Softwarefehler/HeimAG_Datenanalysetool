@@ -1,0 +1,12 @@
+{
+  "resolvedId": "C:/Users/MAG/IdeaProjects/Datenanalysetool/src/main/vue-project/node_modules/vuetify/lib/labs/VCalendar/VCalendarIntervalEvent.css",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": ".v-calendar-internal-event {\n  overflow: hidden;\n  padding: 4px;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}",
+      "start": 1722584660029,
+      "end": 1722584660095,
+      "sourcemaps": null
+    }
+  ]
+}

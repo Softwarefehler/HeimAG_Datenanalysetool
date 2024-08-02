@@ -1,0 +1,12 @@
+{
+  "resolvedId": "C:/Users/MAG/IdeaProjects/Datenanalysetool/src/main/vue-project/node_modules/vuetify/lib/labs/VTreeview/shared.mjs",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "// Types\n\nexport const VTreeviewSymbol = Symbol.for('vuetify:v-treeview');\n//# sourceMappingURL=shared.mjs.map",
+      "start": 1722584660110,
+      "end": 1722584660155,
+      "sourcemaps": null
+    }
+  ]
+}

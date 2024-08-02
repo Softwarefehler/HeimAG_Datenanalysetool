@@ -1,0 +1,12 @@
+{
+  "resolvedId": "C:/Users/MAG/IdeaProjects/Datenanalysetool/src/main/vue-project/node_modules/vuetify/lib/labs/VCalendar/index.mjs",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "export { VCalendar } from \"./VCalendar.mjs\";\nexport { VCalendarDay } from \"./VCalendarDay.mjs\";\nexport { VCalendarHeader } from \"./VCalendarHeader.mjs\";\nexport { VCalendarInterval } from \"./VCalendarInterval.mjs\";\nexport { VCalendarIntervalEvent } from \"./VCalendarIntervalEvent.mjs\";\nexport { VCalendarMonthDay } from \"./VCalendarMonthDay.mjs\";\n//# sourceMappingURL=index.mjs.map",
+      "start": 1722584659805,
+      "end": 1722584659818,
+      "sourcemaps": null
+    }
+  ]
+}

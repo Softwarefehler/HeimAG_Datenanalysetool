@@ -1,0 +1,12 @@
+{
+  "resolvedId": "C:/Users/MAG/IdeaProjects/Datenanalysetool/src/main/vue-project/node_modules/vuetify/lib/labs/VTimePicker/SelectingTimes.mjs",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "// @ts-nocheck\n/* eslint-disable */\nvar SelectingTimes = /*#__PURE__*/function (SelectingTimes) {\n  SelectingTimes[SelectingTimes[\"Hour\"] = 1] = \"Hour\";\n  SelectingTimes[SelectingTimes[\"Minute\"] = 2] = \"Minute\";\n  SelectingTimes[SelectingTimes[\"Second\"] = 3] = \"Second\";\n  return SelectingTimes;\n}(SelectingTimes || {});\nexport { SelectingTimes };\n//# sourceMappingURL=SelectingTimes.mjs.map",
+      "start": 1722584660094,
+      "end": 1722584660146,
+      "sourcemaps": null
+    }
+  ]
+}

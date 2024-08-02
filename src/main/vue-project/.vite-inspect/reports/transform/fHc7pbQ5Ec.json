@@ -1,0 +1,12 @@
+{
+  "resolvedId": "C:/Users/MAG/IdeaProjects/Datenanalysetool/src/main/vue-project/node_modules/vuetify/lib/labs/VStepperVertical/index.mjs",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "export { VStepperVertical } from \"./VStepperVertical.mjs\";\nexport { VStepperVerticalItem } from \"./VStepperVerticalItem.mjs\";\nexport { VStepperVerticalActions } from \"./VStepperVerticalActions.mjs\";\n//# sourceMappingURL=index.mjs.map",
+      "start": 1722584659806,
+      "end": 1722584659831,
+      "sourcemaps": null
+    }
+  ]
+}

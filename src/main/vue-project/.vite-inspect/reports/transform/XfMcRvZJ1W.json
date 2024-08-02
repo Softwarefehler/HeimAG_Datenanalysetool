@@ -1,0 +1,12 @@
+{
+  "resolvedId": "C:/Users/MAG/IdeaProjects/Datenanalysetool/src/main/vue-project/node_modules/vuetify/lib/labs/VTreeview/index.mjs",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "export { VTreeview } from \"./VTreeview.mjs\";\nexport { VTreeviewItem } from \"./VTreeviewItem.mjs\";\nexport { VTreeviewGroup } from \"./VTreeviewGroup.mjs\";\n//# sourceMappingURL=index.mjs.map",
+      "start": 1722584659814,
+      "end": 1722584659842,
+      "sourcemaps": null
+    }
+  ]
+}

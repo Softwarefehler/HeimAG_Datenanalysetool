@@ -1,0 +1,12 @@
+{
+  "resolvedId": "C:/Users/MAG/IdeaProjects/Datenanalysetool/src/main/vue-project/node_modules/vuetify/lib/labs/VPullToRefresh/index.mjs",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "export { VPullToRefresh } from \"./VPullToRefresh.mjs\";\n//# sourceMappingURL=index.mjs.map",
+      "start": 1722584659812,
+      "end": 1722584659839,
+      "sourcemaps": null
+    }
+  ]
+}
