@@ -4,53 +4,53 @@
     {
       "name": "vite:load-fallback",
       "result": ".v-tabs {\n  display: flex;\n  height: var(--v-tabs-height);\n}\n.v-tabs--density-default {\n  --v-tabs-height: 48px;\n}\n.v-tabs--density-default.v-tabs--stacked {\n  --v-tabs-height: 72px;\n}\n\n.v-tabs--density-comfortable {\n  --v-tabs-height: 44px;\n}\n.v-tabs--density-comfortable.v-tabs--stacked {\n  --v-tabs-height: 68px;\n}\n\n.v-tabs--density-compact {\n  --v-tabs-height: 36px;\n}\n.v-tabs--density-compact.v-tabs--stacked {\n  --v-tabs-height: 60px;\n}\n\n.v-tabs.v-slide-group--vertical {\n  height: auto;\n  flex: none;\n  --v-tabs-height: 48px;\n}\n\n.v-tabs--align-tabs-title:not(.v-slide-group--has-affixes) .v-tab:first-child {\n  margin-inline-start: 42px;\n}\n\n.v-tabs--fixed-tabs .v-slide-group__content > *:last-child,\n.v-tabs--align-tabs-center .v-slide-group__content > *:last-child {\n  margin-inline-end: auto;\n}\n.v-tabs--fixed-tabs .v-slide-group__content > *:first-child,\n.v-tabs--align-tabs-center .v-slide-group__content > *:first-child {\n  margin-inline-start: auto;\n}\n\n.v-tabs--grow {\n  flex-grow: 1;\n}\n.v-tabs--grow .v-tab {\n  flex: 1 0 auto;\n  max-width: none;\n}\n\n.v-tabs--align-tabs-end .v-tab:first-child {\n  margin-inline-start: auto;\n}\n.v-tabs--align-tabs-end .v-tab:last-child {\n  margin-inline-end: 0;\n}\n\n@media (max-width: 1279.98px) {\n  .v-tabs.v-slide-group--is-overflowing.v-slide-group--horizontal:not(.v-slide-group--has-affixes) .v-tab:first-child {\n    margin-inline-start: 52px;\n  }\n  .v-tabs.v-slide-group--is-overflowing.v-slide-group--horizontal:not(.v-slide-group--has-affixes) .v-tab:last-child {\n    margin-inline-end: 52px;\n  }\n}",
-      "start": 1722590366404,
-      "end": 1722590366426,
+      "start": 1722635715143,
+      "end": 1722635715166,
       "sourcemaps": null
     },
     {
       "name": "vite:css",
       "result": ".v-tabs {\n  display: flex;\n  height: var(--v-tabs-height);\n}\n.v-tabs--density-default {\n  --v-tabs-height: 48px;\n}\n.v-tabs--density-default.v-tabs--stacked {\n  --v-tabs-height: 72px;\n}\n\n.v-tabs--density-comfortable {\n  --v-tabs-height: 44px;\n}\n.v-tabs--density-comfortable.v-tabs--stacked {\n  --v-tabs-height: 68px;\n}\n\n.v-tabs--density-compact {\n  --v-tabs-height: 36px;\n}\n.v-tabs--density-compact.v-tabs--stacked {\n  --v-tabs-height: 60px;\n}\n\n.v-tabs.v-slide-group--vertical {\n  height: auto;\n  flex: none;\n  --v-tabs-height: 48px;\n}\n\n.v-tabs--align-tabs-title:not(.v-slide-group--has-affixes) .v-tab:first-child {\n  margin-inline-start: 42px;\n}\n\n.v-tabs--fixed-tabs .v-slide-group__content > *:last-child,\n.v-tabs--align-tabs-center .v-slide-group__content > *:last-child {\n  margin-inline-end: auto;\n}\n.v-tabs--fixed-tabs .v-slide-group__content > *:first-child,\n.v-tabs--align-tabs-center .v-slide-group__content > *:first-child {\n  margin-inline-start: auto;\n}\n\n.v-tabs--grow {\n  flex-grow: 1;\n}\n.v-tabs--grow .v-tab {\n  flex: 1 0 auto;\n  max-width: none;\n}\n\n.v-tabs--align-tabs-end .v-tab:first-child {\n  margin-inline-start: auto;\n}\n.v-tabs--align-tabs-end .v-tab:last-child {\n  margin-inline-end: 0;\n}\n\n@media (max-width: 1279.98px) {\n  .v-tabs.v-slide-group--is-overflowing.v-slide-group--horizontal:not(.v-slide-group--has-affixes) .v-tab:first-child {\n    margin-inline-start: 52px;\n  }\n  .v-tabs.v-slide-group--is-overflowing.v-slide-group--horizontal:not(.v-slide-group--has-affixes) .v-tab:last-child {\n    margin-inline-end: 52px;\n  }\n}",
-      "start": 1722590366426,
-      "end": 1722590366426,
+      "start": 1722635715166,
+      "end": 1722635715167,
       "order": "normal",
       "sourcemaps": null
     },
     {
       "name": "vite:esbuild",
-      "start": 1722590366426,
-      "end": 1722590366426,
+      "start": 1722635715167,
+      "end": 1722635715167,
       "order": "normal"
     },
     {
       "name": "vite:json",
-      "start": 1722590366426,
-      "end": 1722590366426,
+      "start": 1722635715167,
+      "end": 1722635715167,
       "order": "normal"
     },
     {
       "name": "vite:worker",
-      "start": 1722590366426,
-      "end": 1722590366426,
+      "start": 1722635715167,
+      "end": 1722635715167,
       "order": "normal"
     },
     {
       "name": "vite:vue",
-      "start": 1722590366426,
-      "end": 1722590366426,
+      "start": 1722635715167,
+      "end": 1722635715167,
       "order": "normal"
     },
     {
       "name": "vite:define",
-      "start": 1722590366426,
-      "end": 1722590366426,
+      "start": 1722635715167,
+      "end": 1722635715167,
       "order": "normal"
     },
     {
       "name": "vite:css-post",
       "result": "",
-      "start": 1722590366426,
-      "end": 1722590366426,
+      "start": 1722635715167,
+      "end": 1722635715167,
       "order": "normal",
       "sourcemaps": {
         "mappings": ""
@@ -58,50 +58,50 @@
     },
     {
       "name": "vite:build-html",
-      "start": 1722590366426,
-      "end": 1722590366426,
+      "start": 1722635715167,
+      "end": 1722635715167,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1722590366426,
-      "end": 1722590366426,
+      "start": 1722635715167,
+      "end": 1722635715167,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1722590366426,
-      "end": 1722590366426,
+      "start": 1722635715167,
+      "end": 1722635715167,
       "order": "normal"
     },
     {
       "name": "commonjs",
-      "start": 1722590366426,
-      "end": 1722590366426,
+      "start": 1722635715167,
+      "end": 1722635715167,
       "order": "normal"
     },
     {
       "name": "vite:dynamic-import-vars",
-      "start": 1722590366426,
-      "end": 1722590366426,
+      "start": 1722635715167,
+      "end": 1722635715167,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1722590366426,
-      "end": 1722590366426,
+      "start": 1722635715167,
+      "end": 1722635715167,
       "order": "normal"
     },
     {
       "name": "vite:build-import-analysis",
-      "start": 1722590366426,
-      "end": 1722590366426,
+      "start": 1722635715167,
+      "end": 1722635715167,
       "order": "normal"
     },
     {
       "name": "vite:reporter",
-      "start": 1722590366426,
-      "end": 1722590366426,
+      "start": 1722635715167,
+      "end": 1722635715167,
       "order": "normal"
     }
   ]

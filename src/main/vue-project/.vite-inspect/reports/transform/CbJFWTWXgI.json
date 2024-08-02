@@ -4,98 +4,98 @@
     {
       "name": "vite:load-fallback",
       "result": "// Utilities\nimport { computed, inject, provide, shallowRef } from 'vue';\n\n// Types\n\n// Depth\nexport const DepthKey = Symbol.for('vuetify:depth');\nexport function useDepth(hasPrepend) {\n  const parent = inject(DepthKey, shallowRef(-1));\n  const depth = computed(() => parent.value + 1 + (hasPrepend?.value ? 1 : 0));\n  provide(DepthKey, depth);\n  return depth;\n}\n\n// List\nexport const ListKey = Symbol.for('vuetify:list');\nexport function createList() {\n  const parent = inject(ListKey, {\n    hasPrepend: shallowRef(false),\n    updateHasPrepend: () => null\n  });\n  const data = {\n    hasPrepend: shallowRef(false),\n    updateHasPrepend: value => {\n      if (value) data.hasPrepend.value = value;\n    }\n  };\n  provide(ListKey, data);\n  return parent;\n}\nexport function useList() {\n  return inject(ListKey, null);\n}\n//# sourceMappingURL=list.mjs.map",
-      "start": 1722590366179,
-      "end": 1722590366229,
+      "start": 1722635714979,
+      "end": 1722635715000,
       "sourcemaps": null
     },
     {
       "name": "vite:css",
-      "start": 1722590366229,
-      "end": 1722590366229,
+      "start": 1722635715000,
+      "end": 1722635715000,
       "order": "normal"
     },
     {
       "name": "vite:esbuild",
-      "start": 1722590366229,
-      "end": 1722590366229,
+      "start": 1722635715000,
+      "end": 1722635715000,
       "order": "normal"
     },
     {
       "name": "vite:json",
-      "start": 1722590366229,
-      "end": 1722590366229,
+      "start": 1722635715000,
+      "end": 1722635715000,
       "order": "normal"
     },
     {
       "name": "vite:worker",
-      "start": 1722590366229,
-      "end": 1722590366229,
+      "start": 1722635715000,
+      "end": 1722635715000,
       "order": "normal"
     },
     {
       "name": "vite:vue",
-      "start": 1722590366229,
-      "end": 1722590366229,
+      "start": 1722635715000,
+      "end": 1722635715000,
       "order": "normal"
     },
     {
       "name": "vite:define",
-      "start": 1722590366229,
-      "end": 1722590366229,
+      "start": 1722635715000,
+      "end": 1722635715000,
       "order": "normal"
     },
     {
       "name": "vite:css-post",
-      "start": 1722590366229,
-      "end": 1722590366229,
+      "start": 1722635715000,
+      "end": 1722635715000,
       "order": "normal"
     },
     {
       "name": "vite:build-html",
-      "start": 1722590366229,
-      "end": 1722590366229,
+      "start": 1722635715000,
+      "end": 1722635715000,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1722590366229,
-      "end": 1722590366229,
+      "start": 1722635715000,
+      "end": 1722635715000,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1722590366229,
-      "end": 1722590366229,
+      "start": 1722635715000,
+      "end": 1722635715000,
       "order": "normal"
     },
     {
       "name": "commonjs",
-      "start": 1722590366229,
-      "end": 1722590366229,
+      "start": 1722635715000,
+      "end": 1722635715000,
       "order": "normal"
     },
     {
       "name": "vite:dynamic-import-vars",
-      "start": 1722590366229,
-      "end": 1722590366229,
+      "start": 1722635715000,
+      "end": 1722635715000,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1722590366229,
-      "end": 1722590366229,
+      "start": 1722635715000,
+      "end": 1722635715000,
       "order": "normal"
     },
     {
       "name": "vite:build-import-analysis",
-      "start": 1722590366229,
-      "end": 1722590366229,
+      "start": 1722635715000,
+      "end": 1722635715000,
       "order": "normal"
     },
     {
       "name": "vite:reporter",
-      "start": 1722590366229,
-      "end": 1722590366229,
+      "start": 1722635715000,
+      "end": 1722635715000,
       "order": "normal"
     }
   ]

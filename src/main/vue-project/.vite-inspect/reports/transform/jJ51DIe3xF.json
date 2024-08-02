@@ -4,21 +4,21 @@
     {
       "name": "vite:load-fallback",
       "result": "import { createApp } from 'vue'\nimport App from './App.vue'\nimport { router } from '@/routes/router'\nimport { vuetify } from './vuetify'\nimport { createVuetify } from 'vuetify'\nimport { VDateInput } from 'vuetify/labs/components'\n\nexport default createVuetify({\n  components: {\n    VDateInput,\n  },\n})\n\n\ncreateApp(App).use(router).use(vuetify).mount('#app')\n",
-      "start": 1722590363690,
-      "end": 1722590363691,
+      "start": 1722635713366,
+      "end": 1722635713371,
       "sourcemaps": null
     },
     {
       "name": "vite:css",
-      "start": 1722590363691,
-      "end": 1722590363691,
+      "start": 1722635713372,
+      "end": 1722635713372,
       "order": "normal"
     },
     {
       "name": "vite:esbuild",
       "result": "import { createApp } from \"vue\";\nimport App from \"./App.vue\";\nimport { router } from \"@/routes/router\";\nimport { vuetify } from \"./vuetify\";\nimport { createVuetify } from \"vuetify\";\nimport { VDateInput } from \"vuetify/labs/components\";\nexport default createVuetify({\n  components: {\n    VDateInput\n  }\n});\ncreateApp(App).use(router).use(vuetify).mount(\"#app\");\n",
-      "start": 1722590363691,
-      "end": 1722590363708,
+      "start": 1722635713372,
+      "end": 1722635713382,
       "order": "normal",
       "sourcemaps": {
         "version": 3,
@@ -34,80 +34,80 @@
     },
     {
       "name": "vite:json",
-      "start": 1722590363708,
-      "end": 1722590363708,
+      "start": 1722635713383,
+      "end": 1722635713383,
       "order": "normal"
     },
     {
       "name": "vite:worker",
-      "start": 1722590363708,
-      "end": 1722590363708,
+      "start": 1722635713383,
+      "end": 1722635713383,
       "order": "normal"
     },
     {
       "name": "vite:vue",
-      "start": 1722590363708,
-      "end": 1722590363708,
+      "start": 1722635713383,
+      "end": 1722635713383,
       "order": "normal"
     },
     {
       "name": "vite:define",
-      "start": 1722590363708,
-      "end": 1722590363708,
+      "start": 1722635713383,
+      "end": 1722635713383,
       "order": "normal"
     },
     {
       "name": "vite:css-post",
-      "start": 1722590363708,
-      "end": 1722590363708,
+      "start": 1722635713383,
+      "end": 1722635713383,
       "order": "normal"
     },
     {
       "name": "vite:build-html",
-      "start": 1722590363708,
-      "end": 1722590363708,
+      "start": 1722635713383,
+      "end": 1722635713383,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1722590363708,
-      "end": 1722590363708,
+      "start": 1722635713383,
+      "end": 1722635713383,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1722590363708,
-      "end": 1722590363708,
+      "start": 1722635713383,
+      "end": 1722635713383,
       "order": "normal"
     },
     {
       "name": "commonjs",
-      "start": 1722590363708,
-      "end": 1722590363708,
+      "start": 1722635713383,
+      "end": 1722635713383,
       "order": "normal"
     },
     {
       "name": "vite:dynamic-import-vars",
-      "start": 1722590363708,
-      "end": 1722590363708,
+      "start": 1722635713383,
+      "end": 1722635713383,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1722590363708,
-      "end": 1722590363708,
+      "start": 1722635713383,
+      "end": 1722635713383,
       "order": "normal"
     },
     {
       "name": "vite:build-import-analysis",
-      "start": 1722590363708,
-      "end": 1722590363708,
+      "start": 1722635713383,
+      "end": 1722635713383,
       "order": "normal"
     },
     {
       "name": "vite:reporter",
-      "start": 1722590363708,
-      "end": 1722590363708,
+      "start": 1722635713383,
+      "end": 1722635713383,
       "order": "normal"
     }
   ]

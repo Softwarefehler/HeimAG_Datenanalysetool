@@ -7,7 +7,7 @@ import kotlinx.serialization.Serializable
 
 
 @Serializable
-data class seachParameter(val date: String, val temp: String)
+data class search(val date: String, val temp: String)
 
 fun Application.configureDatenanalyse() {
     routing {

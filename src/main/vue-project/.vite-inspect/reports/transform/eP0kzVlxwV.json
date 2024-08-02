@@ -4,98 +4,98 @@
     {
       "name": "vite:load-fallback",
       "result": "import { createVNode as _createVNode } from \"vue\";\n// Styles\nimport \"./VExpansionPanel.css\";\n\n// Components\nimport { VExpansionPanelSymbol } from \"./shared.mjs\";\nimport { makeVExpansionPanelProps } from \"./VExpansionPanel.mjs\"; // Composables\nimport { provideDefaults } from \"../../composables/defaults.mjs\";\nimport { makeGroupProps, useGroup } from \"../../composables/group.mjs\";\nimport { makeThemeProps, provideTheme } from \"../../composables/theme.mjs\"; // Utilities\nimport { computed, toRef } from 'vue';\nimport { genericComponent, propsFactory, useRender } from \"../../util/index.mjs\"; // Types\nconst allowedVariants = ['default', 'accordion', 'inset', 'popout'];\nexport const makeVExpansionPanelsProps = propsFactory({\n  flat: Boolean,\n  ...makeGroupProps(),\n  ...makeVExpansionPanelProps(),\n  ...makeThemeProps(),\n  variant: {\n    type: String,\n    default: 'default',\n    validator: v => allowedVariants.includes(v)\n  }\n}, 'VExpansionPanels');\nexport const VExpansionPanels = genericComponent()({\n  name: 'VExpansionPanels',\n  props: makeVExpansionPanelsProps(),\n  emits: {\n    'update:modelValue': val => true\n  },\n  setup(props, _ref) {\n    let {\n      slots\n    } = _ref;\n    const {\n      next,\n      prev\n    } = useGroup(props, VExpansionPanelSymbol);\n    const {\n      themeClasses\n    } = provideTheme(props);\n    const variantClass = computed(() => props.variant && `v-expansion-panels--variant-${props.variant}`);\n    provideDefaults({\n      VExpansionPanel: {\n        bgColor: toRef(props, 'bgColor'),\n        collapseIcon: toRef(props, 'collapseIcon'),\n        color: toRef(props, 'color'),\n        eager: toRef(props, 'eager'),\n        elevation: toRef(props, 'elevation'),\n        expandIcon: toRef(props, 'expandIcon'),\n        focusable: toRef(props, 'focusable'),\n        hideActions: toRef(props, 'hideActions'),\n        readonly: toRef(props, 'readonly'),\n        ripple: toRef(props, 'ripple'),\n        rounded: toRef(props, 'rounded'),\n        static: toRef(props, 'static')\n      }\n    });\n    useRender(() => _createVNode(props.tag, {\n      \"class\": ['v-expansion-panels', {\n        'v-expansion-panels--flat': props.flat,\n        'v-expansion-panels--tile': props.tile\n      }, themeClasses.value, variantClass.value, props.class],\n      \"style\": props.style\n    }, {\n      default: () => [slots.default?.({\n        prev,\n        next\n      })]\n    }));\n    return {\n      next,\n      prev\n    };\n  }\n});\n//# sourceMappingURL=VExpansionPanels.mjs.map",
-      "start": 1722590365362,
-      "end": 1722590365548,
+      "start": 1722635714152,
+      "end": 1722635714193,
       "sourcemaps": null
     },
     {
       "name": "vite:css",
-      "start": 1722590365548,
-      "end": 1722590365548,
+      "start": 1722635714193,
+      "end": 1722635714193,
       "order": "normal"
     },
     {
       "name": "vite:esbuild",
-      "start": 1722590365548,
-      "end": 1722590365548,
+      "start": 1722635714193,
+      "end": 1722635714193,
       "order": "normal"
     },
     {
       "name": "vite:json",
-      "start": 1722590365548,
-      "end": 1722590365548,
+      "start": 1722635714193,
+      "end": 1722635714193,
       "order": "normal"
     },
     {
       "name": "vite:worker",
-      "start": 1722590365548,
-      "end": 1722590365548,
+      "start": 1722635714193,
+      "end": 1722635714193,
       "order": "normal"
     },
     {
       "name": "vite:vue",
-      "start": 1722590365548,
-      "end": 1722590365548,
+      "start": 1722635714193,
+      "end": 1722635714193,
       "order": "normal"
     },
     {
       "name": "vite:define",
-      "start": 1722590365548,
-      "end": 1722590365548,
+      "start": 1722635714193,
+      "end": 1722635714193,
       "order": "normal"
     },
     {
       "name": "vite:css-post",
-      "start": 1722590365548,
-      "end": 1722590365548,
+      "start": 1722635714193,
+      "end": 1722635714193,
       "order": "normal"
     },
     {
       "name": "vite:build-html",
-      "start": 1722590365548,
-      "end": 1722590365548,
+      "start": 1722635714193,
+      "end": 1722635714193,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1722590365548,
-      "end": 1722590365548,
+      "start": 1722635714193,
+      "end": 1722635714193,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1722590365548,
-      "end": 1722590365548,
+      "start": 1722635714193,
+      "end": 1722635714193,
       "order": "normal"
     },
     {
       "name": "commonjs",
-      "start": 1722590365548,
-      "end": 1722590365548,
+      "start": 1722635714193,
+      "end": 1722635714193,
       "order": "normal"
     },
     {
       "name": "vite:dynamic-import-vars",
-      "start": 1722590365549,
-      "end": 1722590365549,
+      "start": 1722635714193,
+      "end": 1722635714193,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1722590365549,
-      "end": 1722590365549,
+      "start": 1722635714193,
+      "end": 1722635714193,
       "order": "normal"
     },
     {
       "name": "vite:build-import-analysis",
-      "start": 1722590365549,
-      "end": 1722590365549,
+      "start": 1722635714193,
+      "end": 1722635714193,
       "order": "normal"
     },
     {
       "name": "vite:reporter",
-      "start": 1722590365549,
-      "end": 1722590365549,
+      "start": 1722635714193,
+      "end": 1722635714193,
       "order": "normal"
     }
   ]

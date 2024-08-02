@@ -4,98 +4,98 @@
     {
       "name": "vite:load-fallback",
       "result": "import { createVNode as _createVNode, mergeProps as _mergeProps, resolveDirective as _resolveDirective } from \"vue\";\n// Components\nimport { makeVBarlineProps, VBarline } from \"./VBarline.mjs\";\nimport { makeVTrendlineProps, VTrendline } from \"./VTrendline.mjs\"; // Composables\nimport { useTextColor } from \"../../composables/color.mjs\"; // Utilities\nimport { computed, toRef } from 'vue';\nimport { genericComponent, propsFactory, useRender } from \"../../util/index.mjs\"; // Types\n// Types\n\nexport const makeVSparklineProps = propsFactory({\n  type: {\n    type: String,\n    default: 'trend'\n  },\n  ...makeVBarlineProps(),\n  ...makeVTrendlineProps()\n}, 'VSparkline');\nexport const VSparkline = genericComponent()({\n  name: 'VSparkline',\n  props: makeVSparklineProps(),\n  setup(props, _ref) {\n    let {\n      slots\n    } = _ref;\n    const {\n      textColorClasses,\n      textColorStyles\n    } = useTextColor(toRef(props, 'color'));\n    const hasLabels = computed(() => {\n      return Boolean(props.showLabels || props.labels.length > 0 || !!slots?.label);\n    });\n    const totalHeight = computed(() => {\n      let height = parseInt(props.height, 10);\n      if (hasLabels.value) height += parseInt(props.labelSize, 10) * 1.5;\n      return height;\n    });\n    useRender(() => {\n      const Tag = props.type === 'trend' ? VTrendline : VBarline;\n      const lineProps = props.type === 'trend' ? VTrendline.filterProps(props) : VBarline.filterProps(props);\n      return _createVNode(Tag, _mergeProps({\n        \"key\": props.type,\n        \"class\": textColorClasses.value,\n        \"style\": textColorStyles.value,\n        \"viewBox\": `0 0 ${props.width} ${parseInt(totalHeight.value, 10)}`\n      }, lineProps), slots);\n    });\n  }\n});\n//# sourceMappingURL=VSparkline.mjs.map",
-      "start": 1722590365981,
-      "end": 1722590366112,
+      "start": 1722635714696,
+      "end": 1722635714823,
       "sourcemaps": null
     },
     {
       "name": "vite:css",
-      "start": 1722590366112,
-      "end": 1722590366112,
+      "start": 1722635714823,
+      "end": 1722635714823,
       "order": "normal"
     },
     {
       "name": "vite:esbuild",
-      "start": 1722590366112,
-      "end": 1722590366112,
+      "start": 1722635714823,
+      "end": 1722635714823,
       "order": "normal"
     },
     {
       "name": "vite:json",
-      "start": 1722590366112,
-      "end": 1722590366112,
+      "start": 1722635714823,
+      "end": 1722635714823,
       "order": "normal"
     },
     {
       "name": "vite:worker",
-      "start": 1722590366112,
-      "end": 1722590366112,
+      "start": 1722635714823,
+      "end": 1722635714823,
       "order": "normal"
     },
     {
       "name": "vite:vue",
-      "start": 1722590366112,
-      "end": 1722590366112,
+      "start": 1722635714823,
+      "end": 1722635714823,
       "order": "normal"
     },
     {
       "name": "vite:define",
-      "start": 1722590366112,
-      "end": 1722590366112,
+      "start": 1722635714823,
+      "end": 1722635714823,
       "order": "normal"
     },
     {
       "name": "vite:css-post",
-      "start": 1722590366112,
-      "end": 1722590366112,
+      "start": 1722635714823,
+      "end": 1722635714823,
       "order": "normal"
     },
     {
       "name": "vite:build-html",
-      "start": 1722590366112,
-      "end": 1722590366112,
+      "start": 1722635714823,
+      "end": 1722635714823,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1722590366112,
-      "end": 1722590366112,
+      "start": 1722635714823,
+      "end": 1722635714823,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1722590366112,
-      "end": 1722590366112,
+      "start": 1722635714823,
+      "end": 1722635714823,
       "order": "normal"
     },
     {
       "name": "commonjs",
-      "start": 1722590366112,
-      "end": 1722590366112,
+      "start": 1722635714823,
+      "end": 1722635714823,
       "order": "normal"
     },
     {
       "name": "vite:dynamic-import-vars",
-      "start": 1722590366113,
-      "end": 1722590366113,
+      "start": 1722635714824,
+      "end": 1722635714824,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1722590366113,
-      "end": 1722590366113,
+      "start": 1722635714824,
+      "end": 1722635714824,
       "order": "normal"
     },
     {
       "name": "vite:build-import-analysis",
-      "start": 1722590366113,
-      "end": 1722590366113,
+      "start": 1722635714824,
+      "end": 1722635714824,
       "order": "normal"
     },
     {
       "name": "vite:reporter",
-      "start": 1722590366113,
-      "end": 1722590366113,
+      "start": 1722635714824,
+      "end": 1722635714824,
       "order": "normal"
     }
   ]
