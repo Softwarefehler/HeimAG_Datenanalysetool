@@ -1,5 +1,6 @@
 package ch.heimag.datenanalysetool.routes
 
+import ch.heimag.datenanalysetool.builder.DateBuilder
 import ch.heimag.datenanalysetool.plugins.UserSession
 import io.ktor.http.*
 import io.ktor.http.content.*
@@ -16,7 +17,7 @@ data class UserInfo(val username: String)
 data class seachParam(val startDate: String, val endDate: String, val country: String)
 
 
-fun Application.SinglePageApplication() {
+fun Application.singlePageApplication() {
     routing {
         authenticate("auth-session") {
             singlePageApplication { vue("src/main/vue-project/dist") }
@@ -32,34 +33,42 @@ fun Application.SinglePageApplication() {
 
             post("/") {
                 val multipart = call.receiveMultipart()
-                var startDate: String? = null
-                var endDate: String? = null
-                var selectedCountry: String? = null
+                var startDateReceive: String? = null
+                var endDateReceive: String? = null
+                var selectedCountryReceive: String? = null
 
                 multipart.forEachPart { part ->
                     when (part) {
                         is PartData.FormItem -> {
                             when (part.name) {
-                                "startDate" -> startDate = part.value
-                                "endDate" -> endDate = part.value
-                                "selectedCountry" -> selectedCountry = part.value
+                                "startDate" -> startDateReceive = part.value
+                                "endDate" -> endDateReceive = part.value
+                                "selectedCountry" -> selectedCountryReceive = part.value
                             }
-                        }
-                        is PartData.FileItem -> {
-                            // Handle file items if necessary
                         }
                         else -> {}
                     }
                     part.dispose()
                 }
 
+                val startDateString = startDateReceive.toString() ?: "1990.02.22"
+                val endDateString = endDateReceive.toString() ?: "1990.02.22"
+                val selectedCountryString = selectedCountryReceive.toString() ?: "colorado"
+
+                // Parse Daten
+               val dateBuild = DateBuilder()
+                val startDate = dateBuild.buildDate(startDateString)
+                val endDate = dateBuild.buildDate(endDateString)
+
+
                 // Debug-Ausgabe
                 println("Start Date: $startDate")
                 println("End Date: $endDate")
-                println("Selected Country: $selectedCountry")
+                println("Selected Country: $selectedCountryReceive,$selectedCountryString")
+
 
                 // Sende eine Antwort zurück
-                call.respondText("Data received: startDate=$startDate, endDate=$endDate, selectedCountry=$selectedCountry")
+                call.respondText("Data received: startDate=$startDateReceive, endDate=$endDateReceive, selectedCountry=$selectedCountryReceive")
             }
 
         }

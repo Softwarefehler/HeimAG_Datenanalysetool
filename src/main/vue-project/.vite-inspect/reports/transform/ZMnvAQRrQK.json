@@ -4,98 +4,98 @@
     {
       "name": "vite:load-fallback",
       "result": "import { createVNode as _createVNode } from \"vue\";\n// Styles\nimport \"./VLayoutItem.css\";\n\n// Composables\nimport { makeComponentProps } from \"../../composables/component.mjs\";\nimport { makeLayoutItemProps, useLayoutItem } from \"../../composables/layout.mjs\"; // Utilities\nimport { computed, toRef } from 'vue';\nimport { genericComponent, propsFactory, useRender } from \"../../util/index.mjs\"; // Types\nexport const makeVLayoutItemProps = propsFactory({\n  position: {\n    type: String,\n    required: true\n  },\n  size: {\n    type: [Number, String],\n    default: 300\n  },\n  modelValue: Boolean,\n  ...makeComponentProps(),\n  ...makeLayoutItemProps()\n}, 'VLayoutItem');\nexport const VLayoutItem = genericComponent()({\n  name: 'VLayoutItem',\n  props: makeVLayoutItemProps(),\n  setup(props, _ref) {\n    let {\n      slots\n    } = _ref;\n    const {\n      layoutItemStyles,\n      layoutIsReady\n    } = useLayoutItem({\n      id: props.name,\n      order: computed(() => parseInt(props.order, 10)),\n      position: toRef(props, 'position'),\n      elementSize: toRef(props, 'size'),\n      layoutSize: toRef(props, 'size'),\n      active: toRef(props, 'modelValue'),\n      absolute: toRef(props, 'absolute')\n    });\n    useRender(() => _createVNode(\"div\", {\n      \"class\": ['v-layout-item', props.class],\n      \"style\": [layoutItemStyles.value, props.style]\n    }, [slots.default?.()]));\n    return layoutIsReady;\n  }\n});\n//# sourceMappingURL=VLayoutItem.mjs.map",
-      "start": 1722635714636,
-      "end": 1722635714691,
+      "start": 1722687331175,
+      "end": 1722687331243,
       "sourcemaps": null
     },
     {
       "name": "vite:css",
-      "start": 1722635714691,
-      "end": 1722635714691,
+      "start": 1722687331243,
+      "end": 1722687331243,
       "order": "normal"
     },
     {
       "name": "vite:esbuild",
-      "start": 1722635714691,
-      "end": 1722635714691,
+      "start": 1722687331243,
+      "end": 1722687331243,
       "order": "normal"
     },
     {
       "name": "vite:json",
-      "start": 1722635714691,
-      "end": 1722635714691,
+      "start": 1722687331243,
+      "end": 1722687331243,
       "order": "normal"
     },
     {
       "name": "vite:worker",
-      "start": 1722635714691,
-      "end": 1722635714691,
+      "start": 1722687331243,
+      "end": 1722687331243,
       "order": "normal"
     },
     {
       "name": "vite:vue",
-      "start": 1722635714691,
-      "end": 1722635714691,
+      "start": 1722687331243,
+      "end": 1722687331243,
       "order": "normal"
     },
     {
       "name": "vite:define",
-      "start": 1722635714691,
-      "end": 1722635714691,
+      "start": 1722687331243,
+      "end": 1722687331243,
       "order": "normal"
     },
     {
       "name": "vite:css-post",
-      "start": 1722635714691,
-      "end": 1722635714691,
+      "start": 1722687331243,
+      "end": 1722687331243,
       "order": "normal"
     },
     {
       "name": "vite:build-html",
-      "start": 1722635714691,
-      "end": 1722635714691,
+      "start": 1722687331243,
+      "end": 1722687331243,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1722635714691,
-      "end": 1722635714691,
+      "start": 1722687331243,
+      "end": 1722687331243,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1722635714691,
-      "end": 1722635714691,
+      "start": 1722687331243,
+      "end": 1722687331243,
       "order": "normal"
     },
     {
       "name": "commonjs",
-      "start": 1722635714691,
-      "end": 1722635714691,
+      "start": 1722687331243,
+      "end": 1722687331243,
       "order": "normal"
     },
     {
       "name": "vite:dynamic-import-vars",
-      "start": 1722635714691,
-      "end": 1722635714691,
+      "start": 1722687331244,
+      "end": 1722687331244,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1722635714691,
-      "end": 1722635714691,
+      "start": 1722687331244,
+      "end": 1722687331244,
       "order": "normal"
     },
     {
       "name": "vite:build-import-analysis",
-      "start": 1722635714691,
-      "end": 1722635714691,
+      "start": 1722687331244,
+      "end": 1722687331244,
       "order": "normal"
     },
     {
       "name": "vite:reporter",
-      "start": 1722635714691,
-      "end": 1722635714691,
+      "start": 1722687331244,
+      "end": 1722687331244,
       "order": "normal"
     }
   ]

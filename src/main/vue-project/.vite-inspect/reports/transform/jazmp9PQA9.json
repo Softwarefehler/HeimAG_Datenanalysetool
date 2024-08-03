@@ -4,98 +4,98 @@
     {
       "name": "vite:load-fallback",
       "result": "// Utilities\nimport { computed } from 'vue';\nimport { getCurrentInstanceName, propsFactory } from \"../util/index.mjs\"; // Types\nconst positionValues = ['static', 'relative', 'fixed', 'absolute', 'sticky'];\n// Composables\nexport const makePositionProps = propsFactory({\n  position: {\n    type: String,\n    validator: /* istanbul ignore next */v => positionValues.includes(v)\n  }\n}, 'position');\nexport function usePosition(props) {\n  let name = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : getCurrentInstanceName();\n  const positionClasses = computed(() => {\n    return props.position ? `${name}--${props.position}` : undefined;\n  });\n  return {\n    positionClasses\n  };\n}\n//# sourceMappingURL=position.mjs.map",
-      "start": 1722635714972,
-      "end": 1722635714987,
+      "start": 1722687331496,
+      "end": 1722687331567,
       "sourcemaps": null
     },
     {
       "name": "vite:css",
-      "start": 1722635714987,
-      "end": 1722635714987,
+      "start": 1722687331567,
+      "end": 1722687331567,
       "order": "normal"
     },
     {
       "name": "vite:esbuild",
-      "start": 1722635714987,
-      "end": 1722635714987,
+      "start": 1722687331567,
+      "end": 1722687331567,
       "order": "normal"
     },
     {
       "name": "vite:json",
-      "start": 1722635714987,
-      "end": 1722635714987,
+      "start": 1722687331567,
+      "end": 1722687331567,
       "order": "normal"
     },
     {
       "name": "vite:worker",
-      "start": 1722635714987,
-      "end": 1722635714987,
+      "start": 1722687331567,
+      "end": 1722687331567,
       "order": "normal"
     },
     {
       "name": "vite:vue",
-      "start": 1722635714987,
-      "end": 1722635714987,
+      "start": 1722687331567,
+      "end": 1722687331567,
       "order": "normal"
     },
     {
       "name": "vite:define",
-      "start": 1722635714987,
-      "end": 1722635714987,
+      "start": 1722687331567,
+      "end": 1722687331567,
       "order": "normal"
     },
     {
       "name": "vite:css-post",
-      "start": 1722635714987,
-      "end": 1722635714987,
+      "start": 1722687331567,
+      "end": 1722687331567,
       "order": "normal"
     },
     {
       "name": "vite:build-html",
-      "start": 1722635714987,
-      "end": 1722635714987,
+      "start": 1722687331567,
+      "end": 1722687331567,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1722635714987,
-      "end": 1722635714987,
+      "start": 1722687331567,
+      "end": 1722687331567,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1722635714987,
-      "end": 1722635714987,
+      "start": 1722687331567,
+      "end": 1722687331567,
       "order": "normal"
     },
     {
       "name": "commonjs",
-      "start": 1722635714987,
-      "end": 1722635714987,
+      "start": 1722687331567,
+      "end": 1722687331567,
       "order": "normal"
     },
     {
       "name": "vite:dynamic-import-vars",
-      "start": 1722635714987,
-      "end": 1722635714987,
+      "start": 1722687331568,
+      "end": 1722687331568,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1722635714987,
-      "end": 1722635714987,
+      "start": 1722687331568,
+      "end": 1722687331568,
       "order": "normal"
     },
     {
       "name": "vite:build-import-analysis",
-      "start": 1722635714987,
-      "end": 1722635714987,
+      "start": 1722687331568,
+      "end": 1722687331568,
       "order": "normal"
     },
     {
       "name": "vite:reporter",
-      "start": 1722635714987,
-      "end": 1722635714987,
+      "start": 1722687331568,
+      "end": 1722687331568,
       "order": "normal"
     }
   ]

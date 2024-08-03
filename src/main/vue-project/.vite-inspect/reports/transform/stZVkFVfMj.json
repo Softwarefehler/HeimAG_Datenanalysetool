@@ -4,98 +4,98 @@
     {
       "name": "vite:load-fallback",
       "result": "/* eslint-disable no-console */\n\n// Utilities\nimport { warn } from 'vue';\nexport function consoleWarn(message) {\n  warn(`Vuetify: ${message}`);\n}\nexport function consoleError(message) {\n  warn(`Vuetify error: ${message}`);\n}\nexport function deprecate(original, replacement) {\n  replacement = Array.isArray(replacement) ? replacement.slice(0, -1).map(s => `'${s}'`).join(', ') + ` or '${replacement.at(-1)}'` : `'${replacement}'`;\n  warn(`[Vuetify UPGRADE] '${original}' is deprecated, use ${replacement} instead.`);\n}\nexport function breaking(original, replacement) {\n  // warn(`[Vuetify BREAKING] '${original}' has been removed, use '${replacement}' instead. For more information, see the upgrade guide https://github.com/vuetifyjs/vuetify/releases/tag/v2.0.0#user-content-upgrade-guide`)\n}\nexport function removed(original) {\n  // warn(`[Vuetify REMOVED] '${original}' has been removed. You can safely omit it.`)\n}\n//# sourceMappingURL=console.mjs.map",
-      "start": 1722635713624,
-      "end": 1722635713836,
+      "start": 1722687330212,
+      "end": 1722687330287,
       "sourcemaps": null
     },
     {
       "name": "vite:css",
-      "start": 1722635713836,
-      "end": 1722635713836,
+      "start": 1722687330287,
+      "end": 1722687330287,
       "order": "normal"
     },
     {
       "name": "vite:esbuild",
-      "start": 1722635713836,
-      "end": 1722635713836,
+      "start": 1722687330287,
+      "end": 1722687330287,
       "order": "normal"
     },
     {
       "name": "vite:json",
-      "start": 1722635713836,
-      "end": 1722635713836,
+      "start": 1722687330287,
+      "end": 1722687330287,
       "order": "normal"
     },
     {
       "name": "vite:worker",
-      "start": 1722635713836,
-      "end": 1722635713836,
+      "start": 1722687330287,
+      "end": 1722687330287,
       "order": "normal"
     },
     {
       "name": "vite:vue",
-      "start": 1722635713836,
-      "end": 1722635713836,
+      "start": 1722687330287,
+      "end": 1722687330287,
       "order": "normal"
     },
     {
       "name": "vite:define",
-      "start": 1722635713836,
-      "end": 1722635713836,
+      "start": 1722687330287,
+      "end": 1722687330287,
       "order": "normal"
     },
     {
       "name": "vite:css-post",
-      "start": 1722635713836,
-      "end": 1722635713836,
+      "start": 1722687330287,
+      "end": 1722687330287,
       "order": "normal"
     },
     {
       "name": "vite:build-html",
-      "start": 1722635713836,
-      "end": 1722635713836,
+      "start": 1722687330287,
+      "end": 1722687330287,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1722635713836,
-      "end": 1722635713836,
+      "start": 1722687330287,
+      "end": 1722687330287,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1722635713836,
-      "end": 1722635713836,
+      "start": 1722687330287,
+      "end": 1722687330287,
       "order": "normal"
     },
     {
       "name": "commonjs",
-      "start": 1722635713836,
-      "end": 1722635713836,
+      "start": 1722687330287,
+      "end": 1722687330287,
       "order": "normal"
     },
     {
       "name": "vite:dynamic-import-vars",
-      "start": 1722635713836,
-      "end": 1722635713836,
+      "start": 1722687330287,
+      "end": 1722687330287,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1722635713836,
-      "end": 1722635713836,
+      "start": 1722687330287,
+      "end": 1722687330287,
       "order": "normal"
     },
     {
       "name": "vite:build-import-analysis",
-      "start": 1722635713836,
-      "end": 1722635713836,
+      "start": 1722687330287,
+      "end": 1722687330287,
       "order": "normal"
     },
     {
       "name": "vite:reporter",
-      "start": 1722635713836,
-      "end": 1722635713836,
+      "start": 1722687330287,
+      "end": 1722687330287,
       "order": "normal"
     }
   ]

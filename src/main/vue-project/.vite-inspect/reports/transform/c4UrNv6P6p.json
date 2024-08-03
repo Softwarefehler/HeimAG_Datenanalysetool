@@ -3,40 +3,40 @@
   "transforms": [
     {
       "name": "vite:load-fallback",
-      "result": "<script setup lang=\"ts\">\r\nimport { ref } from 'vue'\r\nimport { VDateInput } from 'vuetify/labs/VDateInput'\r\n\r\n// Typen definieren\r\nexport type DatesCategory1 = { date: string; temperatur: string }\r\n\r\n\r\nconst items = [\r\n  {\r\n    date: 'African Elephant',\r\n    temperature: 'Loxodonta africana'\r\n  }\r\n  // ... more items\r\n]\r\n\r\n\r\n// Reaktive Variablen für die Date-Picker\r\nconst startDate = ref<string | null>(null)\r\nlet endDate = ref<string | null>(null)\r\nlet selectedCountry = ref<string | null>(null)\r\n\r\nasync function sendData() {\r\nif (startDate.value !==  null  && endDate.value !==  null && selectedCountry.value !==  null) {\r\n//  const startDateData = new FormData()\r\n  // const endDateData = new FormData()\r\n  //  const selectedCountryData = new FormData()\r\n\r\n  // startDateData.append('startDate',startDate.value.toString())\r\n//  endDateData.append('endDate', endDate.value.toString())\r\n//  selectedCountryData.append('selectedCountry', selectedCountry.value.toString())\r\n\r\n  /*  const responseStartDate = await fetch('/', {\r\n    method: 'POST',\r\n    body: startDateData\r\n  })\r\n  const responseEndDate = await fetch('/', {\r\n    method: 'POST',\r\n    body: endDateData\r\n  })\r\n\r\n  const responseSelectedCountry = await fetch('/', {\r\n    method: 'POST',\r\n    body: selectedCountryData\r\n  })\r\n\r\n\r\n  if (!responseStartDate.ok || !responseEndDate.ok || responseSelectedCountry.ok ) {\r\n    alert(responseStartDate.statusText)\r\n  }else{alert('Bitte füllen Sie alle Felder aus.')}\r\n  }*/\r\n  const formData = new FormData()\r\n  formData.append('startDate', startDate.value)\r\n  formData.append('endDate', endDate.value)\r\n  formData.append('selectedCountry', selectedCountry.value)\r\n\r\n  const response = await fetch('/', {\r\n    method: 'POST',\r\n    body: formData\r\n  })\r\n\r\n  if (!response.ok) {\r\n    alert(response.statusText)\r\n  } else {\r\n    alert('Daten erfolgreich gesendet!')\r\n  }\r\n} else {\r\n  alert('Bitte füllen Sie alle Felder aus.')\r\n}\r\n}\r\n\r\n</script>\r\n\r\n<template>\r\n  <v-container>\r\n    <h4 class=\"text-h5 font-weight-bold mb-4\">Suchkriterien</h4>\r\n    <v-select\r\n      v-model=\"selectedCountry\"\r\n      label=\"Select\"\r\n      :items=\"['California', 'Colorado', 'Florida', 'Georgia', 'Texas', 'Wyoming']\"\r\n    ></v-select>\r\n    <v-row dense>\r\n      <v-col cols=\"12\" md=\"6\">\r\n        <v-date-input\r\n          v-model=\"startDate\"\r\n          label=\"Select a date\"\r\n          prepend-icon=\"\"\r\n          prepend-inner-icon=\"$calendar\"\r\n        ></v-date-input>\r\n      </v-col>\r\n      <v-col cols=\"12\" md=\"6\">\r\n        <v-date-input\r\n          v-model=\"endDate\"\r\n          label=\"Select a date\"\r\n          prepend-icon=\"\"\r\n        ></v-date-input>\r\n      </v-col>\r\n    </v-row>\r\n    <v-btn @click=\"sendData\">Send Data</v-btn>\r\n    <br>\r\n    <br>\r\n    <v-row>\r\n      <v-col cols=\"12\" md=\"12\">\r\n        <v-sheet class=\"mb-4\">\r\n          <v-data-table :items=\"items\"></v-data-table>\r\n        </v-sheet>\r\n      </v-col>\r\n      <v-col cols=\"12\" md=\"12\">\r\n        <v-sheet class=\"mb-4\">\r\n          <v-data-table :items=\"items\"></v-data-table>\r\n        </v-sheet>\r\n      </v-col>\r\n      <v-col cols=\"12\" md=\"12\">\r\n        <v-sheet>\r\n          <v-data-table :items=\"items\"></v-data-table>\r\n        </v-sheet>\r\n      </v-col>\r\n    </v-row>\r\n\r\n\r\n  </v-container>\r\n</template>\r\n\r\n<style scoped>\r\n\r\n</style>",
-      "start": 1722635713469,
-      "end": 1722635713515,
+      "result": "<script setup lang=\"ts\">\r\nimport { ref } from 'vue'\r\nimport { VDateInput } from 'vuetify/labs/VDateInput'\r\n\r\n// Typen definieren\r\nexport type DatesCategory1 = { date: string; temperatur: string }\r\n\r\n\r\nconst items = [\r\n  {\r\n    date: 'African Elephant',\r\n    temperature: 'Loxodonta africana'\r\n  }\r\n  // ... more items\r\n]\r\n\r\n\r\n// Reaktive Variablen für die Date-Picker\r\nconst startDate = ref<string | null>(null)\r\nconst endDate = ref<string | null>(null)\r\nconst selectedCountry = ref<string | null>(null)\r\n\r\nasync function sendData() {\r\nif (startDate.value !==  null  && endDate.value !==  null && selectedCountry.value !==  null) {\r\n//  const startDateData = new FormData()\r\n  // const endDateData = new FormData()\r\n  //  const selectedCountryData = new FormData()\r\n\r\n  // startDateData.append('startDate',startDate.value.toString())\r\n//  endDateData.append('endDate', endDate.value.toString())\r\n//  selectedCountryData.append('selectedCountry', selectedCountry.value.toString())\r\n\r\n  /*  const responseStartDate = await fetch('/', {\r\n    method: 'POST',\r\n    body: startDateData\r\n  })\r\n  const responseEndDate = await fetch('/', {\r\n    method: 'POST',\r\n    body: endDateData\r\n  })\r\n\r\n  const responseSelectedCountry = await fetch('/', {\r\n    method: 'POST',\r\n    body: selectedCountryData\r\n  })\r\n\r\n\r\n  if (!responseStartDate.ok || !responseEndDate.ok || responseSelectedCountry.ok ) {\r\n    alert(responseStartDate.statusText)\r\n  }else{alert('Bitte füllen Sie alle Felder aus.')}\r\n  }*/\r\n  const formData = new FormData()\r\n  formData.append('startDate', startDate.value)\r\n  formData.append('endDate', endDate.value)\r\n  formData.append('selectedCountry', selectedCountry.value)\r\n\r\n  const response = await fetch('/', {\r\n    method: 'POST',\r\n    body: formData\r\n  })\r\n\r\n  if (!response.ok) {\r\n    alert(response.statusText)\r\n  } else {\r\n    alert('Daten erfolgreich gesendet!')\r\n  }\r\n} else {\r\n  alert('Bitte füllen Sie alle Felder aus.')\r\n}\r\n}\r\n\r\n</script>\r\n\r\n<template>\r\n  <v-container>\r\n    <h4 class=\"text-h5 font-weight-bold mb-4\">Suchkriterien</h4>\r\n    <v-select\r\n      v-model=\"selectedCountry\"\r\n      label=\"Select\"\r\n      :items=\"['California', 'Colorado', 'Florida', 'Georgia', 'Texas', 'Wyoming']\"\r\n    ></v-select>\r\n    <v-row dense>\r\n      <v-col cols=\"12\" md=\"6\">\r\n        <v-date-input\r\n          v-model=\"startDate\"\r\n          label=\"Select a date\"\r\n          prepend-icon=\"\"\r\n          prepend-inner-icon=\"$calendar\"\r\n        ></v-date-input>\r\n      </v-col>\r\n      <v-col cols=\"12\" md=\"6\">\r\n        <v-date-input\r\n          v-model=\"endDate\"\r\n          label=\"Select a date\"\r\n          prepend-icon=\"\"\r\n        ></v-date-input>\r\n      </v-col>\r\n    </v-row>\r\n    <v-btn @click=\"sendData\">Send Data</v-btn>\r\n    <br>\r\n    <br>\r\n    <v-row>\r\n      <v-col cols=\"12\" md=\"12\">\r\n        <v-sheet class=\"mb-4\">\r\n          <v-data-table :items=\"items\"></v-data-table>\r\n        </v-sheet>\r\n      </v-col>\r\n      <v-col cols=\"12\" md=\"12\">\r\n        <v-sheet class=\"mb-4\">\r\n          <v-data-table :items=\"items\"></v-data-table>\r\n        </v-sheet>\r\n      </v-col>\r\n      <v-col cols=\"12\" md=\"12\">\r\n        <v-sheet>\r\n          <v-data-table :items=\"items\"></v-data-table>\r\n        </v-sheet>\r\n      </v-col>\r\n    </v-row>\r\n\r\n\r\n  </v-container>\r\n</template>\r\n\r\n<style scoped>\r\n\r\n</style>",
+      "start": 1722687330053,
+      "end": 1722687330109,
       "sourcemaps": null
     },
     {
       "name": "vite:css",
-      "start": 1722635713515,
-      "end": 1722635713515,
+      "start": 1722687330109,
+      "end": 1722687330109,
       "order": "normal"
     },
     {
       "name": "vite:esbuild",
-      "start": 1722635713515,
-      "end": 1722635713515,
+      "start": 1722687330109,
+      "end": 1722687330109,
       "order": "normal"
     },
     {
       "name": "vite:json",
-      "start": 1722635713515,
-      "end": 1722635713515,
+      "start": 1722687330109,
+      "end": 1722687330109,
       "order": "normal"
     },
     {
       "name": "vite:worker",
-      "start": 1722635713515,
-      "end": 1722635713515,
+      "start": 1722687330109,
+      "end": 1722687330109,
       "order": "normal"
     },
     {
       "name": "vite:vue",
       "result": "import _sfc_main from \"C:/Users/MAG/IdeaProjects/Datenanalysetool/src/main/vue-project/src/routes/HomeView.vue?vue&type=script&setup=true&lang.ts\";\nexport * from \"C:/Users/MAG/IdeaProjects/Datenanalysetool/src/main/vue-project/src/routes/HomeView.vue?vue&type=script&setup=true&lang.ts\";\nexport default _sfc_main;\n",
-      "start": 1722635713515,
-      "end": 1722635713583,
+      "start": 1722687330109,
+      "end": 1722687330214,
       "order": "normal",
       "sourcemaps": {
         "mappings": ""
@@ -44,62 +44,62 @@
     },
     {
       "name": "vite:define",
-      "start": 1722635713583,
-      "end": 1722635713583,
+      "start": 1722687330214,
+      "end": 1722687330214,
       "order": "normal"
     },
     {
       "name": "vite:css-post",
-      "start": 1722635713583,
-      "end": 1722635713583,
+      "start": 1722687330214,
+      "end": 1722687330214,
       "order": "normal"
     },
     {
       "name": "vite:build-html",
-      "start": 1722635713583,
-      "end": 1722635713583,
+      "start": 1722687330214,
+      "end": 1722687330214,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1722635713583,
-      "end": 1722635713583,
+      "start": 1722687330215,
+      "end": 1722687330215,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1722635713583,
-      "end": 1722635713583,
+      "start": 1722687330215,
+      "end": 1722687330215,
       "order": "normal"
     },
     {
       "name": "commonjs",
-      "start": 1722635713583,
-      "end": 1722635713583,
+      "start": 1722687330215,
+      "end": 1722687330215,
       "order": "normal"
     },
     {
       "name": "vite:dynamic-import-vars",
-      "start": 1722635713583,
-      "end": 1722635713583,
+      "start": 1722687330215,
+      "end": 1722687330215,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1722635713583,
-      "end": 1722635713583,
+      "start": 1722687330215,
+      "end": 1722687330215,
       "order": "normal"
     },
     {
       "name": "vite:build-import-analysis",
-      "start": 1722635713583,
-      "end": 1722635713583,
+      "start": 1722687330215,
+      "end": 1722687330215,
       "order": "normal"
     },
     {
       "name": "vite:reporter",
-      "start": 1722635713583,
-      "end": 1722635713583,
+      "start": 1722687330215,
+      "end": 1722687330215,
       "order": "normal"
     }
   ]
