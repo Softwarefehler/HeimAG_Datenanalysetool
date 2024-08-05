@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import {  ref } from 'vue'
+import { ref } from 'vue'
 import { useTheme } from 'vuetify'
-
 
 
 // Theme-Setup
 const theme = useTheme()
 const appTitle = ref('HeimAG Datenanalysetool')
+
 
 // Funktion zum Umschalten des Themas
 function toggleTheme() {
@@ -21,8 +21,8 @@ function logout() {
 </script>
 
 <template>
-    <v-app>
-      <v-responsive class="border rounded">
+  <v-app>
+    <v-responsive class="border rounded">
       <v-app-bar class="px-3">
         <v-app-bar-title>{{ appTitle }}</v-app-bar-title>
         <v-btn @click="toggleTheme" icon="mdi-theme-light-dark" />
@@ -33,8 +33,8 @@ function logout() {
           <RouterView />
         </v-container>
       </v-main>
-      </v-responsive>
-    </v-app>
+    </v-responsive>
+  </v-app>
 </template>
 
 <style scoped>

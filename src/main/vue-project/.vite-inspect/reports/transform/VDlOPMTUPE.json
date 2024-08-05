@@ -1,0 +1,24 @@
+{
+  "resolvedId": "C:/Users/MAG/IdeaProjects/Datenanalysetool/src/main/vue-project/src/App.vue?vue&type=style&index=0&scoped=a872ff5e&lang.css",
+  "transforms": [
+    {
+      "name": "vite:vue",
+      "result": "\nheader {\n  line-height: 1.5;\n}\n\n.logo {\n  display: block;\n  margin: 0 auto 2rem;\n}\n\n@media (min-width: 1024px) {\n  header {\n    display: flex;\n    place-items: center;\n    padding-right: calc(var(--section-gap) / 2);\n  }\n\n  .logo {\n    margin: 0 2rem 0 0;\n  }\n\n  header .wrapper {\n    display: flex;\n    place-items: flex-start;\n    flex-wrap: wrap;\n  }\n}\n",
+      "start": 1722879215216,
+      "end": 1722879215216,
+      "sourcemaps": {
+        "version": 3,
+        "sources": [
+          "C:/Users/MAG/IdeaProjects/Datenanalysetool/src/main/vue-project/src/App.vue"
+        ],
+        "names": [],
+        "mappings": ";AAwCA,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE;EACL,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC;AAClB;;AAEA,CAAC,CAAC,CAAC,CAAC,EAAE;EACJ,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC;EACd,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,EAAE,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC;AACrB;;AAEA,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE;EACzB,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE;IACL,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC;IACb,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;IACnB,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,EAAE,CAAC,CAAC;EAC7C;;EAEA,CAAC,CAAC,CAAC,CAAC,EAAE;IACJ,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,EAAE,CAAC,CAAC,CAAC,EAAE,EAAE,CAAC;EACpB;;EAEA,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE;IACd,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC;IACb,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;IACvB,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC;EACjB;AACF",
+        "file": "C:/Users/MAG/IdeaProjects/Datenanalysetool/src/main/vue-project/src/App.vue",
+        "sourceRoot": "",
+        "sourcesContent": [
+          "<script setup lang=\"ts\">\nimport { ref } from 'vue'\nimport { useTheme } from 'vuetify'\n\n\n// Theme-Setup\nconst theme = useTheme()\nconst appTitle = ref('HeimAG Datenanalysetool')\n\n\n// Funktion zum Umschalten des Themas\nfunction toggleTheme() {\n  theme.global.name.value = theme.global.current.value.dark ? 'light' : 'dark'\n}\n\nfunction logout() {\n  location.href = '/logout'\n}\n\n\n</script>\n\n<template>\n  <v-app>\n    <v-responsive class=\"border rounded\">\n      <v-app-bar class=\"px-3\">\n        <v-app-bar-title>{{ appTitle }}</v-app-bar-title>\n        <v-btn @click=\"toggleTheme\" icon=\"mdi-theme-light-dark\" />\n        <v-btn @click=\"logout\" icon=\"mdi-logout\" />\n      </v-app-bar>\n      <v-main>\n        <v-container>\n          <RouterView />\n        </v-container>\n      </v-main>\n    </v-responsive>\n  </v-app>\n</template>\n\n<style scoped>\nheader {\n  line-height: 1.5;\n}\n\n.logo {\n  display: block;\n  margin: 0 auto 2rem;\n}\n\n@media (min-width: 1024px) {\n  header {\n    display: flex;\n    place-items: center;\n    padding-right: calc(var(--section-gap) / 2);\n  }\n\n  .logo {\n    margin: 0 2rem 0 0;\n  }\n\n  header .wrapper {\n    display: flex;\n    place-items: flex-start;\n    flex-wrap: wrap;\n  }\n}\n</style>\n\n"
+        ]
+      }
+    }
+  ]
+}

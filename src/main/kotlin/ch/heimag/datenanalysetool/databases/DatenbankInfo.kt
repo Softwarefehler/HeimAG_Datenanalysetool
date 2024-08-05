@@ -1,4 +1,4 @@
-package ch.heimag.datenanalysetool.Databases
+package ch.heimag.datenanalysetool.databases
 
 interface DatenbankInfo {
     val PROTOCOL: String
