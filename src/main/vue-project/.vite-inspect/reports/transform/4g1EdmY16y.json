@@ -4,9 +4,99 @@
     {
       "name": "vite:load-fallback",
       "result": "// @ts-nocheck\n/* eslint-disable */\nimport pad from \"./pad.mjs\";\n/**\n * @param {String} value YYYY-MM format\n * @param {Number} sign -1 or +1\n */\nexport default ((value, sign) => {\n  const [year, month] = value.split('-').map(Number);\n  if (month + sign === 0) {\n    return `${year - 1}-12`;\n  } else if (month + sign === 13) {\n    return `${year + 1}-01`;\n  } else {\n    return `${year}-${pad(month + sign)}`;\n  }\n});\n//# sourceMappingURL=monthChange.mjs.map",
-      "start": 1722879215868,
-      "end": 1722879215959,
+      "start": 1722976702284,
+      "end": 1722976702359,
       "sourcemaps": null
+    },
+    {
+      "name": "vite:css",
+      "start": 1722976702359,
+      "end": 1722976702359,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1722976702359,
+      "end": 1722976702359,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1722976702359,
+      "end": 1722976702359,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1722976702359,
+      "end": 1722976702359,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1722976702359,
+      "end": 1722976702359,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1722976702359,
+      "end": 1722976702359,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1722976702359,
+      "end": 1722976702359,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1722976702359,
+      "end": 1722976702359,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1722976702359,
+      "end": 1722976702359,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1722976702359,
+      "end": 1722976702359,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1722976702359,
+      "end": 1722976702359,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1722976702359,
+      "end": 1722976702359,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1722976702359,
+      "end": 1722976702359,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1722976702359,
+      "end": 1722976702359,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1722976702359,
+      "end": 1722976702359,
+      "order": "normal"
     }
   ]
 }

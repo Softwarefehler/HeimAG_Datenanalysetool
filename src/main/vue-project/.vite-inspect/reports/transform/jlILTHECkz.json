@@ -4,9 +4,99 @@
     {
       "name": "vite:load-fallback",
       "result": "/*\n * PUBLIC INTERFACES ONLY\n * Imports in our code should be to the composable directly, not this file\n */\nexport { useDate } from \"./date/index.mjs\";\nexport { useDefaults } from \"./defaults.mjs\";\nexport { useDisplay } from \"./display.mjs\";\nexport { useGoTo } from \"./goto.mjs\";\nexport { useLayout } from \"./layout.mjs\";\nexport { useLocale, useRtl } from \"./locale.mjs\";\nexport { useTheme } from \"./theme.mjs\";\n//# sourceMappingURL=index.mjs.map",
-      "start": 1722879215218,
-      "end": 1722879215236,
+      "start": 1722976696089,
+      "end": 1722976696327,
       "sourcemaps": null
+    },
+    {
+      "name": "vite:css",
+      "start": 1722976696328,
+      "end": 1722976696328,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1722976696328,
+      "end": 1722976696328,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1722976696328,
+      "end": 1722976696328,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1722976696328,
+      "end": 1722976696328,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1722976696328,
+      "end": 1722976696328,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1722976696328,
+      "end": 1722976696328,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1722976696328,
+      "end": 1722976696328,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1722976696328,
+      "end": 1722976696328,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1722976696328,
+      "end": 1722976696328,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1722976696328,
+      "end": 1722976696328,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1722976696328,
+      "end": 1722976696328,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1722976696328,
+      "end": 1722976696328,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1722976696328,
+      "end": 1722976696328,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1722976696328,
+      "end": 1722976696328,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1722976696328,
+      "end": 1722976696328,
+      "order": "normal"
     }
   ]
 }

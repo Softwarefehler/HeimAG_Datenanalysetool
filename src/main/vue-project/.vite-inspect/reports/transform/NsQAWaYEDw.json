@@ -4,9 +4,105 @@
     {
       "name": "vite:load-fallback",
       "result": ".v-system-bar {\n  align-items: center;\n  display: flex;\n  flex: 1 1 auto;\n  height: 24px;\n  justify-content: flex-end;\n  max-width: 100%;\n  padding-inline: 8px;\n  position: relative;\n  text-align: end;\n  width: 100%;\n  box-shadow: 0px 0px 0px 0px var(--v-shadow-key-umbra-opacity, rgba(0, 0, 0, 0.2)), 0px 0px 0px 0px var(--v-shadow-key-penumbra-opacity, rgba(0, 0, 0, 0.14)), 0px 0px 0px 0px var(--v-shadow-key-ambient-opacity, rgba(0, 0, 0, 0.12));\n  background: rgba(var(--v-theme-surface-light));\n  color: rgba(var(--v-theme-on-surface-light), var(--v-high-emphasis-opacity));\n  font-size: 0.75rem;\n  font-weight: 400;\n  letter-spacing: 0.0333333333em;\n  line-height: 1.667;\n  text-transform: none;\n}\n.v-system-bar .v-icon {\n  opacity: var(--v-medium-emphasis-opacity);\n}\n.v-system-bar--absolute {\n  position: absolute;\n}\n.v-system-bar--fixed {\n  position: fixed;\n}\n.v-system-bar--rounded {\n  border-radius: 0;\n}\n.v-system-bar--window {\n  height: 32px;\n}\n.v-system-bar:not(.v-system-bar--absolute) {\n  padding-inline-end: calc(var(--v-scrollbar-offset) + 8px);\n}",
-      "start": 1722879215816,
-      "end": 1722879215865,
+      "start": 1722976702549,
+      "end": 1722976702622,
       "sourcemaps": null
+    },
+    {
+      "name": "vite:css",
+      "result": ".v-system-bar {\n  align-items: center;\n  display: flex;\n  flex: 1 1 auto;\n  height: 24px;\n  justify-content: flex-end;\n  max-width: 100%;\n  padding-inline: 8px;\n  position: relative;\n  text-align: end;\n  width: 100%;\n  box-shadow: 0px 0px 0px 0px var(--v-shadow-key-umbra-opacity, rgba(0, 0, 0, 0.2)), 0px 0px 0px 0px var(--v-shadow-key-penumbra-opacity, rgba(0, 0, 0, 0.14)), 0px 0px 0px 0px var(--v-shadow-key-ambient-opacity, rgba(0, 0, 0, 0.12));\n  background: rgba(var(--v-theme-surface-light));\n  color: rgba(var(--v-theme-on-surface-light), var(--v-high-emphasis-opacity));\n  font-size: 0.75rem;\n  font-weight: 400;\n  letter-spacing: 0.0333333333em;\n  line-height: 1.667;\n  text-transform: none;\n}\n.v-system-bar .v-icon {\n  opacity: var(--v-medium-emphasis-opacity);\n}\n.v-system-bar--absolute {\n  position: absolute;\n}\n.v-system-bar--fixed {\n  position: fixed;\n}\n.v-system-bar--rounded {\n  border-radius: 0;\n}\n.v-system-bar--window {\n  height: 32px;\n}\n.v-system-bar:not(.v-system-bar--absolute) {\n  padding-inline-end: calc(var(--v-scrollbar-offset) + 8px);\n}",
+      "start": 1722976702622,
+      "end": 1722976702622,
+      "order": "normal",
+      "sourcemaps": null
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1722976702622,
+      "end": 1722976702622,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1722976702622,
+      "end": 1722976702622,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1722976702622,
+      "end": 1722976702622,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1722976702622,
+      "end": 1722976702622,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1722976702622,
+      "end": 1722976702622,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "result": "",
+      "start": 1722976702622,
+      "end": 1722976702622,
+      "order": "normal",
+      "sourcemaps": {
+        "mappings": ""
+      }
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1722976702622,
+      "end": 1722976702622,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1722976702622,
+      "end": 1722976702622,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1722976702622,
+      "end": 1722976702622,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1722976702622,
+      "end": 1722976702622,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1722976702622,
+      "end": 1722976702622,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1722976702622,
+      "end": 1722976702622,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1722976702622,
+      "end": 1722976702622,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1722976702622,
+      "end": 1722976702622,
+      "order": "normal"
     }
   ]
 }

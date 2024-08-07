@@ -4,9 +4,99 @@
     {
       "name": "vite:load-fallback",
       "result": "import { createVNode as _createVNode } from \"vue\";\n// Composables\nimport { makeComponentProps } from \"../../composables/component.mjs\";\nimport { provideDefaults } from \"../../composables/defaults.mjs\";\nimport { makeVariantProps } from \"../../composables/variant.mjs\"; // Utilities\nimport { toRef } from 'vue';\nimport { genericComponent, propsFactory, useRender } from \"../../util/index.mjs\";\nexport const makeVToolbarItemsProps = propsFactory({\n  ...makeComponentProps(),\n  ...makeVariantProps({\n    variant: 'text'\n  })\n}, 'VToolbarItems');\nexport const VToolbarItems = genericComponent()({\n  name: 'VToolbarItems',\n  props: makeVToolbarItemsProps(),\n  setup(props, _ref) {\n    let {\n      slots\n    } = _ref;\n    provideDefaults({\n      VBtn: {\n        color: toRef(props, 'color'),\n        height: 'inherit',\n        variant: toRef(props, 'variant')\n      }\n    });\n    useRender(() => _createVNode(\"div\", {\n      \"class\": ['v-toolbar-items', props.class],\n      \"style\": props.style\n    }, [slots.default?.()]));\n    return {};\n  }\n});\n//# sourceMappingURL=VToolbarItems.mjs.map",
-      "start": 1722879215399,
-      "end": 1722879215403,
+      "start": 1722976701823,
+      "end": 1722976702054,
       "sourcemaps": null
+    },
+    {
+      "name": "vite:css",
+      "start": 1722976702054,
+      "end": 1722976702054,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1722976702054,
+      "end": 1722976702054,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1722976702054,
+      "end": 1722976702054,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1722976702055,
+      "end": 1722976702055,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1722976702055,
+      "end": 1722976702055,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1722976702055,
+      "end": 1722976702055,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1722976702055,
+      "end": 1722976702055,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1722976702055,
+      "end": 1722976702055,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1722976702055,
+      "end": 1722976702055,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1722976702055,
+      "end": 1722976702055,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1722976702055,
+      "end": 1722976702055,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1722976702055,
+      "end": 1722976702055,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1722976702055,
+      "end": 1722976702055,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1722976702055,
+      "end": 1722976702055,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1722976702055,
+      "end": 1722976702055,
+      "order": "normal"
     }
   ]
 }

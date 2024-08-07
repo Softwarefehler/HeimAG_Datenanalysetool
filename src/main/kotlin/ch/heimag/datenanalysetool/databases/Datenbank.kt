@@ -1,11 +1,11 @@
 package ch.heimag.datenanalysetool.databases
 
+import ch.heimag.datenanalysetool.converter.converter
 import java.sql.DriverManager
 import java.time.LocalDate
-import java.util.Date
 
-data class DataPoint(val date:Date?, val temerature: Double?)
 
+data class DataPoint(val date: LocalDate, val temerature: Double?)
 
 class Datenbank : DatenbankInfo {
     override val PROTOCOL = "jdbc:mysql"
@@ -18,12 +18,38 @@ class Datenbank : DatenbankInfo {
     override val PASSWORD = "HeimAGS2we@!"
 
 
+    fun loadLatestDate(): Int {
+        var latestDate = 0
+        // build connection to database
+        val connection = DriverManager.getConnection(URL, USER, PASSWORD)
+
+        // create statement
+        val statement = connection.createStatement()
+
+        // SQL statement to load rows from database
+        val sql = "SELECT * FROM processdata ORDER BY timeevent DESC LIMIT 1"
+
+        // SQL statement execute
+        val data = statement.executeQuery(sql)
+
+        // Output rows
+        if (data.next()) {
+            latestDate = data.getInt("date")
+
+        }
+        data.close()
+        statement.close()
+        connection.close()
+
+        return latestDate
+    }
+
+
     fun loadValuesInRange(
-        startDate: LocalDate,
-        endDate: LocalDate,
+        startDate: Int,
+        endDate: Int,
         selectedCountry: String
     ): MutableList<DataPoint> {
-
 
         val sqlRespondList = mutableListOf<DataPoint>()
         sqlRespondList.clear()
@@ -42,13 +68,15 @@ class Datenbank : DatenbankInfo {
 
         // put output rows in to another list
         while (data.next()) {
-            val date = data.getDate("Date")
+            val dateInt = data.getInt("date")
             val temperature = data.getDouble("temperature")
 
-            println("$date, $temperature") // Only for Display
+            val date = converter.intToDate(dateInt)
 
-            val dataPoint = DataPoint(date,temperature)
+            val dataPoint = DataPoint(date, temperature)
             sqlRespondList.add(dataPoint)
+
+            println("$dateInt, $temperature") // Only for Display
         }
 
         // close resources
@@ -56,7 +84,7 @@ class Datenbank : DatenbankInfo {
         statement.close()
         connection.close()
 
-        return(sqlRespondList)
+        return (sqlRespondList)
     }
 }
 /*

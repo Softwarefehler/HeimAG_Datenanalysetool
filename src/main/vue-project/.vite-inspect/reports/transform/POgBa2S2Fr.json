@@ -4,9 +4,99 @@
     {
       "name": "vite:load-fallback",
       "result": "export { VTextarea } from \"./VTextarea.mjs\";\n//# sourceMappingURL=index.mjs.map",
-      "start": 1722879215298,
-      "end": 1722879215302,
+      "start": 1722976697651,
+      "end": 1722976697681,
       "sourcemaps": null
+    },
+    {
+      "name": "vite:css",
+      "start": 1722976697681,
+      "end": 1722976697681,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1722976697681,
+      "end": 1722976697681,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1722976697681,
+      "end": 1722976697681,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1722976697681,
+      "end": 1722976697681,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1722976697681,
+      "end": 1722976697681,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1722976697681,
+      "end": 1722976697681,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1722976697681,
+      "end": 1722976697681,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1722976697681,
+      "end": 1722976697681,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1722976697681,
+      "end": 1722976697681,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1722976697681,
+      "end": 1722976697681,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1722976697681,
+      "end": 1722976697681,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1722976697681,
+      "end": 1722976697681,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1722976697681,
+      "end": 1722976697681,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1722976697681,
+      "end": 1722976697681,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1722976697681,
+      "end": 1722976697681,
+      "order": "normal"
     }
   ]
 }

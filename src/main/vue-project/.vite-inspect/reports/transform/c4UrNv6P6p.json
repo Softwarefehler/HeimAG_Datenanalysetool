@@ -4,39 +4,39 @@
     {
       "name": "vite:load-fallback",
       "result": "<script setup lang=\"ts\">\r\nimport { ref, onMounted } from 'vue'\r\nimport { VDateInput } from 'vuetify/labs/VDateInput'\r\nimport { VSelect, VRow, VCol, VContainer, VBtn, VSheet, VDataTable } from 'vuetify/components'\r\n\r\n\r\nexport type dataPoint = { date: string; temperature: string }\r\n\r\n\r\n// Reaktive Variablen für die Date-Picker\r\nconst startDate = ref<string | null>(null)\r\nconst endDate = ref<string | null>(null)\r\nconst selectedCountry = ref<string | null>(null)\r\nconst tableData = ref<dataPoint[]>([])\r\n\r\nconst headers = ref([\r\n  { text: 'Datum', value: 'date' },\r\n  { text: 'Temperatur', value: 'temperature' }\r\n])\r\n\r\nasync function sendData() {\r\n  if (startDate.value !== null && endDate.value !== null && selectedCountry.value !== null) {\r\n    const formData = new FormData()\r\n    formData.append('startDate', startDate.value)\r\n    formData.append('endDate', endDate.value)\r\n    formData.append('selectedCountry', selectedCountry.value)\r\n\r\n    try {\r\n      const response = await fetch('/', {\r\n        method: 'POST',\r\n        body: formData\r\n      })\r\n      if (!response.ok) {\r\n        alert(response.statusText)\r\n      } else {\r\n        const payload = await response.json()\r\n        processPayload(payload)\r\n        //  fetchDataPointsFromServer()       const payload = await response.json()\r\n      }\r\n    } catch (error) {\r\n      alert(`Fehler: ${error}`)\r\n    }\r\n  } else {\r\n    alert('Bitte füllen Sie alle Felder aus.')\r\n  }\r\n}\r\n\r\nfunction processPayload(payload: any) {\r\n  // Annahme: payload ist ein Array von Objekten, die die Struktur von dataPoint haben\r\n  tableData.value = payload.map((item: any) => ({\r\n    Datum: item.date,\r\n    Temperatur: item.temperature\r\n  }))\r\n}\r\n\r\n/*\r\nfunction fetchDataPointsFromServer() {\r\n  fetch('/')\r\n    .then((response) => response.json())\r\n    .then((payload) => {\r\n      tableData.value = payload\r\n    })\r\n}\r\n\r\n\r\nonMounted(fetchDataPointsFromServer)*/\r\n</script>\r\n\r\n<template>\r\n  <v-container>\r\n    <h4 class=\"text-h5 font-weight-bold mb-4\">Suchkriterien</h4>\r\n    <v-select\r\n      v-model=\"selectedCountry\"\r\n      label=\"Wähle einen Ort aus\"\r\n      :items=\"['California', 'Colorado', 'Florida', 'Georgia', 'Texas', 'Wyoming']\"\r\n    ></v-select>\r\n    <v-row dense>\r\n      <v-col cols=\"12\" md=\"6\">\r\n        <v-date-input\r\n          v-model=\"startDate\"\r\n          label=\"Wähle das Startdatum\"\r\n          prepend-icon=\"\"\r\n          prepend-inner-icon=\"$calendar\"\r\n        ></v-date-input>\r\n      </v-col>\r\n      <v-col cols=\"12\" md=\"6\">\r\n        <v-date-input\r\n          v-model=\"endDate\"\r\n          label=\"Wähle das Enddatum\"\r\n          prepend-icon=\"$calendar\"\r\n        ></v-date-input>\r\n      </v-col>\r\n    </v-row>\r\n    <v-btn @click=\"sendData\">Send Data</v-btn>\r\n    <br>\r\n    <br>\r\n    <v-row>\r\n      <v-col cols=\"12\" md=\"12\">\r\n        <v-sheet class=\"mb-4\">\r\n          <v-data-table :items=\"tableData\"></v-data-table>\r\n        </v-sheet>\r\n      </v-col>\r\n      <v-col cols=\"12\" md=\"12\">\r\n        <v-sheet class=\"mb-4\">\r\n          <v-data-table :items=\"tableData\"></v-data-table>\r\n        </v-sheet>\r\n      </v-col>\r\n      <v-col cols=\"12\" md=\"12\">\r\n        <v-sheet class=\"mb-4\">\r\n          <v-data-table  :items=\"tableData\"></v-data-table>\r\n        </v-sheet>\r\n      </v-col>\r\n    </v-row>\r\n\r\n\r\n  </v-container>\r\n</template>\r\n\r\n<style scoped>\r\n\r\n</style>",
-      "start": 1722879215219,
-      "end": 1722879215238,
+      "start": 1722976696056,
+      "end": 1722976696153,
       "sourcemaps": null
     },
     {
       "name": "vite:css",
-      "start": 1722879215238,
-      "end": 1722879215238,
+      "start": 1722976696153,
+      "end": 1722976696153,
       "order": "normal"
     },
     {
       "name": "vite:esbuild",
-      "start": 1722879215238,
-      "end": 1722879215238,
+      "start": 1722976696154,
+      "end": 1722976696154,
       "order": "normal"
     },
     {
       "name": "vite:json",
-      "start": 1722879215238,
-      "end": 1722879215238,
+      "start": 1722976696154,
+      "end": 1722976696154,
       "order": "normal"
     },
     {
       "name": "vite:worker",
-      "start": 1722879215238,
-      "end": 1722879215238,
+      "start": 1722976696154,
+      "end": 1722976696154,
       "order": "normal"
     },
     {
       "name": "vite:vue",
       "result": "import _sfc_main from \"C:/Users/MAG/IdeaProjects/Datenanalysetool/src/main/vue-project/src/routes/HomeView.vue?vue&type=script&setup=true&lang.ts\";\nexport * from \"C:/Users/MAG/IdeaProjects/Datenanalysetool/src/main/vue-project/src/routes/HomeView.vue?vue&type=script&setup=true&lang.ts\";\nexport default _sfc_main;\n",
-      "start": 1722879215239,
-      "end": 1722879215275,
+      "start": 1722976696154,
+      "end": 1722976696310,
       "order": "normal",
       "sourcemaps": {
         "mappings": ""
@@ -44,62 +44,62 @@
     },
     {
       "name": "vite:define",
-      "start": 1722879215275,
-      "end": 1722879215275,
+      "start": 1722976696310,
+      "end": 1722976696310,
       "order": "normal"
     },
     {
       "name": "vite:css-post",
-      "start": 1722879215275,
-      "end": 1722879215275,
+      "start": 1722976696310,
+      "end": 1722976696310,
       "order": "normal"
     },
     {
       "name": "vite:build-html",
-      "start": 1722879215275,
-      "end": 1722879215275,
+      "start": 1722976696310,
+      "end": 1722976696310,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1722879215275,
-      "end": 1722879215275,
+      "start": 1722976696310,
+      "end": 1722976696310,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1722879215275,
-      "end": 1722879215275,
+      "start": 1722976696310,
+      "end": 1722976696310,
       "order": "normal"
     },
     {
       "name": "commonjs",
-      "start": 1722879215275,
-      "end": 1722879215275,
+      "start": 1722976696310,
+      "end": 1722976696310,
       "order": "normal"
     },
     {
       "name": "vite:dynamic-import-vars",
-      "start": 1722879215275,
-      "end": 1722879215275,
+      "start": 1722976696310,
+      "end": 1722976696310,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1722879215275,
-      "end": 1722879215275,
+      "start": 1722976696310,
+      "end": 1722976696310,
       "order": "normal"
     },
     {
       "name": "vite:build-import-analysis",
-      "start": 1722879215275,
-      "end": 1722879215275,
+      "start": 1722976696310,
+      "end": 1722976696311,
       "order": "normal"
     },
     {
       "name": "vite:reporter",
-      "start": 1722879215275,
-      "end": 1722879215275,
+      "start": 1722976696311,
+      "end": 1722976696311,
       "order": "normal"
     }
   ]

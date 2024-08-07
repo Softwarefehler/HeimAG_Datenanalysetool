@@ -1,6 +1,7 @@
 package ch.heimag.datenanalysetool.routes
 
-import ch.heimag.datenanalysetool.builder.DateBuilder
+import ch.heimag.datenanalysetool.converter.converter
+import ch.heimag.datenanalysetool.databases.Datenbank
 import io.ktor.http.content.*
 import io.ktor.server.application.*
 import io.ktor.server.auth.*
@@ -24,13 +25,32 @@ data class SQLDataTest(val date: String, val temperature: String)
 fun Application.configureDatenanalyse() {
     routing {
         authenticate("auth-session") {
+            //Noch nicht in Benutzung
+            val datenbank = Datenbank()
+
+            get("/"){
+
+                val CountryList = loadToSelectCountry()
+                val latestDate = datenbank.loadLatestDate()
+
+
+            }
+
+
+
+
+
+
+
+
+
+
             post("/") {
                 var startDateReceive: String? = null
                 var endDateReceive: String? = null
                 var selectedCountryReceive: String? = null
 
-                //Noch nicht in Benutzung
-                //val datenbank = Datenbank()
+
 
                 val multipart = call.receiveMultipart()
 
@@ -54,12 +74,13 @@ fun Application.configureDatenanalyse() {
                 val selectedCountry = selectedCountryReceive.toString() ?: "colorado"
 
                 // Parse Daten
-                val dateBuild = DateBuilder()
-                val startDate = dateBuild.buildDate(startDateString)
-                val endDate = dateBuild.buildDate(endDateString)
+
+                val startDate = converter.frontendDateStringToInt(startDateString)
+                val endDate = converter.frontendDateStringToInt(endDateString)
+
 
                 ////Noch nicht in Benutzung
-                //val sqlResponse = datenbank.loadValuesInRange(startDate, endDate, selectedCountry)
+                val sqlResponse1 = datenbank.loadValuesInRange(startDate, endDate, selectedCountry)
 
                 val testList = mutableListOf<SQLDataTest>()
                 // Zum Testen des Frontends
@@ -97,4 +118,16 @@ fun Application.configureDatenanalyse() {
         }
 
     }
+}
+
+
+
+fun loadToSelectCountry(): MutableList<String>{
+
+    val OW = "Obwalden"
+    val THR ="Thurgau"
+    val LU = "Luzern"
+val countryList = mutableListOf(OW, THR, LU)
+
+    return countryList
 }

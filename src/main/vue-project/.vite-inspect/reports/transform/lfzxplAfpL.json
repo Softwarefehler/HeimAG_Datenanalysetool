@@ -4,9 +4,99 @@
     {
       "name": "vite:load-fallback",
       "result": "import { createVNode as _createVNode } from \"vue\";\n// Styles\nimport \"./VCalendarIntervalEvent.css\";\n\n// Components\nimport { VSheet } from \"../../components/VSheet/index.mjs\"; // Composables\nimport { useDate } from \"../../composables/date/index.mjs\"; // Utilities\nimport { convertToUnit, genericComponent, propsFactory, useRender } from \"../../util/index.mjs\";\nexport const makeVCalendarIntervalEventProps = propsFactory({\n  allDay: Boolean,\n  interval: Object,\n  intervalDivisions: {\n    type: Number,\n    required: true\n  },\n  intervalDuration: {\n    type: Number,\n    required: true\n  },\n  intervalHeight: {\n    type: Number,\n    required: true\n  },\n  event: Object\n}, 'VCalendarIntervalEvent');\nexport const VCalendarIntervalEvent = genericComponent()({\n  name: 'VCalendarIntervalEvent',\n  props: makeVCalendarIntervalEventProps(),\n  setup(props) {\n    const adapter = useDate();\n    const calcHeight = () => {\n      if (!props.event?.first && !props.event?.last || adapter.isEqual(props.event?.start, props.interval?.start)) {\n        return {\n          height: '100%',\n          margin: convertToUnit(0)\n        };\n      } else {\n        const {\n          height,\n          margin\n        } = Array.from({\n          length: props.intervalDivisions\n        }, x => x * (props.intervalDuration / props.intervalDivisions)).reduce((total, div, index) => {\n          if (adapter.isBefore(adapter.addMinutes(props.interval?.start, div), props.event?.start)) {\n            return {\n              height: convertToUnit(props.intervalHeight / props.intervalDivisions * index),\n              margin: convertToUnit(props.intervalHeight / props.intervalDivisions * index)\n            };\n          }\n          return {\n            height: total.height,\n            margin: total.margin\n          };\n        }, {\n          height: '',\n          margin: ''\n        });\n        return {\n          height,\n          margin\n        };\n      }\n    };\n    useRender(() => {\n      return _createVNode(VSheet, {\n        \"height\": calcHeight().height,\n        \"density\": \"comfortable\",\n        \"style\": `margin-top: ${calcHeight().margin}`,\n        \"class\": \"v-calendar-internal-event\",\n        \"color\": props.event?.color ?? undefined,\n        \"rounded\": props.event?.first && props.event?.last ? true : props.event?.first ? 't' : props.event?.last ? 'b' : false\n      }, {\n        default: () => [props.event?.first ? props.event?.title : '']\n      });\n    });\n    return {};\n  }\n});\n//# sourceMappingURL=VCalendarIntervalEvent.mjs.map",
-      "start": 1722879215336,
-      "end": 1722879215348,
+      "start": 1722976696149,
+      "end": 1722976696375,
       "sourcemaps": null
+    },
+    {
+      "name": "vite:css",
+      "start": 1722976696375,
+      "end": 1722976696375,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1722976696375,
+      "end": 1722976696375,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1722976696375,
+      "end": 1722976696375,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1722976696375,
+      "end": 1722976696375,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1722976696375,
+      "end": 1722976696375,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1722976696375,
+      "end": 1722976696375,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1722976696375,
+      "end": 1722976696375,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1722976696375,
+      "end": 1722976696375,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1722976696375,
+      "end": 1722976696375,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1722976696375,
+      "end": 1722976696375,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1722976696375,
+      "end": 1722976696375,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1722976696376,
+      "end": 1722976696376,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1722976696376,
+      "end": 1722976696376,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1722976696376,
+      "end": 1722976696376,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1722976696376,
+      "end": 1722976696376,
+      "order": "normal"
     }
   ]
 }
