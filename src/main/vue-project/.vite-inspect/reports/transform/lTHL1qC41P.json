@@ -4,98 +4,98 @@
     {
       "name": "vite:load-fallback",
       "result": "import { createVNode as _createVNode, mergeProps as _mergeProps, resolveDirective as _resolveDirective, Fragment as _Fragment } from \"vue\";\n// Styles\nimport \"./VTabs.css\";\n\n// Components\nimport { VTab } from \"./VTab.mjs\";\nimport { VTabsWindow } from \"./VTabsWindow.mjs\";\nimport { VTabsWindowItem } from \"./VTabsWindowItem.mjs\";\nimport { makeVSlideGroupProps, VSlideGroup } from \"../VSlideGroup/VSlideGroup.mjs\"; // Composables\nimport { useBackgroundColor } from \"../../composables/color.mjs\";\nimport { provideDefaults } from \"../../composables/defaults.mjs\";\nimport { makeDensityProps, useDensity } from \"../../composables/density.mjs\";\nimport { useProxiedModel } from \"../../composables/proxiedModel.mjs\";\nimport { useScopeId } from \"../../composables/scopeId.mjs\";\nimport { makeTagProps } from \"../../composables/tag.mjs\"; // Utilities\nimport { computed, toRef } from 'vue';\nimport { convertToUnit, genericComponent, isObject, propsFactory, useRender } from \"../../util/index.mjs\"; // Types\nimport { VTabsSymbol } from \"./shared.mjs\";\nfunction parseItems(items) {\n  if (!items) return [];\n  return items.map(item => {\n    if (!isObject(item)) return {\n      text: item,\n      value: item\n    };\n    return item;\n  });\n}\nexport const makeVTabsProps = propsFactory({\n  alignTabs: {\n    type: String,\n    default: 'start'\n  },\n  color: String,\n  fixedTabs: Boolean,\n  items: {\n    type: Array,\n    default: () => []\n  },\n  stacked: Boolean,\n  bgColor: String,\n  grow: Boolean,\n  height: {\n    type: [Number, String],\n    default: undefined\n  },\n  hideSlider: Boolean,\n  sliderColor: String,\n  ...makeVSlideGroupProps({\n    mandatory: 'force',\n    selectedClass: 'v-tab-item--selected'\n  }),\n  ...makeDensityProps(),\n  ...makeTagProps()\n}, 'VTabs');\nexport const VTabs = genericComponent()({\n  name: 'VTabs',\n  props: makeVTabsProps(),\n  emits: {\n    'update:modelValue': v => true\n  },\n  setup(props, _ref) {\n    let {\n      attrs,\n      slots\n    } = _ref;\n    const model = useProxiedModel(props, 'modelValue');\n    const items = computed(() => parseItems(props.items));\n    const {\n      densityClasses\n    } = useDensity(props);\n    const {\n      backgroundColorClasses,\n      backgroundColorStyles\n    } = useBackgroundColor(toRef(props, 'bgColor'));\n    const {\n      scopeId\n    } = useScopeId();\n    provideDefaults({\n      VTab: {\n        color: toRef(props, 'color'),\n        direction: toRef(props, 'direction'),\n        stacked: toRef(props, 'stacked'),\n        fixed: toRef(props, 'fixedTabs'),\n        sliderColor: toRef(props, 'sliderColor'),\n        hideSlider: toRef(props, 'hideSlider')\n      }\n    });\n    useRender(() => {\n      const slideGroupProps = VSlideGroup.filterProps(props);\n      const hasWindow = !!(slots.window || props.items.length > 0);\n      return _createVNode(_Fragment, null, [_createVNode(VSlideGroup, _mergeProps(slideGroupProps, {\n        \"modelValue\": model.value,\n        \"onUpdate:modelValue\": $event => model.value = $event,\n        \"class\": ['v-tabs', `v-tabs--${props.direction}`, `v-tabs--align-tabs-${props.alignTabs}`, {\n          'v-tabs--fixed-tabs': props.fixedTabs,\n          'v-tabs--grow': props.grow,\n          'v-tabs--stacked': props.stacked\n        }, densityClasses.value, backgroundColorClasses.value, props.class],\n        \"style\": [{\n          '--v-tabs-height': convertToUnit(props.height)\n        }, backgroundColorStyles.value, props.style],\n        \"role\": \"tablist\",\n        \"symbol\": VTabsSymbol\n      }, scopeId, attrs), {\n        default: () => [slots.default?.() ?? items.value.map(item => slots.tab?.({\n          item\n        }) ?? _createVNode(VTab, _mergeProps(item, {\n          \"key\": item.text,\n          \"value\": item.value\n        }), {\n          default: slots[`tab.${item.value}`] ? () => slots[`tab.${item.value}`]?.({\n            item\n          }) : undefined\n        }))]\n      }), hasWindow && _createVNode(VTabsWindow, _mergeProps({\n        \"modelValue\": model.value,\n        \"onUpdate:modelValue\": $event => model.value = $event,\n        \"key\": \"tabs-window\"\n      }, scopeId), {\n        default: () => [items.value.map(item => slots.item?.({\n          item\n        }) ?? _createVNode(VTabsWindowItem, {\n          \"value\": item.value\n        }, {\n          default: () => slots[`item.${item.value}`]?.({\n            item\n          })\n        })), slots.window?.()]\n      })]);\n    });\n    return {};\n  }\n});\n//# sourceMappingURL=VTabs.mjs.map",
-      "start": 1722976701432,
-      "end": 1722976701942,
+      "start": 1723072337672,
+      "end": 1723072337752,
       "sourcemaps": null
     },
     {
       "name": "vite:css",
-      "start": 1722976701943,
-      "end": 1722976701943,
+      "start": 1723072337752,
+      "end": 1723072337752,
       "order": "normal"
     },
     {
       "name": "vite:esbuild",
-      "start": 1722976701943,
-      "end": 1722976701943,
+      "start": 1723072337752,
+      "end": 1723072337752,
       "order": "normal"
     },
     {
       "name": "vite:json",
-      "start": 1722976701943,
-      "end": 1722976701943,
+      "start": 1723072337752,
+      "end": 1723072337752,
       "order": "normal"
     },
     {
       "name": "vite:worker",
-      "start": 1722976701943,
-      "end": 1722976701943,
+      "start": 1723072337752,
+      "end": 1723072337752,
       "order": "normal"
     },
     {
       "name": "vite:vue",
-      "start": 1722976701943,
-      "end": 1722976701943,
+      "start": 1723072337752,
+      "end": 1723072337752,
       "order": "normal"
     },
     {
       "name": "vite:define",
-      "start": 1722976701943,
-      "end": 1722976701943,
+      "start": 1723072337752,
+      "end": 1723072337752,
       "order": "normal"
     },
     {
       "name": "vite:css-post",
-      "start": 1722976701943,
-      "end": 1722976701943,
+      "start": 1723072337752,
+      "end": 1723072337752,
       "order": "normal"
     },
     {
       "name": "vite:build-html",
-      "start": 1722976701943,
-      "end": 1722976701943,
+      "start": 1723072337752,
+      "end": 1723072337752,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1722976701943,
-      "end": 1722976701943,
+      "start": 1723072337752,
+      "end": 1723072337752,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1722976701943,
-      "end": 1722976701943,
+      "start": 1723072337752,
+      "end": 1723072337752,
       "order": "normal"
     },
     {
       "name": "commonjs",
-      "start": 1722976701943,
-      "end": 1722976701943,
+      "start": 1723072337752,
+      "end": 1723072337752,
       "order": "normal"
     },
     {
       "name": "vite:dynamic-import-vars",
-      "start": 1722976701944,
-      "end": 1722976701944,
+      "start": 1723072337753,
+      "end": 1723072337753,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1722976701944,
-      "end": 1722976701944,
+      "start": 1723072337753,
+      "end": 1723072337753,
       "order": "normal"
     },
     {
       "name": "vite:build-import-analysis",
-      "start": 1722976701944,
-      "end": 1722976701944,
+      "start": 1723072337753,
+      "end": 1723072337753,
       "order": "normal"
     },
     {
       "name": "vite:reporter",
-      "start": 1722976701944,
-      "end": 1722976701944,
+      "start": 1723072337753,
+      "end": 1723072337753,
       "order": "normal"
     }
   ]

@@ -7,15 +7,15 @@ import java.time.LocalDate
 
 data class DataPoint(val date: LocalDate, val temerature: Double?)
 
-class Datenbank : DatenbankInfo {
-    override val PROTOCOL = "jdbc:mysql"
-    override val HOST = "localhost"
-    override val PORT = 3306
-    override val DATABASE = "heimag"
-    override val OPTIONS = "useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Europe/Berlin"
-    override val URL = "$PROTOCOL://$HOST:$PORT/$DATABASE?$OPTIONS"
-    override val USER = "datenanalysetool"
-    override val PASSWORD = "HeimAGS2we@!"
+class Datenbank {
+     val PROTOCOL = "jdbc:mysql"
+     val HOST = "localhost"
+     val PORT = 3306
+     val DATABASE = "heimag"
+     val OPTIONS = "useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Europe/Berlin"
+     val URL = "$PROTOCOL://$HOST:$PORT/$DATABASE?$OPTIONS"
+     val USER = "datenanalysetool"
+     val PASSWORD = "HeimAGS2we@!"
 
 
     fun loadLatestDate(): Int {

@@ -27,14 +27,15 @@ fun Application.configureDatenanalyse() {
         authenticate("auth-session") {
             //Noch nicht in Benutzung
             val datenbank = Datenbank()
-
+/*
             get("/"){
 
                 val CountryList = loadToSelectCountry()
                 val latestDate = datenbank.loadLatestDate()
+                println("$latestDate, $CountryList")
 
 
-            }
+            }*/
 
 
 
@@ -80,13 +81,13 @@ fun Application.configureDatenanalyse() {
 
 
                 ////Noch nicht in Benutzung
-                val sqlResponse1 = datenbank.loadValuesInRange(startDate, endDate, selectedCountry)
+               // val sqlResponse1 = datenbank.loadValuesInRange(startDate, endDate, selectedCountry)
 
                 val testList = mutableListOf<SQLDataTest>()
                 // Zum Testen des Frontends
-                val startDateTestString = startDate.toString()
-                val endDateTestString = endDate.toString()
-                val nullDate = startDate.toString()
+                val startDateTestString = "1990.02.26"
+                val endDateTestString = "2024.08.06"
+                val nullDate = "1886.09.12"
                 val temperature1 = "39.8"
                 val temperature2 = "38.8"
                 val temperature3 = "37.8"
