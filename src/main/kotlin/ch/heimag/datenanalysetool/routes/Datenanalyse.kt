@@ -11,46 +11,59 @@ import io.ktor.server.routing.*
 import kotlinx.serialization.Serializable
 
 
-
 @Serializable
 data class SQLDataTest(val date: String, val temperature: String)
 
-
-// @Serializable
-// data class SQLTest(val testList: MutableList<SQLDataTest>)
-
-//data class searchParam(val startDate: LocalDate, val endDate: LocalDate, val selectedCountry: String)
-
+@Serializable
+data class FirstResponse(
+    val databaseStatus: String,
+    val countryList: MutableList<String>,
+    val latestDate: String
+)
 
 fun Application.configureDatenanalyse() {
     routing {
         authenticate("auth-session") {
             //Noch nicht in Benutzung
             val datenbank = Datenbank()
-/*
-            get("/"){
 
-                val CountryList = loadToSelectCountry()
-                val latestDate = datenbank.loadLatestDate()
-                println("$latestDate, $CountryList")
+            get("/get-data") {
+                /*
+                var countryList = mutableListOf("USA","Europa","Japan")
+                var latestDate = "2021-08-31"
+
+                val databaseStatus = datenbank.checkDatabaseStatus()
+                val firstResponse = FirstResponse(
+                    databaseStatus = databaseStatus,
+                    countryList = countryList.toMutableList(),
+                    latestDate = latestDate
+                )*/
+
+                var countryList = mutableListOf("-")
+                var latestDate = "-"
+                val databaseStatus = datenbank.checkDatabaseStatus()
+
+                if (databaseStatus == "Datenbank vorhanden") {
+                    countryList = loadToSelectCountry()
+                     latestDate = datenbank.loadLatestDate()
+
+                }
+                val firstResponse = FirstResponse(
+                    databaseStatus = databaseStatus,
+                    countryList = countryList.toMutableList(),
+                    latestDate = latestDate)
 
 
-            }*/
+                //println("${firstResponse.countryList},${firstResponse.latestDate},${firstResponse.databaseStatus}")
+
+                call.respond(firstResponse)
+            }
 
 
-
-
-
-
-
-
-
-
-            post("/") {
+            post("/search") {
                 var startDateReceive: String? = null
                 var endDateReceive: String? = null
                 var selectedCountryReceive: String? = null
-
 
 
                 val multipart = call.receiveMultipart()
@@ -75,13 +88,12 @@ fun Application.configureDatenanalyse() {
                 val selectedCountry = selectedCountryReceive.toString() ?: "colorado"
 
                 // Parse Daten
-
-                val startDate = converter.frontendDateStringToInt(startDateString)
-                val endDate = converter.frontendDateStringToInt(endDateString)
+                val startDate = converter.stringToInt(startDateString)
+                val endDate = converter.stringToInt(endDateString)
 
 
                 ////Noch nicht in Benutzung
-               // val sqlResponse1 = datenbank.loadValuesInRange(startDate, endDate, selectedCountry)
+                // val sqlResponse1 = datenbank.loadValuesInRange(startDate, endDate, selectedCountry)
 
                 val testList = mutableListOf<SQLDataTest>()
                 // Zum Testen des Frontends
@@ -97,22 +109,17 @@ fun Application.configureDatenanalyse() {
                 testList.add(newtestList2)
                 val newtestList3 = SQLDataTest(nullDate, temperature3)
                 testList.add(newtestList3)
-                val sqlResponse = testList
-
-
-
-
 
 
                 // Debug-Ausgabe
                 println("Start Date: $startDate")
                 println("End Date: $endDate")
                 println("Selected Country: $selectedCountryReceive,$selectedCountry")
-                println(sqlResponse)
+                println(testList)
 
                 // Sende eine Antwort zurück
                 // call.respondText("Data received: startDate=$startDateReceive, endDate=$endDateReceive, selectedCountry=$selectedCountryReceive")
-                call.respond(sqlResponse)
+                call.respond(testList)
 
             }
 
@@ -122,13 +129,12 @@ fun Application.configureDatenanalyse() {
 }
 
 
-
-fun loadToSelectCountry(): MutableList<String>{
+fun loadToSelectCountry(): MutableList<String> {
 
     val OW = "Obwalden"
-    val THR ="Thurgau"
+    val THR = "Thurgau"
     val LU = "Luzern"
-val countryList = mutableListOf(OW, THR, LU)
+    val countryList = mutableListOf(OW, THR, LU)
 
     return countryList
 }

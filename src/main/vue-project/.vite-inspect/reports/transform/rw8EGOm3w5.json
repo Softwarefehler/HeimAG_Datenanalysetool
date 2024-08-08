@@ -4,53 +4,53 @@
     {
       "name": "vite:load-fallback",
       "result": ".v-calendar {\n  background: rgb(var(--v-theme-background));\n  color: rgba(var(--v-theme-on-background), var(--v-high-emphasis-opacity));\n}\n\n.v-calendar-weekly {\n  width: 100%;\n  height: 100%;\n  display: flex;\n  flex-direction: column;\n  min-height: 0;\n}\n\n.v-calendar__container {\n  border-top: thin solid #e0e0e0;\n  border-left: thin solid #e0e0e0;\n  border-right: thin solid #e0e0e0;\n}\n\n.v-calendar-weekly__head {\n  display: grid;\n  grid-template-columns: 24px repeat(7, 1fr);\n  user-select: none;\n}\n.v-calendar-weekly__head.days__0 {\n  grid-template-columns: 1fr;\n}\n.v-calendar-weekly__head.days__0.v-calendar-weekly__head-weeknumbers {\n  grid-template-columns: 24px 1fr;\n}\n.v-calendar-weekly__head.days__1 {\n  grid-template-columns: 1fr;\n}\n.v-calendar-weekly__head.days__1.v-calendar-weekly__head-weeknumbers {\n  grid-template-columns: 24px 1fr;\n}\n.v-calendar-weekly__head.days__2 {\n  grid-template-columns: repeat(2, 1fr);\n}\n.v-calendar-weekly__head.days__2.v-calendar-weekly__head-weeknumbers {\n  grid-template-columns: 24px repeat(2, 1fr);\n}\n.v-calendar-weekly__head.days__3 {\n  grid-template-columns: repeat(3, 1fr);\n}\n.v-calendar-weekly__head.days__3.v-calendar-weekly__head-weeknumbers {\n  grid-template-columns: 24px repeat(3, 1fr);\n}\n.v-calendar-weekly__head.days__4 {\n  grid-template-columns: repeat(4, 1fr);\n}\n.v-calendar-weekly__head.days__4.v-calendar-weekly__head-weeknumbers {\n  grid-template-columns: 24px repeat(4, 1fr);\n}\n.v-calendar-weekly__head.days__5 {\n  grid-template-columns: repeat(5, 1fr);\n}\n.v-calendar-weekly__head.days__5.v-calendar-weekly__head-weeknumbers {\n  grid-template-columns: 24px repeat(5, 1fr);\n}\n.v-calendar-weekly__head.days__6 {\n  grid-template-columns: repeat(6, 1fr);\n}\n.v-calendar-weekly__head.days__6.v-calendar-weekly__head-weeknumbers {\n  grid-template-columns: 24px repeat(6, 1fr);\n}\n.v-calendar-weekly__head.days__7 {\n  grid-template-columns: repeat(7, 1fr);\n}\n.v-calendar-weekly__head.days__7.v-calendar-weekly__head-weeknumbers {\n  grid-template-columns: 24px repeat(7, 1fr);\n}\n\n.v-calendar-weekly__head-weekday, .v-calendar-weekly__head-weekday-with-weeknumber {\n  flex: 1 0 20px;\n  user-select: none;\n  padding: 8px 4px 0px 4px;\n  font-size: 11px;\n  overflow: hidden;\n  text-align: center;\n  text-overflow: ellipsis;\n  text-transform: uppercase;\n  white-space: nowrap;\n  border-right: thin solid #e0e0e0;\n}\n.v-calendar-weekly__head-weekday:last-child, .v-calendar-weekly__head-weekday-with-weeknumber:last-child {\n  border-right: none;\n}\n.v-calendar-weekly__head-weekday > div .v-btn, .v-calendar-weekly__head-weekday-with-weeknumber > div .v-btn {\n  font-size: 1.5rem;\n}\n\n.v-calendar-weekly__head-weeknumber {\n  background: rgb(var(--v-theme-surface-light));\n  color: rgba(var(--v-theme-on-surface-light), var(--v-high-emphasis-opacity));\n}\n\n.v-calendar-weekly__week {\n  display: flex;\n  flex: 1;\n  height: unset;\n  min-height: 0;\n}\n\n.v-calendar-month__weeknumber {\n  padding-top: 6px;\n  background: rgb(var(--v-theme-surface-light));\n  border-bottom: thin solid #e0e0e0;\n  color: rgba(var(--v-theme-on-surface-light), var(--v-high-emphasis-opacity));\n  text-align: center;\n  font-size: 12px;\n  font-weight: 500;\n}\n\n.v-calendar-month__days {\n  display: grid;\n  flex: 1 1;\n}\n.v-calendar-month__days > .v-calendar-month__day {\n  min-height: 150px;\n}\n.v-calendar-month__days.days__0 {\n  grid-template-columns: 1fr;\n}\n.v-calendar-month__days.days__0 > .v-calendar-month__day {\n  border-right: none;\n}\n.v-calendar-month__days.days__1 {\n  grid-template-columns: 1fr;\n}\n.v-calendar-month__days.days__1 > .v-calendar-month__day {\n  border-right: none;\n}\n.v-calendar-month__days.days__2 {\n  grid-template-columns: repeat(2, 1fr);\n}\n.v-calendar-month__days.days__2 > .v-calendar-month__day:nth-child(2n) {\n  border-right: none;\n}\n.v-calendar-month__days.days__3 {\n  grid-template-columns: repeat(3, 1fr);\n}\n.v-calendar-month__days.days__3 > .v-calendar-month__day:nth-child(3n) {\n  border-right: none;\n}\n.v-calendar-month__days.days__4 {\n  grid-template-columns: repeat(4, 1fr);\n}\n.v-calendar-month__days.days__4 > .v-calendar-month__day:nth-child(4n) {\n  border-right: none;\n}\n.v-calendar-month__days.days__5 {\n  grid-template-columns: repeat(5, 1fr);\n}\n.v-calendar-month__days.days__5 > .v-calendar-month__day:nth-child(5n) {\n  border-right: none;\n}\n.v-calendar-month__days.days__6 {\n  grid-template-columns: repeat(6, 1fr);\n}\n.v-calendar-month__days.days__6 > .v-calendar-month__day:nth-child(6n) {\n  border-right: none;\n}\n.v-calendar-month__days.days__6.v-calendar-month__weeknumbers {\n  grid-template-columns: 24px repeat(6, 1fr);\n}\n.v-calendar-month__days.days__7 {\n  grid-template-columns: repeat(7, 1fr);\n}\n.v-calendar-month__days.days__7 > .v-calendar-month__day:nth-child(7n) {\n  border-right: none;\n}\n.v-calendar-month__days.days-with-weeknumbers__0 {\n  grid-template-columns: 24px 1fr;\n}\n.v-calendar-month__days.days-with-weeknumbers__0 > .v-calendar-month__day {\n  border-right: none;\n}\n.v-calendar-month__days.days-with-weeknumbers__1 {\n  grid-template-columns: 24px 1fr;\n}\n.v-calendar-month__days.days-with-weeknumbers__1 > .v-calendar-month__day {\n  border-right: none;\n}\n.v-calendar-month__days.days-with-weeknumbers__2 {\n  grid-template-columns: 24px repeat(2, 1fr);\n}\n.v-calendar-month__days.days-with-weeknumbers__2 > .v-calendar-month__day:nth-child(3n) {\n  border-right: none;\n}\n.v-calendar-month__days.days-with-weeknumbers__3 {\n  grid-template-columns: 24px repeat(3, 1fr);\n}\n.v-calendar-month__days.days-with-weeknumbers__3 > .v-calendar-month__day:nth-child(4n) {\n  border-right: none;\n}\n.v-calendar-month__days.days-with-weeknumbers__4 {\n  grid-template-columns: 24px repeat(4, 1fr);\n}\n.v-calendar-month__days.days-with-weeknumbers__4 > .v-calendar-month__day:nth-child(5n) {\n  border-right: none;\n}\n.v-calendar-month__days.days-with-weeknumbers__5 {\n  grid-template-columns: 24px repeat(5, 1fr);\n}\n.v-calendar-month__days.days-with-weeknumbers__5 > .v-calendar-month__day:nth-child(6n) {\n  border-right: none;\n}\n.v-calendar-month__days.days-with-weeknumbers__6 {\n  grid-template-columns: 24px repeat(6, 1fr);\n}\n.v-calendar-month__days.days-with-weeknumbers__6 > .v-calendar-month__day:nth-child(7n) {\n  border-right: none;\n}\n.v-calendar-month__days.days-with-weeknumbers__7 {\n  grid-template-columns: 24px repeat(7, 1fr);\n}\n.v-calendar-month__days.days-with-weeknumbers__7 > .v-calendar-month__day:nth-child(7n) {\n  border-right: thin solid thin;\n}\n.v-calendar-month__days.days-with-weeknumbers__7 > .v-calendar-month__day:nth-child(8n) {\n  border-right: none;\n}\n.v-calendar-month__days.days-with-weeknumbers__7 > .v-calendar-month__day:nth-child(8n) {\n  border-right: none;\n}",
-      "start": 1723072336863,
-      "end": 1723072336888,
+      "start": 1723160581295,
+      "end": 1723160581330,
       "sourcemaps": null
     },
     {
       "name": "vite:css",
       "result": ".v-calendar {\n  background: rgb(var(--v-theme-background));\n  color: rgba(var(--v-theme-on-background), var(--v-high-emphasis-opacity));\n}\n\n.v-calendar-weekly {\n  width: 100%;\n  height: 100%;\n  display: flex;\n  flex-direction: column;\n  min-height: 0;\n}\n\n.v-calendar__container {\n  border-top: thin solid #e0e0e0;\n  border-left: thin solid #e0e0e0;\n  border-right: thin solid #e0e0e0;\n}\n\n.v-calendar-weekly__head {\n  display: grid;\n  grid-template-columns: 24px repeat(7, 1fr);\n  user-select: none;\n}\n.v-calendar-weekly__head.days__0 {\n  grid-template-columns: 1fr;\n}\n.v-calendar-weekly__head.days__0.v-calendar-weekly__head-weeknumbers {\n  grid-template-columns: 24px 1fr;\n}\n.v-calendar-weekly__head.days__1 {\n  grid-template-columns: 1fr;\n}\n.v-calendar-weekly__head.days__1.v-calendar-weekly__head-weeknumbers {\n  grid-template-columns: 24px 1fr;\n}\n.v-calendar-weekly__head.days__2 {\n  grid-template-columns: repeat(2, 1fr);\n}\n.v-calendar-weekly__head.days__2.v-calendar-weekly__head-weeknumbers {\n  grid-template-columns: 24px repeat(2, 1fr);\n}\n.v-calendar-weekly__head.days__3 {\n  grid-template-columns: repeat(3, 1fr);\n}\n.v-calendar-weekly__head.days__3.v-calendar-weekly__head-weeknumbers {\n  grid-template-columns: 24px repeat(3, 1fr);\n}\n.v-calendar-weekly__head.days__4 {\n  grid-template-columns: repeat(4, 1fr);\n}\n.v-calendar-weekly__head.days__4.v-calendar-weekly__head-weeknumbers {\n  grid-template-columns: 24px repeat(4, 1fr);\n}\n.v-calendar-weekly__head.days__5 {\n  grid-template-columns: repeat(5, 1fr);\n}\n.v-calendar-weekly__head.days__5.v-calendar-weekly__head-weeknumbers {\n  grid-template-columns: 24px repeat(5, 1fr);\n}\n.v-calendar-weekly__head.days__6 {\n  grid-template-columns: repeat(6, 1fr);\n}\n.v-calendar-weekly__head.days__6.v-calendar-weekly__head-weeknumbers {\n  grid-template-columns: 24px repeat(6, 1fr);\n}\n.v-calendar-weekly__head.days__7 {\n  grid-template-columns: repeat(7, 1fr);\n}\n.v-calendar-weekly__head.days__7.v-calendar-weekly__head-weeknumbers {\n  grid-template-columns: 24px repeat(7, 1fr);\n}\n\n.v-calendar-weekly__head-weekday, .v-calendar-weekly__head-weekday-with-weeknumber {\n  flex: 1 0 20px;\n  user-select: none;\n  padding: 8px 4px 0px 4px;\n  font-size: 11px;\n  overflow: hidden;\n  text-align: center;\n  text-overflow: ellipsis;\n  text-transform: uppercase;\n  white-space: nowrap;\n  border-right: thin solid #e0e0e0;\n}\n.v-calendar-weekly__head-weekday:last-child, .v-calendar-weekly__head-weekday-with-weeknumber:last-child {\n  border-right: none;\n}\n.v-calendar-weekly__head-weekday > div .v-btn, .v-calendar-weekly__head-weekday-with-weeknumber > div .v-btn {\n  font-size: 1.5rem;\n}\n\n.v-calendar-weekly__head-weeknumber {\n  background: rgb(var(--v-theme-surface-light));\n  color: rgba(var(--v-theme-on-surface-light), var(--v-high-emphasis-opacity));\n}\n\n.v-calendar-weekly__week {\n  display: flex;\n  flex: 1;\n  height: unset;\n  min-height: 0;\n}\n\n.v-calendar-month__weeknumber {\n  padding-top: 6px;\n  background: rgb(var(--v-theme-surface-light));\n  border-bottom: thin solid #e0e0e0;\n  color: rgba(var(--v-theme-on-surface-light), var(--v-high-emphasis-opacity));\n  text-align: center;\n  font-size: 12px;\n  font-weight: 500;\n}\n\n.v-calendar-month__days {\n  display: grid;\n  flex: 1 1;\n}\n.v-calendar-month__days > .v-calendar-month__day {\n  min-height: 150px;\n}\n.v-calendar-month__days.days__0 {\n  grid-template-columns: 1fr;\n}\n.v-calendar-month__days.days__0 > .v-calendar-month__day {\n  border-right: none;\n}\n.v-calendar-month__days.days__1 {\n  grid-template-columns: 1fr;\n}\n.v-calendar-month__days.days__1 > .v-calendar-month__day {\n  border-right: none;\n}\n.v-calendar-month__days.days__2 {\n  grid-template-columns: repeat(2, 1fr);\n}\n.v-calendar-month__days.days__2 > .v-calendar-month__day:nth-child(2n) {\n  border-right: none;\n}\n.v-calendar-month__days.days__3 {\n  grid-template-columns: repeat(3, 1fr);\n}\n.v-calendar-month__days.days__3 > .v-calendar-month__day:nth-child(3n) {\n  border-right: none;\n}\n.v-calendar-month__days.days__4 {\n  grid-template-columns: repeat(4, 1fr);\n}\n.v-calendar-month__days.days__4 > .v-calendar-month__day:nth-child(4n) {\n  border-right: none;\n}\n.v-calendar-month__days.days__5 {\n  grid-template-columns: repeat(5, 1fr);\n}\n.v-calendar-month__days.days__5 > .v-calendar-month__day:nth-child(5n) {\n  border-right: none;\n}\n.v-calendar-month__days.days__6 {\n  grid-template-columns: repeat(6, 1fr);\n}\n.v-calendar-month__days.days__6 > .v-calendar-month__day:nth-child(6n) {\n  border-right: none;\n}\n.v-calendar-month__days.days__6.v-calendar-month__weeknumbers {\n  grid-template-columns: 24px repeat(6, 1fr);\n}\n.v-calendar-month__days.days__7 {\n  grid-template-columns: repeat(7, 1fr);\n}\n.v-calendar-month__days.days__7 > .v-calendar-month__day:nth-child(7n) {\n  border-right: none;\n}\n.v-calendar-month__days.days-with-weeknumbers__0 {\n  grid-template-columns: 24px 1fr;\n}\n.v-calendar-month__days.days-with-weeknumbers__0 > .v-calendar-month__day {\n  border-right: none;\n}\n.v-calendar-month__days.days-with-weeknumbers__1 {\n  grid-template-columns: 24px 1fr;\n}\n.v-calendar-month__days.days-with-weeknumbers__1 > .v-calendar-month__day {\n  border-right: none;\n}\n.v-calendar-month__days.days-with-weeknumbers__2 {\n  grid-template-columns: 24px repeat(2, 1fr);\n}\n.v-calendar-month__days.days-with-weeknumbers__2 > .v-calendar-month__day:nth-child(3n) {\n  border-right: none;\n}\n.v-calendar-month__days.days-with-weeknumbers__3 {\n  grid-template-columns: 24px repeat(3, 1fr);\n}\n.v-calendar-month__days.days-with-weeknumbers__3 > .v-calendar-month__day:nth-child(4n) {\n  border-right: none;\n}\n.v-calendar-month__days.days-with-weeknumbers__4 {\n  grid-template-columns: 24px repeat(4, 1fr);\n}\n.v-calendar-month__days.days-with-weeknumbers__4 > .v-calendar-month__day:nth-child(5n) {\n  border-right: none;\n}\n.v-calendar-month__days.days-with-weeknumbers__5 {\n  grid-template-columns: 24px repeat(5, 1fr);\n}\n.v-calendar-month__days.days-with-weeknumbers__5 > .v-calendar-month__day:nth-child(6n) {\n  border-right: none;\n}\n.v-calendar-month__days.days-with-weeknumbers__6 {\n  grid-template-columns: 24px repeat(6, 1fr);\n}\n.v-calendar-month__days.days-with-weeknumbers__6 > .v-calendar-month__day:nth-child(7n) {\n  border-right: none;\n}\n.v-calendar-month__days.days-with-weeknumbers__7 {\n  grid-template-columns: 24px repeat(7, 1fr);\n}\n.v-calendar-month__days.days-with-weeknumbers__7 > .v-calendar-month__day:nth-child(7n) {\n  border-right: thin solid thin;\n}\n.v-calendar-month__days.days-with-weeknumbers__7 > .v-calendar-month__day:nth-child(8n) {\n  border-right: none;\n}\n.v-calendar-month__days.days-with-weeknumbers__7 > .v-calendar-month__day:nth-child(8n) {\n  border-right: none;\n}",
-      "start": 1723072336888,
-      "end": 1723072336888,
+      "start": 1723160581331,
+      "end": 1723160581331,
       "order": "normal",
       "sourcemaps": null
     },
     {
       "name": "vite:esbuild",
-      "start": 1723072336888,
-      "end": 1723072336888,
+      "start": 1723160581331,
+      "end": 1723160581331,
       "order": "normal"
     },
     {
       "name": "vite:json",
-      "start": 1723072336888,
-      "end": 1723072336888,
+      "start": 1723160581331,
+      "end": 1723160581331,
       "order": "normal"
     },
     {
       "name": "vite:worker",
-      "start": 1723072336888,
-      "end": 1723072336888,
+      "start": 1723160581331,
+      "end": 1723160581331,
       "order": "normal"
     },
     {
       "name": "vite:vue",
-      "start": 1723072336888,
-      "end": 1723072336888,
+      "start": 1723160581331,
+      "end": 1723160581331,
       "order": "normal"
     },
     {
       "name": "vite:define",
-      "start": 1723072336888,
-      "end": 1723072336888,
+      "start": 1723160581331,
+      "end": 1723160581331,
       "order": "normal"
     },
     {
       "name": "vite:css-post",
       "result": "",
-      "start": 1723072336888,
-      "end": 1723072336888,
+      "start": 1723160581331,
+      "end": 1723160581331,
       "order": "normal",
       "sourcemaps": {
         "mappings": ""
@@ -58,50 +58,50 @@
     },
     {
       "name": "vite:build-html",
-      "start": 1723072336888,
-      "end": 1723072336888,
+      "start": 1723160581331,
+      "end": 1723160581331,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1723072336888,
-      "end": 1723072336888,
+      "start": 1723160581331,
+      "end": 1723160581331,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1723072336888,
-      "end": 1723072336888,
+      "start": 1723160581331,
+      "end": 1723160581331,
       "order": "normal"
     },
     {
       "name": "commonjs",
-      "start": 1723072336888,
-      "end": 1723072336888,
+      "start": 1723160581331,
+      "end": 1723160581331,
       "order": "normal"
     },
     {
       "name": "vite:dynamic-import-vars",
-      "start": 1723072336888,
-      "end": 1723072336888,
+      "start": 1723160581331,
+      "end": 1723160581331,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1723072336888,
-      "end": 1723072336888,
+      "start": 1723160581331,
+      "end": 1723160581331,
       "order": "normal"
     },
     {
       "name": "vite:build-import-analysis",
-      "start": 1723072336888,
-      "end": 1723072336888,
+      "start": 1723160581331,
+      "end": 1723160581331,
       "order": "normal"
     },
     {
       "name": "vite:reporter",
-      "start": 1723072336888,
-      "end": 1723072336888,
+      "start": 1723160581331,
+      "end": 1723160581331,
       "order": "normal"
     }
   ]

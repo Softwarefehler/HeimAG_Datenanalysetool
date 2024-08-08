@@ -6,7 +6,7 @@ import java.time.format.DateTimeFormatter
 
 object converter {
 
-    fun frontendDateStringToInt(dateString: String): Int {
+    fun stringToInt(dateString: String): Int {
         val replacementValue = LocalDate.now()
         var date: LocalDate
 
@@ -57,6 +57,7 @@ object converter {
         return dateInt
     }
 
+
     fun intToDate(dateInt: Int): LocalDate {
         val replacementValue = LocalDate.now()
         var date: LocalDate
@@ -78,6 +79,23 @@ object converter {
         }
         return date
     }
+
+
+
+
+
+    fun intToString(dateInt: Int): String {
+        // Integer in String umwandeln
+        val dateStringRaw = dateInt.toString()
+
+        // String in das Format yyyy-MM-dd umwandeln
+        val dateString = "${dateStringRaw.substring(0, 4)}-${dateStringRaw.substring(4, 6)}-${dateStringRaw.substring(6, 8)}"
+
+        println("Formatted Date String: $dateString")  // Ausgabe: Formatted Date String: 2024-08-06
+
+        return dateString
+    }
+
 
 
 }

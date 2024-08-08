@@ -4,98 +4,98 @@
     {
       "name": "vite:load-fallback",
       "result": "import { createVNode as _createVNode } from \"vue\";\n// Styles\nimport \"./VCalendarInterval.css\";\n\n// Components\nimport { VCalendarIntervalEvent } from \"./VCalendarIntervalEvent.mjs\"; // Composables\nimport { useDate } from \"../../composables/date/index.mjs\"; // Utilities\nimport { computed } from 'vue';\nimport { convertToUnit, genericComponent, propsFactory, useRender } from \"../../util/index.mjs\";\nexport const makeVCalendarIntervalProps = propsFactory({\n  day: {\n    type: Object,\n    default: () => ({})\n  },\n  dayIndex: Number,\n  events: Array,\n  intervalDivisions: {\n    type: Number,\n    default: 2\n  },\n  intervalDuration: {\n    type: Number,\n    default: 60\n  },\n  intervalHeight: {\n    type: Number,\n    default: 48\n  },\n  intervalFormat: {\n    type: [String, Function],\n    default: 'fullTime12h'\n  },\n  intervalStart: {\n    type: Number,\n    default: 0\n  }\n}, 'VCalendarInterval');\nexport const VCalendarInterval = genericComponent()({\n  name: 'VCalendarInterval',\n  props: {\n    index: {\n      type: Number,\n      required: true\n    },\n    ...makeVCalendarIntervalProps()\n  },\n  setup(props, _ref) {\n    let {\n      emit,\n      slots\n    } = _ref;\n    const adapter = useDate();\n    const interval = computed(() => {\n      const start = adapter.addMinutes(adapter.startOfDay(props.day.date), props.intervalDuration * (props.index + props.intervalStart));\n      const end = adapter.addMinutes(adapter.startOfDay(props.day.date), props.intervalDuration * (props.index + props.intervalStart + 1) - 1);\n      return {\n        ...props.day,\n        label: adapter.format(start, 'fullTime24h'),\n        start,\n        end,\n        events: props.events ? props.events.filter(e => !e.allDay && (adapter.isEqual(start, e.start) || adapter.isWithinRange(e.start, [start, end]) || adapter.isWithinRange(start, [e.start, e.end]) || adapter.isEqual(end, e.end))).map(e => {\n          return {\n            ...e,\n            first: adapter.isEqual(start, e.start) || adapter.isWithinRange(e.start, [start, end]),\n            last: adapter.isEqual(end, e.end) || adapter.isWithinRange(e.end, [start, end])\n          };\n        }) : []\n      };\n    });\n    useRender(() => {\n      return props.dayIndex === 0 ? _createVNode(\"div\", {\n        \"class\": \"v-calendar-day__row-with-label\",\n        \"style\": `height: ${convertToUnit(props.intervalHeight)}`\n      }, [_createVNode(\"div\", {\n        \"class\": \"v-calendar-day__row-label\"\n      }, [_createVNode(\"slot\", {\n        \"name\": \"intervalFormat\",\n        \"interval\": interval.value\n      }, [props.index ? props.intervalFormat ? typeof props.intervalFormat === 'string' ? adapter.format(interval.value.start, 'hours12h') : props.intervalFormat(interval.value) : interval.value.label : ''])]), _createVNode(\"div\", {\n        \"class\": \"v-calendar-day__row-hairline\"\n      }, null), _createVNode(\"div\", {\n        \"class\": ['v-calendar-day__row-content', interval.value.events.some(e => !e.last) ? 'v-calendar-day__row-content-through' : '']\n      }, [_createVNode(\"slot\", {\n        \"name\": \"intervalBody\",\n        \"interval\": interval.value\n      }, [interval.value.events?.map(event => _createVNode(VCalendarIntervalEvent, {\n        \"event\": event,\n        \"interval\": interval.value,\n        \"intervalDivisions\": props.intervalDivisions,\n        \"intervalDuration\": props.intervalDuration,\n        \"intervalHeight\": props.intervalHeight\n      }, null))])])]) : _createVNode(\"div\", {\n        \"class\": \"v-calendar-day__row-without-label\",\n        \"style\": `height: ${convertToUnit(props.intervalHeight)}`\n      }, [_createVNode(\"div\", {\n        \"class\": ['v-calendar-day__row-content', interval.value.events.some(e => !e.last) ? 'v-calendar-day__row-content-through' : '']\n      }, [_createVNode(\"slot\", {\n        \"name\": \"intervalBody\",\n        \"interval\": interval.value\n      }, [interval.value.events?.filter(event => !event.allDay).map(event => _createVNode(VCalendarIntervalEvent, {\n        \"event\": event,\n        \"interval\": interval.value,\n        \"intervalDivisions\": props.intervalDivisions,\n        \"intervalDuration\": props.intervalDuration,\n        \"intervalHeight\": props.intervalHeight\n      }, null))])])]);\n    });\n    return {\n      interval\n    };\n  }\n});\n//# sourceMappingURL=VCalendarInterval.mjs.map",
-      "start": 1723072336427,
-      "end": 1723072336490,
+      "start": 1723160580780,
+      "end": 1723160580945,
       "sourcemaps": null
     },
     {
       "name": "vite:css",
-      "start": 1723072336490,
-      "end": 1723072336490,
+      "start": 1723160580945,
+      "end": 1723160580945,
       "order": "normal"
     },
     {
       "name": "vite:esbuild",
-      "start": 1723072336490,
-      "end": 1723072336490,
+      "start": 1723160580945,
+      "end": 1723160580945,
       "order": "normal"
     },
     {
       "name": "vite:json",
-      "start": 1723072336491,
-      "end": 1723072336491,
+      "start": 1723160580945,
+      "end": 1723160580945,
       "order": "normal"
     },
     {
       "name": "vite:worker",
-      "start": 1723072336491,
-      "end": 1723072336491,
+      "start": 1723160580945,
+      "end": 1723160580945,
       "order": "normal"
     },
     {
       "name": "vite:vue",
-      "start": 1723072336491,
-      "end": 1723072336491,
+      "start": 1723160580945,
+      "end": 1723160580945,
       "order": "normal"
     },
     {
       "name": "vite:define",
-      "start": 1723072336491,
-      "end": 1723072336491,
+      "start": 1723160580945,
+      "end": 1723160580946,
       "order": "normal"
     },
     {
       "name": "vite:css-post",
-      "start": 1723072336491,
-      "end": 1723072336491,
+      "start": 1723160580946,
+      "end": 1723160580946,
       "order": "normal"
     },
     {
       "name": "vite:build-html",
-      "start": 1723072336491,
-      "end": 1723072336491,
+      "start": 1723160580946,
+      "end": 1723160580946,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1723072336491,
-      "end": 1723072336491,
+      "start": 1723160580946,
+      "end": 1723160580946,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1723072336491,
-      "end": 1723072336491,
+      "start": 1723160580946,
+      "end": 1723160580946,
       "order": "normal"
     },
     {
       "name": "commonjs",
-      "start": 1723072336491,
-      "end": 1723072336491,
+      "start": 1723160580946,
+      "end": 1723160580946,
       "order": "normal"
     },
     {
       "name": "vite:dynamic-import-vars",
-      "start": 1723072336491,
-      "end": 1723072336491,
+      "start": 1723160580946,
+      "end": 1723160580946,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1723072336491,
-      "end": 1723072336491,
+      "start": 1723160580946,
+      "end": 1723160580946,
       "order": "normal"
     },
     {
       "name": "vite:build-import-analysis",
-      "start": 1723072336491,
-      "end": 1723072336491,
+      "start": 1723160580946,
+      "end": 1723160580946,
       "order": "normal"
     },
     {
       "name": "vite:reporter",
-      "start": 1723072336491,
-      "end": 1723072336491,
+      "start": 1723160580946,
+      "end": 1723160580946,
       "order": "normal"
     }
   ]

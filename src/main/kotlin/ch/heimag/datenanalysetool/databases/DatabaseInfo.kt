@@ -1,6 +1,6 @@
 package ch.heimag.datenanalysetool.databases
 
-interface DatenbankInfo {
+interface DatabaseInfo {
     val PROTOCOL: String
     val HOST: String
     val PORT: Int

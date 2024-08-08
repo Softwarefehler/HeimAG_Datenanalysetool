@@ -4,19 +4,33 @@ import { VDateInput } from 'vuetify/labs/VDateInput'
 import { VSelect, VRow, VCol, VContainer, VBtn, VSheet, VDataTable } from 'vuetify/components'
 
 
-export type dataPoint = { date: string; temperature: string }
+export type FirstResponse = { databaseStatus: string, countryList: Array<string>; latestDate: string }
+
+export type DataPoint = { date: string; temperature: string }
 
 
 // Reaktive Variablen für die Date-Picker
 const startDate = ref<string | null>(null)
 const endDate = ref<string | null>(null)
 const selectedCountry = ref<string | null>(null)
-const tableData = ref<dataPoint[]>([])
+const tableData = ref<DataPoint[]>([])
 
-const headers = ref([
-  { text: 'Datum', value: 'date' },
-  { text: 'Temperatur', value: 'temperature' }
-])
+
+const databaseStatus = ref<string | null>(null)
+const countryList = ref<string[]>([])
+const latestDate = ref<string | null>(null)
+
+
+ async function firstPayload() {
+  try {
+    const data = await fetch('/get-data').then((response) => response.json())
+    databaseStatus.value = data.databaseStatus
+    countryList.value = data.countryList
+    latestDate.value = data.latestDate
+  } catch (error) {
+    alert(`Fehler beim Laden der Daten: ${error}`)
+  }
+}
 
 async function sendData() {
   if (startDate.value !== null && endDate.value !== null && selectedCountry.value !== null) {
@@ -26,7 +40,7 @@ async function sendData() {
     formData.append('selectedCountry', selectedCountry.value)
 
     try {
-      const response = await fetch('/', {
+      const response = await fetch('/search', {
         method: 'POST',
         body: formData
       })
@@ -35,7 +49,6 @@ async function sendData() {
       } else {
         const payload = await response.json()
         processPayload(payload)
-        //  fetchDataPointsFromServer()       const payload = await response.json()
       }
     } catch (error) {
       alert(`Fehler: ${error}`)
@@ -53,17 +66,10 @@ function processPayload(payload: any) {
   }))
 }
 
-/*
-function fetchDataPointsFromServer() {
-  fetch('/')
-    .then((response) => response.json())
-    .then((payload) => {
-      tableData.value = payload
-    })
-}
 
-
-onMounted(fetchDataPointsFromServer)*/
+onMounted(async () => {
+  await firstPayload()
+})
 </script>
 
 <template>
@@ -72,7 +78,7 @@ onMounted(fetchDataPointsFromServer)*/
     <v-select
       v-model="selectedCountry"
       label="Wähle einen Ort aus"
-      :items="['California', 'Colorado', 'Florida', 'Georgia', 'Texas', 'Wyoming']"
+      :items="countryList"
     ></v-select>
     <v-row dense>
       <v-col cols="12" md="6">
@@ -87,11 +93,12 @@ onMounted(fetchDataPointsFromServer)*/
         <v-date-input
           v-model="endDate"
           label="Wähle das Enddatum"
-          prepend-icon="$calendar"
+          prepend-icon=""
+          prepend-inner-icon="$calendar"
         ></v-date-input>
       </v-col>
     </v-row>
-    <v-btn @click="sendData">Send Data</v-btn>
+    <v-btn @click="sendData">Suche starten</v-btn>
     <br>
     <br>
     <v-row>
@@ -107,12 +114,10 @@ onMounted(fetchDataPointsFromServer)*/
       </v-col>
       <v-col cols="12" md="12">
         <v-sheet class="mb-4">
-          <v-data-table  :items="tableData"></v-data-table>
+          <v-data-table :items="tableData"></v-data-table>
         </v-sheet>
       </v-col>
     </v-row>
-
-
   </v-container>
 </template>
 
