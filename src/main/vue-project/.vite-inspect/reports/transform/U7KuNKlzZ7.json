@@ -4,98 +4,98 @@
     {
       "name": "vite:load-fallback",
       "result": "import { mergeProps as _mergeProps, resolveDirective as _resolveDirective, createVNode as _createVNode, Fragment as _Fragment } from \"vue\";\n// Components\nimport { VTreeviewGroup } from \"./VTreeviewGroup.mjs\";\nimport { VTreeviewItem } from \"./VTreeviewItem.mjs\";\nimport { VCheckboxBtn } from \"../../components/VCheckbox/index.mjs\"; // Utilities\nimport { shallowRef, withModifiers } from 'vue';\nimport { genericComponent, propsFactory } from \"../../util/index.mjs\"; // Types\nexport const makeVTreeviewChildrenProps = propsFactory({\n  loadChildren: Function,\n  loadingIcon: {\n    type: String,\n    default: '$loading'\n  },\n  items: Array,\n  selectable: Boolean,\n  selectStrategy: [String, Function, Object]\n}, 'VTreeviewChildren');\nexport const VTreeviewChildren = genericComponent()({\n  name: 'VTreeviewChildren',\n  props: makeVTreeviewChildrenProps(),\n  setup(props, _ref) {\n    let {\n      emit,\n      slots\n    } = _ref;\n    const isLoading = shallowRef(null);\n    function checkChildren(item) {\n      return new Promise(resolve => {\n        if (!props.items?.length || !props.loadChildren) return resolve();\n        if (item?.children?.length === 0) {\n          isLoading.value = item.value;\n          props.loadChildren(item).then(resolve);\n          return;\n        }\n        resolve();\n      }).finally(() => {\n        isLoading.value = null;\n      });\n    }\n    function selectItem(select, isSelected) {\n      if (props.selectable) {\n        select(!isSelected);\n      }\n    }\n    return () => slots.default?.() ?? props.items?.map(_ref2 => {\n      let {\n        children,\n        props: itemProps,\n        raw: item\n      } = _ref2;\n      const loading = isLoading.value === item.value;\n      const slotsWithItem = {\n        prepend: slotProps => _createVNode(_Fragment, null, [props.selectable && (!children || children && !['leaf', 'single-leaf'].includes(props.selectStrategy)) && _createVNode(\"div\", null, [_createVNode(VCheckboxBtn, {\n          \"key\": item.value,\n          \"modelValue\": slotProps.isSelected,\n          \"loading\": loading,\n          \"indeterminate\": slotProps.isIndeterminate,\n          \"onClick\": withModifiers(() => selectItem(slotProps.select, slotProps.isSelected), ['stop']),\n          \"onKeydown\": e => {\n            if (!['Enter', 'Space'].includes(e.key)) return;\n            e.stopPropagation();\n            selectItem(slotProps.select, slotProps.isSelected);\n          }\n        }, null)]), slots.prepend?.({\n          ...slotProps,\n          item\n        })]),\n        append: slots.append ? slotProps => slots.append?.({\n          ...slotProps,\n          item\n        }) : undefined,\n        title: slots.title ? slotProps => slots.title?.({\n          ...slotProps,\n          item\n        }) : undefined\n      };\n      const treeviewGroupProps = VTreeviewGroup.filterProps(itemProps);\n      const treeviewChildrenProps = VTreeviewChildren.filterProps(props);\n      return children ? _createVNode(VTreeviewGroup, _mergeProps({\n        \"value\": itemProps?.value\n      }, treeviewGroupProps), {\n        activator: _ref3 => {\n          let {\n            props: activatorProps\n          } = _ref3;\n          const listItemProps = {\n            ...itemProps,\n            ...activatorProps,\n            value: itemProps?.value\n          };\n          return _createVNode(VTreeviewItem, _mergeProps(listItemProps, {\n            \"loading\": loading,\n            \"onClick\": () => checkChildren(item)\n          }), slotsWithItem);\n        },\n        default: () => _createVNode(VTreeviewChildren, _mergeProps(treeviewChildrenProps, {\n          \"items\": children\n        }), slots)\n      }) : slots.item?.({\n        props: itemProps\n      }) ?? _createVNode(VTreeviewItem, itemProps, slotsWithItem);\n    });\n  }\n});\n//# sourceMappingURL=VTreeviewChildren.mjs.map",
-      "start": 1723204989558,
-      "end": 1723204989616,
+      "start": 1723246184668,
+      "end": 1723246184723,
       "sourcemaps": null
     },
     {
       "name": "vite:css",
-      "start": 1723204989616,
-      "end": 1723204989616,
+      "start": 1723246184723,
+      "end": 1723246184723,
       "order": "normal"
     },
     {
       "name": "vite:esbuild",
-      "start": 1723204989616,
-      "end": 1723204989616,
+      "start": 1723246184723,
+      "end": 1723246184723,
       "order": "normal"
     },
     {
       "name": "vite:json",
-      "start": 1723204989616,
-      "end": 1723204989616,
+      "start": 1723246184723,
+      "end": 1723246184723,
       "order": "normal"
     },
     {
       "name": "vite:worker",
-      "start": 1723204989616,
-      "end": 1723204989616,
+      "start": 1723246184723,
+      "end": 1723246184723,
       "order": "normal"
     },
     {
       "name": "vite:vue",
-      "start": 1723204989616,
-      "end": 1723204989616,
+      "start": 1723246184723,
+      "end": 1723246184723,
       "order": "normal"
     },
     {
       "name": "vite:define",
-      "start": 1723204989616,
-      "end": 1723204989616,
+      "start": 1723246184723,
+      "end": 1723246184723,
       "order": "normal"
     },
     {
       "name": "vite:css-post",
-      "start": 1723204989616,
-      "end": 1723204989616,
+      "start": 1723246184723,
+      "end": 1723246184723,
       "order": "normal"
     },
     {
       "name": "vite:build-html",
-      "start": 1723204989616,
-      "end": 1723204989616,
+      "start": 1723246184723,
+      "end": 1723246184723,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1723204989616,
-      "end": 1723204989616,
+      "start": 1723246184723,
+      "end": 1723246184723,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1723204989616,
-      "end": 1723204989616,
+      "start": 1723246184723,
+      "end": 1723246184723,
       "order": "normal"
     },
     {
       "name": "commonjs",
-      "start": 1723204989616,
-      "end": 1723204989616,
+      "start": 1723246184723,
+      "end": 1723246184723,
       "order": "normal"
     },
     {
       "name": "vite:dynamic-import-vars",
-      "start": 1723204989616,
-      "end": 1723204989616,
+      "start": 1723246184723,
+      "end": 1723246184723,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1723204989616,
-      "end": 1723204989616,
+      "start": 1723246184723,
+      "end": 1723246184723,
       "order": "normal"
     },
     {
       "name": "vite:build-import-analysis",
-      "start": 1723204989616,
-      "end": 1723204989616,
+      "start": 1723246184723,
+      "end": 1723246184723,
       "order": "normal"
     },
     {
       "name": "vite:reporter",
-      "start": 1723204989616,
-      "end": 1723204989616,
+      "start": 1723246184723,
+      "end": 1723246184723,
       "order": "normal"
     }
   ]

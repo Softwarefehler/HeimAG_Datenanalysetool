@@ -1,13 +1,11 @@
+
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
 import { VDateInput } from 'vuetify/labs/VDateInput'
 import { VSelect, VRow, VCol, VContainer, VBtn, VSheet, VDataTable } from 'vuetify/components'
 
 
-export type FirstResponse = { databaseStatus: string, countryList: Array<string>; latestDate: string }
-
 export type DataPoint = { date: string; temperature: string }
-
 
 // Reaktive Variablen für die Date-Picker
 const startDate = ref<string | null>(null)
@@ -19,6 +17,7 @@ const tableData = ref<DataPoint[]>([])
 const databaseStatus = ref<string | null>(null)
 const countryList = ref<string[]>([])
 const latestDate = ref<string | null>(null)
+
 
 
  async function firstPayload() {
@@ -99,27 +98,35 @@ onMounted(async () => {
       </v-col>
     </v-row>
     <v-btn @click="sendData">Suche starten</v-btn>
-    <br>
-    <br>
+    <v-spacer class="my-6"></v-spacer>
+    <v-divider class="my-7" :style="{ height: '20px'}"></v-divider>
+    <v-spacer class="my-6"></v-spacer>
     <v-row>
-      <v-col cols="12" md="12">
+      <v-col cols="12" md="4">
         <v-sheet class="mb-4">
-          <v-data-table :items="tableData"></v-data-table>
+          <h4 class="text-h6 font-weight-bold mb-1">Schwachlast</h4>
+          <p class="text-body-2 mb-2" style="margin-top: -8px;">Temperatur möglichst nahe bei 20°C</p>
+          <v-data-table :items="tableData" :items-per-page="-1"></v-data-table>
         </v-sheet>
       </v-col>
-      <v-col cols="12" md="12">
+      <v-col cols="12" md="4">
         <v-sheet class="mb-4">
-          <v-data-table :items="tableData"></v-data-table>
+          <h4 class="text-h6 font-weight-bold mb-1">Hauptanteil Heizperiode</h4>
+          <p class="text-body-2 mb-2" style="margin-top: -8px;">Temperaturen zwischen 0 ... 20°C</p>
+          <v-data-table :items="tableData" :items-per-page="-1"></v-data-table>
         </v-sheet>
       </v-col>
-      <v-col cols="12" md="12">
+      <v-col cols="12" md="4">
         <v-sheet class="mb-4">
-          <v-data-table :items="tableData"></v-data-table>
+          <h4 class="text-h6 font-weight-bold mb-1">Kalte Periode</h4>
+          <p class="text-body-2 mb-2" style="margin-top: -8px;">Temperaturen zwischen -5 ... - 10°C</p>
+          <v-data-table :items="tableData" :items-per-page="-1"></v-data-table>
         </v-sheet>
       </v-col>
     </v-row>
   </v-container>
 </template>
+
 
 <style scoped>
 

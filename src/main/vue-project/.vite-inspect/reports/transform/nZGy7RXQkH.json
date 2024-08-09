@@ -4,53 +4,53 @@
     {
       "name": "vite:load-fallback",
       "result": ".v-carousel {\n  overflow: hidden;\n  position: relative;\n  width: 100%;\n}\n.v-carousel__controls {\n  align-items: center;\n  bottom: 0;\n  display: flex;\n  height: 50px;\n  justify-content: center;\n  list-style-type: none;\n  position: absolute;\n  width: 100%;\n  z-index: 1;\n  background: rgba(var(--v-theme-surface-variant), 0.3);\n  color: rgb(var(--v-theme-on-surface-variant));\n}\n.v-carousel__controls > .v-item-group {\n  flex: 0 1 auto;\n}\n.v-carousel__controls__item {\n  margin: 0 8px;\n}\n.v-carousel__controls__item .v-icon {\n  opacity: 0.5;\n}\n.v-carousel__controls__item--active .v-icon {\n  opacity: 1;\n  vertical-align: middle;\n}\n.v-carousel__controls__item:hover {\n  background: none;\n}\n.v-carousel__controls__item:hover .v-icon {\n  opacity: 0.8;\n}\n\n.v-carousel__progress {\n  margin: 0;\n  position: absolute;\n  bottom: 0;\n  left: 0;\n  right: 0;\n}\n\n.v-carousel-item {\n  display: block;\n  height: inherit;\n  text-decoration: none;\n}\n.v-carousel-item > .v-img {\n  height: inherit;\n}\n\n.v-carousel--hide-delimiter-background .v-carousel__controls {\n  background: transparent;\n}\n\n.v-carousel--vertical-delimiters .v-carousel__controls {\n  flex-direction: column;\n  height: 100% !important;\n  width: 50px;\n}",
-      "start": 1723204990514,
-      "end": 1723204990529,
+      "start": 1723246185475,
+      "end": 1723246185502,
       "sourcemaps": null
     },
     {
       "name": "vite:css",
       "result": ".v-carousel {\n  overflow: hidden;\n  position: relative;\n  width: 100%;\n}\n.v-carousel__controls {\n  align-items: center;\n  bottom: 0;\n  display: flex;\n  height: 50px;\n  justify-content: center;\n  list-style-type: none;\n  position: absolute;\n  width: 100%;\n  z-index: 1;\n  background: rgba(var(--v-theme-surface-variant), 0.3);\n  color: rgb(var(--v-theme-on-surface-variant));\n}\n.v-carousel__controls > .v-item-group {\n  flex: 0 1 auto;\n}\n.v-carousel__controls__item {\n  margin: 0 8px;\n}\n.v-carousel__controls__item .v-icon {\n  opacity: 0.5;\n}\n.v-carousel__controls__item--active .v-icon {\n  opacity: 1;\n  vertical-align: middle;\n}\n.v-carousel__controls__item:hover {\n  background: none;\n}\n.v-carousel__controls__item:hover .v-icon {\n  opacity: 0.8;\n}\n\n.v-carousel__progress {\n  margin: 0;\n  position: absolute;\n  bottom: 0;\n  left: 0;\n  right: 0;\n}\n\n.v-carousel-item {\n  display: block;\n  height: inherit;\n  text-decoration: none;\n}\n.v-carousel-item > .v-img {\n  height: inherit;\n}\n\n.v-carousel--hide-delimiter-background .v-carousel__controls {\n  background: transparent;\n}\n\n.v-carousel--vertical-delimiters .v-carousel__controls {\n  flex-direction: column;\n  height: 100% !important;\n  width: 50px;\n}",
-      "start": 1723204990529,
-      "end": 1723204990529,
+      "start": 1723246185502,
+      "end": 1723246185502,
       "order": "normal",
       "sourcemaps": null
     },
     {
       "name": "vite:esbuild",
-      "start": 1723204990529,
-      "end": 1723204990529,
+      "start": 1723246185502,
+      "end": 1723246185502,
       "order": "normal"
     },
     {
       "name": "vite:json",
-      "start": 1723204990530,
-      "end": 1723204990530,
+      "start": 1723246185502,
+      "end": 1723246185502,
       "order": "normal"
     },
     {
       "name": "vite:worker",
-      "start": 1723204990530,
-      "end": 1723204990530,
+      "start": 1723246185502,
+      "end": 1723246185502,
       "order": "normal"
     },
     {
       "name": "vite:vue",
-      "start": 1723204990530,
-      "end": 1723204990530,
+      "start": 1723246185502,
+      "end": 1723246185502,
       "order": "normal"
     },
     {
       "name": "vite:define",
-      "start": 1723204990530,
-      "end": 1723204990530,
+      "start": 1723246185502,
+      "end": 1723246185502,
       "order": "normal"
     },
     {
       "name": "vite:css-post",
       "result": "",
-      "start": 1723204990530,
-      "end": 1723204990530,
+      "start": 1723246185502,
+      "end": 1723246185502,
       "order": "normal",
       "sourcemaps": {
         "mappings": ""
@@ -58,50 +58,50 @@
     },
     {
       "name": "vite:build-html",
-      "start": 1723204990530,
-      "end": 1723204990530,
+      "start": 1723246185502,
+      "end": 1723246185502,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1723204990530,
-      "end": 1723204990530,
+      "start": 1723246185502,
+      "end": 1723246185502,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1723204990530,
-      "end": 1723204990530,
+      "start": 1723246185502,
+      "end": 1723246185502,
       "order": "normal"
     },
     {
       "name": "commonjs",
-      "start": 1723204990530,
-      "end": 1723204990530,
+      "start": 1723246185502,
+      "end": 1723246185502,
       "order": "normal"
     },
     {
       "name": "vite:dynamic-import-vars",
-      "start": 1723204990530,
-      "end": 1723204990530,
+      "start": 1723246185502,
+      "end": 1723246185502,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1723204990530,
-      "end": 1723204990530,
+      "start": 1723246185502,
+      "end": 1723246185502,
       "order": "normal"
     },
     {
       "name": "vite:build-import-analysis",
-      "start": 1723204990530,
-      "end": 1723204990530,
+      "start": 1723246185502,
+      "end": 1723246185502,
       "order": "normal"
     },
     {
       "name": "vite:reporter",
-      "start": 1723204990530,
-      "end": 1723204990530,
+      "start": 1723246185502,
+      "end": 1723246185502,
       "order": "normal"
     }
   ]

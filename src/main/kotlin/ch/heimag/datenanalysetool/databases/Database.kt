@@ -4,7 +4,6 @@ import ch.heimag.datenanalysetool.converter.converter
 import kotlinx.serialization.Serializable
 import java.sql.DriverManager
 import java.sql.SQLException
-import java.time.LocalDate
 
 @Serializable
 data class DataPoint(val date: String, val temperature: String)
@@ -97,7 +96,7 @@ class Datenbank {
 
         // SQL statement to load rows from database
         val sql = """
-        SELECT $selectedCountry, datum
+        SELECT $selectedCountry, datum 
         FROM merged_output
         WHERE $selectedCountry > $starttemperature AND $selectedCountry < $endtemperature
         AND datum BETWEEN $startDate AND $endDate;
@@ -111,10 +110,10 @@ class Datenbank {
             val dateInt = data.getInt("datum")
             val temperature = data.getDouble(selectedCountry)
 
-            val date = converter.intToString(dateInt)
+            val dateString = converter.intToString(dateInt)
             val temperatureString =temperature.toString()
 
-            val dataPoint = DataPoint(date, temperatureString)
+            val dataPoint = DataPoint(dateString, temperatureString)
             sqlRespondList.add(dataPoint)
 
             //println("$dateInt, $temperature") // Only for Display
