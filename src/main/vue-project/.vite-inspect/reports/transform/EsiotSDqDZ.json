@@ -4,100 +4,100 @@
     {
       "name": "vite:load-fallback",
       "result": "// Composables\nimport { createDate, DateAdapterSymbol, DateOptionsSymbol } from \"./composables/date/date.mjs\";\nimport { createDefaults, DefaultsSymbol } from \"./composables/defaults.mjs\";\nimport { createDisplay, DisplaySymbol } from \"./composables/display.mjs\";\nimport { createGoTo, GoToSymbol } from \"./composables/goto.mjs\";\nimport { createIcons, IconSymbol } from \"./composables/icons.mjs\";\nimport { createLocale, LocaleSymbol } from \"./composables/locale.mjs\";\nimport { createTheme, ThemeSymbol } from \"./composables/theme.mjs\"; // Utilities\nimport { nextTick, reactive } from 'vue';\nimport { defineComponent, getUid, IN_BROWSER, mergeDeep } from \"./util/index.mjs\"; // Types\nexport * from \"./composables/index.mjs\";\nexport function createVuetify() {\n  let vuetify = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};\n  const {\n    blueprint,\n    ...rest\n  } = vuetify;\n  const options = mergeDeep(blueprint, rest);\n  const {\n    aliases = {},\n    components = {},\n    directives = {}\n  } = options;\n  const defaults = createDefaults(options.defaults);\n  const display = createDisplay(options.display, options.ssr);\n  const theme = createTheme(options.theme);\n  const icons = createIcons(options.icons);\n  const locale = createLocale(options.locale);\n  const date = createDate(options.date, locale);\n  const goTo = createGoTo(options.goTo, locale);\n  const install = app => {\n    for (const key in directives) {\n      app.directive(key, directives[key]);\n    }\n    for (const key in components) {\n      app.component(key, components[key]);\n    }\n    for (const key in aliases) {\n      app.component(key, defineComponent({\n        ...aliases[key],\n        name: key,\n        aliasName: aliases[key].name\n      }));\n    }\n    theme.install(app);\n    app.provide(DefaultsSymbol, defaults);\n    app.provide(DisplaySymbol, display);\n    app.provide(ThemeSymbol, theme);\n    app.provide(IconSymbol, icons);\n    app.provide(LocaleSymbol, locale);\n    app.provide(DateOptionsSymbol, date.options);\n    app.provide(DateAdapterSymbol, date.instance);\n    app.provide(GoToSymbol, goTo);\n    if (IN_BROWSER && options.ssr) {\n      if (app.$nuxt) {\n        app.$nuxt.hook('app:suspense:resolve', () => {\n          display.update();\n        });\n      } else {\n        const {\n          mount\n        } = app;\n        app.mount = function () {\n          const vm = mount(...arguments);\n          nextTick(() => display.update());\n          app.mount = mount;\n          return vm;\n        };\n      }\n    }\n    getUid.reset();\n    if (typeof __VUE_OPTIONS_API__ !== 'boolean' || __VUE_OPTIONS_API__) {\n      app.mixin({\n        computed: {\n          $vuetify() {\n            return reactive({\n              defaults: inject.call(this, DefaultsSymbol),\n              display: inject.call(this, DisplaySymbol),\n              theme: inject.call(this, ThemeSymbol),\n              icons: inject.call(this, IconSymbol),\n              locale: inject.call(this, LocaleSymbol),\n              date: inject.call(this, DateAdapterSymbol)\n            });\n          }\n        }\n      });\n    }\n  };\n  return {\n    install,\n    defaults,\n    display,\n    theme,\n    icons,\n    locale,\n    date,\n    goTo\n  };\n}\nexport const version = \"3.6.11\";\ncreateVuetify.version = version;\n\n// Vue's inject() can only be used in setup\nfunction inject(key) {\n  const vm = this.$;\n  const provides = vm.parent?.provides ?? vm.vnode.appContext?.provides;\n  if (provides && key in provides) {\n    return provides[key];\n  }\n}\n//# sourceMappingURL=framework.mjs.map",
-      "start": 1723160580663,
-      "end": 1723160580705,
+      "start": 1723204988961,
+      "end": 1723204989001,
       "sourcemaps": null
     },
     {
       "name": "vite:css",
-      "start": 1723160580705,
-      "end": 1723160580705,
+      "start": 1723204989001,
+      "end": 1723204989001,
       "order": "normal"
     },
     {
       "name": "vite:esbuild",
-      "start": 1723160580705,
-      "end": 1723160580705,
+      "start": 1723204989001,
+      "end": 1723204989001,
       "order": "normal"
     },
     {
       "name": "vite:json",
-      "start": 1723160580705,
-      "end": 1723160580705,
+      "start": 1723204989001,
+      "end": 1723204989001,
       "order": "normal"
     },
     {
       "name": "vite:worker",
-      "start": 1723160580705,
-      "end": 1723160580705,
+      "start": 1723204989001,
+      "end": 1723204989001,
       "order": "normal"
     },
     {
       "name": "vite:vue",
-      "start": 1723160580705,
-      "end": 1723160580705,
+      "start": 1723204989001,
+      "end": 1723204989001,
       "order": "normal"
     },
     {
       "name": "vite:define",
       "result": "import { createDate, DateAdapterSymbol, DateOptionsSymbol } from \"./composables/date/date.mjs\";\nimport { createDefaults, DefaultsSymbol } from \"./composables/defaults.mjs\";\nimport { createDisplay, DisplaySymbol } from \"./composables/display.mjs\";\nimport { createGoTo, GoToSymbol } from \"./composables/goto.mjs\";\nimport { createIcons, IconSymbol } from \"./composables/icons.mjs\";\nimport { createLocale, LocaleSymbol } from \"./composables/locale.mjs\";\nimport { createTheme, ThemeSymbol } from \"./composables/theme.mjs\";\nimport { nextTick, reactive } from \"vue\";\nimport { defineComponent, getUid, IN_BROWSER, mergeDeep } from \"./util/index.mjs\";\nexport * from \"./composables/index.mjs\";\nexport function createVuetify() {\n  let vuetify = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : {};\n  const {\n    blueprint,\n    ...rest\n  } = vuetify;\n  const options = mergeDeep(blueprint, rest);\n  const {\n    aliases = {},\n    components = {},\n    directives = {}\n  } = options;\n  const defaults = createDefaults(options.defaults);\n  const display = createDisplay(options.display, options.ssr);\n  const theme = createTheme(options.theme);\n  const icons = createIcons(options.icons);\n  const locale = createLocale(options.locale);\n  const date = createDate(options.date, locale);\n  const goTo = createGoTo(options.goTo, locale);\n  const install = (app) => {\n    for (const key in directives) {\n      app.directive(key, directives[key]);\n    }\n    for (const key in components) {\n      app.component(key, components[key]);\n    }\n    for (const key in aliases) {\n      app.component(key, defineComponent({\n        ...aliases[key],\n        name: key,\n        aliasName: aliases[key].name\n      }));\n    }\n    theme.install(app);\n    app.provide(DefaultsSymbol, defaults);\n    app.provide(DisplaySymbol, display);\n    app.provide(ThemeSymbol, theme);\n    app.provide(IconSymbol, icons);\n    app.provide(LocaleSymbol, locale);\n    app.provide(DateOptionsSymbol, date.options);\n    app.provide(DateAdapterSymbol, date.instance);\n    app.provide(GoToSymbol, goTo);\n    if (IN_BROWSER && options.ssr) {\n      if (app.$nuxt) {\n        app.$nuxt.hook(\"app:suspense:resolve\", () => {\n          display.update();\n        });\n      } else {\n        const {\n          mount\n        } = app;\n        app.mount = function() {\n          const vm = mount(...arguments);\n          nextTick(() => display.update());\n          app.mount = mount;\n          return vm;\n        };\n      }\n    }\n    getUid.reset();\n    if (true) {\n      app.mixin({\n        computed: {\n          $vuetify() {\n            return reactive({\n              defaults: inject.call(this, DefaultsSymbol),\n              display: inject.call(this, DisplaySymbol),\n              theme: inject.call(this, ThemeSymbol),\n              icons: inject.call(this, IconSymbol),\n              locale: inject.call(this, LocaleSymbol),\n              date: inject.call(this, DateAdapterSymbol)\n            });\n          }\n        }\n      });\n    }\n  };\n  return {\n    install,\n    defaults,\n    display,\n    theme,\n    icons,\n    locale,\n    date,\n    goTo\n  };\n}\nexport const version = \"3.6.11\";\ncreateVuetify.version = version;\nfunction inject(key) {\n  const vm = this.$;\n  const provides = vm.parent?.provides ?? vm.vnode.appContext?.provides;\n  if (provides && key in provides) {\n    return provides[key];\n  }\n}\n",
-      "start": 1723160580705,
-      "end": 1723160580730,
+      "start": 1723204989001,
+      "end": 1723204989025,
       "order": "normal",
       "sourcemaps": "{\n  \"version\": 3,\n  \"sources\": [\"C:/Users/MAG/IdeaProjects/Datenanalysetool/src/main/vue-project/node_modules/vuetify/lib/framework.mjs\"],\n  \"sourcesContent\": [\"// Composables\\nimport { createDate, DateAdapterSymbol, DateOptionsSymbol } from \\\"./composables/date/date.mjs\\\";\\nimport { createDefaults, DefaultsSymbol } from \\\"./composables/defaults.mjs\\\";\\nimport { createDisplay, DisplaySymbol } from \\\"./composables/display.mjs\\\";\\nimport { createGoTo, GoToSymbol } from \\\"./composables/goto.mjs\\\";\\nimport { createIcons, IconSymbol } from \\\"./composables/icons.mjs\\\";\\nimport { createLocale, LocaleSymbol } from \\\"./composables/locale.mjs\\\";\\nimport { createTheme, ThemeSymbol } from \\\"./composables/theme.mjs\\\"; // Utilities\\nimport { nextTick, reactive } from 'vue';\\nimport { defineComponent, getUid, IN_BROWSER, mergeDeep } from \\\"./util/index.mjs\\\"; // Types\\nexport * from \\\"./composables/index.mjs\\\";\\nexport function createVuetify() {\\n  let vuetify = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};\\n  const {\\n    blueprint,\\n    ...rest\\n  } = vuetify;\\n  const options = mergeDeep(blueprint, rest);\\n  const {\\n    aliases = {},\\n    components = {},\\n    directives = {}\\n  } = options;\\n  const defaults = createDefaults(options.defaults);\\n  const display = createDisplay(options.display, options.ssr);\\n  const theme = createTheme(options.theme);\\n  const icons = createIcons(options.icons);\\n  const locale = createLocale(options.locale);\\n  const date = createDate(options.date, locale);\\n  const goTo = createGoTo(options.goTo, locale);\\n  const install = app => {\\n    for (const key in directives) {\\n      app.directive(key, directives[key]);\\n    }\\n    for (const key in components) {\\n      app.component(key, components[key]);\\n    }\\n    for (const key in aliases) {\\n      app.component(key, defineComponent({\\n        ...aliases[key],\\n        name: key,\\n        aliasName: aliases[key].name\\n      }));\\n    }\\n    theme.install(app);\\n    app.provide(DefaultsSymbol, defaults);\\n    app.provide(DisplaySymbol, display);\\n    app.provide(ThemeSymbol, theme);\\n    app.provide(IconSymbol, icons);\\n    app.provide(LocaleSymbol, locale);\\n    app.provide(DateOptionsSymbol, date.options);\\n    app.provide(DateAdapterSymbol, date.instance);\\n    app.provide(GoToSymbol, goTo);\\n    if (IN_BROWSER && options.ssr) {\\n      if (app.$nuxt) {\\n        app.$nuxt.hook('app:suspense:resolve', () => {\\n          display.update();\\n        });\\n      } else {\\n        const {\\n          mount\\n        } = app;\\n        app.mount = function () {\\n          const vm = mount(...arguments);\\n          nextTick(() => display.update());\\n          app.mount = mount;\\n          return vm;\\n        };\\n      }\\n    }\\n    getUid.reset();\\n    if (typeof __VUE_OPTIONS_API__ !== 'boolean' || __VUE_OPTIONS_API__) {\\n      app.mixin({\\n        computed: {\\n          $vuetify() {\\n            return reactive({\\n              defaults: inject.call(this, DefaultsSymbol),\\n              display: inject.call(this, DisplaySymbol),\\n              theme: inject.call(this, ThemeSymbol),\\n              icons: inject.call(this, IconSymbol),\\n              locale: inject.call(this, LocaleSymbol),\\n              date: inject.call(this, DateAdapterSymbol)\\n            });\\n          }\\n        }\\n      });\\n    }\\n  };\\n  return {\\n    install,\\n    defaults,\\n    display,\\n    theme,\\n    icons,\\n    locale,\\n    date,\\n    goTo\\n  };\\n}\\nexport const version = \\\"3.6.11\\\";\\ncreateVuetify.version = version;\\n\\n// Vue's inject() can only be used in setup\\nfunction inject(key) {\\n  const vm = this.$;\\n  const provides = vm.parent?.provides ?? vm.vnode.appContext?.provides;\\n  if (provides && key in provides) {\\n    return provides[key];\\n  }\\n}\\n//# sourceMappingURL=framework.mjs.map\"],\n  \"mappings\": \"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\",\n  \"names\": []\n}\n"
     },
     {
       "name": "vite:css-post",
-      "start": 1723160580730,
-      "end": 1723160580730,
+      "start": 1723204989025,
+      "end": 1723204989025,
       "order": "normal"
     },
     {
       "name": "vite:build-html",
-      "start": 1723160580730,
-      "end": 1723160580730,
+      "start": 1723204989025,
+      "end": 1723204989025,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1723160580730,
-      "end": 1723160580730,
+      "start": 1723204989026,
+      "end": 1723204989026,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1723160580730,
-      "end": 1723160580730,
+      "start": 1723204989026,
+      "end": 1723204989026,
       "order": "normal"
     },
     {
       "name": "commonjs",
-      "start": 1723160580732,
-      "end": 1723160580732,
+      "start": 1723204989028,
+      "end": 1723204989028,
       "order": "normal"
     },
     {
       "name": "vite:dynamic-import-vars",
-      "start": 1723160580732,
-      "end": 1723160580732,
+      "start": 1723204989028,
+      "end": 1723204989028,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1723160580732,
-      "end": 1723160580732,
+      "start": 1723204989029,
+      "end": 1723204989029,
       "order": "normal"
     },
     {
       "name": "vite:build-import-analysis",
-      "start": 1723160580733,
-      "end": 1723160580733,
+      "start": 1723204989029,
+      "end": 1723204989029,
       "order": "normal"
     },
     {
       "name": "vite:reporter",
-      "start": 1723160580733,
-      "end": 1723160580733,
+      "start": 1723204989029,
+      "end": 1723204989029,
       "order": "normal"
     }
   ]

@@ -1,12 +1,13 @@
 package ch.heimag.datenanalysetool.databases
 
 import ch.heimag.datenanalysetool.converter.converter
+import kotlinx.serialization.Serializable
 import java.sql.DriverManager
 import java.sql.SQLException
 import java.time.LocalDate
 
-
-data class DataPoint(val date: LocalDate, val temperature: Double?)
+@Serializable
+data class DataPoint(val date: String, val temperature: String)
 
 class Datenbank {
     val PROTOCOL = "jdbc:mysql"
@@ -55,14 +56,14 @@ class Datenbank {
         val statement = connection.createStatement()
 
         // SQL statement to load rows from database
-        val sql = "SELECT * FROM merged_output ORDER BY date DESC LIMIT 1"
+        val sql = "SELECT * FROM merged_output ORDER BY datum DESC LIMIT 1"
 
         // SQL statement execute
         val data = statement.executeQuery(sql)
 
         // Output rows
         if (data.next()) {
-            latestDateInt = data.getInt("date")
+            latestDateInt = data.getInt("datum")
 
         }
         data.close()
@@ -76,14 +77,17 @@ class Datenbank {
 
 
     fun loadValuesInRange(
-        // muss neu gemacht werden-----------------------------------------
         startDate: Int,
         endDate: Int,
         selectedCountry: String
     ): MutableList<DataPoint> {
 
+        val starttemperature = 0.0
+        val endtemperature = 10.0
+
+        //sqlRespondList.clear()
         val sqlRespondList = mutableListOf<DataPoint>()
-        sqlRespondList.clear()
+
 
         // build connection to database
         val connection = DriverManager.getConnection(URL, USER, PASSWORD)
@@ -92,22 +96,28 @@ class Datenbank {
         val statement = connection.createStatement()
 
         // SQL statement to load rows from database
-        val sql = "SELECT * FROM processdata WHERE timeevent between  '$startDate' and '$endDate'"
+        val sql = """
+        SELECT $selectedCountry, datum
+        FROM merged_output
+        WHERE $selectedCountry > $starttemperature AND $selectedCountry < $endtemperature
+        AND datum BETWEEN $startDate AND $endDate;
+        """.trimIndent()
 
         // SQL statement execute
         val data = statement.executeQuery(sql)
 
         // put output rows in to another list
         while (data.next()) {
-            val dateInt = data.getInt("date")
-            val temperature = data.getDouble("temperature")
+            val dateInt = data.getInt("datum")
+            val temperature = data.getDouble(selectedCountry)
 
-            val date = converter.intToDate(dateInt)
+            val date = converter.intToString(dateInt)
+            val temperatureString =temperature.toString()
 
-            val dataPoint = DataPoint(date, temperature)
+            val dataPoint = DataPoint(date, temperatureString)
             sqlRespondList.add(dataPoint)
 
-            println("$dateInt, $temperature") // Only for Display
+            //println("$dateInt, $temperature") // Only for Display
         }
 
         // close resources
@@ -118,38 +128,3 @@ class Datenbank {
         return (sqlRespondList)
     }
 }
-/*
-fun checkLoginInformation(loginInformation: LoginInformation): vorhandeneBenutzer {
-    var passwort = loginInformation.passwortWebseite
-
-
-    val listeVorhandenerBenutzer = mutableListOf<String>()
-
-
-    // build connection to database
-    val connection = DriverManager.getConnection(URL, USER, PASSWORD)
-
-    // create statement
-    val statement = connection.createStatement()
-
-    // SQL statement to load rows from database
-    val sql = "SELECT benutzer from heimag.login where passwort = '$passwort'"
-
-    // SQL execute
-    val data = statement.executeQuery(sql)
-
-    // Output Message
-    while (data.next()) {
-        listeVorhandenerBenutzer.add(data.getString("benutzer"))
-    }
-
-    data.close()
-    statement.close()
-    connection.close()
-
-    vorhandeneBenutzer.benutzer = listeVorhandenerBenutzer
-
-    return vorhandeneBenutzer
-}
-
-*/

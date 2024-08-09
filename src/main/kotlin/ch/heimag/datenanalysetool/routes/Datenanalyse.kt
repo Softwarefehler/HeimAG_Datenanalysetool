@@ -20,11 +20,12 @@ data class FirstResponse(
     val countryList: MutableList<String>,
     val latestDate: String
 )
+@Serializable
+data class Country(val country:String)
 
 fun Application.configureDatenanalyse() {
     routing {
         authenticate("auth-session") {
-            //Noch nicht in Benutzung
             val datenbank = Datenbank()
 
             get("/get-data") {
@@ -39,22 +40,25 @@ fun Application.configureDatenanalyse() {
                     latestDate = latestDate
                 )*/
 
-                var countryList = mutableListOf("-")
+                /*
+                val EAMPY = "-"
+                var countryList = mutableListOf<Country>()
+                countryList.add(Country(EAMPY))
                 var latestDate = "-"
+                */
+
                 val databaseStatus = datenbank.checkDatabaseStatus()
 
-                if (databaseStatus == "Datenbank vorhanden") {
-                    countryList = loadToSelectCountry()
-                     latestDate = datenbank.loadLatestDate()
 
-                }
+                //if (databaseStatus == "Datenbank vorhanden") {}
+                   var countryList = loadToSelectCountry()
+                    var latestDate = datenbank.loadLatestDate()
+
+
                 val firstResponse = FirstResponse(
                     databaseStatus = databaseStatus,
-                    countryList = countryList.toMutableList(),
+                    countryList = countryList,
                     latestDate = latestDate)
-
-
-                //println("${firstResponse.countryList},${firstResponse.latestDate},${firstResponse.databaseStatus}")
 
                 call.respond(firstResponse)
             }
@@ -93,8 +97,8 @@ fun Application.configureDatenanalyse() {
 
 
                 ////Noch nicht in Benutzung
-                // val sqlResponse1 = datenbank.loadValuesInRange(startDate, endDate, selectedCountry)
-
+                 val sqlResponse1 = datenbank.loadValuesInRange(startDate, endDate, selectedCountry)
+                /*
                 val testList = mutableListOf<SQLDataTest>()
                 // Zum Testen des Frontends
                 val startDateTestString = "1990.02.26"
@@ -109,17 +113,17 @@ fun Application.configureDatenanalyse() {
                 testList.add(newtestList2)
                 val newtestList3 = SQLDataTest(nullDate, temperature3)
                 testList.add(newtestList3)
-
+                   */
 
                 // Debug-Ausgabe
-                println("Start Date: $startDate")
-                println("End Date: $endDate")
-                println("Selected Country: $selectedCountryReceive,$selectedCountry")
-                println(testList)
+                println("Input: Start Date: $startDate")
+                println("Input: End Date: $endDate")
+                println("Input: Selected Country: $selectedCountryReceive,$selectedCountry")
+                println("Output: $sqlResponse1")
 
                 // Sende eine Antwort zurück
                 // call.respondText("Data received: startDate=$startDateReceive, endDate=$endDateReceive, selectedCountry=$selectedCountryReceive")
-                call.respond(testList)
+                call.respond(sqlResponse1)
 
             }
 
@@ -134,7 +138,7 @@ fun loadToSelectCountry(): MutableList<String> {
     val OW = "Obwalden"
     val THR = "Thurgau"
     val LU = "Luzern"
-    val countryList = mutableListOf(OW, THR, LU)
-
+    val ALT ="ALT"
+    val countryList = mutableListOf<String>(OW, THR, LU, ALT)
     return countryList
 }

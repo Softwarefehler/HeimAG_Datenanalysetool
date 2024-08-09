@@ -4,98 +4,98 @@
     {
       "name": "vite:load-fallback",
       "result": "import { mergeProps as _mergeProps, createVNode as _createVNode } from \"vue\";\n// Styles\nimport \"./VMenu.css\";\n\n// Components\nimport { VDialogTransition } from \"../transitions/index.mjs\";\nimport { VDefaultsProvider } from \"../VDefaultsProvider/index.mjs\";\nimport { VOverlay } from \"../VOverlay/index.mjs\";\nimport { makeVOverlayProps } from \"../VOverlay/VOverlay.mjs\"; // Composables\nimport { forwardRefs } from \"../../composables/forwardRefs.mjs\";\nimport { useProxiedModel } from \"../../composables/proxiedModel.mjs\";\nimport { useScopeId } from \"../../composables/scopeId.mjs\"; // Utilities\nimport { computed, inject, mergeProps, nextTick, provide, ref, shallowRef, watch } from 'vue';\nimport { VMenuSymbol } from \"./shared.mjs\";\nimport { focusableChildren, focusChild, genericComponent, getNextElement, getUid, isClickInsideElement, omit, propsFactory, useRender } from \"../../util/index.mjs\"; // Types\nexport const makeVMenuProps = propsFactory({\n  // TODO\n  // disableKeys: Boolean,\n  id: String,\n  ...omit(makeVOverlayProps({\n    closeDelay: 250,\n    closeOnContentClick: true,\n    locationStrategy: 'connected',\n    openDelay: 300,\n    scrim: false,\n    scrollStrategy: 'reposition',\n    transition: {\n      component: VDialogTransition\n    }\n  }), ['absolute'])\n}, 'VMenu');\nexport const VMenu = genericComponent()({\n  name: 'VMenu',\n  props: makeVMenuProps(),\n  emits: {\n    'update:modelValue': value => true\n  },\n  setup(props, _ref) {\n    let {\n      slots\n    } = _ref;\n    const isActive = useProxiedModel(props, 'modelValue');\n    const {\n      scopeId\n    } = useScopeId();\n    const uid = getUid();\n    const id = computed(() => props.id || `v-menu-${uid}`);\n    const overlay = ref();\n    const parent = inject(VMenuSymbol, null);\n    const openChildren = shallowRef(0);\n    provide(VMenuSymbol, {\n      register() {\n        ++openChildren.value;\n      },\n      unregister() {\n        --openChildren.value;\n      },\n      closeParents(e) {\n        setTimeout(() => {\n          if (!openChildren.value && !props.persistent && (e == null || e && !isClickInsideElement(e, overlay.value.contentEl))) {\n            isActive.value = false;\n            parent?.closeParents();\n          }\n        }, 40);\n      }\n    });\n    async function onFocusIn(e) {\n      const before = e.relatedTarget;\n      const after = e.target;\n      await nextTick();\n      if (isActive.value && before !== after && overlay.value?.contentEl &&\n      // We're the topmost menu\n      overlay.value?.globalTop &&\n      // It isn't the document or the menu body\n      ![document, overlay.value.contentEl].includes(after) &&\n      // It isn't inside the menu body\n      !overlay.value.contentEl.contains(after)) {\n        const focusable = focusableChildren(overlay.value.contentEl);\n        focusable[0]?.focus();\n      }\n    }\n    watch(isActive, val => {\n      if (val) {\n        parent?.register();\n        document.addEventListener('focusin', onFocusIn, {\n          once: true\n        });\n      } else {\n        parent?.unregister();\n        document.removeEventListener('focusin', onFocusIn);\n      }\n    });\n    function onClickOutside(e) {\n      parent?.closeParents(e);\n    }\n    function onKeydown(e) {\n      if (props.disabled) return;\n      if (e.key === 'Tab' || e.key === 'Enter' && !props.closeOnContentClick) {\n        if (e.key === 'Enter' && (e.target instanceof HTMLTextAreaElement || e.target instanceof HTMLInputElement && !!e.target.closest('form'))) return;\n        if (e.key === 'Enter') e.preventDefault();\n        const nextElement = getNextElement(focusableChildren(overlay.value?.contentEl, false), e.shiftKey ? 'prev' : 'next', el => el.tabIndex >= 0);\n        if (!nextElement) {\n          isActive.value = false;\n          overlay.value?.activatorEl?.focus();\n        }\n      } else if (['Enter', ' '].includes(e.key) && props.closeOnContentClick) {\n        isActive.value = false;\n        parent?.closeParents();\n      }\n    }\n    function onActivatorKeydown(e) {\n      if (props.disabled) return;\n      const el = overlay.value?.contentEl;\n      if (el && isActive.value) {\n        if (e.key === 'ArrowDown') {\n          e.preventDefault();\n          focusChild(el, 'next');\n        } else if (e.key === 'ArrowUp') {\n          e.preventDefault();\n          focusChild(el, 'prev');\n        }\n      } else if (['ArrowDown', 'ArrowUp'].includes(e.key)) {\n        isActive.value = true;\n        e.preventDefault();\n        setTimeout(() => setTimeout(() => onActivatorKeydown(e)));\n      }\n    }\n    const activatorProps = computed(() => mergeProps({\n      'aria-haspopup': 'menu',\n      'aria-expanded': String(isActive.value),\n      'aria-owns': id.value,\n      onKeydown: onActivatorKeydown\n    }, props.activatorProps));\n    useRender(() => {\n      const overlayProps = VOverlay.filterProps(props);\n      return _createVNode(VOverlay, _mergeProps({\n        \"ref\": overlay,\n        \"id\": id.value,\n        \"class\": ['v-menu', props.class],\n        \"style\": props.style\n      }, overlayProps, {\n        \"modelValue\": isActive.value,\n        \"onUpdate:modelValue\": $event => isActive.value = $event,\n        \"absolute\": true,\n        \"activatorProps\": activatorProps.value,\n        \"onClick:outside\": onClickOutside,\n        \"onKeydown\": onKeydown\n      }, scopeId), {\n        activator: slots.activator,\n        default: function () {\n          for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {\n            args[_key] = arguments[_key];\n          }\n          return _createVNode(VDefaultsProvider, {\n            \"root\": \"VMenu\"\n          }, {\n            default: () => [slots.default?.(...args)]\n          });\n        }\n      });\n    });\n    return forwardRefs({\n      id,\n      ΨopenChildren: openChildren\n    }, overlay);\n  }\n});\n//# sourceMappingURL=VMenu.mjs.map",
-      "start": 1723160581294,
-      "end": 1723160581328,
+      "start": 1723204989432,
+      "end": 1723204989559,
       "sourcemaps": null
     },
     {
       "name": "vite:css",
-      "start": 1723160581328,
-      "end": 1723160581328,
+      "start": 1723204989559,
+      "end": 1723204989559,
       "order": "normal"
     },
     {
       "name": "vite:esbuild",
-      "start": 1723160581328,
-      "end": 1723160581328,
+      "start": 1723204989559,
+      "end": 1723204989559,
       "order": "normal"
     },
     {
       "name": "vite:json",
-      "start": 1723160581328,
-      "end": 1723160581328,
+      "start": 1723204989559,
+      "end": 1723204989559,
       "order": "normal"
     },
     {
       "name": "vite:worker",
-      "start": 1723160581329,
-      "end": 1723160581329,
+      "start": 1723204989559,
+      "end": 1723204989559,
       "order": "normal"
     },
     {
       "name": "vite:vue",
-      "start": 1723160581329,
-      "end": 1723160581329,
+      "start": 1723204989559,
+      "end": 1723204989559,
       "order": "normal"
     },
     {
       "name": "vite:define",
-      "start": 1723160581329,
-      "end": 1723160581329,
+      "start": 1723204989559,
+      "end": 1723204989559,
       "order": "normal"
     },
     {
       "name": "vite:css-post",
-      "start": 1723160581329,
-      "end": 1723160581329,
+      "start": 1723204989559,
+      "end": 1723204989559,
       "order": "normal"
     },
     {
       "name": "vite:build-html",
-      "start": 1723160581329,
-      "end": 1723160581329,
+      "start": 1723204989559,
+      "end": 1723204989559,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1723160581329,
-      "end": 1723160581329,
+      "start": 1723204989559,
+      "end": 1723204989559,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1723160581329,
-      "end": 1723160581329,
+      "start": 1723204989559,
+      "end": 1723204989559,
       "order": "normal"
     },
     {
       "name": "commonjs",
-      "start": 1723160581329,
-      "end": 1723160581329,
+      "start": 1723204989559,
+      "end": 1723204989559,
       "order": "normal"
     },
     {
       "name": "vite:dynamic-import-vars",
-      "start": 1723160581329,
-      "end": 1723160581329,
+      "start": 1723204989559,
+      "end": 1723204989559,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1723160581329,
-      "end": 1723160581329,
+      "start": 1723204989559,
+      "end": 1723204989559,
       "order": "normal"
     },
     {
       "name": "vite:build-import-analysis",
-      "start": 1723160581329,
-      "end": 1723160581329,
+      "start": 1723204989559,
+      "end": 1723204989559,
       "order": "normal"
     },
     {
       "name": "vite:reporter",
-      "start": 1723160581329,
-      "end": 1723160581329,
+      "start": 1723204989559,
+      "end": 1723204989559,
       "order": "normal"
     }
   ]

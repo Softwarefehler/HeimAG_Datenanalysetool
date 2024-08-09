@@ -4,98 +4,98 @@
     {
       "name": "vite:load-fallback",
       "result": "import { createTextVNode as _createTextVNode, createVNode as _createVNode } from \"vue\";\n// Styles\nimport \"./VTimePickerControls.css\";\n\n// Components\nimport { VBtn } from \"../../components/VBtn/index.mjs\";\nimport { pad } from \"../../components/VDatePicker/util/index.mjs\"; // Composables\nimport { useLocale } from \"../../composables/locale.mjs\"; // Utilities\nimport { genericComponent, propsFactory, useRender } from \"../../util/index.mjs\"; // Types\nimport { SelectingTimes } from \"./SelectingTimes.mjs\";\nexport const makeVTimePickerControlsProps = propsFactory({\n  ampm: Boolean,\n  ampmReadonly: Boolean,\n  color: String,\n  disabled: Boolean,\n  hour: Number,\n  minute: Number,\n  second: Number,\n  period: String,\n  readonly: Boolean,\n  useSeconds: Boolean,\n  selecting: Number,\n  value: Number\n}, 'VTimePickerControls');\nexport const VTimePickerControls = genericComponent()({\n  name: 'VTimePickerControls',\n  props: makeVTimePickerControlsProps(),\n  emits: {\n    'update:period': data => data,\n    'update:selecting': data => data\n  },\n  setup(props, _ref) {\n    let {\n      emit,\n      slots\n    } = _ref;\n    const {\n      t\n    } = useLocale();\n    useRender(() => {\n      let hour = props.hour;\n      if (props.ampm) {\n        hour = hour ? (hour - 1) % 12 + 1 : 12;\n      }\n      return _createVNode(\"div\", {\n        \"class\": \"v-time-picker-controls\"\n      }, [_createVNode(\"div\", {\n        \"class\": {\n          'v-time-picker-controls__time': true,\n          'v-time-picker-controls__time--with-seconds': props.useSeconds\n        }\n      }, [_createVNode(VBtn, {\n        \"active\": props.selecting === 1,\n        \"color\": props.selecting === 1 ? props.color : undefined,\n        \"disabled\": props.disabled,\n        \"variant\": \"tonal\",\n        \"class\": {\n          'v-time-picker-controls__time__btn': true,\n          'v-time-picker-controls__time--with-ampm__btn': props.ampm,\n          'v-time-picker-controls__time--with-seconds__btn': props.useSeconds\n        },\n        \"text\": props.hour == null ? '--' : pad(`${hour}`),\n        \"onClick\": () => emit('update:selecting', SelectingTimes.Hour)\n      }, null), _createVNode(\"span\", {\n        \"class\": ['v-time-picker-controls__time__separator', {\n          'v-time-picker-controls--with-seconds__time__separator': props.useSeconds\n        }]\n      }, [_createTextVNode(\":\")]), _createVNode(VBtn, {\n        \"active\": props.selecting === 2,\n        \"color\": props.selecting === 2 ? props.color : undefined,\n        \"class\": {\n          'v-time-picker-controls__time__btn': true,\n          'v-time-picker-controls__time__btn__active': props.selecting === 2,\n          'v-time-picker-controls__time--with-ampm__btn': props.ampm,\n          'v-time-picker-controls__time--with-seconds__btn': props.useSeconds\n        },\n        \"disabled\": props.disabled,\n        \"variant\": \"tonal\",\n        \"text\": props.minute == null ? '--' : pad(props.minute),\n        \"onClick\": () => emit('update:selecting', SelectingTimes.Minute)\n      }, null), props.useSeconds && _createVNode(\"span\", {\n        \"class\": ['v-time-picker-controls__time__separator', {\n          'v-time-picker-controls--with-seconds__time__separator': props.useSeconds\n        }],\n        \"key\": \"secondsDivider\"\n      }, [_createTextVNode(\":\")]), props.useSeconds && _createVNode(VBtn, {\n        \"key\": \"secondsVal\",\n        \"variant\": \"tonal\",\n        \"onClick\": () => emit('update:selecting', SelectingTimes.Second),\n        \"class\": {\n          'v-time-picker-controls__time__btn': true,\n          'v-time-picker-controls__time__btn__active': props.selecting === 3,\n          'v-time-picker-controls__time--with-seconds__btn': props.useSeconds\n        },\n        \"disabled\": props.disabled,\n        \"text\": props.second == null ? '--' : pad(props.second)\n      }, null), props.ampm && _createVNode(\"div\", {\n        \"class\": ['v-time-picker-controls__ampm', {\n          'v-time-picker-controls__ampm--readonly': props.ampmReadonly\n        }]\n      }, [_createVNode(VBtn, {\n        \"active\": props.period === 'am',\n        \"color\": props.period === 'am' ? props.color : undefined,\n        \"class\": {\n          'v-time-picker-controls__ampm__am': true,\n          'v-time-picker-controls__ampm__btn': true,\n          'v-time-picker-controls__ampm__btn__active': props.period === 'am'\n        },\n        \"disabled\": props.disabled,\n        \"text\": t('$vuetify.timePicker.am'),\n        \"variant\": props.disabled && props.period === 'am' ? 'elevated' : 'tonal',\n        \"onClick\": () => props.period !== 'am' ? emit('update:period', 'am') : null\n      }, null), _createVNode(VBtn, {\n        \"active\": props.period === 'pm',\n        \"color\": props.period === 'pm' ? props.color : undefined,\n        \"class\": {\n          'v-time-picker-controls__ampm__pm': true,\n          'v-time-picker-controls__ampm__btn': true,\n          'v-time-picker-controls__ampm__btn__active': props.period === 'pm'\n        },\n        \"disabled\": props.disabled,\n        \"text\": t('$vuetify.timePicker.pm'),\n        \"variant\": props.disabled && props.period === 'pm' ? 'elevated' : 'tonal',\n        \"onClick\": () => props.period !== 'pm' ? emit('update:period', 'pm') : null\n      }, null)])])]);\n    });\n    return {};\n  }\n});\n//# sourceMappingURL=VTimePickerControls.mjs.map",
-      "start": 1723160580789,
-      "end": 1723160580953,
+      "start": 1723204989141,
+      "end": 1723204989271,
       "sourcemaps": null
     },
     {
       "name": "vite:css",
-      "start": 1723160580953,
-      "end": 1723160580953,
+      "start": 1723204989271,
+      "end": 1723204989271,
       "order": "normal"
     },
     {
       "name": "vite:esbuild",
-      "start": 1723160580953,
-      "end": 1723160580953,
+      "start": 1723204989271,
+      "end": 1723204989271,
       "order": "normal"
     },
     {
       "name": "vite:json",
-      "start": 1723160580953,
-      "end": 1723160580953,
+      "start": 1723204989272,
+      "end": 1723204989272,
       "order": "normal"
     },
     {
       "name": "vite:worker",
-      "start": 1723160580953,
-      "end": 1723160580953,
+      "start": 1723204989272,
+      "end": 1723204989272,
       "order": "normal"
     },
     {
       "name": "vite:vue",
-      "start": 1723160580953,
-      "end": 1723160580953,
+      "start": 1723204989272,
+      "end": 1723204989272,
       "order": "normal"
     },
     {
       "name": "vite:define",
-      "start": 1723160580953,
-      "end": 1723160580953,
+      "start": 1723204989272,
+      "end": 1723204989272,
       "order": "normal"
     },
     {
       "name": "vite:css-post",
-      "start": 1723160580953,
-      "end": 1723160580953,
+      "start": 1723204989272,
+      "end": 1723204989272,
       "order": "normal"
     },
     {
       "name": "vite:build-html",
-      "start": 1723160580953,
-      "end": 1723160580953,
+      "start": 1723204989272,
+      "end": 1723204989272,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1723160580953,
-      "end": 1723160580953,
+      "start": 1723204989272,
+      "end": 1723204989272,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1723160580953,
-      "end": 1723160580953,
+      "start": 1723204989272,
+      "end": 1723204989272,
       "order": "normal"
     },
     {
       "name": "commonjs",
-      "start": 1723160580953,
-      "end": 1723160580953,
+      "start": 1723204989272,
+      "end": 1723204989272,
       "order": "normal"
     },
     {
       "name": "vite:dynamic-import-vars",
-      "start": 1723160580953,
-      "end": 1723160580953,
+      "start": 1723204989272,
+      "end": 1723204989272,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1723160580953,
-      "end": 1723160580953,
+      "start": 1723204989272,
+      "end": 1723204989272,
       "order": "normal"
     },
     {
       "name": "vite:build-import-analysis",
-      "start": 1723160580953,
-      "end": 1723160580953,
+      "start": 1723204989272,
+      "end": 1723204989272,
       "order": "normal"
     },
     {
       "name": "vite:reporter",
-      "start": 1723160580953,
-      "end": 1723160580953,
+      "start": 1723204989272,
+      "end": 1723204989272,
       "order": "normal"
     }
   ]
