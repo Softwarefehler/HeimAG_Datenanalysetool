@@ -63,11 +63,6 @@ fun Application.configureDatenanalyse() {
                     latestDate = latestDate
                 )
 
-
-
-
-
-
                 call.respond(firstResponse)
             }
 
@@ -132,11 +127,8 @@ fun Application.configureDatenanalyse() {
                 // Sende eine Antwort zurück
                 // call.respondText("Data received: startDate=$startDateReceive, endDate=$endDateReceive, selectedCountry=$selectedCountryReceive")
                 call.respond(sqlResponse1)
-
             }
-
         }
-
     }
 }
 
@@ -162,22 +154,3 @@ fun loadToSelectCountry(resourcePath: String): MutableList<String> {
     println(countryList)
     return countryList
 }
-
-
-/*
-fun loadToSelectCountry(): MutableList<String> {
-
-    val AltdorfUR = "Altdorf UR"
-    val AndermattUR = "Andermatt UR"
-    val BaselBinningenBL = "Basel Binningen BL"
-    val BernZollikofenBE = "Bern Zollikofen BE"
-
-    val countryList = mutableListOf<String>(AltdorfUR, AndermattUR, BaselBinningenBL, BernZollikofenBE)
-
-
-
-
-
-
-    return countryList
-}*/
