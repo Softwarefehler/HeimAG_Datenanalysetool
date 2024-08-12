@@ -4,98 +4,98 @@
     {
       "name": "vite:load-fallback",
       "result": "import { createVNode as _createVNode, Fragment as _Fragment } from \"vue\";\n// Components\nimport { VBtn } from \"../VBtn/index.mjs\"; // Composables\nimport { useLocale } from \"../../composables/index.mjs\";\nimport { useProxiedModel } from \"../../composables/proxiedModel.mjs\"; // Utilities\nimport { computed, ref, toRaw, watchEffect } from 'vue';\nimport { deepEqual, genericComponent, propsFactory, useRender } from \"../../util/index.mjs\"; // Types\nexport const makeVConfirmEditProps = propsFactory({\n  modelValue: null,\n  color: String,\n  cancelText: {\n    type: String,\n    default: '$vuetify.confirmEdit.cancel'\n  },\n  okText: {\n    type: String,\n    default: '$vuetify.confirmEdit.ok'\n  }\n}, 'VConfirmEdit');\nexport const VConfirmEdit = genericComponent()({\n  name: 'VConfirmEdit',\n  props: makeVConfirmEditProps(),\n  emits: {\n    cancel: () => true,\n    save: value => true,\n    'update:modelValue': value => true\n  },\n  setup(props, _ref) {\n    let {\n      emit,\n      slots\n    } = _ref;\n    const model = useProxiedModel(props, 'modelValue');\n    const internalModel = ref();\n    watchEffect(() => {\n      internalModel.value = structuredClone(toRaw(model.value));\n    });\n    const {\n      t\n    } = useLocale();\n    const isPristine = computed(() => {\n      return deepEqual(model.value, internalModel.value);\n    });\n    function save() {\n      model.value = internalModel.value;\n      emit('save', internalModel.value);\n    }\n    function cancel() {\n      internalModel.value = structuredClone(toRaw(model.value));\n      emit('cancel');\n    }\n    let actionsUsed = false;\n    useRender(() => {\n      const actions = _createVNode(_Fragment, null, [_createVNode(VBtn, {\n        \"disabled\": isPristine.value,\n        \"variant\": \"text\",\n        \"color\": props.color,\n        \"onClick\": cancel,\n        \"text\": t(props.cancelText)\n      }, null), _createVNode(VBtn, {\n        \"disabled\": isPristine.value,\n        \"variant\": \"text\",\n        \"color\": props.color,\n        \"onClick\": save,\n        \"text\": t(props.okText)\n      }, null)]);\n      return _createVNode(_Fragment, null, [slots.default?.({\n        model: internalModel,\n        save,\n        cancel,\n        isPristine: isPristine.value,\n        get actions() {\n          actionsUsed = true;\n          return actions;\n        }\n      }), !actionsUsed && actions]);\n    });\n    return {\n      save,\n      cancel,\n      isPristine\n    };\n  }\n});\n//# sourceMappingURL=VConfirmEdit.mjs.map",
-      "start": 1723246184663,
-      "end": 1723246184717,
+      "start": 1723495920927,
+      "end": 1723495921118,
       "sourcemaps": null
     },
     {
       "name": "vite:css",
-      "start": 1723246184717,
-      "end": 1723246184717,
+      "start": 1723495921118,
+      "end": 1723495921118,
       "order": "normal"
     },
     {
       "name": "vite:esbuild",
-      "start": 1723246184718,
-      "end": 1723246184718,
+      "start": 1723495921118,
+      "end": 1723495921118,
       "order": "normal"
     },
     {
       "name": "vite:json",
-      "start": 1723246184718,
-      "end": 1723246184718,
+      "start": 1723495921118,
+      "end": 1723495921119,
       "order": "normal"
     },
     {
       "name": "vite:worker",
-      "start": 1723246184718,
-      "end": 1723246184718,
+      "start": 1723495921119,
+      "end": 1723495921119,
       "order": "normal"
     },
     {
       "name": "vite:vue",
-      "start": 1723246184718,
-      "end": 1723246184718,
+      "start": 1723495921119,
+      "end": 1723495921119,
       "order": "normal"
     },
     {
       "name": "vite:define",
-      "start": 1723246184718,
-      "end": 1723246184718,
+      "start": 1723495921120,
+      "end": 1723495921120,
       "order": "normal"
     },
     {
       "name": "vite:css-post",
-      "start": 1723246184718,
-      "end": 1723246184718,
+      "start": 1723495921120,
+      "end": 1723495921120,
       "order": "normal"
     },
     {
       "name": "vite:build-html",
-      "start": 1723246184718,
-      "end": 1723246184718,
+      "start": 1723495921121,
+      "end": 1723495921121,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1723246184718,
-      "end": 1723246184718,
+      "start": 1723495921121,
+      "end": 1723495921121,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1723246184718,
-      "end": 1723246184718,
+      "start": 1723495921121,
+      "end": 1723495921121,
       "order": "normal"
     },
     {
       "name": "commonjs",
-      "start": 1723246184718,
-      "end": 1723246184718,
+      "start": 1723495921121,
+      "end": 1723495921121,
       "order": "normal"
     },
     {
       "name": "vite:dynamic-import-vars",
-      "start": 1723246184718,
-      "end": 1723246184718,
+      "start": 1723495921121,
+      "end": 1723495921121,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1723246184718,
-      "end": 1723246184718,
+      "start": 1723495921121,
+      "end": 1723495921121,
       "order": "normal"
     },
     {
       "name": "vite:build-import-analysis",
-      "start": 1723246184718,
-      "end": 1723246184718,
+      "start": 1723495921122,
+      "end": 1723495921122,
       "order": "normal"
     },
     {
       "name": "vite:reporter",
-      "start": 1723246184718,
-      "end": 1723246184718,
+      "start": 1723495921122,
+      "end": 1723495921122,
       "order": "normal"
     }
   ]

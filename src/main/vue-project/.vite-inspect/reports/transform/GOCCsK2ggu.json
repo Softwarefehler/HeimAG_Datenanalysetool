@@ -4,98 +4,98 @@
     {
       "name": "vite:load-fallback",
       "result": "// Types\n\nexport const VMenuSymbol = Symbol.for('vuetify:v-menu');\n//# sourceMappingURL=shared.mjs.map",
-      "start": 1723246185431,
-      "end": 1723246185457,
+      "start": 1723495927823,
+      "end": 1723495928284,
       "sourcemaps": null
     },
     {
       "name": "vite:css",
-      "start": 1723246185457,
-      "end": 1723246185457,
+      "start": 1723495928284,
+      "end": 1723495928284,
       "order": "normal"
     },
     {
       "name": "vite:esbuild",
-      "start": 1723246185457,
-      "end": 1723246185457,
+      "start": 1723495928284,
+      "end": 1723495928284,
       "order": "normal"
     },
     {
       "name": "vite:json",
-      "start": 1723246185457,
-      "end": 1723246185457,
+      "start": 1723495928284,
+      "end": 1723495928284,
       "order": "normal"
     },
     {
       "name": "vite:worker",
-      "start": 1723246185457,
-      "end": 1723246185457,
+      "start": 1723495928284,
+      "end": 1723495928284,
       "order": "normal"
     },
     {
       "name": "vite:vue",
-      "start": 1723246185457,
-      "end": 1723246185457,
+      "start": 1723495928284,
+      "end": 1723495928285,
       "order": "normal"
     },
     {
       "name": "vite:define",
-      "start": 1723246185457,
-      "end": 1723246185457,
+      "start": 1723495928285,
+      "end": 1723495928285,
       "order": "normal"
     },
     {
       "name": "vite:css-post",
-      "start": 1723246185457,
-      "end": 1723246185457,
+      "start": 1723495928285,
+      "end": 1723495928285,
       "order": "normal"
     },
     {
       "name": "vite:build-html",
-      "start": 1723246185457,
-      "end": 1723246185457,
+      "start": 1723495928285,
+      "end": 1723495928285,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1723246185457,
-      "end": 1723246185457,
+      "start": 1723495928285,
+      "end": 1723495928285,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1723246185457,
-      "end": 1723246185457,
+      "start": 1723495928285,
+      "end": 1723495928285,
       "order": "normal"
     },
     {
       "name": "commonjs",
-      "start": 1723246185457,
-      "end": 1723246185457,
+      "start": 1723495928285,
+      "end": 1723495928285,
       "order": "normal"
     },
     {
       "name": "vite:dynamic-import-vars",
-      "start": 1723246185457,
-      "end": 1723246185457,
+      "start": 1723495928285,
+      "end": 1723495928285,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1723246185457,
-      "end": 1723246185457,
+      "start": 1723495928285,
+      "end": 1723495928285,
       "order": "normal"
     },
     {
       "name": "vite:build-import-analysis",
-      "start": 1723246185457,
-      "end": 1723246185457,
+      "start": 1723495928285,
+      "end": 1723495928285,
       "order": "normal"
     },
     {
       "name": "vite:reporter",
-      "start": 1723246185457,
-      "end": 1723246185457,
+      "start": 1723495928285,
+      "end": 1723495928285,
       "order": "normal"
     }
   ]

@@ -4,98 +4,98 @@
     {
       "name": "vite:load-fallback",
       "result": "import { mergeProps as _mergeProps, Fragment as _Fragment, createVNode as _createVNode } from \"vue\";\n// Styles\nimport \"./VNumberInput.css\";\n\n// Components\nimport { VBtn } from \"../../components/VBtn/index.mjs\";\nimport { VDefaultsProvider } from \"../../components/VDefaultsProvider/index.mjs\";\nimport { VDivider } from \"../../components/VDivider/index.mjs\";\nimport { makeVTextFieldProps, VTextField } from \"../../components/VTextField/VTextField.mjs\"; // Composables\nimport { useForm } from \"../../composables/form.mjs\";\nimport { useProxiedModel } from \"../../composables/proxiedModel.mjs\"; // Utilities\nimport { computed, watchEffect } from 'vue';\nimport { clamp, genericComponent, getDecimals, omit, propsFactory, useRender } from \"../../util/index.mjs\"; // Types\nconst makeVNumberInputProps = propsFactory({\n  controlVariant: {\n    type: String,\n    default: 'default'\n  },\n  inset: Boolean,\n  hideInput: Boolean,\n  min: {\n    type: Number,\n    default: -Infinity\n  },\n  max: {\n    type: Number,\n    default: Infinity\n  },\n  step: {\n    type: Number,\n    default: 1\n  },\n  ...omit(makeVTextFieldProps(), ['appendInnerIcon', 'prependInnerIcon'])\n}, 'VNumberInput');\nexport const VNumberInput = genericComponent()({\n  name: 'VNumberInput',\n  props: {\n    ...makeVNumberInputProps()\n  },\n  emits: {\n    'update:modelValue': val => true\n  },\n  setup(props, _ref) {\n    let {\n      attrs,\n      emit,\n      slots\n    } = _ref;\n    const model = useProxiedModel(props, 'modelValue');\n    const stepDecimals = computed(() => getDecimals(props.step));\n    const modelDecimals = computed(() => model.value != null ? getDecimals(model.value) : 0);\n    const form = useForm();\n    const controlsDisabled = computed(() => props.disabled || props.readonly || form?.isReadonly.value);\n    const canIncrease = computed(() => {\n      if (controlsDisabled.value) return false;\n      if (model.value == null) return true;\n      return model.value + props.step <= props.max;\n    });\n    const canDecrease = computed(() => {\n      if (controlsDisabled.value) return false;\n      if (model.value == null) return true;\n      return model.value - props.step >= props.min;\n    });\n    watchEffect(() => {\n      if (controlsDisabled.value) return;\n      if (model.value != null && (model.value < props.min || model.value > props.max)) {\n        model.value = clamp(model.value, props.min, props.max);\n      }\n    });\n    const controlVariant = computed(() => {\n      return props.hideInput ? 'stacked' : props.controlVariant;\n    });\n    const incrementIcon = computed(() => controlVariant.value === 'split' ? '$plus' : '$collapse');\n    const decrementIcon = computed(() => controlVariant.value === 'split' ? '$minus' : '$expand');\n    const controlNodeSize = computed(() => controlVariant.value === 'split' ? 'default' : 'small');\n    const controlNodeDefaultHeight = computed(() => controlVariant.value === 'stacked' ? 'auto' : '100%');\n    const incrementSlotProps = computed(() => ({\n      click: onClickUp\n    }));\n    const decrementSlotProps = computed(() => ({\n      click: onClickDown\n    }));\n    function toggleUpDown() {\n      let increment = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : true;\n      if (controlsDisabled.value) return;\n      if (model.value == null) {\n        model.value = 0;\n        return;\n      }\n      const decimals = Math.max(modelDecimals.value, stepDecimals.value);\n      if (increment) {\n        if (canIncrease.value) model.value = +(model.value + props.step).toFixed(decimals);\n      } else {\n        if (canDecrease.value) model.value = +(model.value - props.step).toFixed(decimals);\n      }\n    }\n    function onClickUp(e) {\n      e.stopPropagation();\n      toggleUpDown();\n    }\n    function onClickDown(e) {\n      e.stopPropagation();\n      toggleUpDown(false);\n    }\n    function onKeydown(e) {\n      if (['Enter', 'ArrowLeft', 'ArrowRight', 'Backspace', 'Tab'].includes(e.key) || e.ctrlKey) return;\n      if (['ArrowDown'].includes(e.key)) {\n        e.preventDefault();\n        toggleUpDown(false);\n        return;\n      }\n      if (['ArrowUp'].includes(e.key)) {\n        e.preventDefault();\n        toggleUpDown();\n        return;\n      }\n\n      // Only numbers, +, - & . are allowed\n      if (!/^[0-9\\-+.]+$/.test(e.key)) {\n        e.preventDefault();\n      }\n    }\n    function onModelUpdate(v) {\n      model.value = v ? +v : undefined;\n    }\n    function onControlMousedown(e) {\n      e.stopPropagation();\n    }\n    useRender(() => {\n      const {\n        modelValue: _,\n        ...textFieldProps\n      } = VTextField.filterProps(props);\n      function incrementControlNode() {\n        return !slots.increment ? _createVNode(VBtn, {\n          \"disabled\": !canIncrease.value,\n          \"flat\": true,\n          \"key\": \"increment-btn\",\n          \"height\": controlNodeDefaultHeight.value,\n          \"name\": \"increment-btn\",\n          \"icon\": incrementIcon.value,\n          \"onClick\": onClickUp,\n          \"onMousedown\": onControlMousedown,\n          \"size\": controlNodeSize.value,\n          \"tabindex\": \"-1\"\n        }, null) : _createVNode(VDefaultsProvider, {\n          \"key\": \"increment-defaults\",\n          \"defaults\": {\n            VBtn: {\n              disabled: !canIncrease.value,\n              flat: true,\n              height: controlNodeDefaultHeight.value,\n              size: controlNodeSize.value,\n              icon: incrementIcon.value\n            }\n          }\n        }, {\n          default: () => [slots.increment(incrementSlotProps.value)]\n        });\n      }\n      function decrementControlNode() {\n        return !slots.decrement ? _createVNode(VBtn, {\n          \"disabled\": !canDecrease.value,\n          \"flat\": true,\n          \"key\": \"decrement-btn\",\n          \"height\": controlNodeDefaultHeight.value,\n          \"name\": \"decrement-btn\",\n          \"icon\": decrementIcon.value,\n          \"size\": controlNodeSize.value,\n          \"tabindex\": \"-1\",\n          \"onClick\": onClickDown,\n          \"onMousedown\": onControlMousedown\n        }, null) : _createVNode(VDefaultsProvider, {\n          \"key\": \"decrement-defaults\",\n          \"defaults\": {\n            VBtn: {\n              disabled: !canDecrease.value,\n              flat: true,\n              height: controlNodeDefaultHeight.value,\n              size: controlNodeSize.value,\n              icon: decrementIcon.value\n            }\n          }\n        }, {\n          default: () => [slots.decrement(decrementSlotProps.value)]\n        });\n      }\n      function controlNode() {\n        return _createVNode(\"div\", {\n          \"class\": \"v-number-input__control\"\n        }, [decrementControlNode(), _createVNode(VDivider, {\n          \"vertical\": controlVariant.value !== 'stacked'\n        }, null), incrementControlNode()]);\n      }\n      function dividerNode() {\n        return !props.hideInput && !props.inset ? _createVNode(VDivider, {\n          \"vertical\": true\n        }, null) : undefined;\n      }\n      const appendInnerControl = controlVariant.value === 'split' ? _createVNode(\"div\", {\n        \"class\": \"v-number-input__control\"\n      }, [_createVNode(VDivider, {\n        \"vertical\": true\n      }, null), incrementControlNode()]) : !props.reverse ? _createVNode(_Fragment, null, [dividerNode(), controlNode()]) : undefined;\n      const hasAppendInner = slots['append-inner'] || appendInnerControl;\n      const prependInnerControl = controlVariant.value === 'split' ? _createVNode(\"div\", {\n        \"class\": \"v-number-input__control\"\n      }, [decrementControlNode(), _createVNode(VDivider, {\n        \"vertical\": true\n      }, null)]) : props.reverse ? _createVNode(_Fragment, null, [controlNode(), dividerNode()]) : undefined;\n      const hasPrependInner = slots['prepend-inner'] || prependInnerControl;\n      return _createVNode(VTextField, _mergeProps({\n        \"modelValue\": model.value,\n        \"onUpdate:modelValue\": onModelUpdate,\n        \"onKeydown\": onKeydown,\n        \"class\": ['v-number-input', {\n          'v-number-input--default': controlVariant.value === 'default',\n          'v-number-input--hide-input': props.hideInput,\n          'v-number-input--inset': props.inset,\n          'v-number-input--reverse': props.reverse,\n          'v-number-input--split': controlVariant.value === 'split',\n          'v-number-input--stacked': controlVariant.value === 'stacked'\n        }, props.class]\n      }, textFieldProps, {\n        \"style\": props.style,\n        \"inputmode\": \"decimal\"\n      }), {\n        ...slots,\n        'append-inner': hasAppendInner ? function () {\n          for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {\n            args[_key] = arguments[_key];\n          }\n          return _createVNode(_Fragment, null, [slots['append-inner']?.(...args), appendInnerControl]);\n        } : undefined,\n        'prepend-inner': hasPrependInner ? function () {\n          for (var _len2 = arguments.length, args = new Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {\n            args[_key2] = arguments[_key2];\n          }\n          return _createVNode(_Fragment, null, [prependInnerControl, slots['prepend-inner']?.(...args)]);\n        } : undefined\n      });\n    });\n  }\n});\n//# sourceMappingURL=VNumberInput.mjs.map",
-      "start": 1723246184192,
-      "end": 1723246184306,
+      "start": 1723495917181,
+      "end": 1723495918566,
       "sourcemaps": null
     },
     {
       "name": "vite:css",
-      "start": 1723246184306,
-      "end": 1723246184306,
+      "start": 1723495918566,
+      "end": 1723495918566,
       "order": "normal"
     },
     {
       "name": "vite:esbuild",
-      "start": 1723246184306,
-      "end": 1723246184306,
+      "start": 1723495918566,
+      "end": 1723495918566,
       "order": "normal"
     },
     {
       "name": "vite:json",
-      "start": 1723246184306,
-      "end": 1723246184306,
+      "start": 1723495918567,
+      "end": 1723495918567,
       "order": "normal"
     },
     {
       "name": "vite:worker",
-      "start": 1723246184306,
-      "end": 1723246184306,
+      "start": 1723495918567,
+      "end": 1723495918567,
       "order": "normal"
     },
     {
       "name": "vite:vue",
-      "start": 1723246184306,
-      "end": 1723246184306,
+      "start": 1723495918567,
+      "end": 1723495918568,
       "order": "normal"
     },
     {
       "name": "vite:define",
-      "start": 1723246184306,
-      "end": 1723246184306,
+      "start": 1723495918568,
+      "end": 1723495918568,
       "order": "normal"
     },
     {
       "name": "vite:css-post",
-      "start": 1723246184306,
-      "end": 1723246184306,
+      "start": 1723495918568,
+      "end": 1723495918568,
       "order": "normal"
     },
     {
       "name": "vite:build-html",
-      "start": 1723246184306,
-      "end": 1723246184306,
+      "start": 1723495918568,
+      "end": 1723495918568,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1723246184306,
-      "end": 1723246184306,
+      "start": 1723495918568,
+      "end": 1723495918569,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1723246184306,
-      "end": 1723246184306,
+      "start": 1723495918569,
+      "end": 1723495918569,
       "order": "normal"
     },
     {
       "name": "commonjs",
-      "start": 1723246184306,
-      "end": 1723246184306,
+      "start": 1723495918569,
+      "end": 1723495918569,
       "order": "normal"
     },
     {
       "name": "vite:dynamic-import-vars",
-      "start": 1723246184306,
-      "end": 1723246184306,
+      "start": 1723495918569,
+      "end": 1723495918570,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1723246184306,
-      "end": 1723246184306,
+      "start": 1723495918570,
+      "end": 1723495918570,
       "order": "normal"
     },
     {
       "name": "vite:build-import-analysis",
-      "start": 1723246184306,
-      "end": 1723246184306,
+      "start": 1723495918570,
+      "end": 1723495918570,
       "order": "normal"
     },
     {
       "name": "vite:reporter",
-      "start": 1723246184306,
-      "end": 1723246184306,
+      "start": 1723495918570,
+      "end": 1723495918570,
       "order": "normal"
     }
   ]

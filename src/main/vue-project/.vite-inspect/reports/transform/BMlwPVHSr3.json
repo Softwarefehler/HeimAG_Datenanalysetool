@@ -4,99 +4,99 @@
     {
       "name": "vite:load-fallback",
       "result": "<!doctype html>\r\n<html lang=\"en\">\r\n  <head>\r\n    <meta charset=\"UTF-8\" />\r\n    <link rel=\"icon\" href=\"/favicon.svg\" type=\"image/svg+xml\" />\r\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\r\n    <title>HeimAG Analyse</title>\r\n  </head>\r\n  <body>\r\n    <div id=\"app\"></div>\r\n    <script type=\"module\" src=\"/src/main.ts\"></script>\r\n  </body>\r\n</html>\r\n",
-      "start": 1723246184060,
-      "end": 1723246184061,
+      "start": 1723495915794,
+      "end": 1723495915799,
       "sourcemaps": null
     },
     {
       "name": "vite:css",
-      "start": 1723246184061,
-      "end": 1723246184061,
+      "start": 1723495915804,
+      "end": 1723495915805,
       "order": "normal"
     },
     {
       "name": "vite:esbuild",
-      "start": 1723246184062,
-      "end": 1723246184062,
+      "start": 1723495915806,
+      "end": 1723495915807,
       "order": "normal"
     },
     {
       "name": "vite:json",
-      "start": 1723246184062,
-      "end": 1723246184062,
+      "start": 1723495915807,
+      "end": 1723495915808,
       "order": "normal"
     },
     {
       "name": "vite:worker",
-      "start": 1723246184062,
-      "end": 1723246184062,
+      "start": 1723495915808,
+      "end": 1723495915810,
       "order": "normal"
     },
     {
       "name": "vite:vue",
-      "start": 1723246184062,
-      "end": 1723246184062,
+      "start": 1723495915810,
+      "end": 1723495915812,
       "order": "normal"
     },
     {
       "name": "vite:define",
-      "start": 1723246184062,
-      "end": 1723246184063,
+      "start": 1723495915812,
+      "end": 1723495915813,
       "order": "normal"
     },
     {
       "name": "vite:css-post",
-      "start": 1723246184063,
-      "end": 1723246184063,
+      "start": 1723495915813,
+      "end": 1723495915814,
       "order": "normal"
     },
     {
       "name": "vite:build-html",
       "result": "import \"vite/modulepreload-polyfill\";\n\nimport \"/src/main.ts\"",
-      "start": 1723246184063,
-      "end": 1723246184082,
+      "start": 1723495915814,
+      "end": 1723495915920,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1723246184082,
-      "end": 1723246184083,
+      "start": 1723495915921,
+      "end": 1723495915922,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1723246184083,
-      "end": 1723246184083,
+      "start": 1723495915924,
+      "end": 1723495915925,
       "order": "normal"
     },
     {
       "name": "commonjs",
-      "start": 1723246184083,
-      "end": 1723246184083,
+      "start": 1723495915926,
+      "end": 1723495915926,
       "order": "normal"
     },
     {
       "name": "vite:dynamic-import-vars",
-      "start": 1723246184083,
-      "end": 1723246184084,
+      "start": 1723495915926,
+      "end": 1723495915927,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1723246184084,
-      "end": 1723246184084,
+      "start": 1723495915928,
+      "end": 1723495915928,
       "order": "normal"
     },
     {
       "name": "vite:build-import-analysis",
-      "start": 1723246184084,
-      "end": 1723246184085,
+      "start": 1723495915928,
+      "end": 1723495915933,
       "order": "normal"
     },
     {
       "name": "vite:reporter",
-      "start": 1723246184085,
-      "end": 1723246184085,
+      "start": 1723495915933,
+      "end": 1723495915935,
       "order": "normal"
     }
   ]

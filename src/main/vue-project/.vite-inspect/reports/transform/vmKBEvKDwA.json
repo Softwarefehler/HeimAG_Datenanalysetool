@@ -4,98 +4,98 @@
     {
       "name": "vite:load-fallback",
       "result": "import { createVNode as _createVNode } from \"vue\";\n// Composables\nimport { makeComponentProps } from \"../../composables/component.mjs\"; // Utilities\nimport { genericComponent, propsFactory, useRender } from \"../../util/index.mjs\";\nexport const makeVBreadcrumbsDividerProps = propsFactory({\n  divider: [Number, String],\n  ...makeComponentProps()\n}, 'VBreadcrumbsDivider');\nexport const VBreadcrumbsDivider = genericComponent()({\n  name: 'VBreadcrumbsDivider',\n  props: makeVBreadcrumbsDividerProps(),\n  setup(props, _ref) {\n    let {\n      slots\n    } = _ref;\n    useRender(() => _createVNode(\"li\", {\n      \"class\": ['v-breadcrumbs-divider', props.class],\n      \"style\": props.style\n    }, [slots?.default?.() ?? props.divider]));\n    return {};\n  }\n});\n//# sourceMappingURL=VBreadcrumbsDivider.mjs.map",
-      "start": 1723246184839,
-      "end": 1723246184911,
+      "start": 1723495923390,
+      "end": 1723495923771,
       "sourcemaps": null
     },
     {
       "name": "vite:css",
-      "start": 1723246184911,
-      "end": 1723246184911,
+      "start": 1723495923771,
+      "end": 1723495923771,
       "order": "normal"
     },
     {
       "name": "vite:esbuild",
-      "start": 1723246184911,
-      "end": 1723246184911,
+      "start": 1723495923772,
+      "end": 1723495923772,
       "order": "normal"
     },
     {
       "name": "vite:json",
-      "start": 1723246184911,
-      "end": 1723246184911,
+      "start": 1723495923772,
+      "end": 1723495923772,
       "order": "normal"
     },
     {
       "name": "vite:worker",
-      "start": 1723246184911,
-      "end": 1723246184911,
+      "start": 1723495923772,
+      "end": 1723495923772,
       "order": "normal"
     },
     {
       "name": "vite:vue",
-      "start": 1723246184911,
-      "end": 1723246184911,
+      "start": 1723495923772,
+      "end": 1723495923772,
       "order": "normal"
     },
     {
       "name": "vite:define",
-      "start": 1723246184911,
-      "end": 1723246184911,
+      "start": 1723495923772,
+      "end": 1723495923772,
       "order": "normal"
     },
     {
       "name": "vite:css-post",
-      "start": 1723246184911,
-      "end": 1723246184911,
+      "start": 1723495923772,
+      "end": 1723495923772,
       "order": "normal"
     },
     {
       "name": "vite:build-html",
-      "start": 1723246184911,
-      "end": 1723246184911,
+      "start": 1723495923772,
+      "end": 1723495923772,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1723246184911,
-      "end": 1723246184911,
+      "start": 1723495923773,
+      "end": 1723495923773,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1723246184911,
-      "end": 1723246184911,
+      "start": 1723495923773,
+      "end": 1723495923773,
       "order": "normal"
     },
     {
       "name": "commonjs",
-      "start": 1723246184911,
-      "end": 1723246184911,
+      "start": 1723495923773,
+      "end": 1723495923773,
       "order": "normal"
     },
     {
       "name": "vite:dynamic-import-vars",
-      "start": 1723246184911,
-      "end": 1723246184911,
+      "start": 1723495923774,
+      "end": 1723495923774,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1723246184911,
-      "end": 1723246184911,
+      "start": 1723495923774,
+      "end": 1723495923774,
       "order": "normal"
     },
     {
       "name": "vite:build-import-analysis",
-      "start": 1723246184911,
-      "end": 1723246184911,
+      "start": 1723495923774,
+      "end": 1723495923774,
       "order": "normal"
     },
     {
       "name": "vite:reporter",
-      "start": 1723246184911,
-      "end": 1723246184911,
+      "start": 1723495923774,
+      "end": 1723495923774,
       "order": "normal"
     }
   ]

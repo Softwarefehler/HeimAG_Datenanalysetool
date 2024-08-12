@@ -4,21 +4,21 @@
     {
       "name": "vite:load-fallback",
       "result": "import { createRouter, createWebHashHistory } from 'vue-router'\r\nimport HomeVue from '@/routes/HomeView.vue'\r\n\r\nconst routes = [\r\n { path: '/', component: HomeVue },\r\n]\r\n\r\nexport const router = createRouter({\r\n  routes,\r\n  history: createWebHashHistory()\r\n})\r\n",
-      "start": 1723246184114,
-      "end": 1723246184143,
+      "start": 1723495916204,
+      "end": 1723495916622,
       "sourcemaps": null
     },
     {
       "name": "vite:css",
-      "start": 1723246184143,
-      "end": 1723246184143,
+      "start": 1723495916622,
+      "end": 1723495916622,
       "order": "normal"
     },
     {
       "name": "vite:esbuild",
       "result": "import { createRouter, createWebHashHistory } from \"vue-router\";\nimport HomeVue from \"@/routes/HomeView.vue\";\nconst routes = [\n  { path: \"/\", component: HomeVue }\n];\nexport const router = createRouter({\n  routes,\n  history: createWebHashHistory()\n});\n",
-      "start": 1723246184143,
-      "end": 1723246184171,
+      "start": 1723495916622,
+      "end": 1723495916734,
       "order": "normal",
       "sourcemaps": {
         "version": 3,
@@ -34,80 +34,80 @@
     },
     {
       "name": "vite:json",
-      "start": 1723246184171,
-      "end": 1723246184171,
+      "start": 1723495916735,
+      "end": 1723495916735,
       "order": "normal"
     },
     {
       "name": "vite:worker",
-      "start": 1723246184171,
-      "end": 1723246184171,
+      "start": 1723495916735,
+      "end": 1723495916735,
       "order": "normal"
     },
     {
       "name": "vite:vue",
-      "start": 1723246184171,
-      "end": 1723246184171,
+      "start": 1723495916735,
+      "end": 1723495916735,
       "order": "normal"
     },
     {
       "name": "vite:define",
-      "start": 1723246184171,
-      "end": 1723246184171,
+      "start": 1723495916736,
+      "end": 1723495916736,
       "order": "normal"
     },
     {
       "name": "vite:css-post",
-      "start": 1723246184171,
-      "end": 1723246184171,
+      "start": 1723495916736,
+      "end": 1723495916736,
       "order": "normal"
     },
     {
       "name": "vite:build-html",
-      "start": 1723246184171,
-      "end": 1723246184171,
+      "start": 1723495916736,
+      "end": 1723495916737,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1723246184171,
-      "end": 1723246184171,
+      "start": 1723495916737,
+      "end": 1723495916737,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1723246184171,
-      "end": 1723246184171,
+      "start": 1723495916737,
+      "end": 1723495916737,
       "order": "normal"
     },
     {
       "name": "commonjs",
-      "start": 1723246184171,
-      "end": 1723246184171,
+      "start": 1723495916738,
+      "end": 1723495916738,
       "order": "normal"
     },
     {
       "name": "vite:dynamic-import-vars",
-      "start": 1723246184171,
-      "end": 1723246184171,
+      "start": 1723495916740,
+      "end": 1723495916740,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1723246184171,
-      "end": 1723246184171,
+      "start": 1723495916740,
+      "end": 1723495916740,
       "order": "normal"
     },
     {
       "name": "vite:build-import-analysis",
-      "start": 1723246184171,
-      "end": 1723246184171,
+      "start": 1723495916742,
+      "end": 1723495916743,
       "order": "normal"
     },
     {
       "name": "vite:reporter",
-      "start": 1723246184171,
-      "end": 1723246184171,
+      "start": 1723495916744,
+      "end": 1723495916744,
       "order": "normal"
     }
   ]
