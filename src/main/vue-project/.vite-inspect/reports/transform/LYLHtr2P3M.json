@@ -4,98 +4,98 @@
     {
       "name": "vite:load-fallback",
       "result": "export { VCalendar } from \"./VCalendar.mjs\";\nexport { VCalendarDay } from \"./VCalendarDay.mjs\";\nexport { VCalendarHeader } from \"./VCalendarHeader.mjs\";\nexport { VCalendarInterval } from \"./VCalendarInterval.mjs\";\nexport { VCalendarIntervalEvent } from \"./VCalendarIntervalEvent.mjs\";\nexport { VCalendarMonthDay } from \"./VCalendarMonthDay.mjs\";\n//# sourceMappingURL=index.mjs.map",
-      "start": 1723495916706,
-      "end": 1723495916975,
+      "start": 1723736370552,
+      "end": 1723736370593,
       "sourcemaps": null
     },
     {
       "name": "vite:css",
-      "start": 1723495916977,
-      "end": 1723495916977,
+      "start": 1723736370593,
+      "end": 1723736370593,
       "order": "normal"
     },
     {
       "name": "vite:esbuild",
-      "start": 1723495916978,
-      "end": 1723495916978,
+      "start": 1723736370593,
+      "end": 1723736370593,
       "order": "normal"
     },
     {
       "name": "vite:json",
-      "start": 1723495916978,
-      "end": 1723495916978,
+      "start": 1723736370593,
+      "end": 1723736370593,
       "order": "normal"
     },
     {
       "name": "vite:worker",
-      "start": 1723495916978,
-      "end": 1723495916978,
+      "start": 1723736370593,
+      "end": 1723736370593,
       "order": "normal"
     },
     {
       "name": "vite:vue",
-      "start": 1723495916978,
-      "end": 1723495916978,
+      "start": 1723736370593,
+      "end": 1723736370593,
       "order": "normal"
     },
     {
       "name": "vite:define",
-      "start": 1723495916978,
-      "end": 1723495916979,
+      "start": 1723736370593,
+      "end": 1723736370593,
       "order": "normal"
     },
     {
       "name": "vite:css-post",
-      "start": 1723495916979,
-      "end": 1723495916979,
+      "start": 1723736370593,
+      "end": 1723736370593,
       "order": "normal"
     },
     {
       "name": "vite:build-html",
-      "start": 1723495916979,
-      "end": 1723495916979,
+      "start": 1723736370593,
+      "end": 1723736370593,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1723495916979,
-      "end": 1723495916979,
+      "start": 1723736370593,
+      "end": 1723736370593,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1723495916979,
-      "end": 1723495916980,
+      "start": 1723736370593,
+      "end": 1723736370593,
       "order": "normal"
     },
     {
       "name": "commonjs",
-      "start": 1723495916980,
-      "end": 1723495916980,
+      "start": 1723736370593,
+      "end": 1723736370593,
       "order": "normal"
     },
     {
       "name": "vite:dynamic-import-vars",
-      "start": 1723495916981,
-      "end": 1723495916981,
+      "start": 1723736370593,
+      "end": 1723736370593,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1723495916981,
-      "end": 1723495916981,
+      "start": 1723736370593,
+      "end": 1723736370593,
       "order": "normal"
     },
     {
       "name": "vite:build-import-analysis",
-      "start": 1723495916981,
-      "end": 1723495916981,
+      "start": 1723736370593,
+      "end": 1723736370593,
       "order": "normal"
     },
     {
       "name": "vite:reporter",
-      "start": 1723495916981,
-      "end": 1723495916981,
+      "start": 1723736370593,
+      "end": 1723736370593,
       "order": "normal"
     }
   ]

@@ -6,7 +6,8 @@ import { useTheme } from 'vuetify'
 // Theme-Setup
 const theme = useTheme()
 const appTitle = ref('HeimAG Datenanalysetool')
-
+const appSubtitle = ref('by Renator Huber & Marcel Gräub')
+const drawer = ref(false) // Standardmäßig eingeklappt
 
 // Funktion zum Umschalten des Themas
 function toggleTheme() {
@@ -23,7 +24,15 @@ function logout() {
 <template>
   <v-app>
     <v-responsive class="border rounded">
+      <v-navigation-drawer v-model="drawer">
+        <v-list-item :title="appTitle" :subtitle="appSubtitle" />
+        <v-divider :thickness="2" class="border-opacity-100"></v-divider>
+        <br>
+        <v-list-item link to="/">Datenanalyse</v-list-item>
+        <v-list-item link to="/Settings">Einstellungen</v-list-item>
+      </v-navigation-drawer>
       <v-app-bar class="px-3">
+        <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
         <v-app-bar-title>{{ appTitle }}</v-app-bar-title>
         <v-btn @click="toggleTheme" icon="mdi-theme-light-dark" />
         <v-btn @click="logout" icon="mdi-logout" />

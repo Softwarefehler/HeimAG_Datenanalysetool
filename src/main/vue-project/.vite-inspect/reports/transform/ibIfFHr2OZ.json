@@ -1,0 +1,106 @@
+{
+  "resolvedId": "C:/Users/MAG/IdeaProjects/Datenanalysetool/src/main/vue-project/src/routes/SettingsView.vue",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "\r\n<script lang=\"ts\" setup>\r\nimport { onMounted, ref } from 'vue'\r\n\r\n\r\nconst databaseStatus  = ref<string | null>(null)\r\nconst latestDate = ref<string | null>(null)\r\nconst file = ref<File | null>(null)\r\n\r\nasync function infoDatabase() {\r\n  try {\r\n    const info = await fetch('/get-SettingsView').then((response) => response.json())\r\n    databaseStatus.value = info.databaseStatus\r\n    latestDate.value = info.latestDate\r\n  } catch (error) {\r\n    alert(`Fehler beim Laden der Daten: ${error}`)\r\n  }\r\n}\r\n\r\n\r\nasync function uploadFile() {\r\n  if (!file.value) {\r\n    alert('Bitte wähle eine Datei aus.')\r\n    return\r\n  }\r\n\r\n  const formData = new FormData()\r\n  formData.append('file', file.value)\r\n\r\n  try {\r\n    const response = await fetch('/csv-upload', {\r\n      method: 'POST',\r\n      body: formData,\r\n      headers: {\r\n        'Accept': 'application/json',\r\n      },\r\n    })\r\n\r\n    if (response.ok) {\r\n      const result = await response.json()\r\n      alert('Datei erfolgreich hochgeladen!')\r\n    } else {\r\n      alert('Fehler beim Hochladen der Datei.')\r\n    }\r\n  } catch (error) {\r\n    console.error('Fehler beim Hochladen der Datei:', error)\r\n    alert('Fehler beim Hochladen der Datei.')\r\n  }\r\n}\r\n\r\n\r\nonMounted(async () => {\r\n  await infoDatabase()\r\n})\r\n</script>\r\n\r\n<template>\r\n  <v-container>\r\n    <v-form @submit.prevent=\"uploadFile\">\r\n      <v-file-input\r\n        v-model=\"file\"\r\n        label=\"Wähle eine Datei\"\r\n        accept=\".csv\"\r\n        required\r\n      ></v-file-input>\r\n      <v-btn type=\"submit\" color=\"primary\">Datei hochladen</v-btn>\r\n    </v-form>\r\n  </v-container>\r\n</template>\r\n",
+      "start": 1723736370597,
+      "end": 1723736370662,
+      "sourcemaps": null
+    },
+    {
+      "name": "vite:css",
+      "start": 1723736370662,
+      "end": 1723736370662,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1723736370662,
+      "end": 1723736370662,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1723736370662,
+      "end": 1723736370662,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1723736370662,
+      "end": 1723736370662,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "result": "import _sfc_main from \"C:/Users/MAG/IdeaProjects/Datenanalysetool/src/main/vue-project/src/routes/SettingsView.vue?vue&type=script&setup=true&lang.ts\";\nexport * from \"C:/Users/MAG/IdeaProjects/Datenanalysetool/src/main/vue-project/src/routes/SettingsView.vue?vue&type=script&setup=true&lang.ts\";\nexport default _sfc_main;\n",
+      "start": 1723736370663,
+      "end": 1723736370816,
+      "order": "normal",
+      "sourcemaps": {
+        "mappings": ""
+      }
+    },
+    {
+      "name": "vite:define",
+      "start": 1723736370817,
+      "end": 1723736370817,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1723736370817,
+      "end": 1723736370817,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1723736370817,
+      "end": 1723736370817,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1723736370817,
+      "end": 1723736370817,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1723736370817,
+      "end": 1723736370817,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1723736370818,
+      "end": 1723736370818,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1723736370818,
+      "end": 1723736370818,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1723736370818,
+      "end": 1723736370818,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1723736370820,
+      "end": 1723736370820,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1723736370820,
+      "end": 1723736370824,
+      "order": "normal"
+    }
+  ]
+}

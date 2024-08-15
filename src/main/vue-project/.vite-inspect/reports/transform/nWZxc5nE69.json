@@ -1,0 +1,124 @@
+{
+  "resolvedId": "C:/Users/MAG/IdeaProjects/Datenanalysetool/src/main/vue-project/src/routes/SettingsView.vue?vue&type=script&setup=true&lang.ts",
+  "transforms": [
+    {
+      "name": "vite:vue",
+      "result": "import { defineComponent as _defineComponent } from 'vue'\nimport { resolveComponent as _resolveComponent, createVNode as _createVNode, createTextVNode as _createTextVNode, withCtx as _withCtx, withModifiers as _withModifiers, openBlock as _openBlock, createBlock as _createBlock } from \"vue\"\n\nimport { onMounted, ref } from 'vue'\r\n\r\n\r\n\nexport default /*#__PURE__*/_defineComponent({\n  __name: 'SettingsView',\n  setup(__props) {\n\r\nconst databaseStatus  = ref<string | null>(null)\r\nconst latestDate = ref<string | null>(null)\r\nconst file = ref<File | null>(null)\r\n\r\nasync function infoDatabase() {\r\n  try {\r\n    const info = await fetch('/get-SettingsView').then((response) => response.json())\r\n    databaseStatus.value = info.databaseStatus\r\n    latestDate.value = info.latestDate\r\n  } catch (error) {\r\n    alert(`Fehler beim Laden der Daten: ${error}`)\r\n  }\r\n}\r\n\r\n\r\nasync function uploadFile() {\r\n  if (!file.value) {\r\n    alert('Bitte wähle eine Datei aus.')\r\n    return\r\n  }\r\n\r\n  const formData = new FormData()\r\n  formData.append('file', file.value)\r\n\r\n  try {\r\n    const response = await fetch('/csv-upload', {\r\n      method: 'POST',\r\n      body: formData,\r\n      headers: {\r\n        'Accept': 'application/json',\r\n      },\r\n    })\r\n\r\n    if (response.ok) {\r\n      const result = await response.json()\r\n      alert('Datei erfolgreich hochgeladen!')\r\n    } else {\r\n      alert('Fehler beim Hochladen der Datei.')\r\n    }\r\n  } catch (error) {\r\n    console.error('Fehler beim Hochladen der Datei:', error)\r\n    alert('Fehler beim Hochladen der Datei.')\r\n  }\r\n}\r\n\r\n\r\nonMounted(async () => {\r\n  await infoDatabase()\r\n})\r\n\nreturn (_ctx: any,_cache: any) => {\n  const _component_v_file_input = _resolveComponent(\"v-file-input\")!\n  const _component_v_btn = _resolveComponent(\"v-btn\")!\n  const _component_v_form = _resolveComponent(\"v-form\")!\n  const _component_v_container = _resolveComponent(\"v-container\")!\n\n  return (_openBlock(), _createBlock(_component_v_container, null, {\n    default: _withCtx(() => [\n      _createVNode(_component_v_form, {\n        onSubmit: _withModifiers(uploadFile, [\"prevent\"])\n      }, {\n        default: _withCtx(() => [\n          _createVNode(_component_v_file_input, {\n            modelValue: file.value,\n            \"onUpdate:modelValue\": _cache[0] || (_cache[0] = ($event: any) => ((file).value = $event)),\n            label: \"Wähle eine Datei\",\n            accept: \".csv\",\n            required: \"\"\n          }, null, 8, [\"modelValue\"]),\n          _createVNode(_component_v_btn, {\n            type: \"submit\",\n            color: \"primary\"\n          }, {\n            default: _withCtx(() => [\n              _createTextVNode(\"Datei hochladen\")\n            ]),\n            _: 1\n          })\n        ]),\n        _: 1\n      })\n    ]),\n    _: 1\n  }))\n}\n}\n\n})",
+      "start": 1723736371073,
+      "end": 1723736371073,
+      "sourcemaps": {
+        "version": 3,
+        "sources": [
+          "C:/Users/MAG/IdeaProjects/Datenanalysetool/src/main/vue-project/src/routes/SettingsView.vue"
+        ],
+        "sourcesContent": [
+          "\r\n<script lang=\"ts\" setup>\r\nimport { onMounted, ref } from 'vue'\r\n\r\n\r\nconst databaseStatus  = ref<string | null>(null)\r\nconst latestDate = ref<string | null>(null)\r\nconst file = ref<File | null>(null)\r\n\r\nasync function infoDatabase() {\r\n  try {\r\n    const info = await fetch('/get-SettingsView').then((response) => response.json())\r\n    databaseStatus.value = info.databaseStatus\r\n    latestDate.value = info.latestDate\r\n  } catch (error) {\r\n    alert(`Fehler beim Laden der Daten: ${error}`)\r\n  }\r\n}\r\n\r\n\r\nasync function uploadFile() {\r\n  if (!file.value) {\r\n    alert('Bitte wähle eine Datei aus.')\r\n    return\r\n  }\r\n\r\n  const formData = new FormData()\r\n  formData.append('file', file.value)\r\n\r\n  try {\r\n    const response = await fetch('/csv-upload', {\r\n      method: 'POST',\r\n      body: formData,\r\n      headers: {\r\n        'Accept': 'application/json',\r\n      },\r\n    })\r\n\r\n    if (response.ok) {\r\n      const result = await response.json()\r\n      alert('Datei erfolgreich hochgeladen!')\r\n    } else {\r\n      alert('Fehler beim Hochladen der Datei.')\r\n    }\r\n  } catch (error) {\r\n    console.error('Fehler beim Hochladen der Datei:', error)\r\n    alert('Fehler beim Hochladen der Datei.')\r\n  }\r\n}\r\n\r\n\r\nonMounted(async () => {\r\n  await infoDatabase()\r\n})\r\n</script>\r\n\r\n<template>\r\n  <v-container>\r\n    <v-form @submit.prevent=\"uploadFile\">\r\n      <v-file-input\r\n        v-model=\"file\"\r\n        label=\"Wähle eine Datei\"\r\n        accept=\".csv\"\r\n        required\r\n      ></v-file-input>\r\n      <v-btn type=\"submit\" color=\"primary\">Datei hochladen</v-btn>\r\n    </v-form>\r\n  </v-container>\r\n</template>\r\n"
+        ],
+        "names": [],
+        "mappings": ";;;AAEA,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACrC,CAAC;AACD,CAAC;;;;;AAHuB,CAAC;AAIzB,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACjD,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AAC5C,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACpC,CAAC;AACD,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AAChC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACR,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACtF,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AAC/C,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACvC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACpB,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACnD,CAAC,CAAC,CAAC,CAAC;AACJ,CAAC,CAAC;A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"
+      }
+    },
+    {
+      "name": "vite:css",
+      "start": 1723736371073,
+      "end": 1723736371073,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "result": "import { defineComponent as _defineComponent } from \"vue\";\nimport { resolveComponent as _resolveComponent, createVNode as _createVNode, createTextVNode as _createTextVNode, withCtx as _withCtx, withModifiers as _withModifiers, openBlock as _openBlock, createBlock as _createBlock } from \"vue\";\nimport { onMounted, ref } from \"vue\";\nexport default /* @__PURE__ */ _defineComponent({\n  __name: \"SettingsView\",\n  setup(__props) {\n    const databaseStatus = ref(null);\n    const latestDate = ref(null);\n    const file = ref(null);\n    async function infoDatabase() {\n      try {\n        const info = await fetch(\"/get-SettingsView\").then((response) => response.json());\n        databaseStatus.value = info.databaseStatus;\n        latestDate.value = info.latestDate;\n      } catch (error) {\n        alert(`Fehler beim Laden der Daten: ${error}`);\n      }\n    }\n    async function uploadFile() {\n      if (!file.value) {\n        alert(\"Bitte wähle eine Datei aus.\");\n        return;\n      }\n      const formData = new FormData();\n      formData.append(\"file\", file.value);\n      try {\n        const response = await fetch(\"/csv-upload\", {\n          method: \"POST\",\n          body: formData,\n          headers: {\n            \"Accept\": \"application/json\"\n          }\n        });\n        if (response.ok) {\n          const result = await response.json();\n          alert(\"Datei erfolgreich hochgeladen!\");\n        } else {\n          alert(\"Fehler beim Hochladen der Datei.\");\n        }\n      } catch (error) {\n        console.error(\"Fehler beim Hochladen der Datei:\", error);\n        alert(\"Fehler beim Hochladen der Datei.\");\n      }\n    }\n    onMounted(async () => {\n      await infoDatabase();\n    });\n    return (_ctx, _cache) => {\n      const _component_v_file_input = _resolveComponent(\"v-file-input\");\n      const _component_v_btn = _resolveComponent(\"v-btn\");\n      const _component_v_form = _resolveComponent(\"v-form\");\n      const _component_v_container = _resolveComponent(\"v-container\");\n      return _openBlock(), _createBlock(_component_v_container, null, {\n        default: _withCtx(() => [\n          _createVNode(_component_v_form, {\n            onSubmit: _withModifiers(uploadFile, [\"prevent\"])\n          }, {\n            default: _withCtx(() => [\n              _createVNode(_component_v_file_input, {\n                modelValue: file.value,\n                \"onUpdate:modelValue\": _cache[0] || (_cache[0] = ($event) => file.value = $event),\n                label: \"Wähle eine Datei\",\n                accept: \".csv\",\n                required: \"\"\n              }, null, 8, [\"modelValue\"]),\n              _createVNode(_component_v_btn, {\n                type: \"submit\",\n                color: \"primary\"\n              }, {\n                default: _withCtx(() => [\n                  _createTextVNode(\"Datei hochladen\")\n                ]),\n                _: 1\n              })\n            ]),\n            _: 1\n          })\n        ]),\n        _: 1\n      });\n    };\n  }\n});\n",
+      "start": 1723736371073,
+      "end": 1723736371214,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "sources": [
+          "C:/Users/MAG/IdeaProjects/Datenanalysetool/src/main/vue-project/src/routes/SettingsView.vue?vue&type=script&setup=true&lang.ts"
+        ],
+        "sourcesContent": [
+          "import { defineComponent as _defineComponent } from 'vue'\nimport { resolveComponent as _resolveComponent, createVNode as _createVNode, createTextVNode as _createTextVNode, withCtx as _withCtx, withModifiers as _withModifiers, openBlock as _openBlock, createBlock as _createBlock } from \"vue\"\n\nimport { onMounted, ref } from 'vue'\r\n\r\n\r\n\nexport default /*#__PURE__*/_defineComponent({\n  __name: 'SettingsView',\n  setup(__props) {\n\r\nconst databaseStatus  = ref<string | null>(null)\r\nconst latestDate = ref<string | null>(null)\r\nconst file = ref<File | null>(null)\r\n\r\nasync function infoDatabase() {\r\n  try {\r\n    const info = await fetch('/get-SettingsView').then((response) => response.json())\r\n    databaseStatus.value = info.databaseStatus\r\n    latestDate.value = info.latestDate\r\n  } catch (error) {\r\n    alert(`Fehler beim Laden der Daten: ${error}`)\r\n  }\r\n}\r\n\r\n\r\nasync function uploadFile() {\r\n  if (!file.value) {\r\n    alert('Bitte wähle eine Datei aus.')\r\n    return\r\n  }\r\n\r\n  const formData = new FormData()\r\n  formData.append('file', file.value)\r\n\r\n  try {\r\n    const response = await fetch('/csv-upload', {\r\n      method: 'POST',\r\n      body: formData,\r\n      headers: {\r\n        'Accept': 'application/json',\r\n      },\r\n    })\r\n\r\n    if (response.ok) {\r\n      const result = await response.json()\r\n      alert('Datei erfolgreich hochgeladen!')\r\n    } else {\r\n      alert('Fehler beim Hochladen der Datei.')\r\n    }\r\n  } catch (error) {\r\n    console.error('Fehler beim Hochladen der Datei:', error)\r\n    alert('Fehler beim Hochladen der Datei.')\r\n  }\r\n}\r\n\r\n\r\nonMounted(async () => {\r\n  await infoDatabase()\r\n})\r\n\nreturn (_ctx: any,_cache: any) => {\n  const _component_v_file_input = _resolveComponent(\"v-file-input\")!\n  const _component_v_btn = _resolveComponent(\"v-btn\")!\n  const _component_v_form = _resolveComponent(\"v-form\")!\n  const _component_v_container = _resolveComponent(\"v-container\")!\n\n  return (_openBlock(), _createBlock(_component_v_container, null, {\n    default: _withCtx(() => [\n      _createVNode(_component_v_form, {\n        onSubmit: _withModifiers(uploadFile, [\"prevent\"])\n      }, {\n        default: _withCtx(() => [\n          _createVNode(_component_v_file_input, {\n            modelValue: file.value,\n            \"onUpdate:modelValue\": _cache[0] || (_cache[0] = ($event: any) => ((file).value = $event)),\n            label: \"Wähle eine Datei\",\n            accept: \".csv\",\n            required: \"\"\n          }, null, 8, [\"modelValue\"]),\n          _createVNode(_component_v_btn, {\n            type: \"submit\",\n            color: \"primary\"\n          }, {\n            default: _withCtx(() => [\n              _createTextVNode(\"Datei hochladen\")\n            ]),\n            _: 1\n          })\n        ]),\n        _: 1\n      })\n    ]),\n    _: 1\n  }))\n}\n}\n\n})"
+        ],
+        "mappings": "AAAA,SAAS,mBAAmB,wBAAwB;AACpD,SAAS,oBAAoB,mBAAmB,eAAe,cAAc,mBAAmB,kBAAkB,WAAW,UAAU,iBAAiB,gBAAgB,aAAa,YAAY,eAAe,oBAAoB;AAEpO,SAAS,WAAW,WAAW;AAI/B,eAA4B,iCAAiB;AAAA,EAC3C,QAAQ;AAAA,EACR,MAAM,SAAS;AAEjB,UAAM,iBAAkB,IAAmB,IAAI;AAC/C,UAAM,aAAa,IAAmB,IAAI;AAC1C,UAAM,OAAO,IAAiB,IAAI;AAElC,mBAAe,eAAe;AAC5B,UAAI;AACF,cAAM,OAAO,MAAM,MAAM,mBAAmB,EAAE,KAAK,CAAC,aAAa,SAAS,KAAK,CAAC;AAChF,uBAAe,QAAQ,KAAK;AAC5B,mBAAW,QAAQ,KAAK;AAAA,MAC1B,SAAS,OAAO;AACd,cAAM,gCAAgC,KAAK,EAAE;AAAA,MAC/C;AAAA,IACF;AAGA,mBAAe,aAAa;AAC1B,UAAI,CAAC,KAAK,OAAO;AACf,cAAM,6BAA6B;AACnC;AAAA,MACF;AAEA,YAAM,WAAW,IAAI,SAAS;AAC9B,eAAS,OAAO,QAAQ,KAAK,KAAK;AAElC,UAAI;AACF,cAAM,WAAW,MAAM,MAAM,eAAe;AAAA,UAC1C,QAAQ;AAAA,UACR,MAAM;AAAA,UACN,SAAS;AAAA,YACP,UAAU;AAAA,UACZ;AAAA,QACF,CAAC;AAED,YAAI,SAAS,IAAI;AACf,gBAAM,SAAS,MAAM,SAAS,KAAK;AACnC,gBAAM,gCAAgC;AAAA,QACxC,OAAO;AACL,gBAAM,kCAAkC;AAAA,QAC1C;AAAA,MACF,SAAS,OAAO;AACd,gBAAQ,MAAM,oCAAoC,KAAK;AACvD,cAAM,kCAAkC;AAAA,MAC1C;AAAA,IACF;AAGA,cAAU,YAAY;AACpB,YAAM,aAAa;AAAA,IACrB,CAAC;AAED,WAAO,CAAC,MAAU,WAAgB;AAChC,YAAM,0BAA0B,kBAAkB,cAAc;AAChE,YAAM,mBAAmB,kBAAkB,OAAO;AAClD,YAAM,oBAAoB,kBAAkB,QAAQ;AACpD,YAAM,yBAAyB,kBAAkB,aAAa;AAE9D,aAAQ,WAAW,GAAG,aAAa,wBAAwB,MAAM;AAAA,QAC/D,SAAS,SAAS,MAAM;AAAA,UACtB,aAAa,mBAAmB;AAAA,YAC9B,UAAU,eAAe,YAAY,CAAC,SAAS,CAAC;AAAA,UAClD,GAAG;AAAA,YACD,SAAS,SAAS,MAAM;AAAA,cACtB,aAAa,yBAAyB;AAAA,gBACpC,YAAY,KAAK;AAAA,gBACjB,uBAAuB,OAAO,CAAC,MAAM,OAAO,CAAC,IAAI,CAAC,WAAkB,KAAM,QAAQ;AAAA,gBAClF,OAAO;AAAA,gBACP,QAAQ;AAAA,gBACR,UAAU;AAAA,cACZ,GAAG,MAAM,GAAG,CAAC,YAAY,CAAC;AAAA,cAC1B,aAAa,kBAAkB;AAAA,gBAC7B,MAAM;AAAA,gBACN,OAAO;AAAA,cACT,GAAG;AAAA,gBACD,SAAS,SAAS,MAAM;AAAA,kBACtB,iBAAiB,iBAAiB;AAAA,gBACpC,CAAC;AAAA,gBACD,GAAG;AAAA,cACL,CAAC;AAAA,YACH,CAAC;AAAA,YACD,GAAG;AAAA,UACL,CAAC;AAAA,QACH,CAAC;AAAA,QACD,GAAG;AAAA,MACL,CAAC;AAAA,IACH;AAAA,EACA;AAEA,CAAC;",
+        "names": []
+      }
+    },
+    {
+      "name": "vite:json",
+      "start": 1723736371214,
+      "end": 1723736371214,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1723736371214,
+      "end": 1723736371214,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1723736371214,
+      "end": 1723736371214,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1723736371214,
+      "end": 1723736371214,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1723736371214,
+      "end": 1723736371214,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1723736371214,
+      "end": 1723736371214,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1723736371214,
+      "end": 1723736371214,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1723736371214,
+      "end": 1723736371214,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1723736371214,
+      "end": 1723736371214,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1723736371214,
+      "end": 1723736371214,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1723736371214,
+      "end": 1723736371214,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1723736371214,
+      "end": 1723736371215,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1723736371215,
+      "end": 1723736371215,
+      "order": "normal"
+    }
+  ]
+}

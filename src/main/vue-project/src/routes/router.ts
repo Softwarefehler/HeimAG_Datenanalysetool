@@ -1,8 +1,10 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
-import HomeVue from '@/routes/HomeView.vue'
+import DatenanalyseVue from '@/routes/DatenanalyseView.vue'
+import SettingsVue from '@/routes/SettingsView.vue'
 
 const routes = [
- { path: '/', component: HomeVue },
+ { path: '/', component: DatenanalyseVue },
+  { path: '/settings', component: SettingsVue }
 ]
 
 export const router = createRouter({

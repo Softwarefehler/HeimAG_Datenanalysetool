@@ -7,12 +7,19 @@ import { VSelect, VRow, VCol, VContainer, VBtn, VSheet, VDataTable } from 'vueti
 
 export type DataPoint = { date: string; temperature: string }
 
+type PayloadType = {
+  kaltPeriode: DataPoint[],
+  hauptanteilHeizperiode: DataPoint[],
+  schwachlast: DataPoint[]
+}
+
 // Reaktive Variablen für die Date-Picker
 const startDate = ref<string | null>(null)
 const endDate = ref<string | null>(null)
 const selectedCountry = ref<string | null>(null)
-const tableData = ref<DataPoint[]>([])
-
+const tableData1 = ref<DataPoint[]>([])
+const tableData2 = ref<DataPoint[]>([])
+const tableData3 = ref<DataPoint[]>([])
 
 const databaseStatus = ref<string | null>(null)
 const countryList = ref<string[]>([])
@@ -22,7 +29,7 @@ const latestDate = ref<string | null>(null)
 
  async function firstPayload() {
   try {
-    const data = await fetch('/get-data').then((response) => response.json())
+    const data = await fetch('/get-DatenanalyseView').then((response) => response.json())
     databaseStatus.value = data.databaseStatus
     countryList.value = data.countryList
     latestDate.value = data.latestDate
@@ -57,14 +64,14 @@ async function sendData() {
   }
 }
 
-function processPayload(payload: any) {
-  // Annahme: payload ist ein Array von Objekten, die die Struktur von dataPoint haben
-  tableData.value = payload.map((item: any) => ({
-    Datum: item.date,
-    Temperatur: item.temperature
-  }))
-}
 
+
+function processPayload(payload: PayloadType) {
+  // Verarbeitung der drei Listen
+  tableData1.value = payload.kaltPeriode
+  tableData2.value = payload.hauptanteilHeizperiode
+  tableData3.value = payload.schwachlast
+}
 
 onMounted(async () => {
   await firstPayload()
@@ -104,23 +111,23 @@ onMounted(async () => {
     <v-row>
       <v-col cols="12" md="4">
         <v-sheet class="mb-4">
-          <h4 class="text-h6 font-weight-bold mb-1">Schwachlast</h4>
-          <p class="text-body-2 mb-2" style="margin-top: -8px;">Temperatur möglichst nahe bei 20°C</p>
-          <v-data-table :items="tableData" :items-per-page="-1"></v-data-table>
+          <h4 class="text-h6 font-weight-bold mb-1">Kalte Periode</h4>
+          <p class="text-body-2 mb-2" style="margin-top: -8px;">Temperaturen zwischen -5 ... - 10°C</p>
+          <v-data-table :items="tableData1" :items-per-page="-1"></v-data-table>
         </v-sheet>
       </v-col>
       <v-col cols="12" md="4">
         <v-sheet class="mb-4">
           <h4 class="text-h6 font-weight-bold mb-1">Hauptanteil Heizperiode</h4>
           <p class="text-body-2 mb-2" style="margin-top: -8px;">Temperaturen zwischen 0 ... 20°C</p>
-          <v-data-table :items="tableData" :items-per-page="-1"></v-data-table>
+          <v-data-table :items="tableData2" :items-per-page="-1"></v-data-table>
         </v-sheet>
       </v-col>
       <v-col cols="12" md="4">
         <v-sheet class="mb-4">
-          <h4 class="text-h6 font-weight-bold mb-1">Kalte Periode</h4>
-          <p class="text-body-2 mb-2" style="margin-top: -8px;">Temperaturen zwischen -5 ... - 10°C</p>
-          <v-data-table :items="tableData" :items-per-page="-1"></v-data-table>
+          <h4 class="text-h6 font-weight-bold mb-1">Schwachlast</h4>
+          <p class="text-body-2 mb-2" style="margin-top: -8px;">Temperatur möglichst nahe bei 20°C</p>
+          <v-data-table :items="tableData3" :items-per-page="-1"></v-data-table>
         </v-sheet>
       </v-col>
     </v-row>

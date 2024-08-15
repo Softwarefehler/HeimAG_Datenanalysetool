@@ -4,98 +4,98 @@
     {
       "name": "vite:load-fallback",
       "result": "import { mergeProps as _mergeProps, createVNode as _createVNode, Fragment as _Fragment } from \"vue\";\n// Components\nimport { VDefaultsProvider } from \"../../components/VDefaultsProvider/index.mjs\";\nimport { makeVListGroupProps, VListGroup } from \"../../components/VList/VListGroup.mjs\"; // Utilities\nimport { computed, ref } from 'vue';\nimport { genericComponent, omit, propsFactory, useRender } from \"../../util/index.mjs\"; // Types\nexport const makeVTreeviewGroupProps = propsFactory({\n  ...omit(makeVListGroupProps({\n    collapseIcon: '$treeviewCollapse',\n    expandIcon: '$treeviewExpand'\n  }), ['subgroup'])\n}, 'VTreeviewGroup');\nexport const VTreeviewGroup = genericComponent()({\n  name: 'VTreeviewGroup',\n  props: makeVTreeviewGroupProps(),\n  setup(props, _ref) {\n    let {\n      slots\n    } = _ref;\n    const vListGroupRef = ref();\n    const toggleIcon = computed(() => vListGroupRef.value?.isOpen ? props.collapseIcon : props.expandIcon);\n    const activatorDefaults = computed(() => ({\n      VTreeviewItem: {\n        prependIcon: undefined,\n        appendIcon: undefined,\n        active: vListGroupRef.value?.isOpen,\n        toggleIcon: toggleIcon.value\n      }\n    }));\n    useRender(() => {\n      const listGroupProps = VListGroup.filterProps(props);\n      return _createVNode(VListGroup, _mergeProps(listGroupProps, {\n        \"ref\": vListGroupRef,\n        \"class\": ['v-treeview-group', props.class],\n        \"subgroup\": true\n      }), {\n        ...slots,\n        activator: slots.activator ? slotProps => _createVNode(_Fragment, null, [_createVNode(VDefaultsProvider, {\n          \"defaults\": activatorDefaults.value\n        }, {\n          default: () => [slots.activator?.(slotProps)]\n        })]) : undefined\n      });\n    });\n    return {};\n  }\n});\n//# sourceMappingURL=VTreeviewGroup.mjs.map",
-      "start": 1723495917795,
-      "end": 1723495919381,
+      "start": 1723736370633,
+      "end": 1723736370832,
       "sourcemaps": null
     },
     {
       "name": "vite:css",
-      "start": 1723495919381,
-      "end": 1723495919381,
+      "start": 1723736370833,
+      "end": 1723736370833,
       "order": "normal"
     },
     {
       "name": "vite:esbuild",
-      "start": 1723495919381,
-      "end": 1723495919381,
+      "start": 1723736370833,
+      "end": 1723736370833,
       "order": "normal"
     },
     {
       "name": "vite:json",
-      "start": 1723495919381,
-      "end": 1723495919381,
+      "start": 1723736370833,
+      "end": 1723736370833,
       "order": "normal"
     },
     {
       "name": "vite:worker",
-      "start": 1723495919382,
-      "end": 1723495919382,
+      "start": 1723736370833,
+      "end": 1723736370833,
       "order": "normal"
     },
     {
       "name": "vite:vue",
-      "start": 1723495919382,
-      "end": 1723495919382,
+      "start": 1723736370833,
+      "end": 1723736370833,
       "order": "normal"
     },
     {
       "name": "vite:define",
-      "start": 1723495919382,
-      "end": 1723495919382,
+      "start": 1723736370833,
+      "end": 1723736370833,
       "order": "normal"
     },
     {
       "name": "vite:css-post",
-      "start": 1723495919382,
-      "end": 1723495919382,
+      "start": 1723736370833,
+      "end": 1723736370833,
       "order": "normal"
     },
     {
       "name": "vite:build-html",
-      "start": 1723495919382,
-      "end": 1723495919382,
+      "start": 1723736370833,
+      "end": 1723736370833,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1723495919382,
-      "end": 1723495919382,
+      "start": 1723736370833,
+      "end": 1723736370833,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1723495919382,
-      "end": 1723495919382,
+      "start": 1723736370833,
+      "end": 1723736370833,
       "order": "normal"
     },
     {
       "name": "commonjs",
-      "start": 1723495919383,
-      "end": 1723495919383,
+      "start": 1723736370833,
+      "end": 1723736370833,
       "order": "normal"
     },
     {
       "name": "vite:dynamic-import-vars",
-      "start": 1723495919383,
-      "end": 1723495919383,
+      "start": 1723736370833,
+      "end": 1723736370833,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1723495919383,
-      "end": 1723495919383,
+      "start": 1723736370833,
+      "end": 1723736370833,
       "order": "normal"
     },
     {
       "name": "vite:build-import-analysis",
-      "start": 1723495919383,
-      "end": 1723495919383,
+      "start": 1723736370833,
+      "end": 1723736370833,
       "order": "normal"
     },
     {
       "name": "vite:reporter",
-      "start": 1723495919383,
-      "end": 1723495919383,
+      "start": 1723736370833,
+      "end": 1723736370833,
       "order": "normal"
     }
   ]

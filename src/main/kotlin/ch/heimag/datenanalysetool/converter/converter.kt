@@ -80,6 +80,19 @@ object converter {
         return date
     }
 
+    fun dateToInt(date: LocalDate): Int {
+        return try {
+            val formatter = DateTimeFormatter.ofPattern("yyyyMMdd")
+            // Datum in einen String konvertieren und dann in einen Integer parsen
+            val dateString = date.format(formatter)
+            dateString.toInt()
+        } catch (e: Exception) {
+            // Falls etwas Unerwartetes passiert, loggen und aktuellen Zeitpunkt als Fallback nutzen
+            val replacementValue = LocalDate.now()
+            val replacementString = replacementValue.format(DateTimeFormatter.ofPattern("yyyyMMdd"))
+            replacementString.toInt()
+        }
+    }
 
 
 
