@@ -73,7 +73,7 @@
 
         /* Hover-Effekt für den Button */
         input[type="submit"]:hover {
-            background-color: #0056b3;
+            background-color: #4CAF50; /* #0056b3 */
         }
     </style>
 </head>

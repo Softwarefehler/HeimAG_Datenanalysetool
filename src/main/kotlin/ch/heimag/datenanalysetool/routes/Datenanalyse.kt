@@ -3,8 +3,8 @@ package ch.heimag.datenanalysetool.routes
 import ch.heimag.datenanalysetool.conditions.OperatingConditions
 import ch.heimag.datenanalysetool.converter.converter
 
-import ch.heimag.datenanalysetool.databases.Database
-import ch.heimag.datenanalysetool.csv.FileUploadBody
+import ch.heimag.datenanalysetool.file.CSV
+import ch.heimag.datenanalysetool.databases.Data
 import ch.heimag.datenanalysetool.databases.DataPoint
 import io.ktor.http.*
 import io.ktor.http.content.*
@@ -43,20 +43,14 @@ data class OperatingStateValueList(
 fun Application.configureDatenanalyse() {
     routing {
         authenticate("auth-session") {
-            val database = Database()
+
+            val databaseStatus = Data.database.checkDatabaseStatus()
+
+            var latestDateString = Data.database.loadLatestDate()
 
 
             get("/get-DatenanalyseView") {
 
-                val databaseStatus = database.checkDatabaseStatus()
-                val latestDate = database.loadLatestDate()
-                val latestDateString: String
-                if (latestDate == 0) {
-                    latestDateString = "Keine Daten"
-                } else {
-                    latestDateString = converter.intToString(latestDate)
-
-                }
 
                 var countryList = loadToSelectCountry("/document/Wetterstationen.xlsx")
 
@@ -88,7 +82,6 @@ fun Application.configureDatenanalyse() {
                                 "selectedCountry" -> selectedCountryReceive = part.value
                             }
                         }
-
                         else -> {}
                     }
                     part.dispose()
@@ -99,14 +92,14 @@ fun Application.configureDatenanalyse() {
                 val selectedCountry = selectedCountryReceive.toString() ?: "colorado"
 
                 // Parse Daten
-                val startDate = converter.stringToInt(startDateString)
-                val endDate = converter.stringToInt(endDateString)
+                val startDate = converter.frontendDateStringToInt(startDateString)
+                val endDate = converter.frontendDateStringToInt(endDateString)
 
                 var operatingState = OperatingConditions(startDate, endDate, selectedCountry)
 
-                val valueListKaltPeriode = database.loadOperatingStateKaltePeriode(operatingState)
-                val valueListHauptanteilHeizperiode = database.loadOperatingStateHaupanteilHeizperiode(operatingState)
-                val valueListSchwachlast = database.loadOperatingStateSchwachlast(operatingState)
+                val valueListKaltPeriode = Data.database.loadOperatingStateKaltePeriode(operatingState)
+                val valueListHauptanteilHeizperiode = Data.database.loadOperatingStateHaupanteilHeizperiode(operatingState)
+                val valueListSchwachlast = Data.database.loadOperatingStateSchwachlast(operatingState)
 
                 val operatingStateValueList =
                     OperatingStateValueList(valueListKaltPeriode, valueListHauptanteilHeizperiode, valueListSchwachlast)
@@ -121,15 +114,13 @@ fun Application.configureDatenanalyse() {
 
             post("/csv-upload") {
                 val multipart = call.receiveMultipart()
-                val csvRecords = mutableListOf<FileUploadBody>()
+                val csvRecords = mutableListOf<CSV>()
 
-                val actualDate = 18000101
-
-                val latestDate = database.loadLatestDate()
-                val latestDateCheck = if (latestDate == 0) {
-                    actualDate
+                val oldDate = 18000101
+                val latestDateCheck = if (latestDateString == "Keine Daten") {
+                    oldDate
                 } else {
-                    latestDate
+                    converter.dateStringToInt(latestDateString)
                 }
 
                 multipart.forEachPart { part ->
@@ -145,7 +136,7 @@ fun Application.configureDatenanalyse() {
                             iterator.forEach { line ->
                                 val values = line.split(';')
                                 if (values.size == 30) { // Ensure it matches the number of columns
-                                    val record = FileUploadBody(
+                                    val record = CSV(
                                         datum = values[0].toIntOrNull(),
                                         alt = values[1].toDoubleOrNull(),
                                         ant = values[2].toDoubleOrNull(),
@@ -191,8 +182,8 @@ fun Application.configureDatenanalyse() {
 
                 }
 
-                database.setValuesToDatabase(csvRecords)
-                printCSV(csvRecords)
+                Data.database.setValuesToDatabase(csvRecords)
+                latestDateString = Data.database.loadLatestDate()
                 call.respond(
                     HttpStatusCode.OK,
                     mapOf("message" to "File successfully processed. Records count: ${csvRecords.size}")
@@ -201,14 +192,7 @@ fun Application.configureDatenanalyse() {
             }
 
             get("/get-SettingsView") {
-                val databaseStatus = database.checkDatabaseStatus()
-                val latestDate = database.loadLatestDate()
-                val latestDateString: String
-                if (latestDate == 0) {
-                    latestDateString = "Keine Daten"
-                } else {
-                    latestDateString = converter.intToString(latestDate)
-                }
+
 
                 val firstResponse = FirstResponseSettingsView(
                     databaseStatus = databaseStatus,
@@ -247,7 +231,9 @@ fun loadToSelectCountry(resourcePath: String): MutableList<String> {
 }
 
 
-fun printCSV(save: MutableList<FileUploadBody>) {
+
+
+fun printCSV(save: MutableList<CSV>) {
 
     println("CSV Records: ${save.size}")
 

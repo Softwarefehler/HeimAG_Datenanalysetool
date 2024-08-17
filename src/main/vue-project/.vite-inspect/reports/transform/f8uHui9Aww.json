@@ -4,98 +4,98 @@
     {
       "name": "vite:load-fallback",
       "result": "import { createVNode as _createVNode } from \"vue\";\n// Composables\nimport { makeComponentProps } from \"../../composables/component.mjs\";\nimport { provideDefaults } from \"../../composables/defaults.mjs\"; // Utilities\nimport { genericComponent, useRender } from \"../../util/index.mjs\";\nexport const VCardActions = genericComponent()({\n  name: 'VCardActions',\n  props: makeComponentProps(),\n  setup(props, _ref) {\n    let {\n      slots\n    } = _ref;\n    provideDefaults({\n      VBtn: {\n        slim: true,\n        variant: 'text'\n      }\n    });\n    useRender(() => _createVNode(\"div\", {\n      \"class\": ['v-card-actions', props.class],\n      \"style\": props.style\n    }, [slots.default?.()]));\n    return {};\n  }\n});\n//# sourceMappingURL=VCardActions.mjs.map",
-      "start": 1723736371498,
-      "end": 1723736371598,
+      "start": 1723904396831,
+      "end": 1723904396923,
       "sourcemaps": null
     },
     {
       "name": "vite:css",
-      "start": 1723736371598,
-      "end": 1723736371598,
+      "start": 1723904396923,
+      "end": 1723904396923,
       "order": "normal"
     },
     {
       "name": "vite:esbuild",
-      "start": 1723736371598,
-      "end": 1723736371598,
+      "start": 1723904396923,
+      "end": 1723904396923,
       "order": "normal"
     },
     {
       "name": "vite:json",
-      "start": 1723736371598,
-      "end": 1723736371598,
+      "start": 1723904396923,
+      "end": 1723904396923,
       "order": "normal"
     },
     {
       "name": "vite:worker",
-      "start": 1723736371598,
-      "end": 1723736371598,
+      "start": 1723904396923,
+      "end": 1723904396923,
       "order": "normal"
     },
     {
       "name": "vite:vue",
-      "start": 1723736371598,
-      "end": 1723736371598,
+      "start": 1723904396923,
+      "end": 1723904396923,
       "order": "normal"
     },
     {
       "name": "vite:define",
-      "start": 1723736371598,
-      "end": 1723736371598,
+      "start": 1723904396923,
+      "end": 1723904396923,
       "order": "normal"
     },
     {
       "name": "vite:css-post",
-      "start": 1723736371598,
-      "end": 1723736371598,
+      "start": 1723904396923,
+      "end": 1723904396923,
       "order": "normal"
     },
     {
       "name": "vite:build-html",
-      "start": 1723736371598,
-      "end": 1723736371598,
+      "start": 1723904396923,
+      "end": 1723904396923,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1723736371598,
-      "end": 1723736371598,
+      "start": 1723904396923,
+      "end": 1723904396923,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1723736371598,
-      "end": 1723736371598,
+      "start": 1723904396923,
+      "end": 1723904396923,
       "order": "normal"
     },
     {
       "name": "commonjs",
-      "start": 1723736371598,
-      "end": 1723736371598,
+      "start": 1723904396923,
+      "end": 1723904396923,
       "order": "normal"
     },
     {
       "name": "vite:dynamic-import-vars",
-      "start": 1723736371598,
-      "end": 1723736371598,
+      "start": 1723904396923,
+      "end": 1723904396923,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1723736371598,
-      "end": 1723736371598,
+      "start": 1723904396923,
+      "end": 1723904396923,
       "order": "normal"
     },
     {
       "name": "vite:build-import-analysis",
-      "start": 1723736371598,
-      "end": 1723736371598,
+      "start": 1723904396923,
+      "end": 1723904396923,
       "order": "normal"
     },
     {
       "name": "vite:reporter",
-      "start": 1723736371598,
-      "end": 1723736371598,
+      "start": 1723904396923,
+      "end": 1723904396923,
       "order": "normal"
     }
   ]

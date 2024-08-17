@@ -1,9 +1,9 @@
-package ch.heimag.datenanalysetool.csv
+package ch.heimag.datenanalysetool.file
 
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class FileUploadBody(
+data class CSV(
     val datum: Int?,
     val alt: Double?,
     val ant: Double?,

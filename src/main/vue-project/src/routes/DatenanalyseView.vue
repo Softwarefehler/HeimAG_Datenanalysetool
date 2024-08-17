@@ -25,7 +25,12 @@ const databaseStatus = ref<string | null>(null)
 const countryList = ref<string[]>([])
 const latestDate = ref<string | null>(null)
 
+const startDateError = ref<string | null>(null)
+const endDateError = ref<string | null>(null)
+const selectedCountryError = ref<string | null>(null)
 
+// Validierungsregeln
+const requiredRule = (value: any) => !!value || 'Dieses Feld ist erforderlich'
 
  async function firstPayload() {
   try {
@@ -39,6 +44,17 @@ const latestDate = ref<string | null>(null)
 }
 
 async function sendData() {
+
+  startDateError.value = null
+  endDateError.value = null
+  selectedCountryError.value = null
+
+  // Validierung
+  if (!startDate.value) startDateError.value = 'Bitte wählen Sie ein Startdatum'
+  if (!endDate.value) endDateError.value = 'Bitte wählen Sie ein Enddatum'
+  if (!selectedCountry.value) selectedCountryError.value = 'Bitte wählen Sie ein Land aus'
+
+
   if (startDate.value !== null && endDate.value !== null && selectedCountry.value !== null) {
     const formData = new FormData()
     formData.append('startDate', startDate.value)
@@ -57,10 +73,9 @@ async function sendData() {
         processPayload(payload)
       }
     } catch (error) {
-      alert(`Fehler: ${error}`)
+      alert(`Anmeldezeit ist Abgelaufen: ${error}`)
+      location.href = '/login'
     }
-  } else {
-    alert('Bitte füllen Sie alle Felder aus.')
   }
 }
 
@@ -85,6 +100,9 @@ onMounted(async () => {
       v-model="selectedCountry"
       label="Wähle einen Ort aus"
       :items="countryList"
+      :rules="[requiredRule]"
+      :error="!!selectedCountryError"
+      :error-messages="selectedCountryError"
     ></v-select>
     <v-row dense>
       <v-col cols="12" md="6">
@@ -93,6 +111,9 @@ onMounted(async () => {
           label="Wähle das Startdatum"
           prepend-icon=""
           prepend-inner-icon="$calendar"
+          :rules="[requiredRule]"
+          :error="!!startDateError"
+          :error-messages="startDateError"
         ></v-date-input>
       </v-col>
       <v-col cols="12" md="6">
@@ -101,9 +122,13 @@ onMounted(async () => {
           label="Wähle das Enddatum"
           prepend-icon=""
           prepend-inner-icon="$calendar"
+          :rules="[requiredRule]"
+          :error="!!endDateError"
+          :error-messages="endDateError"
         ></v-date-input>
       </v-col>
     </v-row>
+    <br>
     <v-btn @click="sendData">Suche starten</v-btn>
     <v-spacer class="my-6"></v-spacer>
     <v-divider class="my-7" :style="{ height: '20px'}"></v-divider>

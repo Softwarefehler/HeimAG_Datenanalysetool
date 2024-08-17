@@ -4,98 +4,98 @@
     {
       "name": "vite:load-fallback",
       "result": "import { createVNode as _createVNode } from \"vue\";\n// Components\nimport { VBadge } from \"../../components/VBadge/index.mjs\";\nimport { VChip } from \"../../components/VChip/index.mjs\"; // Utilities\nimport { genericComponent, propsFactory, useRender } from \"../../util/index.mjs\";\nexport const makeVCalendarEventProps = propsFactory({\n  allDay: Boolean,\n  day: Object,\n  event: Object\n}, 'VCalendarEvent');\nexport const VCalendarEvent = genericComponent()({\n  name: 'VCalendarEvent',\n  props: makeVCalendarEventProps(),\n  setup(props) {\n    useRender(() => _createVNode(VChip, {\n      \"color\": props.allDay ? 'primary' : undefined,\n      \"density\": \"comfortable\",\n      \"label\": props.allDay,\n      \"width\": \"100%\"\n    }, {\n      default: () => [_createVNode(VBadge, {\n        \"inline\": true,\n        \"dot\": true,\n        \"color\": props.event?.color\n      }, null), props.event?.title]\n    }));\n    return {};\n  }\n});\n//# sourceMappingURL=VCalendarEvent.mjs.map",
-      "start": 1723736371075,
-      "end": 1723736371234,
+      "start": 1723904396710,
+      "end": 1723904396741,
       "sourcemaps": null
     },
     {
       "name": "vite:css",
-      "start": 1723736371234,
-      "end": 1723736371234,
+      "start": 1723904396741,
+      "end": 1723904396741,
       "order": "normal"
     },
     {
       "name": "vite:esbuild",
-      "start": 1723736371234,
-      "end": 1723736371234,
+      "start": 1723904396741,
+      "end": 1723904396741,
       "order": "normal"
     },
     {
       "name": "vite:json",
-      "start": 1723736371234,
-      "end": 1723736371234,
+      "start": 1723904396741,
+      "end": 1723904396741,
       "order": "normal"
     },
     {
       "name": "vite:worker",
-      "start": 1723736371234,
-      "end": 1723736371234,
+      "start": 1723904396741,
+      "end": 1723904396741,
       "order": "normal"
     },
     {
       "name": "vite:vue",
-      "start": 1723736371234,
-      "end": 1723736371234,
+      "start": 1723904396741,
+      "end": 1723904396741,
       "order": "normal"
     },
     {
       "name": "vite:define",
-      "start": 1723736371234,
-      "end": 1723736371234,
+      "start": 1723904396741,
+      "end": 1723904396741,
       "order": "normal"
     },
     {
       "name": "vite:css-post",
-      "start": 1723736371234,
-      "end": 1723736371234,
+      "start": 1723904396741,
+      "end": 1723904396741,
       "order": "normal"
     },
     {
       "name": "vite:build-html",
-      "start": 1723736371234,
-      "end": 1723736371234,
+      "start": 1723904396741,
+      "end": 1723904396741,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1723736371234,
-      "end": 1723736371234,
+      "start": 1723904396741,
+      "end": 1723904396741,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1723736371234,
-      "end": 1723736371234,
+      "start": 1723904396741,
+      "end": 1723904396741,
       "order": "normal"
     },
     {
       "name": "commonjs",
-      "start": 1723736371234,
-      "end": 1723736371234,
+      "start": 1723904396741,
+      "end": 1723904396741,
       "order": "normal"
     },
     {
       "name": "vite:dynamic-import-vars",
-      "start": 1723736371234,
-      "end": 1723736371234,
+      "start": 1723904396741,
+      "end": 1723904396741,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1723736371234,
-      "end": 1723736371234,
+      "start": 1723904396741,
+      "end": 1723904396741,
       "order": "normal"
     },
     {
       "name": "vite:build-import-analysis",
-      "start": 1723736371234,
-      "end": 1723736371234,
+      "start": 1723904396741,
+      "end": 1723904396741,
       "order": "normal"
     },
     {
       "name": "vite:reporter",
-      "start": 1723736371235,
-      "end": 1723736371235,
+      "start": 1723904396741,
+      "end": 1723904396741,
       "order": "normal"
     }
   ]

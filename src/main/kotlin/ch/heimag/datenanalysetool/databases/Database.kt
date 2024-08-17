@@ -2,7 +2,7 @@ package ch.heimag.datenanalysetool.databases
 
 import ch.heimag.datenanalysetool.conditions.OperatingConditions
 import ch.heimag.datenanalysetool.converter.converter
-import ch.heimag.datenanalysetool.csv.FileUploadBody
+import ch.heimag.datenanalysetool.file.CSV
 import kotlinx.serialization.Serializable
 import java.sql.DriverManager
 import java.sql.SQLException
@@ -49,7 +49,7 @@ class Database {
     }
 
 
-    fun loadLatestDate(): Int {
+    fun loadLatestDate(): String {
         var latestDateInt = 0
         // build connection to database
         val connection = DriverManager.getConnection(URL, USER, PASSWORD)
@@ -73,11 +73,12 @@ class Database {
         connection.close()
 
 
-        if (latestDateInt == null) {
-            latestDateInt = 0
+        var latestDateString = if (latestDateInt == 0) {
+            "Keine Daten"
+        } else {
+            converter.intToString(latestDateInt)
         }
-
-        return latestDateInt
+        return latestDateString
     }
 
 
@@ -241,7 +242,7 @@ class Database {
     }
 
 
-    fun setValuesToDatabase(save: MutableList<FileUploadBody>) {
+    fun setValuesToDatabase(save: MutableList<CSV>) {
 
 
         // build connection to database

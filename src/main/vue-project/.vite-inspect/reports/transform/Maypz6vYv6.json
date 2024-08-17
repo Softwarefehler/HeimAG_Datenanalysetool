@@ -4,98 +4,98 @@
     {
       "name": "vite:load-fallback",
       "result": "export { VInfiniteScroll } from \"./VInfiniteScroll.mjs\";\n//# sourceMappingURL=index.mjs.map",
-      "start": 1723736370987,
-      "end": 1723736371014,
+      "start": 1723904396447,
+      "end": 1723904396505,
       "sourcemaps": null
     },
     {
       "name": "vite:css",
-      "start": 1723736371014,
-      "end": 1723736371014,
+      "start": 1723904396505,
+      "end": 1723904396505,
       "order": "normal"
     },
     {
       "name": "vite:esbuild",
-      "start": 1723736371014,
-      "end": 1723736371014,
+      "start": 1723904396505,
+      "end": 1723904396505,
       "order": "normal"
     },
     {
       "name": "vite:json",
-      "start": 1723736371014,
-      "end": 1723736371014,
+      "start": 1723904396505,
+      "end": 1723904396505,
       "order": "normal"
     },
     {
       "name": "vite:worker",
-      "start": 1723736371014,
-      "end": 1723736371014,
+      "start": 1723904396505,
+      "end": 1723904396505,
       "order": "normal"
     },
     {
       "name": "vite:vue",
-      "start": 1723736371014,
-      "end": 1723736371014,
+      "start": 1723904396505,
+      "end": 1723904396505,
       "order": "normal"
     },
     {
       "name": "vite:define",
-      "start": 1723736371014,
-      "end": 1723736371014,
+      "start": 1723904396506,
+      "end": 1723904396506,
       "order": "normal"
     },
     {
       "name": "vite:css-post",
-      "start": 1723736371014,
-      "end": 1723736371014,
+      "start": 1723904396506,
+      "end": 1723904396506,
       "order": "normal"
     },
     {
       "name": "vite:build-html",
-      "start": 1723736371014,
-      "end": 1723736371014,
+      "start": 1723904396506,
+      "end": 1723904396506,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1723736371014,
-      "end": 1723736371014,
+      "start": 1723904396506,
+      "end": 1723904396506,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1723736371014,
-      "end": 1723736371014,
+      "start": 1723904396506,
+      "end": 1723904396506,
       "order": "normal"
     },
     {
       "name": "commonjs",
-      "start": 1723736371014,
-      "end": 1723736371015,
+      "start": 1723904396506,
+      "end": 1723904396506,
       "order": "normal"
     },
     {
       "name": "vite:dynamic-import-vars",
-      "start": 1723736371015,
-      "end": 1723736371015,
+      "start": 1723904396506,
+      "end": 1723904396506,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1723736371015,
-      "end": 1723736371015,
+      "start": 1723904396506,
+      "end": 1723904396506,
       "order": "normal"
     },
     {
       "name": "vite:build-import-analysis",
-      "start": 1723736371015,
-      "end": 1723736371015,
+      "start": 1723904396506,
+      "end": 1723904396506,
       "order": "normal"
     },
     {
       "name": "vite:reporter",
-      "start": 1723736371015,
-      "end": 1723736371015,
+      "start": 1723904396506,
+      "end": 1723904396506,
       "order": "normal"
     }
   ]

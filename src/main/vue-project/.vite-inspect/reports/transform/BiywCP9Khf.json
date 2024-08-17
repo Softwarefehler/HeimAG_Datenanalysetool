@@ -4,98 +4,98 @@
     {
       "name": "vite:load-fallback",
       "result": "import { createVNode as _createVNode, mergeProps as _mergeProps, resolveDirective as _resolveDirective } from \"vue\";\n// Components\nimport { makeVTreeviewChildrenProps, VTreeviewChildren } from \"./VTreeviewChildren.mjs\";\nimport { makeVListProps, useListItems, VList } from \"../../components/VList/VList.mjs\"; // Composables\nimport { provideDefaults } from \"../../composables/defaults.mjs\";\nimport { makeFilterProps, useFilter } from \"../../composables/filter.mjs\";\nimport { useProxiedModel } from \"../../composables/proxiedModel.mjs\"; // Utilities\nimport { computed, provide, ref, toRef } from 'vue';\nimport { genericComponent, omit, propsFactory, useRender } from \"../../util/index.mjs\"; // Types\nimport { VTreeviewSymbol } from \"./shared.mjs\";\nfunction flatten(items) {\n  let flat = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : [];\n  for (const item of items) {\n    flat.push(item);\n    if (item.children) flatten(item.children, flat);\n  }\n  return flat;\n}\nexport const makeVTreeviewProps = propsFactory({\n  openAll: Boolean,\n  search: String,\n  ...makeFilterProps({\n    filterKeys: ['title']\n  }),\n  ...makeVTreeviewChildrenProps(),\n  ...omit(makeVListProps({\n    collapseIcon: '$treeviewCollapse',\n    expandIcon: '$treeviewExpand',\n    slim: true\n  }), ['nav'])\n}, 'VTreeview');\nexport const VTreeview = genericComponent()({\n  name: 'VTreeview',\n  props: makeVTreeviewProps(),\n  emits: {\n    'update:opened': val => true,\n    'update:activated': val => true,\n    'update:selected': val => true,\n    'click:open': value => true,\n    'click:select': value => true\n  },\n  setup(props, _ref) {\n    let {\n      slots\n    } = _ref;\n    const {\n      items\n    } = useListItems(props);\n    const activeColor = toRef(props, 'activeColor');\n    const baseColor = toRef(props, 'baseColor');\n    const color = toRef(props, 'color');\n    const activated = useProxiedModel(props, 'activated');\n    const selected = useProxiedModel(props, 'selected');\n    const vListRef = ref();\n    const opened = computed(() => props.openAll ? openAll(items.value) : props.opened);\n    const flatItems = computed(() => flatten(items.value));\n    const search = toRef(props, 'search');\n    const {\n      filteredItems\n    } = useFilter(props, flatItems, search);\n    const visibleIds = computed(() => {\n      if (!search.value) {\n        return null;\n      }\n      return new Set(filteredItems.value.flatMap(item => {\n        return [...getPath(item.props.value), ...getChildren(item.props.value)];\n      }));\n    });\n    function getPath(id) {\n      const path = [];\n      let parent = id;\n      while (parent != null) {\n        path.unshift(parent);\n        parent = vListRef.value?.parents.get(parent);\n      }\n      return path;\n    }\n    function getChildren(id) {\n      const arr = [];\n      const queue = (vListRef.value?.children.get(id) ?? []).slice();\n      while (queue.length) {\n        const child = queue.shift();\n        if (!child) continue;\n        arr.push(child);\n        queue.push(...(vListRef.value?.children.get(child) ?? []).slice());\n      }\n      return arr;\n    }\n    function openAll(item) {\n      let ids = [];\n      for (const i of item) {\n        if (!i.children) continue;\n        ids.push(i.value);\n        if (i.children) {\n          ids = ids.concat(openAll(i.children));\n        }\n      }\n      return ids;\n    }\n    provide(VTreeviewSymbol, {\n      visibleIds\n    });\n    provideDefaults({\n      VTreeviewGroup: {\n        activeColor,\n        baseColor,\n        color,\n        collapseIcon: toRef(props, 'collapseIcon'),\n        expandIcon: toRef(props, 'expandIcon')\n      },\n      VTreeviewItem: {\n        activeClass: toRef(props, 'activeClass'),\n        activeColor,\n        baseColor,\n        color,\n        density: toRef(props, 'density'),\n        disabled: toRef(props, 'disabled'),\n        lines: toRef(props, 'lines'),\n        variant: toRef(props, 'variant')\n      }\n    });\n    useRender(() => {\n      const listProps = VList.filterProps(props);\n      const treeviewChildrenProps = VTreeviewChildren.filterProps(props);\n      return _createVNode(VList, _mergeProps({\n        \"ref\": vListRef\n      }, listProps, {\n        \"class\": ['v-treeview', props.class],\n        \"style\": props.style,\n        \"opened\": opened.value,\n        \"activated\": activated.value,\n        \"onUpdate:activated\": $event => activated.value = $event,\n        \"selected\": selected.value,\n        \"onUpdate:selected\": $event => selected.value = $event\n      }), {\n        default: () => [_createVNode(VTreeviewChildren, _mergeProps(treeviewChildrenProps, {\n          \"items\": items.value\n        }), slots)]\n      });\n    });\n    return {\n      open\n    };\n  }\n});\n//# sourceMappingURL=VTreeview.mjs.map",
-      "start": 1723736370632,
-      "end": 1723736370832,
+      "start": 1723904396180,
+      "end": 1723904396302,
       "sourcemaps": null
     },
     {
       "name": "vite:css",
-      "start": 1723736370832,
-      "end": 1723736370832,
+      "start": 1723904396302,
+      "end": 1723904396302,
       "order": "normal"
     },
     {
       "name": "vite:esbuild",
-      "start": 1723736370832,
-      "end": 1723736370832,
+      "start": 1723904396302,
+      "end": 1723904396302,
       "order": "normal"
     },
     {
       "name": "vite:json",
-      "start": 1723736370832,
-      "end": 1723736370832,
+      "start": 1723904396302,
+      "end": 1723904396302,
       "order": "normal"
     },
     {
       "name": "vite:worker",
-      "start": 1723736370832,
-      "end": 1723736370832,
+      "start": 1723904396302,
+      "end": 1723904396302,
       "order": "normal"
     },
     {
       "name": "vite:vue",
-      "start": 1723736370832,
-      "end": 1723736370832,
+      "start": 1723904396302,
+      "end": 1723904396302,
       "order": "normal"
     },
     {
       "name": "vite:define",
-      "start": 1723736370832,
-      "end": 1723736370832,
+      "start": 1723904396302,
+      "end": 1723904396302,
       "order": "normal"
     },
     {
       "name": "vite:css-post",
-      "start": 1723736370832,
-      "end": 1723736370832,
+      "start": 1723904396302,
+      "end": 1723904396302,
       "order": "normal"
     },
     {
       "name": "vite:build-html",
-      "start": 1723736370832,
-      "end": 1723736370832,
+      "start": 1723904396302,
+      "end": 1723904396302,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1723736370832,
-      "end": 1723736370832,
+      "start": 1723904396302,
+      "end": 1723904396302,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1723736370832,
-      "end": 1723736370832,
+      "start": 1723904396302,
+      "end": 1723904396302,
       "order": "normal"
     },
     {
       "name": "commonjs",
-      "start": 1723736370832,
-      "end": 1723736370832,
+      "start": 1723904396302,
+      "end": 1723904396302,
       "order": "normal"
     },
     {
       "name": "vite:dynamic-import-vars",
-      "start": 1723736370832,
-      "end": 1723736370832,
+      "start": 1723904396302,
+      "end": 1723904396302,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1723736370832,
-      "end": 1723736370832,
+      "start": 1723904396302,
+      "end": 1723904396302,
       "order": "normal"
     },
     {
       "name": "vite:build-import-analysis",
-      "start": 1723736370832,
-      "end": 1723736370832,
+      "start": 1723904396302,
+      "end": 1723904396302,
       "order": "normal"
     },
     {
       "name": "vite:reporter",
-      "start": 1723736370832,
-      "end": 1723736370832,
+      "start": 1723904396302,
+      "end": 1723904396302,
       "order": "normal"
     }
   ]

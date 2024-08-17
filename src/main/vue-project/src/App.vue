@@ -15,7 +15,7 @@ function toggleTheme() {
 }
 
 function logout() {
-  location.href = '/logout'
+  location.href = '/login'
 }
 
 
