@@ -5,6 +5,7 @@ import ch.heimag.datenanalysetool.services.AuthenticationService
 import io.ktor.server.application.*
 import io.ktor.server.auth.*
 import io.ktor.server.freemarker.*
+import io.ktor.server.http.content.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
 import io.ktor.server.sessions.*
@@ -17,6 +18,7 @@ const val USER_PARAM_NAME = "username"
 const val PASSWORD_PARAM_NAME = "password"
 
 var databaseStatus = Data.database.checkDatabaseStatus()
+
 
 fun Application.installSessionAndAuthentication() {
     val authenticationService by inject<AuthenticationService>()
@@ -54,6 +56,11 @@ fun Application.installSessionAndAuthentication() {
             call.respond(FreeMarkerContent("login.ftl", mapOf("login" to loginModel)))
         }
 
+        // Konfiguration für statische Inhalte (Bilder, CSS, JS, etc.)
+        static("/images") {
+            resources("images")
+        }
+
         authenticate("auth-form") {
             post(LOGIN_URL) {
                 val principal = call.principal<UserIdPrincipal>();
@@ -66,6 +73,7 @@ fun Application.installSessionAndAuthentication() {
                     call.respondRedirect(LOGIN_URL)
                 }
             }
+
 
             get("/logout") {
                 call.sessions.clear<UserSession>()

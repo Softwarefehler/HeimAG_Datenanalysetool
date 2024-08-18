@@ -4,8 +4,8 @@
     {
       "name": "vite:vue",
       "result": "import { defineComponent as _defineComponent } from 'vue'\nimport { createElementVNode as _createElementVNode, toDisplayString as _toDisplayString, createTextVNode as _createTextVNode, resolveComponent as _resolveComponent, withCtx as _withCtx, createVNode as _createVNode, openBlock as _openBlock, createBlock as _createBlock, createCommentVNode as _createCommentVNode, withModifiers as _withModifiers } from \"vue\"\n\nconst _hoisted_1 = /*#__PURE__*/_createElementVNode(\"h4\", null, \"Datenbankinformation\", -1)\nconst _hoisted_2 = /*#__PURE__*/_createElementVNode(\"br\", null, null, -1)\nconst _hoisted_3 = { class: \"d-flex align-center flex-wrap\" }\nconst _hoisted_4 = /*#__PURE__*/_createElementVNode(\"p\", null, \"Aktuellstes Datum in der Datenbank:\", -1)\nconst _hoisted_5 = /*#__PURE__*/_createElementVNode(\"h4\", null, \"Datenbankerweiterung / CSV-File Upload\", -1)\nconst _hoisted_6 = /*#__PURE__*/_createElementVNode(\"br\", null, null, -1)\nconst _hoisted_7 = /*#__PURE__*/_createElementVNode(\"br\", null, null, -1)\n\nimport { onMounted, ref } from 'vue'\r\n\r\n// Reaktive Variablen für die Datenbankinformationen und den Dateiupload\r\n\nexport default /*#__PURE__*/_defineComponent({\n  __name: 'SettingsView',\n  setup(__props) {\n\r\nconst databaseStatus = ref<string | null>(null)\r\nconst latestDate = ref<string | null>(null)\r\nconst file = ref<File | null>(null)\r\nconst fileInputError = ref<string | null>(null)\r\nconst isLoading = ref<boolean>(false) // Variable für den Ladezustand\r\nconst uploadMessage = ref<string | null>(null)\r\nconst uploadError = ref<boolean>(false) // Variable für Fehlerstatus\r\n\r\n// Validierungsregel für das Dateifeld\r\nconst requiredRule = (value: File | null) => {\r\n  return !!value || 'Dieses Feld ist erforderlich'\r\n}\r\n\r\n// Funktion zum Abrufen der Datenbankinformationen\r\nasync function infoDatabase() {\r\n  try {\r\n    const info = await fetch('/get-SettingsView').then((response) => response.json())\r\n    databaseStatus.value = info.databaseStatus\r\n    latestDate.value = info.latestDate\r\n  } catch (error) {\r\n    alert(`Fehler beim Laden der Daten`)\r\n  }\r\n}\r\n\r\n// Funktion zum Hochladen der Datei\r\nasync function uploadFile() {\r\n  fileInputError.value = null\r\n  uploadMessage.value = null\r\n  isLoading.value = true // Ladezustand setzen\r\n  uploadError.value = false // Fehlerstatus zurücksetzen\r\n\r\n  if (!file.value) {\r\n    fileInputError.value = 'Bitte wählen Sie eine Datei aus'\r\n    isLoading.value = false // Ladezustand beenden, falls kein Upload gestartet wird\r\n    return\r\n  }\r\n\r\n  const formData = new FormData()\r\n  formData.append('file', file.value)\r\n\r\n  try {\r\n    const response = await fetch('/csv-upload', {\r\n      method: 'POST',\r\n      body: formData,\r\n      headers: {\r\n        'Accept': 'application/json'\r\n      }\r\n    })\r\n\r\n    if (response.ok) {\r\n      uploadMessage.value = 'Datei erfolgreich hochgeladen'\r\n    } else {\r\n      uploadMessage.value = 'Fehler beim Hochladen der Datei.'\r\n      uploadError.value = true // Fehlerstatus setzen\r\n    }\r\n  } catch (error) {\r\n    uploadMessage.value = `Anmeldezeit ist Abgelaufen: ${error}`\r\n    uploadError.value = true // Fehlerstatus setzen\r\n    location.href = '/login'\r\n  } finally {\r\n    isLoading.value = false // Ladezustand beenden, wenn der Upload abgeschlossen ist\r\n    await infoDatabase()\r\n  }\r\n}\r\n\r\n// Funktion zum Zurücksetzen der Upload-Nachricht und des Fehlerstatus, wenn die Datei entfernt wird\r\nfunction handleFileChange(event: Event) {\r\n  const input = event.target as HTMLInputElement\r\n  if (!input.files?.length) {\r\n    uploadMessage.value = null // Nachricht zurücksetzen, wenn keine Datei ausgewählt ist\r\n    uploadError.value = false // Fehlerstatus zurücksetzen\r\n  }\r\n}\r\n\r\n// Funktion wird beim Laden der Komponente ausgeführt\r\nonMounted(async () => {\r\n  await infoDatabase()\r\n})\r\n\nreturn (_ctx: any,_cache: any) => {\n  const _component_v_chip = _resolveComponent(\"v-chip\")!\n  const _component_v_spacer = _resolveComponent(\"v-spacer\")!\n  const _component_v_divider = _resolveComponent(\"v-divider\")!\n  const _component_v_file_input = _resolveComponent(\"v-file-input\")!\n  const _component_v_progress_linear = _resolveComponent(\"v-progress-linear\")!\n  const _component_v_alert = _resolveComponent(\"v-alert\")!\n  const _component_v_btn = _resolveComponent(\"v-btn\")!\n  const _component_v_form = _resolveComponent(\"v-form\")!\n  const _component_v_container = _resolveComponent(\"v-container\")!\n\n  return (_openBlock(), _createBlock(_component_v_container, null, {\n    default: _withCtx(() => [\n      _hoisted_1,\n      _hoisted_2,\n      _createElementVNode(\"div\", _hoisted_3, [\n        _hoisted_4,\n        _createVNode(_component_v_chip, {\n          color: \"green darken-2\",\n          \"text-color\": \"white\",\n          style: { marginLeft: '10px' }\n        }, {\n          default: _withCtx(() => [\n            _createTextVNode(_toDisplayString(latestDate.value), 1)\n          ]),\n          _: 1\n        })\n      ]),\n      _createVNode(_component_v_spacer, { class: \"my-6\" }),\n      _createVNode(_component_v_divider, {\n        class: \"my-7\",\n        style: { height: '20px'}\n      }),\n      _createVNode(_component_v_spacer, { class: \"my-6\" }),\n      _hoisted_5,\n      _hoisted_6,\n      _createVNode(_component_v_form, {\n        onSubmit: _withModifiers(uploadFile, [\"prevent\"])\n      }, {\n        default: _withCtx(() => [\n          _createVNode(_component_v_file_input, {\n            modelValue: file.value,\n            \"onUpdate:modelValue\": _cache[0] || (_cache[0] = ($event: any) => ((file).value = $event)),\n            label: \"Wähle eine Datei\",\n            accept: \".csv\",\n            \"prepend-icon\": \"\",\n            \"prepend-inner-icon\": \"mdi-upload\",\n            rules: [requiredRule],\n            error: !!fileInputError.value || uploadError.value,\n            \"error-messages\": fileInputError.value || (uploadError.value ? 'Fehler beim Hochladen der Datei.' : ''),\n            required: \"\",\n            onChange: handleFileChange\n          }, null, 8, [\"modelValue\", \"rules\", \"error\", \"error-messages\"]),\n          (isLoading.value)\n            ? (_openBlock(), _createBlock(_component_v_progress_linear, {\n                key: 0,\n                color: \"primary\",\n                height: \"6\",\n                indeterminate: \"\",\n                class: \"my-4\"\n              }))\n            : _createCommentVNode(\"\", true),\n          (uploadMessage.value)\n            ? (_openBlock(), _createBlock(_component_v_alert, {\n                key: 1,\n                type: uploadError.value ? 'error' : 'success',\n                dismissible: \"\"\n              }, {\n                default: _withCtx(() => [\n                  _createTextVNode(_toDisplayString(uploadMessage.value), 1)\n                ]),\n                _: 1\n              }, 8, [\"type\"]))\n            : _createCommentVNode(\"\", true),\n          _hoisted_7,\n          _createVNode(_component_v_btn, {\n            type: \"submit\",\n            color: \"green lighten-3\"\n          }, {\n            default: _withCtx(() => [\n              _createTextVNode(\"Datei hochladen\")\n            ]),\n            _: 1\n          })\n        ]),\n        _: 1\n      })\n    ]),\n    _: 1\n  }))\n}\n}\n\n})",
-      "start": 1723904396720,
-      "end": 1723904396720,
+      "start": 1723986142432,
+      "end": 1723986142432,
       "sourcemaps": {
         "version": 3,
         "sources": [
@@ -20,15 +20,15 @@
     },
     {
       "name": "vite:css",
-      "start": 1723904396720,
-      "end": 1723904396720,
+      "start": 1723986142433,
+      "end": 1723986142433,
       "order": "normal"
     },
     {
       "name": "vite:esbuild",
       "result": "import { defineComponent as _defineComponent } from \"vue\";\nimport { createElementVNode as _createElementVNode, toDisplayString as _toDisplayString, createTextVNode as _createTextVNode, resolveComponent as _resolveComponent, withCtx as _withCtx, createVNode as _createVNode, openBlock as _openBlock, createBlock as _createBlock, createCommentVNode as _createCommentVNode, withModifiers as _withModifiers } from \"vue\";\nconst _hoisted_1 = /* @__PURE__ */ _createElementVNode(\"h4\", null, \"Datenbankinformation\", -1);\nconst _hoisted_2 = /* @__PURE__ */ _createElementVNode(\"br\", null, null, -1);\nconst _hoisted_3 = { class: \"d-flex align-center flex-wrap\" };\nconst _hoisted_4 = /* @__PURE__ */ _createElementVNode(\"p\", null, \"Aktuellstes Datum in der Datenbank:\", -1);\nconst _hoisted_5 = /* @__PURE__ */ _createElementVNode(\"h4\", null, \"Datenbankerweiterung / CSV-File Upload\", -1);\nconst _hoisted_6 = /* @__PURE__ */ _createElementVNode(\"br\", null, null, -1);\nconst _hoisted_7 = /* @__PURE__ */ _createElementVNode(\"br\", null, null, -1);\nimport { onMounted, ref } from \"vue\";\nexport default /* @__PURE__ */ _defineComponent({\n  __name: \"SettingsView\",\n  setup(__props) {\n    const databaseStatus = ref(null);\n    const latestDate = ref(null);\n    const file = ref(null);\n    const fileInputError = ref(null);\n    const isLoading = ref(false);\n    const uploadMessage = ref(null);\n    const uploadError = ref(false);\n    const requiredRule = (value) => {\n      return !!value || \"Dieses Feld ist erforderlich\";\n    };\n    async function infoDatabase() {\n      try {\n        const info = await fetch(\"/get-SettingsView\").then((response) => response.json());\n        databaseStatus.value = info.databaseStatus;\n        latestDate.value = info.latestDate;\n      } catch (error) {\n        alert(`Fehler beim Laden der Daten`);\n      }\n    }\n    async function uploadFile() {\n      fileInputError.value = null;\n      uploadMessage.value = null;\n      isLoading.value = true;\n      uploadError.value = false;\n      if (!file.value) {\n        fileInputError.value = \"Bitte wählen Sie eine Datei aus\";\n        isLoading.value = false;\n        return;\n      }\n      const formData = new FormData();\n      formData.append(\"file\", file.value);\n      try {\n        const response = await fetch(\"/csv-upload\", {\n          method: \"POST\",\n          body: formData,\n          headers: {\n            \"Accept\": \"application/json\"\n          }\n        });\n        if (response.ok) {\n          uploadMessage.value = \"Datei erfolgreich hochgeladen\";\n        } else {\n          uploadMessage.value = \"Fehler beim Hochladen der Datei.\";\n          uploadError.value = true;\n        }\n      } catch (error) {\n        uploadMessage.value = `Anmeldezeit ist Abgelaufen: ${error}`;\n        uploadError.value = true;\n        location.href = \"/login\";\n      } finally {\n        isLoading.value = false;\n        await infoDatabase();\n      }\n    }\n    function handleFileChange(event) {\n      const input = event.target;\n      if (!input.files?.length) {\n        uploadMessage.value = null;\n        uploadError.value = false;\n      }\n    }\n    onMounted(async () => {\n      await infoDatabase();\n    });\n    return (_ctx, _cache) => {\n      const _component_v_chip = _resolveComponent(\"v-chip\");\n      const _component_v_spacer = _resolveComponent(\"v-spacer\");\n      const _component_v_divider = _resolveComponent(\"v-divider\");\n      const _component_v_file_input = _resolveComponent(\"v-file-input\");\n      const _component_v_progress_linear = _resolveComponent(\"v-progress-linear\");\n      const _component_v_alert = _resolveComponent(\"v-alert\");\n      const _component_v_btn = _resolveComponent(\"v-btn\");\n      const _component_v_form = _resolveComponent(\"v-form\");\n      const _component_v_container = _resolveComponent(\"v-container\");\n      return _openBlock(), _createBlock(_component_v_container, null, {\n        default: _withCtx(() => [\n          _hoisted_1,\n          _hoisted_2,\n          _createElementVNode(\"div\", _hoisted_3, [\n            _hoisted_4,\n            _createVNode(_component_v_chip, {\n              color: \"green darken-2\",\n              \"text-color\": \"white\",\n              style: { marginLeft: \"10px\" }\n            }, {\n              default: _withCtx(() => [\n                _createTextVNode(_toDisplayString(latestDate.value), 1)\n              ]),\n              _: 1\n            })\n          ]),\n          _createVNode(_component_v_spacer, { class: \"my-6\" }),\n          _createVNode(_component_v_divider, {\n            class: \"my-7\",\n            style: { height: \"20px\" }\n          }),\n          _createVNode(_component_v_spacer, { class: \"my-6\" }),\n          _hoisted_5,\n          _hoisted_6,\n          _createVNode(_component_v_form, {\n            onSubmit: _withModifiers(uploadFile, [\"prevent\"])\n          }, {\n            default: _withCtx(() => [\n              _createVNode(_component_v_file_input, {\n                modelValue: file.value,\n                \"onUpdate:modelValue\": _cache[0] || (_cache[0] = ($event) => file.value = $event),\n                label: \"Wähle eine Datei\",\n                accept: \".csv\",\n                \"prepend-icon\": \"\",\n                \"prepend-inner-icon\": \"mdi-upload\",\n                rules: [requiredRule],\n                error: !!fileInputError.value || uploadError.value,\n                \"error-messages\": fileInputError.value || (uploadError.value ? \"Fehler beim Hochladen der Datei.\" : \"\"),\n                required: \"\",\n                onChange: handleFileChange\n              }, null, 8, [\"modelValue\", \"rules\", \"error\", \"error-messages\"]),\n              isLoading.value ? (_openBlock(), _createBlock(_component_v_progress_linear, {\n                key: 0,\n                color: \"primary\",\n                height: \"6\",\n                indeterminate: \"\",\n                class: \"my-4\"\n              })) : _createCommentVNode(\"\", true),\n              uploadMessage.value ? (_openBlock(), _createBlock(_component_v_alert, {\n                key: 1,\n                type: uploadError.value ? \"error\" : \"success\",\n                dismissible: \"\"\n              }, {\n                default: _withCtx(() => [\n                  _createTextVNode(_toDisplayString(uploadMessage.value), 1)\n                ]),\n                _: 1\n              }, 8, [\"type\"])) : _createCommentVNode(\"\", true),\n              _hoisted_7,\n              _createVNode(_component_v_btn, {\n                type: \"submit\",\n                color: \"green lighten-3\"\n              }, {\n                default: _withCtx(() => [\n                  _createTextVNode(\"Datei hochladen\")\n                ]),\n                _: 1\n              })\n            ]),\n            _: 1\n          })\n        ]),\n        _: 1\n      });\n    };\n  }\n});\n",
-      "start": 1723904396720,
-      "end": 1723904396745,
+      "start": 1723986142433,
+      "end": 1723986142450,
       "order": "normal",
       "sourcemaps": {
         "version": 3,
@@ -44,80 +44,80 @@
     },
     {
       "name": "vite:json",
-      "start": 1723904396745,
-      "end": 1723904396745,
+      "start": 1723986142450,
+      "end": 1723986142450,
       "order": "normal"
     },
     {
       "name": "vite:worker",
-      "start": 1723904396745,
-      "end": 1723904396745,
+      "start": 1723986142451,
+      "end": 1723986142451,
       "order": "normal"
     },
     {
       "name": "vite:vue",
-      "start": 1723904396745,
-      "end": 1723904396745,
+      "start": 1723986142451,
+      "end": 1723986142451,
       "order": "normal"
     },
     {
       "name": "vite:define",
-      "start": 1723904396745,
-      "end": 1723904396745,
+      "start": 1723986142451,
+      "end": 1723986142451,
       "order": "normal"
     },
     {
       "name": "vite:css-post",
-      "start": 1723904396745,
-      "end": 1723904396745,
+      "start": 1723986142451,
+      "end": 1723986142451,
       "order": "normal"
     },
     {
       "name": "vite:build-html",
-      "start": 1723904396745,
-      "end": 1723904396745,
+      "start": 1723986142451,
+      "end": 1723986142451,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1723904396745,
-      "end": 1723904396745,
+      "start": 1723986142451,
+      "end": 1723986142451,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1723904396745,
-      "end": 1723904396745,
+      "start": 1723986142451,
+      "end": 1723986142451,
       "order": "normal"
     },
     {
       "name": "commonjs",
-      "start": 1723904396745,
-      "end": 1723904396745,
+      "start": 1723986142451,
+      "end": 1723986142451,
       "order": "normal"
     },
     {
       "name": "vite:dynamic-import-vars",
-      "start": 1723904396745,
-      "end": 1723904396745,
+      "start": 1723986142451,
+      "end": 1723986142451,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1723904396745,
-      "end": 1723904396745,
+      "start": 1723986142451,
+      "end": 1723986142451,
       "order": "normal"
     },
     {
       "name": "vite:build-import-analysis",
-      "start": 1723904396745,
-      "end": 1723904396745,
+      "start": 1723986142451,
+      "end": 1723986142452,
       "order": "normal"
     },
     {
       "name": "vite:reporter",
-      "start": 1723904396745,
-      "end": 1723904396745,
+      "start": 1723986142452,
+      "end": 1723986142452,
       "order": "normal"
     }
   ]

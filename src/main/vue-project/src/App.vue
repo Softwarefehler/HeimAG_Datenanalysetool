@@ -30,6 +30,7 @@ function logout() {
         <br>
         <v-list-item link to="/">Datenanalyse</v-list-item>
         <v-list-item link to="/Settings">Einstellungen</v-list-item>
+        <v-list-item link to="/swisstopo">Karte der Schweiz</v-list-item>
       </v-navigation-drawer>
       <v-app-bar class="px-3">
         <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>

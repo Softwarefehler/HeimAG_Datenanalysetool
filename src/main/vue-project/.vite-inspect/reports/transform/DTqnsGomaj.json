@@ -4,98 +4,98 @@
     {
       "name": "vite:load-fallback",
       "result": "import { resolveDirective as _resolveDirective, createVNode as _createVNode, mergeProps as _mergeProps } from \"vue\";\n// Styles\nimport \"./VCalendar.css\";\n\n// Components\nimport { makeVCalendarDayProps, VCalendarDay } from \"./VCalendarDay.mjs\";\nimport { makeVCalendarHeaderProps, VCalendarHeader } from \"./VCalendarHeader.mjs\";\nimport { VCalendarMonthDay } from \"./VCalendarMonthDay.mjs\"; // Composables\nimport { makeCalendarProps, useCalendar } from \"../../composables/calendar.mjs\";\nimport { useDate } from \"../../composables/date/date.mjs\"; // Utilities\nimport { computed } from 'vue';\nimport { chunkArray, genericComponent, propsFactory, useRender } from \"../../util/index.mjs\";\nexport const makeVCalendarProps = propsFactory({\n  hideHeader: Boolean,\n  hideWeekNumber: Boolean,\n  ...makeCalendarProps(),\n  ...makeVCalendarDayProps(),\n  ...makeVCalendarHeaderProps()\n}, 'VCalender');\nexport const VCalendar = genericComponent()({\n  name: 'VCalendar',\n  props: makeVCalendarProps(),\n  emits: {\n    next: null,\n    prev: null,\n    'update:modelValue': null\n  },\n  setup(props, _ref) {\n    let {\n      emit,\n      slots\n    } = _ref;\n    const adapter = useDate();\n    const {\n      daysInMonth,\n      daysInWeek,\n      genDays,\n      model,\n      displayValue,\n      weekNumbers\n    } = useCalendar(props);\n    const dayNames = adapter.getWeekdays();\n    function onClickNext() {\n      if (props.viewMode === 'month') {\n        model.value = [adapter.addMonths(displayValue.value, 1)];\n      }\n      if (props.viewMode === 'week') {\n        model.value = [adapter.addDays(displayValue.value, 7)];\n      }\n      if (props.viewMode === 'day') {\n        model.value = [adapter.addDays(displayValue.value, 1)];\n      }\n    }\n    function onClickPrev() {\n      if (props.viewMode === 'month') {\n        model.value = [adapter.addMonths(displayValue.value, -1)];\n      }\n      if (props.viewMode === 'week') {\n        model.value = [adapter.addDays(displayValue.value, -7)];\n      }\n      if (props.viewMode === 'day') {\n        model.value = [adapter.addDays(displayValue.value, -1)];\n      }\n    }\n    function onClickToday() {\n      model.value = [adapter.date()];\n    }\n    const title = computed(() => {\n      return adapter.format(displayValue.value, 'monthAndYear');\n    });\n    useRender(() => {\n      const calendarDayProps = VCalendarDay.filterProps(props);\n      const calendarHeaderProps = VCalendarHeader.filterProps(props);\n      return _createVNode(\"div\", {\n        \"class\": ['v-calendar', {\n          'v-calendar-monthly': props.viewMode === 'month',\n          'v-calendar-weekly': props.viewMode === 'week',\n          'v-calendar-day': props.viewMode === 'day'\n        }]\n      }, [_createVNode(\"div\", null, [!props.hideHeader && (!slots.header ? _createVNode(VCalendarHeader, _mergeProps({\n        \"key\": \"calendar-header\"\n      }, calendarHeaderProps, {\n        \"title\": title.value,\n        \"onClick:next\": onClickNext,\n        \"onClick:prev\": onClickPrev,\n        \"onClick:toToday\": onClickToday\n      }), null) : slots.header({\n        title: title.value\n      }))]), _createVNode(\"div\", {\n        \"class\": ['v-calendar__container', `days__${props.weekdays.length}`]\n      }, [props.viewMode === 'month' && !props.hideDayHeader && _createVNode(\"div\", {\n        \"class\": ['v-calendar-weekly__head', `days__${props.weekdays.length}`, ...(!props.hideWeekNumber ? ['v-calendar-weekly__head-weeknumbers'] : [])],\n        \"key\": \"calenderWeeklyHead\"\n      }, [!props.hideWeekNumber ? _createVNode(\"div\", {\n        \"key\": \"weekNumber0\",\n        \"class\": \"v-calendar-weekly__head-weeknumber\"\n      }, null) : '', props.weekdays.map(weekday => _createVNode(\"div\", {\n        \"class\": `v-calendar-weekly__head-weekday${!props.hideWeekNumber ? '-with-weeknumber' : ''}`\n      }, [dayNames[weekday]]))]), props.viewMode === 'month' && _createVNode(\"div\", {\n        \"key\": \"VCalendarMonth\",\n        \"class\": ['v-calendar-month__days', `days${!props.hideWeekNumber ? '-with-weeknumbers' : ''}__${props.weekdays.length}`, ...(!props.hideWeekNumber ? ['v-calendar-month__weeknumbers'] : [])]\n      }, [chunkArray(daysInMonth.value, props.weekdays.length).map((week, wi) => [!props.hideWeekNumber ? _createVNode(\"div\", {\n        \"class\": \"v-calendar-month__weeknumber\"\n      }, [weekNumbers.value[wi]]) : '', week.map(day => _createVNode(VCalendarMonthDay, {\n        \"color\": adapter.isSameDay(adapter.date(), day.date) ? 'primary' : undefined,\n        \"day\": day,\n        \"title\": day ? adapter.format(day.date, 'dayOfMonth') : 'NaN',\n        \"events\": props.events?.filter(e => adapter.isSameDay(day.date, e.start) || adapter.isSameDay(day.date, e.end))\n      }, {\n        event: slots.event\n      }))])]), props.viewMode === 'week' && daysInWeek.value.map((day, i) => _createVNode(VCalendarDay, _mergeProps(calendarDayProps, {\n        \"day\": day,\n        \"dayIndex\": i,\n        \"events\": props.events?.filter(e => adapter.isSameDay(e.start, day.date) || adapter.isSameDay(e.end, day.date))\n      }), null)), props.viewMode === 'day' && _createVNode(VCalendarDay, _mergeProps(calendarDayProps, {\n        \"day\": genDays([displayValue.value], adapter.date())[0],\n        \"dayIndex\": 0,\n        \"events\": props.events?.filter(e => adapter.isSameDay(e.start, genDays([displayValue.value], adapter.date())[0].date) || adapter.isSameDay(e.end, genDays([displayValue.value], adapter.date())[0].date))\n      }), null)])]);\n    });\n    return {\n      daysInMonth,\n      daysInWeek,\n      genDays\n    };\n  }\n});\n//# sourceMappingURL=VCalendar.mjs.map",
-      "start": 1723904396080,
-      "end": 1723904396186,
+      "start": 1723986141917,
+      "end": 1723986142003,
       "sourcemaps": null
     },
     {
       "name": "vite:css",
-      "start": 1723904396186,
-      "end": 1723904396186,
+      "start": 1723986142003,
+      "end": 1723986142003,
       "order": "normal"
     },
     {
       "name": "vite:esbuild",
-      "start": 1723904396186,
-      "end": 1723904396186,
+      "start": 1723986142003,
+      "end": 1723986142003,
       "order": "normal"
     },
     {
       "name": "vite:json",
-      "start": 1723904396186,
-      "end": 1723904396186,
+      "start": 1723986142003,
+      "end": 1723986142003,
       "order": "normal"
     },
     {
       "name": "vite:worker",
-      "start": 1723904396186,
-      "end": 1723904396186,
+      "start": 1723986142003,
+      "end": 1723986142003,
       "order": "normal"
     },
     {
       "name": "vite:vue",
-      "start": 1723904396186,
-      "end": 1723904396186,
+      "start": 1723986142003,
+      "end": 1723986142003,
       "order": "normal"
     },
     {
       "name": "vite:define",
-      "start": 1723904396186,
-      "end": 1723904396186,
+      "start": 1723986142003,
+      "end": 1723986142003,
       "order": "normal"
     },
     {
       "name": "vite:css-post",
-      "start": 1723904396186,
-      "end": 1723904396186,
+      "start": 1723986142003,
+      "end": 1723986142003,
       "order": "normal"
     },
     {
       "name": "vite:build-html",
-      "start": 1723904396186,
-      "end": 1723904396186,
+      "start": 1723986142003,
+      "end": 1723986142003,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1723904396186,
-      "end": 1723904396186,
+      "start": 1723986142003,
+      "end": 1723986142003,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1723904396186,
-      "end": 1723904396186,
+      "start": 1723986142003,
+      "end": 1723986142003,
       "order": "normal"
     },
     {
       "name": "commonjs",
-      "start": 1723904396186,
-      "end": 1723904396186,
+      "start": 1723986142003,
+      "end": 1723986142003,
       "order": "normal"
     },
     {
       "name": "vite:dynamic-import-vars",
-      "start": 1723904396186,
-      "end": 1723904396187,
+      "start": 1723986142003,
+      "end": 1723986142003,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1723904396187,
-      "end": 1723904396187,
+      "start": 1723986142003,
+      "end": 1723986142003,
       "order": "normal"
     },
     {
       "name": "vite:build-import-analysis",
-      "start": 1723904396187,
-      "end": 1723904396187,
+      "start": 1723986142003,
+      "end": 1723986142003,
       "order": "normal"
     },
     {
       "name": "vite:reporter",
-      "start": 1723904396187,
-      "end": 1723904396187,
+      "start": 1723986142003,
+      "end": 1723986142003,
       "order": "normal"
     }
   ]

@@ -129,7 +129,15 @@ onMounted(async () => {
       </v-col>
     </v-row>
     <br>
-    <v-btn @click="sendData">Suche starten</v-btn>
+    <v-row align="center">
+      <v-col cols="auto">
+        <v-btn @click="sendData" color="green lighten-3">Suche starten</v-btn>
+      </v-col>
+      <v-spacer></v-spacer>
+      <v-col cols="auto">
+        <v-btn :to="{ path: '/swisstopo' }" color="green lighten-3">Karte</v-btn>
+      </v-col>
+    </v-row>
     <v-spacer class="my-6"></v-spacer>
     <v-divider class="my-7" :style="{ height: '20px'}"></v-divider>
     <v-spacer class="my-6"></v-spacer>
@@ -137,22 +145,22 @@ onMounted(async () => {
       <v-col cols="12" md="4">
         <v-sheet class="mb-4">
           <h4 class="text-h6 font-weight-bold mb-1">Kalte Periode</h4>
-          <p class="text-body-2 mb-2" style="margin-top: -8px;">Temperaturen zwischen -5 ... - 10°C</p>
-          <v-data-table :items="tableData1" :items-per-page="-1"></v-data-table>
+          <p class="text-body-2 mb-2" style="margin-top: -8px;">Temperaturen zwischen -10 ... -5°C</p>
+          <v-data-table :items="tableData1" :items-per-page="-1"  class="custom-table"></v-data-table>
         </v-sheet>
       </v-col>
       <v-col cols="12" md="4">
         <v-sheet class="mb-4">
           <h4 class="text-h6 font-weight-bold mb-1">Hauptanteil Heizperiode</h4>
           <p class="text-body-2 mb-2" style="margin-top: -8px;">Temperaturen zwischen 0 ... 20°C</p>
-          <v-data-table :items="tableData2" :items-per-page="-1"></v-data-table>
+          <v-data-table :items="tableData2" :items-per-page="-1"  class="custom-table"></v-data-table>
         </v-sheet>
       </v-col>
       <v-col cols="12" md="4">
         <v-sheet class="mb-4">
           <h4 class="text-h6 font-weight-bold mb-1">Schwachlast</h4>
           <p class="text-body-2 mb-2" style="margin-top: -8px;">Temperatur möglichst nahe bei 20°C</p>
-          <v-data-table :items="tableData3" :items-per-page="-1"></v-data-table>
+          <v-data-table :items="tableData3" :items-per-page="-1"  class="custom-table"></v-data-table>
         </v-sheet>
       </v-col>
     </v-row>

@@ -10,6 +10,7 @@ import io.ktor.http.*
 import io.ktor.http.content.*
 import io.ktor.server.application.*
 import io.ktor.server.auth.*
+import io.ktor.server.http.content.*
 import io.ktor.server.request.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
@@ -18,6 +19,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook
 import java.io.InputStream
 import java.io.InputStreamReader
 import java.io.BufferedReader
+import java.io.File
 
 
 @Serializable
@@ -39,6 +41,9 @@ data class OperatingStateValueList(
     val hauptanteilHeizperiode: MutableList<DataPoint>,
     val schwachlast: MutableList<DataPoint>,
 )
+
+const val IMAGE_DIRECTORY = "src/main/resources/images"
+
 
 fun Application.configureDatenanalyse() {
     routing {
@@ -62,6 +67,7 @@ fun Application.configureDatenanalyse() {
                 )
 
                 call.respond(firstResponse)
+
             }
 
 
@@ -82,6 +88,7 @@ fun Application.configureDatenanalyse() {
                                 "selectedCountry" -> selectedCountryReceive = part.value
                             }
                         }
+
                         else -> {}
                     }
                     part.dispose()
@@ -98,7 +105,8 @@ fun Application.configureDatenanalyse() {
                 var operatingState = OperatingConditions(startDate, endDate, selectedCountry)
 
                 val valueListKaltPeriode = Data.database.loadOperatingStateKaltePeriode(operatingState)
-                val valueListHauptanteilHeizperiode = Data.database.loadOperatingStateHaupanteilHeizperiode(operatingState)
+                val valueListHauptanteilHeizperiode =
+                    Data.database.loadOperatingStateHaupanteilHeizperiode(operatingState)
                 val valueListSchwachlast = Data.database.loadOperatingStateSchwachlast(operatingState)
 
                 val operatingStateValueList =
@@ -202,6 +210,16 @@ fun Application.configureDatenanalyse() {
                 call.respond(firstResponse)
 
             }
+
+            get("/swisstopographic") {
+                val imageName = "Switzerland_topographic.png"
+                val file = File("$IMAGE_DIRECTORY/$imageName")
+                if (file.exists()) {
+                    call.respondFile(file)
+                } else {
+                    call.respond(HttpStatusCode.NotFound, "Bild nicht gefunden")
+                }
+            }
         }
     }
 }
@@ -231,11 +249,3 @@ fun loadToSelectCountry(resourcePath: String): MutableList<String> {
 }
 
 
-
-
-fun printCSV(save: MutableList<CSV>) {
-
-    println("CSV Records: ${save.size}")
-
-
-}

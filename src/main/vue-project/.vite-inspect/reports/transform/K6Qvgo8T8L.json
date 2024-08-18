@@ -3,22 +3,22 @@
   "transforms": [
     {
       "name": "vite:load-fallback",
-      "result": "import { createRouter, createWebHashHistory } from 'vue-router'\r\nimport DatenanalyseVue from '@/routes/DatenanalyseView.vue'\r\nimport SettingsVue from '@/routes/SettingsView.vue'\r\n\r\nconst routes = [\r\n { path: '/', component: DatenanalyseVue },\r\n  { path: '/settings', component: SettingsVue }\r\n]\r\n\r\nexport const router = createRouter({\r\n  routes,\r\n  history: createWebHashHistory()\r\n})\r\n",
-      "start": 1723904395985,
-      "end": 1723904395987,
+      "result": "import { createRouter, createWebHashHistory } from 'vue-router'\r\nimport DatenanalyseVue from '@/routes/DatenanalyseView.vue'\r\nimport SettingsVue from '@/routes/SettingsView.vue'\r\nimport Swisstopo from '@/routes/SwitzerlandTopographicView.vue'\r\n\r\nconst routes = [\r\n { path: '/', component: DatenanalyseVue },\r\n  { path: '/settings', component: SettingsVue },\r\n  { path: '/swisstopo', component: Swisstopo }\r\n]\r\n\r\nexport const router = createRouter({\r\n  routes,\r\n  history: createWebHashHistory()\r\n})\r\n",
+      "start": 1723986141830,
+      "end": 1723986141867,
       "sourcemaps": null
     },
     {
       "name": "vite:css",
-      "start": 1723904395987,
-      "end": 1723904395987,
+      "start": 1723986141867,
+      "end": 1723986141867,
       "order": "normal"
     },
     {
       "name": "vite:esbuild",
-      "result": "import { createRouter, createWebHashHistory } from \"vue-router\";\nimport DatenanalyseVue from \"@/routes/DatenanalyseView.vue\";\nimport SettingsVue from \"@/routes/SettingsView.vue\";\nconst routes = [\n  { path: \"/\", component: DatenanalyseVue },\n  { path: \"/settings\", component: SettingsVue }\n];\nexport const router = createRouter({\n  routes,\n  history: createWebHashHistory()\n});\n",
-      "start": 1723904395987,
-      "end": 1723904396043,
+      "result": "import { createRouter, createWebHashHistory } from \"vue-router\";\nimport DatenanalyseVue from \"@/routes/DatenanalyseView.vue\";\nimport SettingsVue from \"@/routes/SettingsView.vue\";\nimport Swisstopo from \"@/routes/SwitzerlandTopographicView.vue\";\nconst routes = [\n  { path: \"/\", component: DatenanalyseVue },\n  { path: \"/settings\", component: SettingsVue },\n  { path: \"/swisstopo\", component: Swisstopo }\n];\nexport const router = createRouter({\n  routes,\n  history: createWebHashHistory()\n});\n",
+      "start": 1723986141867,
+      "end": 1723986141884,
       "order": "normal",
       "sourcemaps": {
         "version": 3,
@@ -26,88 +26,88 @@
           "C:/Users/MAG/IdeaProjects/Datenanalysetool/src/main/vue-project/src/routes/router.ts"
         ],
         "sourcesContent": [
-          "import { createRouter, createWebHashHistory } from 'vue-router'\r\nimport DatenanalyseVue from '@/routes/DatenanalyseView.vue'\r\nimport SettingsVue from '@/routes/SettingsView.vue'\r\n\r\nconst routes = [\r\n { path: '/', component: DatenanalyseVue },\r\n  { path: '/settings', component: SettingsVue }\r\n]\r\n\r\nexport const router = createRouter({\r\n  routes,\r\n  history: createWebHashHistory()\r\n})\r\n"
+          "import { createRouter, createWebHashHistory } from 'vue-router'\r\nimport DatenanalyseVue from '@/routes/DatenanalyseView.vue'\r\nimport SettingsVue from '@/routes/SettingsView.vue'\r\nimport Swisstopo from '@/routes/SwitzerlandTopographicView.vue'\r\n\r\nconst routes = [\r\n { path: '/', component: DatenanalyseVue },\r\n  { path: '/settings', component: SettingsVue },\r\n  { path: '/swisstopo', component: Swisstopo }\r\n]\r\n\r\nexport const router = createRouter({\r\n  routes,\r\n  history: createWebHashHistory()\r\n})\r\n"
         ],
-        "mappings": "AAAA,SAAS,cAAc,4BAA4B;AACnD,OAAO,qBAAqB;AAC5B,OAAO,iBAAiB;AAExB,MAAM,SAAS;AAAA,EACd,EAAE,MAAM,KAAK,WAAW,gBAAgB;AAAA,EACvC,EAAE,MAAM,aAAa,WAAW,YAAY;AAC9C;AAEO,aAAM,SAAS,aAAa;AAAA,EACjC;AAAA,EACA,SAAS,qBAAqB;AAChC,CAAC;",
+        "mappings": "AAAA,SAAS,cAAc,4BAA4B;AACnD,OAAO,qBAAqB;AAC5B,OAAO,iBAAiB;AACxB,OAAO,eAAe;AAEtB,MAAM,SAAS;AAAA,EACd,EAAE,MAAM,KAAK,WAAW,gBAAgB;AAAA,EACvC,EAAE,MAAM,aAAa,WAAW,YAAY;AAAA,EAC5C,EAAE,MAAM,cAAc,WAAW,UAAU;AAC7C;AAEO,aAAM,SAAS,aAAa;AAAA,EACjC;AAAA,EACA,SAAS,qBAAqB;AAChC,CAAC;",
         "names": []
       }
     },
     {
       "name": "vite:json",
-      "start": 1723904396043,
-      "end": 1723904396043,
+      "start": 1723986141884,
+      "end": 1723986141884,
       "order": "normal"
     },
     {
       "name": "vite:worker",
-      "start": 1723904396043,
-      "end": 1723904396043,
+      "start": 1723986141885,
+      "end": 1723986141885,
       "order": "normal"
     },
     {
       "name": "vite:vue",
-      "start": 1723904396043,
-      "end": 1723904396043,
+      "start": 1723986141885,
+      "end": 1723986141885,
       "order": "normal"
     },
     {
       "name": "vite:define",
-      "start": 1723904396043,
-      "end": 1723904396043,
+      "start": 1723986141885,
+      "end": 1723986141885,
       "order": "normal"
     },
     {
       "name": "vite:css-post",
-      "start": 1723904396043,
-      "end": 1723904396043,
+      "start": 1723986141885,
+      "end": 1723986141885,
       "order": "normal"
     },
     {
       "name": "vite:build-html",
-      "start": 1723904396043,
-      "end": 1723904396043,
+      "start": 1723986141885,
+      "end": 1723986141885,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1723904396043,
-      "end": 1723904396043,
+      "start": 1723986141885,
+      "end": 1723986141885,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1723904396043,
-      "end": 1723904396043,
+      "start": 1723986141885,
+      "end": 1723986141885,
       "order": "normal"
     },
     {
       "name": "commonjs",
-      "start": 1723904396043,
-      "end": 1723904396043,
+      "start": 1723986141885,
+      "end": 1723986141885,
       "order": "normal"
     },
     {
       "name": "vite:dynamic-import-vars",
-      "start": 1723904396044,
-      "end": 1723904396044,
+      "start": 1723986141885,
+      "end": 1723986141885,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1723904396044,
-      "end": 1723904396044,
+      "start": 1723986141885,
+      "end": 1723986141885,
       "order": "normal"
     },
     {
       "name": "vite:build-import-analysis",
-      "start": 1723904396044,
-      "end": 1723904396044,
+      "start": 1723986141885,
+      "end": 1723986141885,
       "order": "normal"
     },
     {
       "name": "vite:reporter",
-      "start": 1723904396044,
-      "end": 1723904396044,
+      "start": 1723986141885,
+      "end": 1723986141885,
       "order": "normal"
     }
   ]

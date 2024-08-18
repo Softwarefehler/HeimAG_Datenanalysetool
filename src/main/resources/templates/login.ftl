@@ -21,11 +21,14 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
 
-        /* Stil für das Bild - Verkleinerung */
-        img {
-            width: 118px; /* 50% der Originalbreite */
-            height: auto; /* Höhe proportional zur Breite */
+        .logo-container {
+            text-align: center;
             margin-bottom: 20px;
+        }
+
+        .logo-container img {
+            width: 235px; /* 50% der Originalbreite */
+            height: auto; /* Höhe proportional zur Breite */
         }
 
         /* Stil für den Übertitel */
@@ -75,11 +78,25 @@
         input[type="submit"]:hover {
             background-color: #4CAF50; /* #0056b3 */
         }
+
+        /* Stil für den Status */
+        .status-blue {
+            color: blue;
+        }
+
+        .status-red {
+            color: red;
+        }
     </style>
+
 </head>
 <body>
+
 <form action="${login.postUrl}" enctype="application/x-www-form-urlencoded" method="post">
-   <h2>Datenanalysetool</h2>
+    <div class="logo-container">
+        <img src="/images/HeimAG_Logo.jpg" alt="HeimAG Logo">
+    </div>
+    <h2>Datenanalysetool</h2>
     <br>
     <p>
         <label for="username">Username:</label>
@@ -91,6 +108,15 @@
     </p>
     <p>
         <input type="submit" value="Login" />
+    </p>
+    <br>
+    <p>
+        Status:
+        <#if login.databaseStatus == "Datenbank vorhanden">
+            <span class="status-blue">${login.databaseStatus}</span>
+        <#else>
+            <span class="status-red">${login.databaseStatus}</span>
+        </#if>
     </p>
 </form>
 </body>
