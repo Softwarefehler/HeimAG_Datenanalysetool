@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted, ref, type Ref } from 'vue'
+import { onMounted, ref } from 'vue'
 import { VBtn } from 'vuetify/components'
 
 export type Foto = { url: string; name: string }
@@ -50,7 +50,7 @@ onMounted(fetchFotoFromServer)
   max-width: 100%; /* Stellt sicher, dass das Bild nicht breiter als sein Container ist */
 }
 
-/* Stil für den Button, um sicherzustellen, dass er gut aussieht */
+/* Stil für den Button */
 .my-button {
   margin-top: 20px; /* Abstand oben, damit der Button unterhalb des Bildes ist */
 }

@@ -2,7 +2,7 @@ package ch.heimag.datenanalysetool.databases
 
 import ch.heimag.datenanalysetool.conditions.OperatingConditions
 import ch.heimag.datenanalysetool.converter.converter
-import ch.heimag.datenanalysetool.file.CSV
+import ch.heimag.datenanalysetool.weatherdata.Weatherdata
 import kotlinx.serialization.Serializable
 import java.sql.DriverManager
 import java.sql.SQLException
@@ -16,7 +16,8 @@ class Database {
     val HOST = "localhost"
     val PORT = 3306
     val DATABASE = "heimag"
-    val OPTIONS = "useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Europe/Berlin"
+    val OPTIONS =
+        "useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Europe/Berlin"
     val URL = "$PROTOCOL://$HOST:$PORT/$DATABASE?$OPTIONS"
     val USER = "datenanalysetool"
     val PASSWORD = "HeimAGS2we@!"
@@ -73,7 +74,7 @@ class Database {
         connection.close()
 
 
-        var latestDateString = if (latestDateInt == 0) {
+        val latestDateString = if (latestDateInt == 0) {
             "Keine Daten"
         } else {
             converter.intToString(latestDateInt)
@@ -176,8 +177,6 @@ class Database {
 
             val dataPoint = DataPoint(dateString, temperatureString)
             sqlRespondList.add(dataPoint)
-
-            //println("$dateInt, $temperature") // Only for Display
         }
 
         // close resources
@@ -198,7 +197,6 @@ class Database {
         val maxTemperature = operatingState.schwachlastMaxTemperature
         val countryCode = operatingState.countryCode
 
-        //sqlRespondList.clear()
         val sqlRespondList = mutableListOf<DataPoint>()
 
 
@@ -229,8 +227,6 @@ class Database {
 
             val dataPoint = DataPoint(dateString, temperatureString)
             sqlRespondList.add(dataPoint)
-
-            //println("$dateInt, $temperature") // Only for Display
         }
 
         // close resources
@@ -242,18 +238,13 @@ class Database {
     }
 
 
-    fun setValuesToDatabase(save: MutableList<CSV>) {
-
+    fun setWeatherdataToDatabase(save: MutableList<Weatherdata>) {
 
         // build connection to database
         val connection = DriverManager.getConnection(URL, USER, PASSWORD)
 
-        // create statement
-        //val statement = connection.createStatement()
-
-
         val sql = """
-            INSERT INTO wetterdaten (
+            INSERT INTO heimag.wetterdaten (
                 datum, alt, ant, bas, ber, cdf, chd, chm, dav, elm, eng, grc, grh, gsb, gve, jun, lug, luz, mer, neu, otl, pay, rag, sae, sam, sbe, sia, sio, sma, stg
             ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
         """
@@ -307,6 +298,5 @@ class Database {
             }
         }
     }
-
-
 }
+

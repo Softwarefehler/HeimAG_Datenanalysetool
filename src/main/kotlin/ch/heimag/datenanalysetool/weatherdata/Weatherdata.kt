@@ -1,9 +1,9 @@
-package ch.heimag.datenanalysetool.file
+package ch.heimag.datenanalysetool.weatherdata
 
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class CSV(
+data class Weatherdata(
     val datum: Int?,
     val alt: Double?,
     val ant: Double?,

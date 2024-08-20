@@ -4,16 +4,21 @@ import { onMounted, ref } from 'vue'
 // Reaktive Variablen für die Datenbankinformationen und den Dateiupload
 const databaseStatus = ref<string | null>(null)
 const latestDate = ref<string | null>(null)
-const file = ref<File | null>(null)
-const fileInputError = ref<string | null>(null)
-const isLoading = ref<boolean>(false) // Variable für den Ladezustand
-const uploadMessage = ref<string | null>(null)
-const uploadError = ref<boolean>(false) // Variable für Fehlerstatus
+
+// CSV Upload Variablen
+const csvFile = ref<File | null>(null)
+const csvFileInputError = ref<string | null>(null)
+const csvIsLoading = ref<boolean>(false) // Variable für den Ladezustand
+const csvUploadMessage = ref<string | null>(null)
+const csvUploadError = ref<boolean>(false) // Variable für Fehlerstatus
+
 
 // Validierungsregel für das Dateifeld
-const requiredRule = (value: File | null) => {
+const csvRequiredRule = (value: File | null) => {
   return !!value || 'Dieses Feld ist erforderlich'
 }
+
+
 
 // Funktion zum Abrufen der Datenbankinformationen
 async function infoDatabase() {
@@ -27,20 +32,20 @@ async function infoDatabase() {
 }
 
 // Funktion zum Hochladen der Datei
-async function uploadFile() {
-  fileInputError.value = null
-  uploadMessage.value = null
-  isLoading.value = true // Ladezustand setzen
-  uploadError.value = false // Fehlerstatus zurücksetzen
+async function csvUploadFile() {
+  csvFileInputError.value = null
+  csvUploadMessage.value = null
+  csvIsLoading.value = true // Ladezustand setzen
+  csvUploadError.value = false // Fehlerstatus zurücksetzen
 
-  if (!file.value) {
-    fileInputError.value = 'Bitte wählen Sie eine Datei aus'
-    isLoading.value = false // Ladezustand beenden, falls kein Upload gestartet wird
+  if (!csvFile.value) {
+    csvFileInputError.value = 'Bitte wählen Sie eine Datei aus'
+    csvIsLoading.value = false // Ladezustand beenden, falls kein Upload gestartet wird
     return
   }
 
   const formData = new FormData()
-  formData.append('file', file.value)
+  formData.append('file', csvFile.value)
 
   try {
     const response = await fetch('/csv-upload', {
@@ -52,29 +57,30 @@ async function uploadFile() {
     })
 
     if (response.ok) {
-      uploadMessage.value = 'Datei erfolgreich hochgeladen'
+      csvUploadMessage.value = 'Datei erfolgreich hochgeladen'
     } else {
-      uploadMessage.value = 'Fehler beim Hochladen der Datei.'
-      uploadError.value = true // Fehlerstatus setzen
+      csvUploadMessage.value = 'Fehler beim Hochladen der Datei.'
+      csvUploadError.value = true // Fehlerstatus setzen
     }
   } catch (error) {
-    uploadMessage.value = `Anmeldezeit ist Abgelaufen: ${error}`
-    uploadError.value = true // Fehlerstatus setzen
+    csvUploadMessage.value = `Anmeldezeit ist Abgelaufen: ${error}`
+    csvUploadError.value = true // Fehlerstatus setzen
     location.href = '/login'
   } finally {
-    isLoading.value = false // Ladezustand beenden, wenn der Upload abgeschlossen ist
+    csvIsLoading.value = false // Ladezustand beenden, wenn der Upload abgeschlossen ist
     await infoDatabase()
   }
 }
 
 // Funktion zum Zurücksetzen der Upload-Nachricht und des Fehlerstatus, wenn die Datei entfernt wird
-function handleFileChange(event: Event) {
+function csvHandleFileChange(event: Event) {
   const input = event.target as HTMLInputElement
   if (!input.files?.length) {
-    uploadMessage.value = null // Nachricht zurücksetzen, wenn keine Datei ausgewählt ist
-    uploadError.value = false // Fehlerstatus zurücksetzen
+    csvUploadMessage.value = null // Nachricht zurücksetzen, wenn keine Datei ausgewählt ist
+    csvUploadError.value = false // Fehlerstatus zurücksetzen
   }
 }
+
 
 // Funktion wird beim Laden der Komponente ausgeführt
 onMounted(async () => {
@@ -101,23 +107,23 @@ onMounted(async () => {
     <v-spacer class="my-6"></v-spacer>
     <h4>Datenbankerweiterung / CSV-File Upload</h4>
     <br>
-    <v-form @submit.prevent="uploadFile">
+    <v-form @submit.prevent="csvUploadFile">
       <v-file-input
-        v-model="file"
-        label="Wähle eine Datei"
-        accept=".csv"
+        v-model="csvFile"
+        label="Wähle die Datei merged_output.csv"
+        accept="merged_output.csv"
         prepend-icon=""
         prepend-inner-icon="mdi-upload"
-        :rules="[requiredRule]"
-        :error="!!fileInputError || uploadError"
-        :error-messages="fileInputError || (uploadError ? 'Fehler beim Hochladen der Datei.' : '')"
+        :rules="[csvRequiredRule]"
+        :error="!!csvFileInputError || csvUploadError"
+        :error-messages="csvFileInputError || (csvUploadError ? 'Fehler beim Hochladen der Datei.' : '')"
         required
-        @change="handleFileChange"
+        @change="csvHandleFileChange"
       ></v-file-input>
 
       <!-- Progress Linear -->
       <v-progress-linear
-        v-if="isLoading"
+        v-if="csvIsLoading"
         color="primary"
         height="6"
         indeterminate
@@ -126,14 +132,15 @@ onMounted(async () => {
 
       <!-- Nachricht, die nach dem Upload angezeigt wird -->
       <v-alert
-        v-if="uploadMessage"
-        :type="uploadError ? 'error' : 'success'"
+        v-if="csvUploadMessage"
+        :type="csvUploadError ? 'error' : 'success'"
         dismissible
       >
-        {{ uploadMessage }}
+        {{ csvUploadMessage }}
       </v-alert>
       <br>
       <v-btn type="submit" color="green lighten-3">Datei hochladen</v-btn>
     </v-form>
+
   </v-container>
 </template>
