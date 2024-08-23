@@ -12,16 +12,15 @@ import java.sql.SQLException
 @Serializable
 data class DataPoint(val date: String, val temperature: String)
 
-class Database {
-    val PROTOCOL = "jdbc:mysql"
-    val HOST = "localhost"
-    val PORT = 3306
-    val DATABASE = "heimag"
-    val OPTIONS =
-        "useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Europe/Berlin"
-    val URL = "$PROTOCOL://$HOST:$PORT/$DATABASE?$OPTIONS"
-    val USER = "datenanalysetool"
-    val PASSWORD = "HeimAGS2we@!"
+class Database : DatabaseInfo {
+    override val PROTOCOL = "jdbc:mysql"
+    override val HOST = "localhost"
+    override val PORT = 3306
+    override val DATABASE = "heimag"
+    override val OPTIONS = "useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Europe/Berlin"
+    override val URL = "$PROTOCOL://$HOST:$PORT/$DATABASE?$OPTIONS"
+    override val USER = "datenanalysetool"
+    override val PASSWORD = "HeimAGS2we@!"
 
     private val logger = LoggerFactory.getLogger("Data.Database")
 
@@ -29,9 +28,9 @@ class Database {
     fun checkDatabaseStatus(): String {
         var connection: java.sql.Connection? = null
         return try {
-            logger.info("Überprüfe den Status der Datenbankverbindung.")
+            logger.info("Check the status of the database connection.")
             connection = DriverManager.getConnection(URL, USER, PASSWORD)
-            logger.info("Verbindung zur Datenbank hergestellt.")
+            logger.info("Connection to the database established.")
 
             // Führe eine einfache Abfrage aus, um die Verbindung zu testen
             val statement = connection.createStatement()
@@ -39,57 +38,60 @@ class Database {
 
             // Überprüfe, ob die Abfrage erfolgreich war
             if (resultSet.next()) {
-                logger.warn("Datenbank ist vorhanden und erreichbar.")
+                logger.warn("Database is available and accessible.")
                 "Datenbank vorhanden"
             } else {
-                logger.error("Die Datenbank konnte nicht erreicht werden.")
+                logger.error("The database could not be accessed.")
                 "Datenbank nicht vorhanden"
             }
         } catch (e: SQLException) {
-            logger.error("Fehler beim Herstellen der Datenbankverbindung: ${e.message}", e)
+            logger.error("Error when establishing the database connection: ${e.message}", e)
             e.printStackTrace()
             "Datenbank nicht vorhanden"
         } finally {
             connection?.close()
-            logger.info("Datenbankverbindung geschlossen.")
+            logger.info("Database connection closed.")
         }
     }
 
 
     fun loadLatestDate(): String {
-        logger.info("Lade das neueste Datum aus der Datenbank.")
+        logger.info("Load the latest date from the database.")
         var latestDateInt = 0
 
+        try {
+            val connection = DriverManager.getConnection(URL, USER, PASSWORD)
 
-        val connection = DriverManager.getConnection(URL, USER, PASSWORD)
+            // create statement
+            val statement = connection.createStatement()
 
-        // create statement
-        val statement = connection.createStatement()
+            // SQL statement to load rows from database
+            val sql = "SELECT * FROM wetterdaten ORDER BY datum DESC LIMIT 1"
 
-        // SQL statement to load rows from database
-        val sql = "SELECT * FROM wetterdaten ORDER BY datum DESC LIMIT 1"
+            // SQL statement execute
+            val data = statement.executeQuery(sql)
 
-        // SQL statement execute
-        val data = statement.executeQuery(sql)
+            // Output rows
+            if (data.next()) {
+                latestDateInt = data.getInt("datum")
+                logger.debug("Latest record in the Database: $latestDateInt")
+            } else {
+                logger.info("No data records found in the weather data table.")
+            }
+            data.close()
+            statement.close()
+            connection.close()
 
-        // Output rows
-        if (data.next()) {
-            latestDateInt = data.getInt("datum")
-            logger.debug("Neuester Datensatz: $latestDateInt")
-        } else {
-            logger.info("Keine Datensätze in der Tabelle wetterdaten gefunden.")
+        } catch (e: SQLException) {
+            latestDateInt = 0
         }
-        data.close()
-        statement.close()
-        connection.close()
-
 
         val latestDateString = if (latestDateInt == 0) {
             "Keine Daten"
         } else {
             Converter.intToString(latestDateInt)
         }
-        logger.info("Der letzte Datum der Datenbank ist: $latestDateString")
+        logger.info("Latest date in the database: $latestDateString")
         return latestDateString
     }
 
@@ -97,7 +99,7 @@ class Database {
     fun loadOperatingStateKaltePeriode(
         operatingState: OperatingConditions
     ): MutableList<DataPoint> {
-        logger.info("Datenbankabfrage kaltePeriode: (Startdatum: ${operatingState.startDate}, Enddatum: ${operatingState.endDate}, Ort(als Code): ${operatingState.countryCode}, Min.Temperatur: ${operatingState.kaltPeriodeMinTemperature}, Max.Temperatur: ${operatingState.kaltPeriodeMaxTemperature}).")
+        logger.info("Database query kaltePeriode: (Start date: ${operatingState.startDate}, End date: ${operatingState.endDate}, Countries(as Code): ${operatingState.countryCode}, Min.Temperature: ${operatingState.kaltPeriodeMinTemperature}, Max.Temperature: ${operatingState.kaltPeriodeMaxTemperature}).")
 
         val sqlRespondList = mutableListOf<DataPoint>()
 
@@ -117,7 +119,7 @@ class Database {
             """.trimIndent()
 
             // SQL statement execute
-            logger.debug("kaltePeriode: SQL-Abfrage: $sql")
+            logger.debug("kaltePeriode: SQL-Query: $sql")
             val data = statement.executeQuery(sql)
 
             // put output rows in to another list
@@ -131,13 +133,13 @@ class Database {
                 val dataPoint = DataPoint(dateString, temperatureString)
                 sqlRespondList.add(dataPoint)
 
-                logger.debug("kaltePeriode: Datensatz hinzugefügt: Datum: $dateString, Temperatur: $temperatureString")
+                logger.debug("kaltePeriode: Datapoint added: Date: $dateString, Temperature: $temperatureString")
             }
             data.close()
             statement.close()
             connection.close()
         } catch (e: SQLException) {
-            logger.error("Fehler beim Laden der Daten für die kaltePeriode: ${e.message}", e)
+            logger.error("Error loading the data for kaltePeriode: ${e.message}", e)
         }
 
         return (sqlRespondList)
@@ -147,7 +149,7 @@ class Database {
     fun loadOperatingStateHaupanteilHeizperiode(
         operatingState: OperatingConditions
     ): MutableList<DataPoint> {
-        logger.info("Datenbankabfrage HauptanteilHeizperiode: (Startdatum: ${operatingState.startDate}, Enddatum: ${operatingState.endDate}, Ort(als Code): ${operatingState.countryCode}, Min.Temperatur: ${operatingState.hauptanteilHeizperiodeMinTemperature}, Max.Temperatur: ${operatingState.hauptanteilHeizperiodeMaxTemperature}).")
+        logger.info("Database query HauptanteilHeizperiode: (Start date: ${operatingState.startDate}, End date: ${operatingState.endDate}, Countries(as Code): ${operatingState.countryCode}, Min.Temperature: ${operatingState.hauptanteilHeizperiodeMinTemperature}, Max.Temperature: ${operatingState.hauptanteilHeizperiodeMaxTemperature}).")
 
         val sqlRespondList = mutableListOf<DataPoint>()
 
@@ -167,7 +169,7 @@ class Database {
             """.trimIndent()
 
             // SQL statement execute
-            logger.debug("HauptanteilHeizperiode: SQL-Abfrage: $sql")
+            logger.debug("HauptanteilHeizperiode: SQL-Query: $sql")
             val data = statement.executeQuery(sql)
 
             // put output rows in to another list
@@ -180,13 +182,13 @@ class Database {
 
                 val dataPoint = DataPoint(dateString, temperatureString)
                 sqlRespondList.add(dataPoint)
-                logger.debug("HauptanteilHeizperiode: Datensatz hinzugefügt: Datum: $dateString, Temperatur: $temperatureString")
+                logger.debug("HauptanteilHeizperiode:  Datapoint added: Date: $dateString, Temperature: $temperatureString")
             }
             data.close()
             statement.close()
             connection.close()
         } catch (e: SQLException) {
-            logger.error("Fehler beim Laden der Daten für den HauptanteilHeizperiode: ${e.message}", e)
+            logger.error("Error loading the data for HauptanteilHeizperiode: ${e.message}", e)
         }
 
         return (sqlRespondList)
@@ -196,7 +198,7 @@ class Database {
     fun loadOperatingStateSchwachlast(
         operatingState: OperatingConditions
     ): MutableList<DataPoint> {
-        logger.info("Datenbankabfrage Schwachlast: (Startdatum: ${operatingState.startDate}, Enddatum: ${operatingState.endDate}, Ort(als Code): ${operatingState.countryCode}, Min.Temperatur: ${operatingState.kaltPeriodeMinTemperature}, Max.Temperatur: ${operatingState.kaltPeriodeMaxTemperature}).")
+        logger.info("Database query Schwachlast: (Start date: ${operatingState.startDate}, End date: ${operatingState.endDate}, Countries(as Code): ${operatingState.countryCode}, Min.Temperature: ${operatingState.kaltPeriodeMinTemperature}, Max.Temperature: ${operatingState.kaltPeriodeMaxTemperature}).")
 
         val sqlRespondList = mutableListOf<DataPoint>()
 
@@ -216,7 +218,7 @@ class Database {
             AND datum BETWEEN ${operatingState.startDate} AND ${operatingState.endDate};
             """.trimIndent()
 
-            logger.debug("Schwachlast: SQL-Abfrage: $sql")
+            logger.debug("Schwachlast: SQL-Query: $sql")
             val data = statement.executeQuery(sql)
 
             // put output rows in to another list
@@ -229,14 +231,14 @@ class Database {
 
                 val dataPoint = DataPoint(dateString, temperatureString)
                 sqlRespondList.add(dataPoint)
-                logger.debug("Schwachlast: Datensatz hinzugefügt: Datum: $dateString, Temperatur: $temperatureString")
+                logger.debug("Schwachlast: Datapoint added: Date: $dateString, Temperature: $temperatureString")
             }
 
             data.close()
             statement.close()
             connection.close()
         } catch (e: SQLException) {
-            logger.error("Fehler beim Laden der Daten für die Schwachlast: ${e.message}", e)
+            logger.error("Error loading the data for Schwachlast: ${e.message}", e)
         }
 
         return (sqlRespondList)
@@ -244,7 +246,7 @@ class Database {
 
 
     fun setWeatherdataToDatabase(save: MutableList<WeatherData>) {
-        logger.info("Speichere Wetterdaten in der Datenbank.")
+        logger.info("Save weather data in the database.")
 
         try {
             val connection = DriverManager.getConnection(URL, USER, PASSWORD)
@@ -294,14 +296,14 @@ class Database {
                     }
                 }
 
-                logger.info("Batch-Insert für Wetterdaten wird ausgeführt.")
+                logger.info("Batch insert for weather data is executed.")
                 preparedStatement.executeBatch()
             }
 
             connection.close()
-            logger.info("Wetterdaten erfolgreich gespeichert.")
+            logger.info("Weather data successfully saved.")
         } catch (e: SQLException) {
-            logger.error("Fehler beim Speichern der Wetterdaten: ${e.message}", e)
+            logger.error("Error when saving the weather data: ${e.message}", e)
         }
     }
 }

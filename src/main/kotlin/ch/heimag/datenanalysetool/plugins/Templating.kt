@@ -12,5 +12,5 @@ fun Application.installFreeMarkerTemplating() {
         templateLoader = ClassTemplateLoader(this::class.java.classLoader, "templates")
     }
 
-    logger.info("FreeMarker-Templating-Plugin mit TemplateLoader konfiguriert.")
+    logger.info("FreeMarker-Templating plugin with TemplateLoader configured.")
 }

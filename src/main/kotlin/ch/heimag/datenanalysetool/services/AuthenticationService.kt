@@ -14,7 +14,7 @@ class AuthenticationService {
         usernameToPasswordMap["heimag"] = digestFunction("QM8Holz")
         usernameToPasswordMap["admin"] = digestFunction("NDSsa2Renato")
 
-        logger.info("AuthenticationService inizialisiert mit ${usernameToPasswordMap.size} Benutzer.")
+        logger.info("AuthenticationService initialize with ${usernameToPasswordMap.size} user.")
     }
 
     fun authenticate(credential: UserPasswordCredential): UserIdPrincipal? {
@@ -26,10 +26,10 @@ class AuthenticationService {
             )
 
         if (isAuthenticated) {
-            logger.info("Authentication erfolgreich für Benutzer: $username")
+            logger.info("Authentication successful for user $username")
             return UserIdPrincipal(username)
         } else {
-            logger.warn("Authentication fehlgeschlagen für Benutzer: $username")
+            logger.warn("Authentication failed for user $username")
             return null
         }
     }

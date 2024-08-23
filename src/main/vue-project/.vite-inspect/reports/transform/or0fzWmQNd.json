@@ -4,8 +4,8 @@
     {
       "name": "vite:vue",
       "result": "import { defineComponent as _defineComponent } from 'vue'\nimport { createElementVNode as _createElementVNode, unref as _unref, createVNode as _createVNode, withCtx as _withCtx, createTextVNode as _createTextVNode, resolveComponent as _resolveComponent, openBlock as _openBlock, createBlock as _createBlock } from \"vue\"\n\nconst _hoisted_1 = /*#__PURE__*/_createElementVNode(\"h4\", { class: \"text-h5 font-weight-bold mb-4\" }, \"Suchkriterien\", -1)\nconst _hoisted_2 = /*#__PURE__*/_createElementVNode(\"br\", null, null, -1)\nconst _hoisted_3 = /*#__PURE__*/_createElementVNode(\"h4\", { class: \"text-h6 font-weight-bold mb-1\" }, \"Kalte Periode\", -1)\nconst _hoisted_4 = /*#__PURE__*/_createElementVNode(\"p\", {\n  class: \"text-body-2 mb-2\",\n  style: {\"margin-top\":\"-8px\"}\n}, \"Temperaturen zwischen -10 ... -5°C\", -1)\nconst _hoisted_5 = /*#__PURE__*/_createElementVNode(\"h4\", { class: \"text-h6 font-weight-bold mb-1\" }, \"Hauptanteil Heizperiode\", -1)\nconst _hoisted_6 = /*#__PURE__*/_createElementVNode(\"p\", {\n  class: \"text-body-2 mb-2\",\n  style: {\"margin-top\":\"-8px\"}\n}, \"Temperaturen zwischen 0 ... 20°C\", -1)\nconst _hoisted_7 = /*#__PURE__*/_createElementVNode(\"h4\", { class: \"text-h6 font-weight-bold mb-1\" }, \"Schwachlast\", -1)\nconst _hoisted_8 = /*#__PURE__*/_createElementVNode(\"p\", {\n  class: \"text-body-2 mb-2\",\n  style: {\"margin-top\":\"-8px\"}\n}, \"Temperatur möglichst nahe bei 20°C\", -1)\n\nimport { ref, onMounted } from 'vue'\r\nimport { VDateInput } from 'vuetify/labs/VDateInput'\r\nimport { VSelect, VRow, VCol, VContainer, VBtn, VSheet, VDataTable } from 'vuetify/components'\r\n\r\n\r\nexport type DataPoint = { date: string; temperature: string }\r\n\r\ntype PayloadType = {\r\n  kaltPeriode: DataPoint[],\r\n  hauptanteilHeizperiode: DataPoint[],\r\n  schwachlast: DataPoint[]\r\n}\r\n\r\n\nexport default /*#__PURE__*/_defineComponent({\n  __name: 'DatenanalyseView',\n  setup(__props) {\n\r\nconst startDate = ref<string | null>(null)\r\nconst endDate = ref<string | null>(null)\r\nconst selectedCountry = ref<string | null>(null)\r\nconst tableData1 = ref<DataPoint[]>([])\r\nconst tableData2 = ref<DataPoint[]>([])\r\nconst tableData3 = ref<DataPoint[]>([])\r\nconst databaseStatus = ref<string | null>(null)\r\nconst countryList = ref<string[]>([])\r\nconst latestDate = ref<string | null>(null)\r\nconst startDateError = ref<string | null>(null)\r\nconst endDateError = ref<string | null>(null)\r\nconst selectedCountryError = ref<string | null>(null)\r\n\r\n// Validierung\r\nconst requiredRule = (value: any) => !!value || 'Dieses Feld ist erforderlich'\r\n\r\n\r\nasync function sendData() {\r\n  startDateError.value = null\r\n  endDateError.value = null\r\n  selectedCountryError.value = null\r\n\r\n  // Validierung\r\n  if (!startDate.value) {\r\n    startDateError.value = 'Bitte wählen Sie ein Startdatum'\r\n  }\r\n  if (!endDate.value) {\r\n    endDateError.value = 'Bitte wählen Sie ein Enddatum'\r\n  }\r\n  if (!selectedCountry.value) {\r\n    selectedCountryError.value = 'Bitte wählen Sie einen Ort aus'\r\n  }\r\n\r\n\r\n  if (startDate.value !== null && endDate.value !== null && selectedCountry.value !== null) {\r\n    const formData = new FormData()\r\n    formData.append('startDate', startDate.value)\r\n    formData.append('endDate', endDate.value)\r\n    formData.append('selectedCountry', selectedCountry.value)\r\n\r\n    try {\r\n      const response = await fetch('/search', {\r\n        method: 'POST',\r\n        body: formData\r\n      })\r\n      if (!response.ok) {\r\n        alert(response.statusText)\r\n      } else {\r\n        const payload = await response.json()\r\n        processPayload(payload)\r\n      }\r\n    } catch (error) {\r\n      alert(`Anmeldezeit ist Abgelaufen`)\r\n      location.href = '/login'\r\n    }\r\n  }\r\n}\r\n\r\nfunction processPayload(payload: PayloadType) {\r\n  tableData1.value = payload.kaltPeriode\r\n  tableData2.value = payload.hauptanteilHeizperiode\r\n  tableData3.value = payload.schwachlast\r\n}\r\n\r\n\r\nasync function firstPayload() {\r\n  try {\r\n    const data = await fetch('/get-DatenanalyseView').then((response) => response.json())\r\n    databaseStatus.value = data.databaseStatus\r\n    countryList.value = data.countryList\r\n    latestDate.value = data.latestDate\r\n  } catch (error) {\r\n    alert(`Die Anmeldezeit ist abgelaufen`)\r\n    location.href = '/login'\r\n  }\r\n}\r\n\r\nonMounted(async () => {\r\n  await firstPayload()\r\n})\r\n\nreturn (_ctx: any,_cache: any) => {\n  const _component_v_spacer = _resolveComponent(\"v-spacer\")!\n  const _component_v_divider = _resolveComponent(\"v-divider\")!\n\n  return (_openBlock(), _createBlock(_unref(VContainer), null, {\n    default: _withCtx(() => [\n      _hoisted_1,\n      _createVNode(_unref(VSelect), {\n        modelValue: selectedCountry.value,\n        \"onUpdate:modelValue\": _cache[0] || (_cache[0] = ($event: any) => ((selectedCountry).value = $event)),\n        label: \"Wähle einen Ort aus\",\n        items: countryList.value,\n        rules: [requiredRule],\n        error: !!selectedCountryError.value,\n        \"error-messages\": selectedCountryError.value\n      }, null, 8, [\"modelValue\", \"items\", \"rules\", \"error\", \"error-messages\"]),\n      _createVNode(_unref(VRow), { dense: \"\" }, {\n        default: _withCtx(() => [\n          _createVNode(_unref(VCol), {\n            cols: \"12\",\n            md: \"6\"\n          }, {\n            default: _withCtx(() => [\n              _createVNode(_unref(VDateInput), {\n                modelValue: startDate.value,\n                \"onUpdate:modelValue\": _cache[1] || (_cache[1] = ($event: any) => ((startDate).value = $event)),\n                label: \"Wähle das Startdatum\",\n                \"prepend-icon\": \"\",\n                \"prepend-inner-icon\": \"$calendar\",\n                rules: [requiredRule],\n                error: !!startDateError.value,\n                \"error-messages\": startDateError.value\n              }, null, 8, [\"modelValue\", \"rules\", \"error\", \"error-messages\"])\n            ]),\n            _: 1\n          }),\n          _createVNode(_unref(VCol), {\n            cols: \"12\",\n            md: \"6\"\n          }, {\n            default: _withCtx(() => [\n              _createVNode(_unref(VDateInput), {\n                modelValue: endDate.value,\n                \"onUpdate:modelValue\": _cache[2] || (_cache[2] = ($event: any) => ((endDate).value = $event)),\n                label: \"Wähle das Enddatum\",\n                \"prepend-icon\": \"\",\n                \"prepend-inner-icon\": \"$calendar\",\n                rules: [requiredRule],\n                error: !!endDateError.value,\n                \"error-messages\": endDateError.value\n              }, null, 8, [\"modelValue\", \"rules\", \"error\", \"error-messages\"])\n            ]),\n            _: 1\n          })\n        ]),\n        _: 1\n      }),\n      _hoisted_2,\n      _createVNode(_unref(VRow), { align: \"center\" }, {\n        default: _withCtx(() => [\n          _createVNode(_unref(VCol), { cols: \"auto\" }, {\n            default: _withCtx(() => [\n              _createVNode(_unref(VBtn), {\n                onClick: sendData,\n                color: \"green lighten-3\"\n              }, {\n                default: _withCtx(() => [\n                  _createTextVNode(\"Suche starten\")\n                ]),\n                _: 1\n              })\n            ]),\n            _: 1\n          }),\n          _createVNode(_component_v_spacer),\n          _createVNode(_unref(VCol), { cols: \"auto\" }, {\n            default: _withCtx(() => [\n              _createVNode(_unref(VBtn), {\n                to: { path: '/swisstopo' },\n                color: \"green lighten-3\"\n              }, {\n                default: _withCtx(() => [\n                  _createTextVNode(\"Karte\")\n                ]),\n                _: 1\n              })\n            ]),\n            _: 1\n          })\n        ]),\n        _: 1\n      }),\n      _createVNode(_component_v_spacer, { class: \"my-6\" }),\n      _createVNode(_component_v_divider, {\n        class: \"my-7\",\n        style: { height: '20px'}\n      }),\n      _createVNode(_component_v_spacer, { class: \"my-6\" }),\n      _createVNode(_unref(VRow), null, {\n        default: _withCtx(() => [\n          _createVNode(_unref(VCol), {\n            cols: \"12\",\n            md: \"4\"\n          }, {\n            default: _withCtx(() => [\n              _createVNode(_unref(VSheet), { class: \"mb-4\" }, {\n                default: _withCtx(() => [\n                  _hoisted_3,\n                  _hoisted_4,\n                  _createVNode(_unref(VDataTable), {\n                    items: tableData1.value,\n                    \"items-per-page\": -1,\n                    class: \"custom-table\"\n                  }, null, 8, [\"items\"])\n                ]),\n                _: 1\n              })\n            ]),\n            _: 1\n          }),\n          _createVNode(_unref(VCol), {\n            cols: \"12\",\n            md: \"4\"\n          }, {\n            default: _withCtx(() => [\n              _createVNode(_unref(VSheet), { class: \"mb-4\" }, {\n                default: _withCtx(() => [\n                  _hoisted_5,\n                  _hoisted_6,\n                  _createVNode(_unref(VDataTable), {\n                    items: tableData2.value,\n                    \"items-per-page\": -1,\n                    class: \"custom-table\"\n                  }, null, 8, [\"items\"])\n                ]),\n                _: 1\n              })\n            ]),\n            _: 1\n          }),\n          _createVNode(_unref(VCol), {\n            cols: \"12\",\n            md: \"4\"\n          }, {\n            default: _withCtx(() => [\n              _createVNode(_unref(VSheet), { class: \"mb-4\" }, {\n                default: _withCtx(() => [\n                  _hoisted_7,\n                  _hoisted_8,\n                  _createVNode(_unref(VDataTable), {\n                    items: tableData3.value,\n                    \"items-per-page\": -1,\n                    class: \"custom-table\"\n                  }, null, 8, [\"items\"])\n                ]),\n                _: 1\n              })\n            ]),\n            _: 1\n          })\n        ]),\n        _: 1\n      })\n    ]),\n    _: 1\n  }))\n}\n}\n\n})",
-      "start": 1724414998938,
-      "end": 1724414998938,
+      "start": 1724446516497,
+      "end": 1724446516497,
       "sourcemaps": {
         "version": 3,
         "sources": [
@@ -20,15 +20,15 @@
     },
     {
       "name": "vite:css",
-      "start": 1724414998938,
-      "end": 1724414998938,
+      "start": 1724446516497,
+      "end": 1724446516497,
       "order": "normal"
     },
     {
       "name": "vite:esbuild",
       "result": "import { defineComponent as _defineComponent } from \"vue\";\nimport { createElementVNode as _createElementVNode, unref as _unref, createVNode as _createVNode, withCtx as _withCtx, createTextVNode as _createTextVNode, resolveComponent as _resolveComponent, openBlock as _openBlock, createBlock as _createBlock } from \"vue\";\nconst _hoisted_1 = /* @__PURE__ */ _createElementVNode(\"h4\", { class: \"text-h5 font-weight-bold mb-4\" }, \"Suchkriterien\", -1);\nconst _hoisted_2 = /* @__PURE__ */ _createElementVNode(\"br\", null, null, -1);\nconst _hoisted_3 = /* @__PURE__ */ _createElementVNode(\"h4\", { class: \"text-h6 font-weight-bold mb-1\" }, \"Kalte Periode\", -1);\nconst _hoisted_4 = /* @__PURE__ */ _createElementVNode(\"p\", {\n  class: \"text-body-2 mb-2\",\n  style: { \"margin-top\": \"-8px\" }\n}, \"Temperaturen zwischen -10 ... -5°C\", -1);\nconst _hoisted_5 = /* @__PURE__ */ _createElementVNode(\"h4\", { class: \"text-h6 font-weight-bold mb-1\" }, \"Hauptanteil Heizperiode\", -1);\nconst _hoisted_6 = /* @__PURE__ */ _createElementVNode(\"p\", {\n  class: \"text-body-2 mb-2\",\n  style: { \"margin-top\": \"-8px\" }\n}, \"Temperaturen zwischen 0 ... 20°C\", -1);\nconst _hoisted_7 = /* @__PURE__ */ _createElementVNode(\"h4\", { class: \"text-h6 font-weight-bold mb-1\" }, \"Schwachlast\", -1);\nconst _hoisted_8 = /* @__PURE__ */ _createElementVNode(\"p\", {\n  class: \"text-body-2 mb-2\",\n  style: { \"margin-top\": \"-8px\" }\n}, \"Temperatur möglichst nahe bei 20°C\", -1);\nimport { ref, onMounted } from \"vue\";\nimport { VDateInput } from \"vuetify/labs/VDateInput\";\nimport { VSelect, VRow, VCol, VContainer, VBtn, VSheet, VDataTable } from \"vuetify/components\";\nexport default /* @__PURE__ */ _defineComponent({\n  __name: \"DatenanalyseView\",\n  setup(__props) {\n    const startDate = ref(null);\n    const endDate = ref(null);\n    const selectedCountry = ref(null);\n    const tableData1 = ref([]);\n    const tableData2 = ref([]);\n    const tableData3 = ref([]);\n    const databaseStatus = ref(null);\n    const countryList = ref([]);\n    const latestDate = ref(null);\n    const startDateError = ref(null);\n    const endDateError = ref(null);\n    const selectedCountryError = ref(null);\n    const requiredRule = (value) => !!value || \"Dieses Feld ist erforderlich\";\n    async function sendData() {\n      startDateError.value = null;\n      endDateError.value = null;\n      selectedCountryError.value = null;\n      if (!startDate.value) {\n        startDateError.value = \"Bitte wählen Sie ein Startdatum\";\n      }\n      if (!endDate.value) {\n        endDateError.value = \"Bitte wählen Sie ein Enddatum\";\n      }\n      if (!selectedCountry.value) {\n        selectedCountryError.value = \"Bitte wählen Sie einen Ort aus\";\n      }\n      if (startDate.value !== null && endDate.value !== null && selectedCountry.value !== null) {\n        const formData = new FormData();\n        formData.append(\"startDate\", startDate.value);\n        formData.append(\"endDate\", endDate.value);\n        formData.append(\"selectedCountry\", selectedCountry.value);\n        try {\n          const response = await fetch(\"/search\", {\n            method: \"POST\",\n            body: formData\n          });\n          if (!response.ok) {\n            alert(response.statusText);\n          } else {\n            const payload = await response.json();\n            processPayload(payload);\n          }\n        } catch (error) {\n          alert(`Anmeldezeit ist Abgelaufen`);\n          location.href = \"/login\";\n        }\n      }\n    }\n    function processPayload(payload) {\n      tableData1.value = payload.kaltPeriode;\n      tableData2.value = payload.hauptanteilHeizperiode;\n      tableData3.value = payload.schwachlast;\n    }\n    async function firstPayload() {\n      try {\n        const data = await fetch(\"/get-DatenanalyseView\").then((response) => response.json());\n        databaseStatus.value = data.databaseStatus;\n        countryList.value = data.countryList;\n        latestDate.value = data.latestDate;\n      } catch (error) {\n        alert(`Die Anmeldezeit ist abgelaufen`);\n        location.href = \"/login\";\n      }\n    }\n    onMounted(async () => {\n      await firstPayload();\n    });\n    return (_ctx, _cache) => {\n      const _component_v_spacer = _resolveComponent(\"v-spacer\");\n      const _component_v_divider = _resolveComponent(\"v-divider\");\n      return _openBlock(), _createBlock(_unref(VContainer), null, {\n        default: _withCtx(() => [\n          _hoisted_1,\n          _createVNode(_unref(VSelect), {\n            modelValue: selectedCountry.value,\n            \"onUpdate:modelValue\": _cache[0] || (_cache[0] = ($event) => selectedCountry.value = $event),\n            label: \"Wähle einen Ort aus\",\n            items: countryList.value,\n            rules: [requiredRule],\n            error: !!selectedCountryError.value,\n            \"error-messages\": selectedCountryError.value\n          }, null, 8, [\"modelValue\", \"items\", \"rules\", \"error\", \"error-messages\"]),\n          _createVNode(_unref(VRow), { dense: \"\" }, {\n            default: _withCtx(() => [\n              _createVNode(_unref(VCol), {\n                cols: \"12\",\n                md: \"6\"\n              }, {\n                default: _withCtx(() => [\n                  _createVNode(_unref(VDateInput), {\n                    modelValue: startDate.value,\n                    \"onUpdate:modelValue\": _cache[1] || (_cache[1] = ($event) => startDate.value = $event),\n                    label: \"Wähle das Startdatum\",\n                    \"prepend-icon\": \"\",\n                    \"prepend-inner-icon\": \"$calendar\",\n                    rules: [requiredRule],\n                    error: !!startDateError.value,\n                    \"error-messages\": startDateError.value\n                  }, null, 8, [\"modelValue\", \"rules\", \"error\", \"error-messages\"])\n                ]),\n                _: 1\n              }),\n              _createVNode(_unref(VCol), {\n                cols: \"12\",\n                md: \"6\"\n              }, {\n                default: _withCtx(() => [\n                  _createVNode(_unref(VDateInput), {\n                    modelValue: endDate.value,\n                    \"onUpdate:modelValue\": _cache[2] || (_cache[2] = ($event) => endDate.value = $event),\n                    label: \"Wähle das Enddatum\",\n                    \"prepend-icon\": \"\",\n                    \"prepend-inner-icon\": \"$calendar\",\n                    rules: [requiredRule],\n                    error: !!endDateError.value,\n                    \"error-messages\": endDateError.value\n                  }, null, 8, [\"modelValue\", \"rules\", \"error\", \"error-messages\"])\n                ]),\n                _: 1\n              })\n            ]),\n            _: 1\n          }),\n          _hoisted_2,\n          _createVNode(_unref(VRow), { align: \"center\" }, {\n            default: _withCtx(() => [\n              _createVNode(_unref(VCol), { cols: \"auto\" }, {\n                default: _withCtx(() => [\n                  _createVNode(_unref(VBtn), {\n                    onClick: sendData,\n                    color: \"green lighten-3\"\n                  }, {\n                    default: _withCtx(() => [\n                      _createTextVNode(\"Suche starten\")\n                    ]),\n                    _: 1\n                  })\n                ]),\n                _: 1\n              }),\n              _createVNode(_component_v_spacer),\n              _createVNode(_unref(VCol), { cols: \"auto\" }, {\n                default: _withCtx(() => [\n                  _createVNode(_unref(VBtn), {\n                    to: { path: \"/swisstopo\" },\n                    color: \"green lighten-3\"\n                  }, {\n                    default: _withCtx(() => [\n                      _createTextVNode(\"Karte\")\n                    ]),\n                    _: 1\n                  })\n                ]),\n                _: 1\n              })\n            ]),\n            _: 1\n          }),\n          _createVNode(_component_v_spacer, { class: \"my-6\" }),\n          _createVNode(_component_v_divider, {\n            class: \"my-7\",\n            style: { height: \"20px\" }\n          }),\n          _createVNode(_component_v_spacer, { class: \"my-6\" }),\n          _createVNode(_unref(VRow), null, {\n            default: _withCtx(() => [\n              _createVNode(_unref(VCol), {\n                cols: \"12\",\n                md: \"4\"\n              }, {\n                default: _withCtx(() => [\n                  _createVNode(_unref(VSheet), { class: \"mb-4\" }, {\n                    default: _withCtx(() => [\n                      _hoisted_3,\n                      _hoisted_4,\n                      _createVNode(_unref(VDataTable), {\n                        items: tableData1.value,\n                        \"items-per-page\": -1,\n                        class: \"custom-table\"\n                      }, null, 8, [\"items\"])\n                    ]),\n                    _: 1\n                  })\n                ]),\n                _: 1\n              }),\n              _createVNode(_unref(VCol), {\n                cols: \"12\",\n                md: \"4\"\n              }, {\n                default: _withCtx(() => [\n                  _createVNode(_unref(VSheet), { class: \"mb-4\" }, {\n                    default: _withCtx(() => [\n                      _hoisted_5,\n                      _hoisted_6,\n                      _createVNode(_unref(VDataTable), {\n                        items: tableData2.value,\n                        \"items-per-page\": -1,\n                        class: \"custom-table\"\n                      }, null, 8, [\"items\"])\n                    ]),\n                    _: 1\n                  })\n                ]),\n                _: 1\n              }),\n              _createVNode(_unref(VCol), {\n                cols: \"12\",\n                md: \"4\"\n              }, {\n                default: _withCtx(() => [\n                  _createVNode(_unref(VSheet), { class: \"mb-4\" }, {\n                    default: _withCtx(() => [\n                      _hoisted_7,\n                      _hoisted_8,\n                      _createVNode(_unref(VDataTable), {\n                        items: tableData3.value,\n                        \"items-per-page\": -1,\n                        class: \"custom-table\"\n                      }, null, 8, [\"items\"])\n                    ]),\n                    _: 1\n                  })\n                ]),\n                _: 1\n              })\n            ]),\n            _: 1\n          })\n        ]),\n        _: 1\n      });\n    };\n  }\n});\n",
-      "start": 1724414998938,
-      "end": 1724414998964,
+      "start": 1724446516497,
+      "end": 1724446516663,
       "order": "normal",
       "sourcemaps": {
         "version": 3,
@@ -44,80 +44,80 @@
     },
     {
       "name": "vite:json",
-      "start": 1724414998964,
-      "end": 1724414998964,
+      "start": 1724446516664,
+      "end": 1724446516664,
       "order": "normal"
     },
     {
       "name": "vite:worker",
-      "start": 1724414998964,
-      "end": 1724414998964,
+      "start": 1724446516664,
+      "end": 1724446516664,
       "order": "normal"
     },
     {
       "name": "vite:vue",
-      "start": 1724414998964,
-      "end": 1724414998964,
+      "start": 1724446516664,
+      "end": 1724446516664,
       "order": "normal"
     },
     {
       "name": "vite:define",
-      "start": 1724414998964,
-      "end": 1724414998965,
+      "start": 1724446516664,
+      "end": 1724446516664,
       "order": "normal"
     },
     {
       "name": "vite:css-post",
-      "start": 1724414998965,
-      "end": 1724414998965,
+      "start": 1724446516664,
+      "end": 1724446516664,
       "order": "normal"
     },
     {
       "name": "vite:build-html",
-      "start": 1724414998965,
-      "end": 1724414998965,
+      "start": 1724446516664,
+      "end": 1724446516664,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1724414998965,
-      "end": 1724414998965,
+      "start": 1724446516664,
+      "end": 1724446516664,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1724414998965,
-      "end": 1724414998965,
+      "start": 1724446516664,
+      "end": 1724446516664,
       "order": "normal"
     },
     {
       "name": "commonjs",
-      "start": 1724414998965,
-      "end": 1724414998965,
+      "start": 1724446516664,
+      "end": 1724446516664,
       "order": "normal"
     },
     {
       "name": "vite:dynamic-import-vars",
-      "start": 1724414998965,
-      "end": 1724414998965,
+      "start": 1724446516664,
+      "end": 1724446516664,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1724414998965,
-      "end": 1724414998965,
+      "start": 1724446516664,
+      "end": 1724446516664,
       "order": "normal"
     },
     {
       "name": "vite:build-import-analysis",
-      "start": 1724414998965,
-      "end": 1724414998965,
+      "start": 1724446516664,
+      "end": 1724446516665,
       "order": "normal"
     },
     {
       "name": "vite:reporter",
-      "start": 1724414998965,
-      "end": 1724414998965,
+      "start": 1724446516665,
+      "end": 1724446516665,
       "order": "normal"
     }
   ]

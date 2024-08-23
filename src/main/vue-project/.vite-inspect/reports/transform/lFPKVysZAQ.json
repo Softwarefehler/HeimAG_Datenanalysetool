@@ -4,98 +4,98 @@
     {
       "name": "vite:load-fallback",
       "result": "import { createVNode as _createVNode } from \"vue\";\n// Styles\nimport \"./VDatePickerHeader.css\";\n\n// Components\nimport { VBtn } from \"../VBtn/index.mjs\";\nimport { VDefaultsProvider } from \"../VDefaultsProvider/index.mjs\"; // Composables\nimport { useBackgroundColor } from \"../../composables/color.mjs\";\nimport { MaybeTransition } from \"../../composables/transition.mjs\"; // Utilities\nimport { EventProp, genericComponent, propsFactory, useRender } from \"../../util/index.mjs\"; // Types\nexport const makeVDatePickerHeaderProps = propsFactory({\n  appendIcon: String,\n  color: String,\n  header: String,\n  transition: String,\n  onClick: EventProp()\n}, 'VDatePickerHeader');\nexport const VDatePickerHeader = genericComponent()({\n  name: 'VDatePickerHeader',\n  props: makeVDatePickerHeaderProps(),\n  emits: {\n    click: () => true,\n    'click:append': () => true\n  },\n  setup(props, _ref) {\n    let {\n      emit,\n      slots\n    } = _ref;\n    const {\n      backgroundColorClasses,\n      backgroundColorStyles\n    } = useBackgroundColor(props, 'color');\n    function onClick() {\n      emit('click');\n    }\n    function onClickAppend() {\n      emit('click:append');\n    }\n    useRender(() => {\n      const hasContent = !!(slots.default || props.header);\n      const hasAppend = !!(slots.append || props.appendIcon);\n      return _createVNode(\"div\", {\n        \"class\": ['v-date-picker-header', {\n          'v-date-picker-header--clickable': !!props.onClick\n        }, backgroundColorClasses.value],\n        \"style\": backgroundColorStyles.value,\n        \"onClick\": onClick\n      }, [slots.prepend && _createVNode(\"div\", {\n        \"key\": \"prepend\",\n        \"class\": \"v-date-picker-header__prepend\"\n      }, [slots.prepend()]), hasContent && _createVNode(MaybeTransition, {\n        \"key\": \"content\",\n        \"name\": props.transition\n      }, {\n        default: () => [_createVNode(\"div\", {\n          \"key\": props.header,\n          \"class\": \"v-date-picker-header__content\"\n        }, [slots.default?.() ?? props.header])]\n      }), hasAppend && _createVNode(\"div\", {\n        \"class\": \"v-date-picker-header__append\"\n      }, [!slots.append ? _createVNode(VBtn, {\n        \"key\": \"append-btn\",\n        \"icon\": props.appendIcon,\n        \"variant\": \"text\",\n        \"onClick\": onClickAppend\n      }, null) : _createVNode(VDefaultsProvider, {\n        \"key\": \"append-defaults\",\n        \"disabled\": !props.appendIcon,\n        \"defaults\": {\n          VBtn: {\n            icon: props.appendIcon,\n            variant: 'text'\n          }\n        }\n      }, {\n        default: () => [slots.append?.()]\n      })])]);\n    });\n    return {};\n  }\n});\n//# sourceMappingURL=VDatePickerHeader.mjs.map",
-      "start": 1724414999517,
-      "end": 1724414999700,
+      "start": 1724446517020,
+      "end": 1724446517134,
       "sourcemaps": null
     },
     {
       "name": "vite:css",
-      "start": 1724414999700,
-      "end": 1724414999700,
+      "start": 1724446517135,
+      "end": 1724446517135,
       "order": "normal"
     },
     {
       "name": "vite:esbuild",
-      "start": 1724414999700,
-      "end": 1724414999700,
+      "start": 1724446517135,
+      "end": 1724446517135,
       "order": "normal"
     },
     {
       "name": "vite:json",
-      "start": 1724414999700,
-      "end": 1724414999700,
+      "start": 1724446517135,
+      "end": 1724446517135,
       "order": "normal"
     },
     {
       "name": "vite:worker",
-      "start": 1724414999700,
-      "end": 1724414999700,
+      "start": 1724446517135,
+      "end": 1724446517135,
       "order": "normal"
     },
     {
       "name": "vite:vue",
-      "start": 1724414999700,
-      "end": 1724414999701,
+      "start": 1724446517135,
+      "end": 1724446517135,
       "order": "normal"
     },
     {
       "name": "vite:define",
-      "start": 1724414999701,
-      "end": 1724414999701,
+      "start": 1724446517135,
+      "end": 1724446517135,
       "order": "normal"
     },
     {
       "name": "vite:css-post",
-      "start": 1724414999701,
-      "end": 1724414999701,
+      "start": 1724446517135,
+      "end": 1724446517135,
       "order": "normal"
     },
     {
       "name": "vite:build-html",
-      "start": 1724414999701,
-      "end": 1724414999701,
+      "start": 1724446517135,
+      "end": 1724446517135,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1724414999701,
-      "end": 1724414999701,
+      "start": 1724446517135,
+      "end": 1724446517135,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1724414999701,
-      "end": 1724414999701,
+      "start": 1724446517135,
+      "end": 1724446517135,
       "order": "normal"
     },
     {
       "name": "commonjs",
-      "start": 1724414999701,
-      "end": 1724414999701,
+      "start": 1724446517135,
+      "end": 1724446517135,
       "order": "normal"
     },
     {
       "name": "vite:dynamic-import-vars",
-      "start": 1724414999701,
-      "end": 1724414999701,
+      "start": 1724446517135,
+      "end": 1724446517135,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1724414999701,
-      "end": 1724414999701,
+      "start": 1724446517135,
+      "end": 1724446517135,
       "order": "normal"
     },
     {
       "name": "vite:build-import-analysis",
-      "start": 1724414999701,
-      "end": 1724414999701,
+      "start": 1724446517135,
+      "end": 1724446517135,
       "order": "normal"
     },
     {
       "name": "vite:reporter",
-      "start": 1724414999701,
-      "end": 1724414999701,
+      "start": 1724446517135,
+      "end": 1724446517135,
       "order": "normal"
     }
   ]

@@ -4,98 +4,98 @@
     {
       "name": "vite:load-fallback",
       "result": "// Composables\nimport { makeGroupItemProps, useGroupItem } from \"../../composables/group.mjs\"; // Utilities\nimport { VSlideGroupSymbol } from \"./VSlideGroup.mjs\";\nimport { genericComponent } from \"../../util/index.mjs\"; // Types\nexport const VSlideGroupItem = genericComponent()({\n  name: 'VSlideGroupItem',\n  props: makeGroupItemProps(),\n  emits: {\n    'group:selected': val => true\n  },\n  setup(props, _ref) {\n    let {\n      slots\n    } = _ref;\n    const slideGroupItem = useGroupItem(props, VSlideGroupSymbol);\n    return () => slots.default?.({\n      isSelected: slideGroupItem.isSelected.value,\n      select: slideGroupItem.select,\n      toggle: slideGroupItem.toggle,\n      selectedClass: slideGroupItem.selectedClass.value\n    });\n  }\n});\n//# sourceMappingURL=VSlideGroupItem.mjs.map",
-      "start": 1724415000161,
-      "end": 1724415000211,
+      "start": 1724446517568,
+      "end": 1724446517713,
       "sourcemaps": null
     },
     {
       "name": "vite:css",
-      "start": 1724415000211,
-      "end": 1724415000211,
+      "start": 1724446517713,
+      "end": 1724446517713,
       "order": "normal"
     },
     {
       "name": "vite:esbuild",
-      "start": 1724415000211,
-      "end": 1724415000211,
+      "start": 1724446517713,
+      "end": 1724446517713,
       "order": "normal"
     },
     {
       "name": "vite:json",
-      "start": 1724415000211,
-      "end": 1724415000211,
+      "start": 1724446517713,
+      "end": 1724446517713,
       "order": "normal"
     },
     {
       "name": "vite:worker",
-      "start": 1724415000211,
-      "end": 1724415000211,
+      "start": 1724446517713,
+      "end": 1724446517713,
       "order": "normal"
     },
     {
       "name": "vite:vue",
-      "start": 1724415000211,
-      "end": 1724415000211,
+      "start": 1724446517713,
+      "end": 1724446517713,
       "order": "normal"
     },
     {
       "name": "vite:define",
-      "start": 1724415000211,
-      "end": 1724415000211,
+      "start": 1724446517713,
+      "end": 1724446517713,
       "order": "normal"
     },
     {
       "name": "vite:css-post",
-      "start": 1724415000211,
-      "end": 1724415000211,
+      "start": 1724446517713,
+      "end": 1724446517713,
       "order": "normal"
     },
     {
       "name": "vite:build-html",
-      "start": 1724415000211,
-      "end": 1724415000211,
+      "start": 1724446517713,
+      "end": 1724446517713,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1724415000211,
-      "end": 1724415000211,
+      "start": 1724446517713,
+      "end": 1724446517713,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1724415000211,
-      "end": 1724415000211,
+      "start": 1724446517713,
+      "end": 1724446517713,
       "order": "normal"
     },
     {
       "name": "commonjs",
-      "start": 1724415000211,
-      "end": 1724415000211,
+      "start": 1724446517713,
+      "end": 1724446517713,
       "order": "normal"
     },
     {
       "name": "vite:dynamic-import-vars",
-      "start": 1724415000211,
-      "end": 1724415000211,
+      "start": 1724446517713,
+      "end": 1724446517713,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1724415000211,
-      "end": 1724415000211,
+      "start": 1724446517713,
+      "end": 1724446517713,
       "order": "normal"
     },
     {
       "name": "vite:build-import-analysis",
-      "start": 1724415000211,
-      "end": 1724415000211,
+      "start": 1724446517713,
+      "end": 1724446517713,
       "order": "normal"
     },
     {
       "name": "vite:reporter",
-      "start": 1724415000211,
-      "end": 1724415000211,
+      "start": 1724446517713,
+      "end": 1724446517713,
       "order": "normal"
     }
   ]

@@ -1,0 +1,105 @@
+@startuml
+interface ch.heimag.datenanalysetool.databases.DatabaseInfo {
++ String PROTOCOL
++ String HOST
++ Int PORT
++ String DATABASE
++ String OPTIONS
++ String URL
++ String USER
++ String PASSWORD
+}
+
+class ch.heimag.datenanalysetool.conditions.OperatingConditions {
++ <<Create>> OperatingConditions(,Int,,Int,,String)
+}
+
+class ch.heimag.datenanalysetool.country.FileReader {
++  country
+}
+
+class ch.heimag.datenanalysetool.databases.Data {
++  database
+}
+
+class ch.heimag.datenanalysetool.routes.FirstResponseDatenanalyseView {
++ <<Create>> FirstResponseDatenanalyseView(,String,,MutableList<String>,,String)
+}
+
+class ch.heimag.datenanalysetool.routes.FirstResponseSettingsView {
++ <<Create>> FirstResponseSettingsView(,String,,String)
+}
+
+class ch.heimag.datenanalysetool.routes.OperatingStateValueList {
++ <<Create>> OperatingStateValueList(,MutableList<DataPoint>,,MutableList<DataPoint>,,MutableList<DataPoint>,)
+}
+
+class ch.heimag.datenanalysetool.country.Country {
+-  logger
++ MutableList<String> loadToSelectCountry(String)
+}
+
+
+class ch.heimag.datenanalysetool.converter.Converter {
++ Logger logger
++ Int databaseDateStringToInt(String)
++ String intToString(Int)
++ Int dateStringToInt(String)
+}
+
+
+class ch.heimag.datenanalysetool.databases.DataPoint {
++ <<Create>> DataPoint(String,String)
+}
+
+class ch.heimag.datenanalysetool.databases.Database {
++  PROTOCOL
++  HOST
++  PORT
++  DATABASE
++  OPTIONS
++  URL
++  USER
++  PASSWORD
+-  logger
++ String checkDatabaseStatus()
++ String loadLatestDate()
++ void loadOperatingStateKaltePeriode(void,OperatingConditions)
++ void null()
++ void loadOperatingStateHaupanteilHeizperiode(void,OperatingConditions)
++ void null()
++ void loadOperatingStateSchwachlast(void,OperatingConditions)
++ void null()
++ void setWeatherdataToDatabase(MutableList<WeatherData>)
+}
+
+
+class ch.heimag.datenanalysetool.routes.UserInfo {
++ <<Create>> UserInfo(String)
+}
+
+class ch.heimag.datenanalysetool.weatherdata.WeatherData {
++ <<Create>> WeatherData(,Int?,,Double?,,Double?,,Double?,,Double?,,Double?,,Double?,,Double?,,Double?,,Double?,,Double?,,Double?,,Double?,,Double?,,Double?,,Double?,,Double?,,Double?,,Double?,,Double?,,Double?,,Double?,,Double?,,Double?,,Double?,,Double?,,Double?,,Double?,,Double?,,Double?)
+}
+
+class ch.heimag.datenanalysetool.plugins.UserSession {
++ <<Create>> UserSession(String)
+}
+
+class ch.heimag.datenanalysetool.plugins.LoginModel {
++ <<Create>> LoginModel(,String,,String,,String,,String)
+}
+
+class ch.heimag.datenanalysetool.services.AuthenticationService {
+-  logger
+-  digestFunction
+-  usernameToPasswordMap
++ UserIdPrincipal? authenticate(UserPasswordCredential)
+}
+
+
+
+
+ch.heimag.datenanalysetool.databases.DatabaseInfo <|.. ch.heimag.datenanalysetool.databases.Database
+ch.heimag.datenanalysetool.plugins.Principal <|.. ch.heimag.datenanalysetool.plugins.UserSession
+@enduml

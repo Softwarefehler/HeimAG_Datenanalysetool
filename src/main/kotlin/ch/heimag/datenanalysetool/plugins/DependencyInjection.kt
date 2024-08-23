@@ -16,6 +16,6 @@ fun Application.installKoinDependencyInjection() {
     val logger = LoggerFactory.getLogger("DependencyInjection")
     install(Koin) {
         modules(defaultKoinModule)
-        logger.info("Koin Dependency Injection installiert mit dem Standardmodul: defaultKoinModule.")
+        logger.info("Koin Dependency Injection install with Standardmodule: defaultKoinModule.")
     }
 }

@@ -1,6 +1,5 @@
 <script lang="ts" setup>
 import { onMounted, ref } from 'vue'
-import { router } from '@/routes/router'
 
 
 const databaseStatus = ref<string | null>(null)
@@ -26,6 +25,12 @@ async function csvUploadFile() {
 
   if (!csvFile.value) {
     csvFileInputError.value = 'Bitte wählen Sie eine Datei aus'
+    csvIsLoading.value = false
+    return
+  }
+
+  if (csvFile.value.name !== 'wetterdaten.csv') {
+    csvFileInputError.value = 'Die Datei muss den Namen "wetterdaten.csv" haben.'
     csvIsLoading.value = false
     return
   }
@@ -65,9 +70,20 @@ function csvHandleFileChange(event: Event) {
   if (!input.files?.length) {
     csvUploadMessage.value = null
     csvUploadError.value = false
+    return
+  }
+  csvFile.value = input.files[0]
+
+  // Überprüfen des Dateinamens
+  if (csvFile.value.name !== 'wetterdaten.csv') {
+    csvFileInputError.value = 'Die Datei muss den Namen "wetterdaten.csv" haben.'
+    csvUploadError.value = true
+    csvFile.value = null
+  } else {
+    csvFileInputError.value = null
+    csvUploadError.value = false
   }
 }
-
 
 
 async function firstPayload() {

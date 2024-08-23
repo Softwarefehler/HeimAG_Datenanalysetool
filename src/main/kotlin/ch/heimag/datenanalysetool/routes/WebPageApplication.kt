@@ -56,7 +56,7 @@ fun Application.webPageApplication() {
 
 
             get("/get-DatenanalyseView") {
-                logger.info("GET-Anfrage auf /get-DatenanalyseView")
+                logger.info("GET request from /get-DatenanalyseView")
 
                 val firstResponse = FirstResponseDatenanalyseView(
                     databaseStatus = databaseStatus,
@@ -75,7 +75,7 @@ fun Application.webPageApplication() {
 
 
             post("/search") {
-                logger.info("POST-Anfrage auf /search")
+                logger.info("POST request for /search")
 
                 var startDateReceive: String? = null
                 var endDateReceive: String? = null
@@ -103,7 +103,7 @@ fun Application.webPageApplication() {
                 val endDateString = endDateReceive.toString()
                 val selectedCountry = selectedCountryReceive.toString()
 
-                logger.debug("Empfangene Daten - Start Date: $startDateString, End Date: $endDateString, Selected Country: $selectedCountry")
+                logger.debug("Received Data - Start date: $startDateString, End date: $endDateString, Selected country: $selectedCountry")
 
                 // Parse Daten
                 val startDate = Converter.databaseDateStringToInt(startDateString)
@@ -119,13 +119,13 @@ fun Application.webPageApplication() {
                 val operatingStateValueList =
                     OperatingStateValueList(valueListKaltPeriode, valueListHauptanteilHeizperiode, valueListSchwachlast)
 
-                logger.debug("Berechneter CountryCode: ${operatingState.countryCode}")
+                logger.debug("Calculated country code: ${operatingState.countryCode}")
 
                 call.respond(operatingStateValueList)
             }
 
             post("/csv-upload") {
-                logger.info("POST-Anfrage auf /csv-upload")
+                logger.info("POST request for /csv-upload")
 
                 val multipart = call.receiveMultipart()
                 val csvRecords = mutableListOf<WeatherData>()
@@ -189,23 +189,23 @@ fun Application.webPageApplication() {
                                 }
                             }
                         }
-                        logger.debug("CSV-Datei verarbeitet, Anzahl der Datensätze: ${csvRecords.size}")
+                        logger.debug("csv-File processed, Size of data records: ${csvRecords.size}")
                     }
                     part.dispose()
                 }
 
                 Data.database.setWeatherdataToDatabase(csvRecords)
                 latestDateString = Data.database.loadLatestDate()
-                logger.info("Datenbank aktualisiert, neuestes Datum: $latestDateString")
+                logger.info("Database updated, newest date: $latestDateString")
 
                 call.respond(
                     HttpStatusCode.OK,
-                    mapOf("message" to "File successfully processed. Records count: ${csvRecords.size}")
+                    mapOf("message" to "File successfully processed. records count: ${csvRecords.size}")
                 )
             }
 
             get("/get-SettingsView") {
-                logger.info("GET-Anfrage auf /get-SettingsView")
+                logger.info("GET request from /get-SettingsView")
 
                 val firstResponse = FirstResponseSettingsView(
                     databaseStatus = databaseStatus,
@@ -221,16 +221,16 @@ fun Application.webPageApplication() {
             }
 
             get("/swisstopographic") {
-                logger.info("GET-Anfrage auf /swisstopographic")
+                logger.info("GET request from /swisstopographic")
 
                 val imageName = "Switzerland_topographic.png"
                 val file = File("$IMAGE_DIRECTORY/$imageName")
                 if (file.exists()) {
-                    logger.debug("Bild $imageName gefunden, sende Datei.")
+                    logger.debug("Picture $imageName found, send data.")
                     call.respondFile(file)
                 } else {
-                    logger.error("Bild $imageName nicht gefunden.")
-                    call.respond(HttpStatusCode.NotFound, "Bild nicht gefunden")
+                    logger.error("Picture $imageName not found, send data.")
+                    call.respond(HttpStatusCode.NotFound, "Picture not found")
                 }
             }
         }

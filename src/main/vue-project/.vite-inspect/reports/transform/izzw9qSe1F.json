@@ -4,98 +4,98 @@
     {
       "name": "vite:load-fallback",
       "result": "import { createVNode as _createVNode } from \"vue\";\n// Styles\nimport \"./VCalendarMonthDay.css\";\n\n// Components\nimport { VCalendarEvent } from \"./VCalendarEvent.mjs\";\nimport { VBtn } from \"../../components/VBtn/index.mjs\"; // Utilities\nimport { genericComponent, propsFactory, useRender } from \"../../util/index.mjs\";\nexport const makeVCalendarMonthDayProps = propsFactory({\n  active: Boolean,\n  color: String,\n  day: Object,\n  disabled: Boolean,\n  events: Array,\n  title: [Number, String]\n}, 'VCalendarMonthDay');\nexport const VCalendarMonthDay = genericComponent()({\n  name: 'VCalendarMonthDay',\n  props: makeVCalendarMonthDayProps(),\n  setup(props, _ref) {\n    let {\n      emit,\n      slots\n    } = _ref;\n    useRender(() => {\n      const hasTitle = !!(props.title || slots.title?.({\n        title: props.title\n      }));\n      return _createVNode(\"div\", {\n        \"class\": ['v-calendar-month__day']\n      }, [!props.day?.isHidden && hasTitle && _createVNode(\"div\", {\n        \"key\": \"title\",\n        \"class\": \"v-calendar-weekly__day-label\"\n      }, [slots.title?.({\n        title: props.title\n      }) ?? _createVNode(VBtn, {\n        \"class\": props.day?.isToday ? 'v-calendar-weekly__day-label__today' : undefined,\n        \"color\": props.color,\n        \"disabled\": props.disabled,\n        \"icon\": true,\n        \"size\": \"x-small\",\n        \"variant\": props.day?.isToday ? undefined : 'flat'\n      }, {\n        default: () => [props.title]\n      })]), !props.day?.isHidden && _createVNode(\"div\", {\n        \"key\": \"content\",\n        \"class\": \"v-calendar-weekly__day-content\"\n      }, [slots.content?.() ?? _createVNode(\"div\", null, [_createVNode(\"div\", {\n        \"class\": \"v-calendar-weekly__day-alldayevents-container\"\n      }, [props.events?.filter(event => event.allDay).map(event => slots.event ? slots.event({\n        day: props.day,\n        allDay: true,\n        event\n      }) : _createVNode(VCalendarEvent, {\n        \"day\": props.day,\n        \"event\": event,\n        \"allDay\": true\n      }, null))]), _createVNode(\"div\", {\n        \"class\": \"v-calendar-weekly__day-events-container\"\n      }, [props.events?.filter(event => !event.allDay).map(event => slots.event ? slots.event({\n        day: props.day,\n        event,\n        allDay: false\n      }) : _createVNode(VCalendarEvent, {\n        \"day\": props.day,\n        \"event\": event\n      }, null))])])]), !props.day?.isHidden && slots.default?.()]);\n    });\n    return {};\n  }\n});\n//# sourceMappingURL=VCalendarMonthDay.mjs.map",
-      "start": 1724414998484,
-      "end": 1724414998695,
+      "start": 1724446515831,
+      "end": 1724446516037,
       "sourcemaps": null
     },
     {
       "name": "vite:css",
-      "start": 1724414998695,
-      "end": 1724414998695,
+      "start": 1724446516037,
+      "end": 1724446516037,
       "order": "normal"
     },
     {
       "name": "vite:esbuild",
-      "start": 1724414998695,
-      "end": 1724414998695,
+      "start": 1724446516037,
+      "end": 1724446516037,
       "order": "normal"
     },
     {
       "name": "vite:json",
-      "start": 1724414998695,
-      "end": 1724414998695,
+      "start": 1724446516037,
+      "end": 1724446516037,
       "order": "normal"
     },
     {
       "name": "vite:worker",
-      "start": 1724414998695,
-      "end": 1724414998695,
+      "start": 1724446516037,
+      "end": 1724446516037,
       "order": "normal"
     },
     {
       "name": "vite:vue",
-      "start": 1724414998695,
-      "end": 1724414998695,
+      "start": 1724446516037,
+      "end": 1724446516037,
       "order": "normal"
     },
     {
       "name": "vite:define",
-      "start": 1724414998695,
-      "end": 1724414998695,
+      "start": 1724446516037,
+      "end": 1724446516037,
       "order": "normal"
     },
     {
       "name": "vite:css-post",
-      "start": 1724414998695,
-      "end": 1724414998695,
+      "start": 1724446516037,
+      "end": 1724446516037,
       "order": "normal"
     },
     {
       "name": "vite:build-html",
-      "start": 1724414998695,
-      "end": 1724414998695,
+      "start": 1724446516037,
+      "end": 1724446516037,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1724414998695,
-      "end": 1724414998695,
+      "start": 1724446516037,
+      "end": 1724446516037,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1724414998695,
-      "end": 1724414998695,
+      "start": 1724446516037,
+      "end": 1724446516037,
       "order": "normal"
     },
     {
       "name": "commonjs",
-      "start": 1724414998695,
-      "end": 1724414998696,
+      "start": 1724446516037,
+      "end": 1724446516037,
       "order": "normal"
     },
     {
       "name": "vite:dynamic-import-vars",
-      "start": 1724414998696,
-      "end": 1724414998696,
+      "start": 1724446516038,
+      "end": 1724446516038,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1724414998696,
-      "end": 1724414998696,
+      "start": 1724446516038,
+      "end": 1724446516038,
       "order": "normal"
     },
     {
       "name": "vite:build-import-analysis",
-      "start": 1724414998696,
-      "end": 1724414998696,
+      "start": 1724446516038,
+      "end": 1724446516038,
       "order": "normal"
     },
     {
       "name": "vite:reporter",
-      "start": 1724414998696,
-      "end": 1724414998696,
+      "start": 1724446516038,
+      "end": 1724446516038,
       "order": "normal"
     }
   ]

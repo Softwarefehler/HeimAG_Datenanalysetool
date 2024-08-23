@@ -25,7 +25,7 @@ fun Application.singlePageApplication() {
                 val principal = call.principal<UserSession>()
                 val userName = principal?.name.toString()
 
-                logger.info("Anforderung von Benutzerinformationen für Benutzer erhalten: $userName")
+                logger.info("Request for user informationen for user $userName")
 
                 call.respond(HttpStatusCode.OK, UserInfo(userName))
             }

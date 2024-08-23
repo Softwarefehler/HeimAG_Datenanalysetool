@@ -71,15 +71,15 @@ fun Application.installSessionAndAuthentication() {
             call.sessions.clear<UserSession>()
             val loginModel = LoginModel(LOGIN_URL, USER_PARAM_NAME, PASSWORD_PARAM_NAME, databaseStatus)
             call.respond(FreeMarkerContent("login.ftl", mapOf("login" to loginModel)))
-            logger.debug("Antworte mit FreeMarkerContent Template: login.ftl .")
+            logger.debug("Answer with FreeMarkerContent Template: login.ftl.")
         }
 
         staticResources("/images", "images")
-        logger.info("Bedienung von statischer Resource unter /images.")
+        logger.info("Operation of static resource under /images.")
 
         authenticate("auth-form") {
             post(LOGIN_URL) {
-                logger.info(" POST anftage zu $LOGIN_URL für Benutzer Authentifikation.")
+                logger.info(" POST request to $LOGIN_URL for user Authentication.")
 
                 val principal = call.principal<UserIdPrincipal>()
                 val userName = principal?.name.toString()
@@ -88,10 +88,10 @@ fun Application.installSessionAndAuthentication() {
                 logger.debug("Session created for user: $userName")
 
                 if (databaseStatus == "Datenbank vorhanden") {
-                    logger.info("Status Datenbank: ${databaseStatus} -> Weiterleitung an '/' WebPageApplication")
+                    logger.info("Status Database: ${databaseStatus} -> Forwarding to '/' WebPageApplication")
                     call.respondRedirect("/")
                 } else {
-                    logger.warn("Status Datenbank: ${databaseStatus} ->  lösche Session und rückkehr zu Fremmarkertemplate unter $LOGIN_URL.")
+                    logger.warn("Status Database: ${databaseStatus} ->  delete session and return to Template: login.ftl.")
                     call.sessions.clear<UserSession>()
                     call.respondRedirect(LOGIN_URL)
                 }
@@ -99,7 +99,7 @@ fun Application.installSessionAndAuthentication() {
 
 
             get("/logout") {
-                logger.info("Get logout Anfrage. löscht Benutzer Session.")
+                logger.info("Get logout request. delete user session.")
                 call.sessions.clear<UserSession>()
                 call.respondRedirect(LOGIN_URL)
             }

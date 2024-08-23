@@ -4,15 +4,15 @@
     {
       "name": "vite:load-fallback",
       "result": ".v-color-picker-preview__alpha .v-slider-track__background {\n  background-color: transparent !important;\n}\n.v-locale--is-ltr.v-color-picker-preview__alpha .v-slider-track__background, .v-locale--is-ltr .v-color-picker-preview__alpha .v-slider-track__background {\n  background-image: linear-gradient(to right, transparent, var(--v-color-picker-color-hsv));\n}\n\n.v-locale--is-rtl.v-color-picker-preview__alpha .v-slider-track__background, .v-locale--is-rtl .v-color-picker-preview__alpha .v-slider-track__background {\n  background-image: linear-gradient(to left, transparent, var(--v-color-picker-color-hsv));\n}\n\n.v-color-picker-preview__alpha .v-slider-track__background::after {\n  content: \"\";\n  z-index: -1;\n  left: 0;\n  top: 0;\n  width: 100%;\n  height: 100%;\n  position: absolute;\n  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAAAXNSR0IArs4c6QAAACRJREFUKFNjPHTo0H8GJGBnZ8eIzGekgwJk+0BsdCtRHEQbBQBbbh0dIGKknQAAAABJRU5ErkJggg==) repeat;\n  border-radius: inherit;\n}\n\n.v-color-picker-preview__sliders {\n  display: flex;\n  flex: 1 0 auto;\n  flex-direction: column;\n  padding-inline-end: 16px;\n}\n\n.v-color-picker-preview__dot {\n  position: relative;\n  height: 30px;\n  width: 30px;\n  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAAAXNSR0IArs4c6QAAACRJREFUKFNjPHTo0H8GJGBnZ8eIzGekgwJk+0BsdCtRHEQbBQBbbh0dIGKknQAAAABJRU5ErkJggg==) repeat;\n  border-radius: 50%;\n  overflow: hidden;\n  margin-inline-end: 24px;\n}\n.v-color-picker-preview__dot > div {\n  width: 100%;\n  height: 100%;\n}\n\n.v-locale--is-ltr.v-color-picker-preview__hue:not(.v-input--is-disabled) .v-slider-track__background, .v-locale--is-ltr .v-color-picker-preview__hue:not(.v-input--is-disabled) .v-slider-track__background {\n  background: linear-gradient(to right, #F00 0%, #FF0 16.66%, #0F0 33.33%, #0FF 50%, #00F 66.66%, #F0F 83.33%, #F00 100%);\n}\n\n.v-locale--is-rtl.v-color-picker-preview__hue:not(.v-input--is-disabled) .v-slider-track__background, .v-locale--is-rtl .v-color-picker-preview__hue:not(.v-input--is-disabled) .v-slider-track__background {\n  background: linear-gradient(to left, #F00 0%, #FF0 16.66%, #0F0 33.33%, #0FF 50%, #00F 66.66%, #F0F 83.33%, #F00 100%);\n}\n\n.v-color-picker-preview__track {\n  position: relative;\n  width: 100%;\n  margin: 0 !important;\n}\n.v-color-picker-preview__track .v-slider-track__fill {\n  display: none;\n}\n\n.v-color-picker-preview {\n  align-items: center;\n  display: flex;\n  margin-bottom: 0;\n}\n\n.v-color-picker-preview__eye-dropper {\n  position: relative;\n  margin-right: 12px;\n}",
-      "start": 1724415000579,
-      "end": 1724415000589,
+      "start": 1724446518020,
+      "end": 1724446518038,
       "sourcemaps": null
     },
     {
       "name": "vite:css",
       "result": ".v-color-picker-preview__alpha .v-slider-track__background {\n  background-color: transparent !important;\n}\n.v-locale--is-ltr.v-color-picker-preview__alpha .v-slider-track__background, .v-locale--is-ltr .v-color-picker-preview__alpha .v-slider-track__background {\n  background-image: linear-gradient(to right, transparent, var(--v-color-picker-color-hsv));\n}\n\n.v-locale--is-rtl.v-color-picker-preview__alpha .v-slider-track__background, .v-locale--is-rtl .v-color-picker-preview__alpha .v-slider-track__background {\n  background-image: linear-gradient(to left, transparent, var(--v-color-picker-color-hsv));\n}\n\n.v-color-picker-preview__alpha .v-slider-track__background::after {\n  content: \"\";\n  z-index: -1;\n  left: 0;\n  top: 0;\n  width: 100%;\n  height: 100%;\n  position: absolute;\n  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAAAXNSR0IArs4c6QAAACRJREFUKFNjPHTo0H8GJGBnZ8eIzGekgwJk+0BsdCtRHEQbBQBbbh0dIGKknQAAAABJRU5ErkJggg==) repeat;\n  border-radius: inherit;\n}\n\n.v-color-picker-preview__sliders {\n  display: flex;\n  flex: 1 0 auto;\n  flex-direction: column;\n  padding-inline-end: 16px;\n}\n\n.v-color-picker-preview__dot {\n  position: relative;\n  height: 30px;\n  width: 30px;\n  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAAAXNSR0IArs4c6QAAACRJREFUKFNjPHTo0H8GJGBnZ8eIzGekgwJk+0BsdCtRHEQbBQBbbh0dIGKknQAAAABJRU5ErkJggg==) repeat;\n  border-radius: 50%;\n  overflow: hidden;\n  margin-inline-end: 24px;\n}\n.v-color-picker-preview__dot > div {\n  width: 100%;\n  height: 100%;\n}\n\n.v-locale--is-ltr.v-color-picker-preview__hue:not(.v-input--is-disabled) .v-slider-track__background, .v-locale--is-ltr .v-color-picker-preview__hue:not(.v-input--is-disabled) .v-slider-track__background {\n  background: linear-gradient(to right, #F00 0%, #FF0 16.66%, #0F0 33.33%, #0FF 50%, #00F 66.66%, #F0F 83.33%, #F00 100%);\n}\n\n.v-locale--is-rtl.v-color-picker-preview__hue:not(.v-input--is-disabled) .v-slider-track__background, .v-locale--is-rtl .v-color-picker-preview__hue:not(.v-input--is-disabled) .v-slider-track__background {\n  background: linear-gradient(to left, #F00 0%, #FF0 16.66%, #0F0 33.33%, #0FF 50%, #00F 66.66%, #F0F 83.33%, #F00 100%);\n}\n\n.v-color-picker-preview__track {\n  position: relative;\n  width: 100%;\n  margin: 0 !important;\n}\n.v-color-picker-preview__track .v-slider-track__fill {\n  display: none;\n}\n\n.v-color-picker-preview {\n  align-items: center;\n  display: flex;\n  margin-bottom: 0;\n}\n\n.v-color-picker-preview__eye-dropper {\n  position: relative;\n  margin-right: 12px;\n}",
-      "start": 1724415000589,
-      "end": 1724415000590,
+      "start": 1724446518038,
+      "end": 1724446518039,
       "order": "normal",
       "sourcemaps": {
         "mappings": ""
@@ -20,39 +20,39 @@
     },
     {
       "name": "vite:esbuild",
-      "start": 1724415000590,
-      "end": 1724415000590,
+      "start": 1724446518039,
+      "end": 1724446518039,
       "order": "normal"
     },
     {
       "name": "vite:json",
-      "start": 1724415000590,
-      "end": 1724415000590,
+      "start": 1724446518039,
+      "end": 1724446518039,
       "order": "normal"
     },
     {
       "name": "vite:worker",
-      "start": 1724415000590,
-      "end": 1724415000590,
+      "start": 1724446518039,
+      "end": 1724446518039,
       "order": "normal"
     },
     {
       "name": "vite:vue",
-      "start": 1724415000590,
-      "end": 1724415000590,
+      "start": 1724446518039,
+      "end": 1724446518039,
       "order": "normal"
     },
     {
       "name": "vite:define",
-      "start": 1724415000590,
-      "end": 1724415000590,
+      "start": 1724446518039,
+      "end": 1724446518039,
       "order": "normal"
     },
     {
       "name": "vite:css-post",
       "result": "",
-      "start": 1724415000590,
-      "end": 1724415000590,
+      "start": 1724446518039,
+      "end": 1724446518039,
       "order": "normal",
       "sourcemaps": {
         "mappings": ""
@@ -60,50 +60,50 @@
     },
     {
       "name": "vite:build-html",
-      "start": 1724415000590,
-      "end": 1724415000590,
+      "start": 1724446518039,
+      "end": 1724446518039,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1724415000590,
-      "end": 1724415000590,
+      "start": 1724446518039,
+      "end": 1724446518039,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1724415000590,
-      "end": 1724415000590,
+      "start": 1724446518039,
+      "end": 1724446518039,
       "order": "normal"
     },
     {
       "name": "commonjs",
-      "start": 1724415000590,
-      "end": 1724415000590,
+      "start": 1724446518039,
+      "end": 1724446518039,
       "order": "normal"
     },
     {
       "name": "vite:dynamic-import-vars",
-      "start": 1724415000590,
-      "end": 1724415000590,
+      "start": 1724446518039,
+      "end": 1724446518039,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1724415000590,
-      "end": 1724415000590,
+      "start": 1724446518040,
+      "end": 1724446518040,
       "order": "normal"
     },
     {
       "name": "vite:build-import-analysis",
-      "start": 1724415000590,
-      "end": 1724415000590,
+      "start": 1724446518040,
+      "end": 1724446518040,
       "order": "normal"
     },
     {
       "name": "vite:reporter",
-      "start": 1724415000590,
-      "end": 1724415000590,
+      "start": 1724446518040,
+      "end": 1724446518040,
       "order": "normal"
     }
   ]

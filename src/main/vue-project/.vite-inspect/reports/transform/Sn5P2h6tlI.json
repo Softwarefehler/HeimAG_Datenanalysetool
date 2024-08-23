@@ -4,98 +4,98 @@
     {
       "name": "vite:load-fallback",
       "result": "import { createVNode as _createVNode, mergeProps as _mergeProps, resolveDirective as _resolveDirective } from \"vue\";\n// Components\nimport { makeVStepperActionsProps, VStepperActions } from \"../../components/VStepper/VStepperActions.mjs\"; // Utilities\nimport { genericComponent, propsFactory, useRender } from \"../../util/index.mjs\"; // Types\nexport const makeVStepperVerticalActionsProps = propsFactory({\n  ...makeVStepperActionsProps()\n}, 'VStepperActions');\nexport const VStepperVerticalActions = genericComponent()({\n  name: 'VStepperVerticalActions',\n  props: makeVStepperVerticalActionsProps(),\n  emits: {\n    'click:prev': () => true,\n    'click:next': () => true\n  },\n  setup(props, _ref) {\n    let {\n      emit,\n      slots\n    } = _ref;\n    function onClickPrev() {\n      emit('click:prev');\n    }\n    function onClickNext() {\n      emit('click:next');\n    }\n    useRender(() => {\n      const stepperActionsProps = VStepperActions.filterProps(props);\n      return _createVNode(VStepperActions, _mergeProps({\n        \"class\": \"v-stepper-vertical-actions\"\n      }, stepperActionsProps, {\n        \"onClick:prev\": onClickPrev,\n        \"onClick:next\": onClickNext\n      }), slots);\n    });\n    return {};\n  }\n});\n//# sourceMappingURL=VStepperVerticalActions.mjs.map",
-      "start": 1724414998487,
-      "end": 1724414998697,
+      "start": 1724446515867,
+      "end": 1724446516087,
       "sourcemaps": null
     },
     {
       "name": "vite:css",
-      "start": 1724414998697,
-      "end": 1724414998697,
+      "start": 1724446516087,
+      "end": 1724446516087,
       "order": "normal"
     },
     {
       "name": "vite:esbuild",
-      "start": 1724414998697,
-      "end": 1724414998697,
+      "start": 1724446516087,
+      "end": 1724446516087,
       "order": "normal"
     },
     {
       "name": "vite:json",
-      "start": 1724414998697,
-      "end": 1724414998697,
+      "start": 1724446516087,
+      "end": 1724446516087,
       "order": "normal"
     },
     {
       "name": "vite:worker",
-      "start": 1724414998697,
-      "end": 1724414998697,
+      "start": 1724446516087,
+      "end": 1724446516087,
       "order": "normal"
     },
     {
       "name": "vite:vue",
-      "start": 1724414998697,
-      "end": 1724414998697,
+      "start": 1724446516087,
+      "end": 1724446516087,
       "order": "normal"
     },
     {
       "name": "vite:define",
-      "start": 1724414998697,
-      "end": 1724414998697,
+      "start": 1724446516087,
+      "end": 1724446516087,
       "order": "normal"
     },
     {
       "name": "vite:css-post",
-      "start": 1724414998697,
-      "end": 1724414998697,
+      "start": 1724446516087,
+      "end": 1724446516087,
       "order": "normal"
     },
     {
       "name": "vite:build-html",
-      "start": 1724414998697,
-      "end": 1724414998697,
+      "start": 1724446516087,
+      "end": 1724446516087,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1724414998697,
-      "end": 1724414998697,
+      "start": 1724446516087,
+      "end": 1724446516087,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1724414998697,
-      "end": 1724414998697,
+      "start": 1724446516087,
+      "end": 1724446516087,
       "order": "normal"
     },
     {
       "name": "commonjs",
-      "start": 1724414998697,
-      "end": 1724414998697,
+      "start": 1724446516087,
+      "end": 1724446516087,
       "order": "normal"
     },
     {
       "name": "vite:dynamic-import-vars",
-      "start": 1724414998697,
-      "end": 1724414998697,
+      "start": 1724446516087,
+      "end": 1724446516087,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1724414998697,
-      "end": 1724414998697,
+      "start": 1724446516087,
+      "end": 1724446516087,
       "order": "normal"
     },
     {
       "name": "vite:build-import-analysis",
-      "start": 1724414998697,
-      "end": 1724414998697,
+      "start": 1724446516087,
+      "end": 1724446516087,
       "order": "normal"
     },
     {
       "name": "vite:reporter",
-      "start": 1724414998697,
-      "end": 1724414998697,
+      "start": 1724446516087,
+      "end": 1724446516087,
       "order": "normal"
     }
   ]

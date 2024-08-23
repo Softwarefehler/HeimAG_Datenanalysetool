@@ -8,7 +8,7 @@ class Country {
   private  val logger = LoggerFactory.getLogger("FileReader.Country")
 
     fun loadToSelectCountry(resourcePath: String): MutableList<String> {
-         logger.info("Lade Länder aus der Datei: $resourcePath")
+         logger.info("Load Countries from File: $resourcePath")
         val countryList = mutableListOf<String>()
 
         // Datei aus den Ressourcen laden
@@ -23,19 +23,19 @@ class Country {
                 val cell = row.getCell(0) // Erste Zelle in der Zeile (Spalte A)
                 if (cell != null) {
                     val countryName = cell.stringCellValue
-                    logger.debug("Land gefunden: $countryName")
+                    logger.debug("Found Country: $countryName")
                     countryList.add(countryName)
                 }
             }
             workbook.close()
         } catch (e: Exception) {
-        logger.error("Fehler beim Laden der Datei: $resourcePath", e)
+        logger.error("Error loading the file: $resourcePath", e)
     }
         } else {
-            logger.error("Die Datei $resourcePath konnte nicht gefunden werden.")
+            logger.error("The File $resourcePath could not be found.")
         }
 
-        logger.info("Länder erfolgreich geladen: ${countryList.size} Einträge gefunden.")
+        logger.info("Countries successfully loaded: ${countryList.size} Entries found.")
         return countryList
     }
 

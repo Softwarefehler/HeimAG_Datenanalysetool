@@ -14,14 +14,14 @@ fun Application.installHttpsRedirect(port: Int) {
         sslPort = port
         permanentRedirect = false
     }
-    logger.info("HTTPS Redirect installiert auf Port $port.")
+    logger.info("HTTPS Redirect install on port $port.")
 }
 
 fun Application.installForwardedHeaders() {
     val logger = LoggerFactory.getLogger("ForwardedHeaders")
     install(ForwardedHeaders)
     install(XForwardedHeaders)
-    logger.info("Forwarded Headers und XForwardedHeaders Plugins installiert.")
+    logger.info("Forwarded headers und XForwardedHeaders Plugins install.")
 }
 
 fun ApplicationEngineEnvironmentBuilder.configureHttps(hostBinding: String, port: Int) {
@@ -35,7 +35,7 @@ fun ApplicationEngineEnvironmentBuilder.configureHttps(hostBinding: String, port
     }
     keyStore.saveToFile(keyStoreFile, "123456")
 
-    logger.info("Keystore erstellt und unter ${keyStoreFile.absolutePath} gespeichert.")
+    logger.info("Keystore created and under ${keyStoreFile.absolutePath} saved.")
 
 
     sslConnector(
@@ -46,7 +46,7 @@ fun ApplicationEngineEnvironmentBuilder.configureHttps(hostBinding: String, port
         this.port = port
         keyStorePath = keyStoreFile
     }
-    logger.info("SSL Connector konfiguriert auf Port $port.")
+    logger.info("SSL Connector configured on port $port.")
 }
 
 fun ApplicationEngineEnvironmentBuilder.configureHttp(hostBinding: String, port: Int) {
@@ -55,5 +55,5 @@ fun ApplicationEngineEnvironmentBuilder.configureHttp(hostBinding: String, port:
         host = hostBinding
         this.port = port
     }
-    logger.info("HTTP Connector konfiguriert auf Host $hostBinding und Port $port.")
+    logger.info("HTTP Connector configured to host $hostBinding und Port $port.")
 }

@@ -12,5 +12,5 @@ fun Application.installSerialization() {
         json()
     }
 
-    logger.info("ContentNegotiation-Plugin mit JSON-Serialisierung installiert.")
+    logger.info("ContentNegotiation plugin with JSON serialization installed.")
 }

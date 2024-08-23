@@ -10,7 +10,7 @@ fun Application.configureRouting() {
     singlePageApplication()
     webPageApplication()
 
-    logger.info("konfiguriere die Routen für Singlepage-Applikation und Webpage-Applikation ")
+    logger.info("configure the routes for single-page-application and webpage-application ")
 }
 
 

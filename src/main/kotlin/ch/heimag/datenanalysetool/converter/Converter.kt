@@ -11,7 +11,7 @@ object Converter {
 
 
     fun databaseDateStringToInt(dateString: String): Int {
-        logger.info("Für die Datenbank zu formatierender DatumString:  $dateString")
+        logger.info("Date string to be formatted for the database::  $dateString")
 
         val replacementValue = LocalDate.now()
         var date: LocalDate
@@ -41,18 +41,18 @@ object Converter {
 
 
             val dateStringBuild = "$yearString-$monthValueString-$dayString"
-            logger.warn("Umgeschriebener String: $dateStringBuild")
+            logger.warn("Transcribed string: $dateStringBuild")
 
             // Definiere das Date-Format
             val dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
 
             // Parsen des Strings in ein LocalDate-Objekt
             date = LocalDate.parse(dateStringBuild, dateFormatter)
-            logger.debug("geparste Variable: {}", date)
+            logger.debug("Parsed variable: {}", date)
 
         } catch (e: DateUtil.DateParseException) {
             date = replacementValue  // If parsing fails, set the actual time
-            logger.error("Variable konnte nicht geparst werden. jetziger Zeitwert wird genommen: $date")
+            logger.error("Variable could not be parsed. current time value is used: $date")
         }
 
         // Formatieren zu yyyymmdd
@@ -61,14 +61,14 @@ object Converter {
         val day = date.dayOfMonth
         val dateInt = String.format("%04d%02d%02d", year, month, day).toInt()
 
-        logger.debug("Formatierte Variable im Typ INT: {}", dateInt)
+        logger.debug("Formatted variable of type INT: {}", dateInt)
 
         return dateInt
     }
 
 
     fun intToString(dateInt: Int): String {
-        logger.info("Formatumwandlung: Datums-integer zu Datum-String umwandeln. Zu umwandelnder Wert:  $dateInt")
+        logger.info("Format conversion: Convert date integer to date string. Value to be converted: $dateInt")
 
         val dateStringRaw = dateInt.toString()
 
@@ -76,19 +76,19 @@ object Converter {
         val dateString =
             "${dateStringRaw.substring(0, 4)}-${dateStringRaw.substring(4, 6)}-${dateStringRaw.substring(6, 8)}"
 
-        logger.debug("Wert der im Format yyyy-mm-dd umgewandelter: $dateString")
+        logger.debug("Value converted in the format yyyy-mm-dd:: $dateString")
 
         return dateString
     }
 
 
     fun dateStringToInt(dateString: String): Int {
-        logger.info("Formatumwandlung: Datums-String (yyyy-mm-dd) zu Datum-Int umwandeln. Zu umwandelnder Wert:  $dateString")
+        logger.info("Format conversion: Convert date string (yyyy-mm-dd) to Date-Int. Value to be converted:  $dateString")
 
         val modifiedString = dateString.replace("-", "")
         val dateInt = modifiedString.toInt()
 
-        logger.debug("Umgewandelte Datums-Int Variable: {}", dateInt)
+        logger.debug("Converted date-int variable: {}", dateInt)
 
         return dateInt
     }
