@@ -4,9 +4,99 @@
     {
       "name": "vite:load-fallback",
       "result": "// Utilities\nimport { computed, nextTick, onScopeDispose, resolveDynamicComponent, toRef } from 'vue';\nimport { deepEqual, getCurrentInstance, hasEvent, IN_BROWSER, propsFactory } from \"../util/index.mjs\"; // Types\nexport function useRoute() {\n  const vm = getCurrentInstance('useRoute');\n  return computed(() => vm?.proxy?.$route);\n}\nexport function useRouter() {\n  return getCurrentInstance('useRouter')?.proxy?.$router;\n}\nexport function useLink(props, attrs) {\n  const RouterLink = resolveDynamicComponent('RouterLink');\n  const isLink = computed(() => !!(props.href || props.to));\n  const isClickable = computed(() => {\n    return isLink?.value || hasEvent(attrs, 'click') || hasEvent(props, 'click');\n  });\n  if (typeof RouterLink === 'string' || !('useLink' in RouterLink)) {\n    return {\n      isLink,\n      isClickable,\n      href: toRef(props, 'href')\n    };\n  }\n  // vue-router useLink `to` prop needs to be reactive and useLink will crash if undefined\n  const linkProps = computed(() => ({\n    ...props,\n    to: toRef(() => props.to || '')\n  }));\n  const routerLink = RouterLink.useLink(linkProps.value);\n  // Actual link needs to be undefined when to prop is not used\n  const link = computed(() => props.to ? routerLink : undefined);\n  const route = useRoute();\n  return {\n    isLink,\n    isClickable,\n    route: link.value?.route,\n    navigate: link.value?.navigate,\n    isActive: computed(() => {\n      if (!link.value) return false;\n      if (!props.exact) return link.value.isActive?.value ?? false;\n      if (!route.value) return link.value.isExactActive?.value ?? false;\n      return link.value.isExactActive?.value && deepEqual(link.value.route.value.query, route.value.query);\n    }),\n    href: computed(() => props.to ? link.value?.route.value.href : props.href)\n  };\n}\nexport const makeRouterProps = propsFactory({\n  href: String,\n  replace: Boolean,\n  to: [String, Object],\n  exact: Boolean\n}, 'router');\nlet inTransition = false;\nexport function useBackButton(router, cb) {\n  let popped = false;\n  let removeBefore;\n  let removeAfter;\n  if (IN_BROWSER) {\n    nextTick(() => {\n      window.addEventListener('popstate', onPopstate);\n      removeBefore = router?.beforeEach((to, from, next) => {\n        if (!inTransition) {\n          setTimeout(() => popped ? cb(next) : next());\n        } else {\n          popped ? cb(next) : next();\n        }\n        inTransition = true;\n      });\n      removeAfter = router?.afterEach(() => {\n        inTransition = false;\n      });\n    });\n    onScopeDispose(() => {\n      window.removeEventListener('popstate', onPopstate);\n      removeBefore?.();\n      removeAfter?.();\n    });\n  }\n  function onPopstate(e) {\n    if (e.state?.replaced) return;\n    popped = true;\n    setTimeout(() => popped = false);\n  }\n}\n//# sourceMappingURL=router.mjs.map",
-      "start": 1724363577144,
-      "end": 1724363577166,
+      "start": 1724414999186,
+      "end": 1724414999302,
       "sourcemaps": null
+    },
+    {
+      "name": "vite:css",
+      "start": 1724414999303,
+      "end": 1724414999303,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1724414999303,
+      "end": 1724414999303,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1724414999303,
+      "end": 1724414999303,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1724414999303,
+      "end": 1724414999303,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1724414999303,
+      "end": 1724414999303,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1724414999303,
+      "end": 1724414999303,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1724414999303,
+      "end": 1724414999303,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1724414999303,
+      "end": 1724414999303,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1724414999303,
+      "end": 1724414999303,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1724414999303,
+      "end": 1724414999303,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1724414999303,
+      "end": 1724414999303,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1724414999303,
+      "end": 1724414999303,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1724414999303,
+      "end": 1724414999303,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1724414999303,
+      "end": 1724414999303,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1724414999303,
+      "end": 1724414999303,
+      "order": "normal"
     }
   ]
 }

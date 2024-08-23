@@ -1,4 +1,5 @@
 package ch.heimag.datenanalysetool
+
 import org.slf4j.LoggerFactory
 
 import ch.heimag.datenanalysetool.plugins.*
@@ -31,16 +32,14 @@ suspend fun main() {
                 installSessionAndAuthentication()
                 installFreeMarkerTemplating()
                 installSerialization()
-
                 configureRouting()
-
             }
+
             configureHttp(hostBinding, httpPort)
 
             if (enableHttps) {
                 configureHttps(hostBinding, httpsPort)
             }
-
             watchPaths = listOf("classes", "resources")
         }
 

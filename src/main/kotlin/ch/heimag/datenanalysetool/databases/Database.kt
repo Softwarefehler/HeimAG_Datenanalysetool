@@ -1,9 +1,10 @@
 package ch.heimag.datenanalysetool.databases
 
 import ch.heimag.datenanalysetool.conditions.OperatingConditions
-import ch.heimag.datenanalysetool.converter.converter
-import ch.heimag.datenanalysetool.weatherdata.Weatherdata
+import ch.heimag.datenanalysetool.converter.Converter
+import ch.heimag.datenanalysetool.weatherdata.WeatherData
 import kotlinx.serialization.Serializable
+import org.slf4j.LoggerFactory
 import java.sql.DriverManager
 import java.sql.SQLException
 
@@ -22,12 +23,15 @@ class Database {
     val USER = "datenanalysetool"
     val PASSWORD = "HeimAGS2we@!"
 
+    private val logger = LoggerFactory.getLogger("Data.Database")
+
 
     fun checkDatabaseStatus(): String {
         var connection: java.sql.Connection? = null
         return try {
-            // Versuche, eine Verbindung zur Datenbank herzustellen
+            logger.info("Überprüfe den Status der Datenbankverbindung.")
             connection = DriverManager.getConnection(URL, USER, PASSWORD)
+            logger.info("Verbindung zur Datenbank hergestellt.")
 
             // Führe eine einfache Abfrage aus, um die Verbindung zu testen
             val statement = connection.createStatement()
@@ -35,24 +39,28 @@ class Database {
 
             // Überprüfe, ob die Abfrage erfolgreich war
             if (resultSet.next()) {
+                logger.warn("Datenbank ist vorhanden und erreichbar.")
                 "Datenbank vorhanden"
             } else {
+                logger.error("Die Datenbank konnte nicht erreicht werden.")
                 "Datenbank nicht vorhanden"
             }
         } catch (e: SQLException) {
-            // Falls ein Fehler auftritt, gib eine Fehlermeldung zurück
+            logger.error("Fehler beim Herstellen der Datenbankverbindung: ${e.message}", e)
             e.printStackTrace()
             "Datenbank nicht vorhanden"
         } finally {
-            // Schließe die Verbindung, falls sie geöffnet wurde
             connection?.close()
+            logger.info("Datenbankverbindung geschlossen.")
         }
     }
 
 
     fun loadLatestDate(): String {
+        logger.info("Lade das neueste Datum aus der Datenbank.")
         var latestDateInt = 0
-        // build connection to database
+
+
         val connection = DriverManager.getConnection(URL, USER, PASSWORD)
 
         // create statement
@@ -67,7 +75,9 @@ class Database {
         // Output rows
         if (data.next()) {
             latestDateInt = data.getInt("datum")
-
+            logger.debug("Neuester Datensatz: $latestDateInt")
+        } else {
+            logger.info("Keine Datensätze in der Tabelle wetterdaten gefunden.")
         }
         data.close()
         statement.close()
@@ -77,8 +87,9 @@ class Database {
         val latestDateString = if (latestDateInt == 0) {
             "Keine Daten"
         } else {
-            converter.intToString(latestDateInt)
+            Converter.intToString(latestDateInt)
         }
+        logger.info("Der letzte Datum der Datenbank ist: $latestDateString")
         return latestDateString
     }
 
@@ -86,172 +97,166 @@ class Database {
     fun loadOperatingStateKaltePeriode(
         operatingState: OperatingConditions
     ): MutableList<DataPoint> {
+        logger.info("Datenbankabfrage kaltePeriode: (Startdatum: ${operatingState.startDate}, Enddatum: ${operatingState.endDate}, Ort(als Code): ${operatingState.countryCode}, Min.Temperatur: ${operatingState.kaltPeriodeMinTemperature}, Max.Temperatur: ${operatingState.kaltPeriodeMaxTemperature}).")
 
-        val startDate = operatingState.startDate
-        val endDate = operatingState.endDate
-        val minTemperature = operatingState.kaltPeriodeMinTemperature
-        val maxTemperature = operatingState.kaltPeriodeMaxTemperature
-        val countryCode = operatingState.countryCode
-
-        //sqlRespondList.clear()
         val sqlRespondList = mutableListOf<DataPoint>()
 
+        try {
+            val connection = DriverManager.getConnection(URL, USER, PASSWORD)
 
-        // build connection to database
-        val connection = DriverManager.getConnection(URL, USER, PASSWORD)
+            // create statement
+            val statement = connection.createStatement()
 
-        // create statement
-        val statement = connection.createStatement()
+            // SQL statement to load rows from database
+            val sql = """
+        SELECT ${operatingState.countryCode}, datum 
+            FROM wetterdaten
+            WHERE ${operatingState.countryCode} > ${operatingState.kaltPeriodeMinTemperature} 
+            AND ${operatingState.countryCode} < ${operatingState.kaltPeriodeMaxTemperature}
+            AND datum BETWEEN ${operatingState.startDate} AND ${operatingState.endDate};
+            """.trimIndent()
 
-        // SQL statement to load rows from database
-        val sql = """
-        SELECT $countryCode, datum 
-        FROM wetterdaten
-        WHERE $countryCode > $minTemperature AND $countryCode < $maxTemperature
-        AND datum BETWEEN $startDate AND $endDate;
-        """.trimIndent()
+            // SQL statement execute
+            logger.debug("kaltePeriode: SQL-Abfrage: $sql")
+            val data = statement.executeQuery(sql)
 
-        // SQL statement execute
-        val data = statement.executeQuery(sql)
+            // put output rows in to another list
+            while (data.next()) {
+                val dateInt = data.getInt("datum")
+                val temperature = data.getDouble(operatingState.countryCode)
 
-        // put output rows in to another list
-        while (data.next()) {
-            val dateInt = data.getInt("datum")
-            val temperature = data.getDouble(countryCode)
+                val dateString = Converter.intToString(dateInt)
+                val temperatureString = temperature.toString()
 
-            val dateString = converter.intToString(dateInt)
-            val temperatureString = temperature.toString()
+                val dataPoint = DataPoint(dateString, temperatureString)
+                sqlRespondList.add(dataPoint)
 
-            val dataPoint = DataPoint(dateString, temperatureString)
-            sqlRespondList.add(dataPoint)
-
-            //println("$dateInt, $temperature") // Only for Display
+                logger.debug("kaltePeriode: Datensatz hinzugefügt: Datum: $dateString, Temperatur: $temperatureString")
+            }
+            data.close()
+            statement.close()
+            connection.close()
+        } catch (e: SQLException) {
+            logger.error("Fehler beim Laden der Daten für die kaltePeriode: ${e.message}", e)
         }
-
-        // close resources
-        data.close()
-        statement.close()
-        connection.close()
 
         return (sqlRespondList)
     }
+
 
     fun loadOperatingStateHaupanteilHeizperiode(
         operatingState: OperatingConditions
     ): MutableList<DataPoint> {
+        logger.info("Datenbankabfrage HauptanteilHeizperiode: (Startdatum: ${operatingState.startDate}, Enddatum: ${operatingState.endDate}, Ort(als Code): ${operatingState.countryCode}, Min.Temperatur: ${operatingState.hauptanteilHeizperiodeMinTemperature}, Max.Temperatur: ${operatingState.hauptanteilHeizperiodeMaxTemperature}).")
 
-        val startDate = operatingState.startDate
-        val endDate = operatingState.endDate
-        val minTemperature = operatingState.hauptanteilHeizperiodeMinTemperature
-        val maxTemperature = operatingState.hauptanteilHeizperiodeMaxTemperature
-        val countryCode = operatingState.countryCode
-
-        //sqlRespondList.clear()
         val sqlRespondList = mutableListOf<DataPoint>()
 
+        try {
+            val connection = DriverManager.getConnection(URL, USER, PASSWORD)
 
-        // build connection to database
-        val connection = DriverManager.getConnection(URL, USER, PASSWORD)
+            // create statement
+            val statement = connection.createStatement()
 
-        // create statement
-        val statement = connection.createStatement()
+            // SQL statement to load rows from database
+            val sql = """
+        SELECT ${operatingState.countryCode}, datum 
+            FROM wetterdaten
+            WHERE ${operatingState.countryCode} > ${operatingState.hauptanteilHeizperiodeMinTemperature} 
+            AND ${operatingState.countryCode} < ${operatingState.hauptanteilHeizperiodeMaxTemperature}
+            AND datum BETWEEN ${operatingState.startDate} AND ${operatingState.endDate};
+            """.trimIndent()
 
-        // SQL statement to load rows from database
-        val sql = """
-        SELECT $countryCode, datum 
-        FROM wetterdaten
-        WHERE $countryCode > $minTemperature AND $countryCode < $maxTemperature
-        AND datum BETWEEN $startDate AND $endDate;
-        """.trimIndent()
+            // SQL statement execute
+            logger.debug("HauptanteilHeizperiode: SQL-Abfrage: $sql")
+            val data = statement.executeQuery(sql)
 
-        // SQL statement execute
-        val data = statement.executeQuery(sql)
+            // put output rows in to another list
+            while (data.next()) {
+                val dateInt = data.getInt("datum")
+                val temperature = data.getDouble(operatingState.countryCode)
 
-        // put output rows in to another list
-        while (data.next()) {
-            val dateInt = data.getInt("datum")
-            val temperature = data.getDouble(countryCode)
+                val dateString = Converter.intToString(dateInt)
+                val temperatureString = temperature.toString()
 
-            val dateString = converter.intToString(dateInt)
-            val temperatureString = temperature.toString()
-
-            val dataPoint = DataPoint(dateString, temperatureString)
-            sqlRespondList.add(dataPoint)
+                val dataPoint = DataPoint(dateString, temperatureString)
+                sqlRespondList.add(dataPoint)
+                logger.debug("HauptanteilHeizperiode: Datensatz hinzugefügt: Datum: $dateString, Temperatur: $temperatureString")
+            }
+            data.close()
+            statement.close()
+            connection.close()
+        } catch (e: SQLException) {
+            logger.error("Fehler beim Laden der Daten für den HauptanteilHeizperiode: ${e.message}", e)
         }
-
-        // close resources
-        data.close()
-        statement.close()
-        connection.close()
 
         return (sqlRespondList)
     }
+
 
     fun loadOperatingStateSchwachlast(
         operatingState: OperatingConditions
     ): MutableList<DataPoint> {
-
-        val startDate = operatingState.startDate
-        val endDate = operatingState.endDate
-        val minTemperature = operatingState.schwachlastMinTemperature
-        val maxTemperature = operatingState.schwachlastMaxTemperature
-        val countryCode = operatingState.countryCode
+        logger.info("Datenbankabfrage Schwachlast: (Startdatum: ${operatingState.startDate}, Enddatum: ${operatingState.endDate}, Ort(als Code): ${operatingState.countryCode}, Min.Temperatur: ${operatingState.kaltPeriodeMinTemperature}, Max.Temperatur: ${operatingState.kaltPeriodeMaxTemperature}).")
 
         val sqlRespondList = mutableListOf<DataPoint>()
 
 
-        // build connection to database
-        val connection = DriverManager.getConnection(URL, USER, PASSWORD)
+        try {
+            val connection = DriverManager.getConnection(URL, USER, PASSWORD)
 
-        // create statement
-        val statement = connection.createStatement()
+            // create statement
+            val statement = connection.createStatement()
 
-        // SQL statement to load rows from database
-        val sql = """
-        SELECT $countryCode, datum 
-        FROM wetterdaten
-        WHERE $countryCode > $minTemperature AND $countryCode < $maxTemperature
-        AND datum BETWEEN $startDate AND $endDate;
-        """.trimIndent()
+            // SQL statement to load rows from database
+            val sql = """
+        SELECT ${operatingState.countryCode}, datum 
+            FROM wetterdaten
+            WHERE ${operatingState.countryCode} > ${operatingState.schwachlastMinTemperature} 
+            AND ${operatingState.countryCode} < ${operatingState.schwachlastMaxTemperature}
+            AND datum BETWEEN ${operatingState.startDate} AND ${operatingState.endDate};
+            """.trimIndent()
 
-        // SQL statement execute
-        val data = statement.executeQuery(sql)
+            logger.debug("Schwachlast: SQL-Abfrage: $sql")
+            val data = statement.executeQuery(sql)
 
-        // put output rows in to another list
-        while (data.next()) {
-            val dateInt = data.getInt("datum")
-            val temperature = data.getDouble(countryCode)
+            // put output rows in to another list
+            while (data.next()) {
+                val dateInt = data.getInt("datum")
+                val temperature = data.getDouble(operatingState.countryCode)
 
-            val dateString = converter.intToString(dateInt)
-            val temperatureString = temperature.toString()
+                val dateString = Converter.intToString(dateInt)
+                val temperatureString = temperature.toString()
 
-            val dataPoint = DataPoint(dateString, temperatureString)
-            sqlRespondList.add(dataPoint)
+                val dataPoint = DataPoint(dateString, temperatureString)
+                sqlRespondList.add(dataPoint)
+                logger.debug("Schwachlast: Datensatz hinzugefügt: Datum: $dateString, Temperatur: $temperatureString")
+            }
+
+            data.close()
+            statement.close()
+            connection.close()
+        } catch (e: SQLException) {
+            logger.error("Fehler beim Laden der Daten für die Schwachlast: ${e.message}", e)
         }
-
-        // close resources
-        data.close()
-        statement.close()
-        connection.close()
 
         return (sqlRespondList)
     }
 
 
-    fun setWeatherdataToDatabase(save: MutableList<Weatherdata>) {
+    fun setWeatherdataToDatabase(save: MutableList<WeatherData>) {
+        logger.info("Speichere Wetterdaten in der Datenbank.")
 
-        // build connection to database
-        val connection = DriverManager.getConnection(URL, USER, PASSWORD)
+        try {
+            val connection = DriverManager.getConnection(URL, USER, PASSWORD)
 
-        val sql = """
+            val sql = """
             INSERT INTO heimag.wetterdaten (
                 datum, alt, ant, bas, ber, cdf, chd, chm, dav, elm, eng, grc, grh, gsb, gve, jun, lug, luz, mer, neu, otl, pay, rag, sae, sam, sbe, sia, sio, sma, stg
             ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
         """
 
-        // Prepare statement
-        connection.prepareStatement(sql).use { preparedStatement ->
-            try {
+            // Prepare statement
+            connection.prepareStatement(sql).use { preparedStatement ->
                 // Iterate over each record in the list and set values to the prepared statement
                 for (record in save) {
                     preparedStatement.apply {
@@ -289,14 +294,16 @@ class Database {
                     }
                 }
 
-                // Execute batch insert
+                logger.info("Batch-Insert für Wetterdaten wird ausgeführt.")
                 preparedStatement.executeBatch()
-            } catch (e: SQLException) {
-                e.printStackTrace()
-            } finally {
-                connection.close()
             }
+
+            connection.close()
+            logger.info("Wetterdaten erfolgreich gespeichert.")
+        } catch (e: SQLException) {
+            logger.error("Fehler beim Speichern der Wetterdaten: ${e.message}", e)
         }
     }
 }
+
 

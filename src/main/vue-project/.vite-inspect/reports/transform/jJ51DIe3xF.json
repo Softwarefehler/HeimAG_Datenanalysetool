@@ -4,9 +4,111 @@
     {
       "name": "vite:load-fallback",
       "result": "import { createApp } from 'vue'\nimport App from './App.vue'\nimport { router } from '@/routes/router'\nimport { vuetify } from './vuetify'\nimport { createVuetify } from 'vuetify'\nimport { VDateInput } from 'vuetify/labs/components'\n\nexport default createVuetify({\n  components: {\n    VDateInput,\n  },\n})\n\n\ncreateApp(App).use(router).use(vuetify).mount('#app')\n",
-      "start": 1724363576932,
-      "end": 1724363576933,
+      "start": 1724414998339,
+      "end": 1724414998345,
       "sourcemaps": null
+    },
+    {
+      "name": "vite:css",
+      "start": 1724414998346,
+      "end": 1724414998346,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "result": "import { createApp } from \"vue\";\nimport App from \"./App.vue\";\nimport { router } from \"@/routes/router\";\nimport { vuetify } from \"./vuetify\";\nimport { createVuetify } from \"vuetify\";\nimport { VDateInput } from \"vuetify/labs/components\";\nexport default createVuetify({\n  components: {\n    VDateInput\n  }\n});\ncreateApp(App).use(router).use(vuetify).mount(\"#app\");\n",
+      "start": 1724414998346,
+      "end": 1724414998360,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "sources": [
+          "C:/Users/MAG/IdeaProjects/Datenanalysetool/src/main/vue-project/src/main.ts"
+        ],
+        "sourcesContent": [
+          "import { createApp } from 'vue'\nimport App from './App.vue'\nimport { router } from '@/routes/router'\nimport { vuetify } from './vuetify'\nimport { createVuetify } from 'vuetify'\nimport { VDateInput } from 'vuetify/labs/components'\n\nexport default createVuetify({\n  components: {\n    VDateInput,\n  },\n})\n\n\ncreateApp(App).use(router).use(vuetify).mount('#app')\n"
+        ],
+        "mappings": "AAAA,SAAS,iBAAiB;AAC1B,OAAO,SAAS;AAChB,SAAS,cAAc;AACvB,SAAS,eAAe;AACxB,SAAS,qBAAqB;AAC9B,SAAS,kBAAkB;AAE3B,eAAe,cAAc;AAAA,EAC3B,YAAY;AAAA,IACV;AAAA,EACF;AACF,CAAC;AAGD,UAAU,GAAG,EAAE,IAAI,MAAM,EAAE,IAAI,OAAO,EAAE,MAAM,MAAM;",
+        "names": []
+      }
+    },
+    {
+      "name": "vite:json",
+      "start": 1724414998360,
+      "end": 1724414998360,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1724414998360,
+      "end": 1724414998360,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1724414998360,
+      "end": 1724414998360,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1724414998360,
+      "end": 1724414998360,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1724414998360,
+      "end": 1724414998360,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1724414998360,
+      "end": 1724414998360,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1724414998360,
+      "end": 1724414998360,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1724414998360,
+      "end": 1724414998360,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1724414998360,
+      "end": 1724414998360,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1724414998360,
+      "end": 1724414998360,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1724414998360,
+      "end": 1724414998360,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1724414998360,
+      "end": 1724414998360,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1724414998360,
+      "end": 1724414998360,
+      "order": "normal"
     }
   ]
 }

@@ -4,9 +4,99 @@
     {
       "name": "vite:load-fallback",
       "result": "// @ts-nocheck\n/* eslint-disable */\nimport pad from \"./pad.mjs\";\nfunction createNativeLocaleFormatter(locale, options) {\n  let substrOptions = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {\n    start: 0,\n    length: 0\n  };\n  const makeIsoString = dateString => {\n    const [year, month, date] = dateString.trim().split(' ')[0].split('-');\n    return [pad(year, 4), pad(month || 1), pad(date || 1)].join('-');\n  };\n  try {\n    const intlFormatter = new Intl.DateTimeFormat(locale || undefined, options);\n    return dateString => intlFormatter.format(new Date(`${makeIsoString(dateString)}T00:00:00+00:00`));\n  } catch (e) {\n    return substrOptions.start || substrOptions.length ? dateString => makeIsoString(dateString).substr(substrOptions.start || 0, substrOptions.length) : undefined;\n  }\n}\nexport default createNativeLocaleFormatter;\n//# sourceMappingURL=createNativeLocaleFormatter.mjs.map",
-      "start": 1724363577771,
-      "end": 1724363577930,
+      "start": 1724415000336,
+      "end": 1724415000357,
       "sourcemaps": null
+    },
+    {
+      "name": "vite:css",
+      "start": 1724415000357,
+      "end": 1724415000357,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1724415000357,
+      "end": 1724415000357,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1724415000357,
+      "end": 1724415000357,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1724415000357,
+      "end": 1724415000357,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1724415000357,
+      "end": 1724415000357,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1724415000357,
+      "end": 1724415000357,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1724415000357,
+      "end": 1724415000357,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1724415000357,
+      "end": 1724415000357,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1724415000357,
+      "end": 1724415000357,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1724415000357,
+      "end": 1724415000357,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1724415000357,
+      "end": 1724415000357,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1724415000357,
+      "end": 1724415000357,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1724415000357,
+      "end": 1724415000357,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1724415000357,
+      "end": 1724415000357,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1724415000357,
+      "end": 1724415000357,
+      "order": "normal"
     }
   ]
 }

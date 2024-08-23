@@ -1,4 +1,5 @@
 package ch.heimag.datenanalysetool.conditions
+
 import kotlinx.serialization.Serializable
 
 
@@ -7,7 +8,7 @@ data class OperatingConditions(
     val startDate: Int,
     val endDate: Int,
     val country: String
-){
+) {
 
     val kaltPeriodeMinTemperature = -10.0
     val kaltPeriodeMaxTemperature = -5.0
@@ -17,11 +18,10 @@ data class OperatingConditions(
     val schwachlastMaxTemperature = 25.0
 
 
-
-     var countryCode: String = null.toString()
+    var countryCode: String = null.toString()
 
     init {
-        countryCode = when(country) {
+        countryCode = when (country) {
             "Altdorf UR" -> "alt"
             "Andermatt UR" -> "ant"
             "Basel Binningen BL" -> "bas"
@@ -50,7 +50,9 @@ data class OperatingConditions(
             "Sion VS" -> "sio"
             "Zürich Fluntern ZH" -> "sma"
             "St.Gallen SG" -> "STG"
-            else -> {"unknown"}
+            else -> {
+                "unknown"
+            }
         }
     }
 }

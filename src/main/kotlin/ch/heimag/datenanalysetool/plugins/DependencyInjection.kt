@@ -5,14 +5,17 @@ import io.ktor.server.application.*
 import org.koin.core.module.dsl.singleOf
 import org.koin.dsl.module
 import org.koin.ktor.plugin.Koin
+import org.slf4j.LoggerFactory
 
 // https://insert-koin.io/
 var defaultKoinModule = module {
-  singleOf(::AuthenticationService)
+    singleOf(::AuthenticationService)
 }
 
 fun Application.installKoinDependencyInjection() {
-  install(Koin) {
-    modules(defaultKoinModule)
-  }
+    val logger = LoggerFactory.getLogger("DependencyInjection")
+    install(Koin) {
+        modules(defaultKoinModule)
+        logger.info("Koin Dependency Injection installiert mit dem Standardmodul: defaultKoinModule.")
+    }
 }

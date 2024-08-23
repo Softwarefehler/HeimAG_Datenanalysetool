@@ -4,9 +4,99 @@
     {
       "name": "vite:load-fallback",
       "result": "import { createVNode as _createVNode } from \"vue\";\n// Composables\nimport { useTextColor } from \"../../composables/color.mjs\";\nimport { makeComponentProps } from \"../../composables/component.mjs\";\nimport { makeRouterProps, useLink } from \"../../composables/router.mjs\";\nimport { makeTagProps } from \"../../composables/tag.mjs\"; // Utilities\nimport { computed } from 'vue';\nimport { genericComponent, propsFactory, useRender } from \"../../util/index.mjs\";\nexport const makeVBreadcrumbsItemProps = propsFactory({\n  active: Boolean,\n  activeClass: String,\n  activeColor: String,\n  color: String,\n  disabled: Boolean,\n  title: String,\n  ...makeComponentProps(),\n  ...makeRouterProps(),\n  ...makeTagProps({\n    tag: 'li'\n  })\n}, 'VBreadcrumbsItem');\nexport const VBreadcrumbsItem = genericComponent()({\n  name: 'VBreadcrumbsItem',\n  props: makeVBreadcrumbsItemProps(),\n  setup(props, _ref) {\n    let {\n      slots,\n      attrs\n    } = _ref;\n    const link = useLink(props, attrs);\n    const isActive = computed(() => props.active || link.isActive?.value);\n    const color = computed(() => isActive.value ? props.activeColor : props.color);\n    const {\n      textColorClasses,\n      textColorStyles\n    } = useTextColor(color);\n    useRender(() => {\n      return _createVNode(props.tag, {\n        \"class\": ['v-breadcrumbs-item', {\n          'v-breadcrumbs-item--active': isActive.value,\n          'v-breadcrumbs-item--disabled': props.disabled,\n          [`${props.activeClass}`]: isActive.value && props.activeClass\n        }, textColorClasses.value, props.class],\n        \"style\": [textColorStyles.value, props.style],\n        \"aria-current\": isActive.value ? 'page' : undefined\n      }, {\n        default: () => [!link.isLink.value ? slots.default?.() ?? props.title : _createVNode(\"a\", {\n          \"class\": \"v-breadcrumbs-item--link\",\n          \"href\": link.href.value,\n          \"aria-current\": isActive.value ? 'page' : undefined,\n          \"onClick\": link.navigate\n        }, [slots.default?.() ?? props.title])]\n      });\n    });\n    return {};\n  }\n});\n//# sourceMappingURL=VBreadcrumbsItem.mjs.map",
-      "start": 1724363577078,
-      "end": 1724363577103,
+      "start": 1724414999340,
+      "end": 1724414999455,
       "sourcemaps": null
+    },
+    {
+      "name": "vite:css",
+      "start": 1724414999455,
+      "end": 1724414999455,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1724414999455,
+      "end": 1724414999455,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1724414999455,
+      "end": 1724414999455,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1724414999455,
+      "end": 1724414999455,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1724414999455,
+      "end": 1724414999455,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1724414999455,
+      "end": 1724414999455,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1724414999455,
+      "end": 1724414999455,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1724414999455,
+      "end": 1724414999455,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1724414999455,
+      "end": 1724414999455,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1724414999455,
+      "end": 1724414999455,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1724414999455,
+      "end": 1724414999455,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1724414999456,
+      "end": 1724414999456,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1724414999456,
+      "end": 1724414999456,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1724414999456,
+      "end": 1724414999456,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1724414999456,
+      "end": 1724414999456,
+      "order": "normal"
     }
   ]
 }

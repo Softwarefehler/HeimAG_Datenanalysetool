@@ -2,7 +2,7 @@
 import { ref, onMounted } from 'vue'
 import { VDateInput } from 'vuetify/labs/VDateInput'
 import { VSelect, VRow, VCol, VContainer, VBtn, VSheet, VDataTable } from 'vuetify/components'
-import { router } from '@/routes/router'
+
 
 export type DataPoint = { date: string; temperature: string }
 
@@ -85,7 +85,6 @@ async function firstPayload() {
     latestDate.value = data.latestDate
   } catch (error) {
     alert(`Die Anmeldezeit ist abgelaufen`)
-    //await router.push('/login')
     location.href = '/login'
   }
 }

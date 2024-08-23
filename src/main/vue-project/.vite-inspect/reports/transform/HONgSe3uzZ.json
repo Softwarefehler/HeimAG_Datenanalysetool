@@ -4,9 +4,99 @@
     {
       "name": "vite:load-fallback",
       "result": "import { createVNode as _createVNode } from \"vue\";\n// Styles\nimport \"./VLocaleProvider.css\";\n\n// Composables\nimport { makeComponentProps } from \"../../composables/component.mjs\";\nimport { provideLocale } from \"../../composables/locale.mjs\"; // Utilities\nimport { genericComponent, propsFactory, useRender } from \"../../util/index.mjs\";\nexport const makeVLocaleProviderProps = propsFactory({\n  locale: String,\n  fallbackLocale: String,\n  messages: Object,\n  rtl: {\n    type: Boolean,\n    default: undefined\n  },\n  ...makeComponentProps()\n}, 'VLocaleProvider');\nexport const VLocaleProvider = genericComponent()({\n  name: 'VLocaleProvider',\n  props: makeVLocaleProviderProps(),\n  setup(props, _ref) {\n    let {\n      slots\n    } = _ref;\n    const {\n      rtlClasses\n    } = provideLocale(props);\n    useRender(() => _createVNode(\"div\", {\n      \"class\": ['v-locale-provider', rtlClasses.value, props.class],\n      \"style\": props.style\n    }, [slots.default?.()]));\n    return {};\n  }\n});\n//# sourceMappingURL=VLocaleProvider.mjs.map",
-      "start": 1724363577117,
-      "end": 1724363577119,
+      "start": 1724414999773,
+      "end": 1724415000160,
       "sourcemaps": null
+    },
+    {
+      "name": "vite:css",
+      "start": 1724415000160,
+      "end": 1724415000160,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1724415000160,
+      "end": 1724415000160,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1724415000160,
+      "end": 1724415000160,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1724415000160,
+      "end": 1724415000160,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1724415000160,
+      "end": 1724415000160,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1724415000160,
+      "end": 1724415000160,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1724415000160,
+      "end": 1724415000160,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1724415000160,
+      "end": 1724415000160,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1724415000160,
+      "end": 1724415000160,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1724415000160,
+      "end": 1724415000160,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1724415000160,
+      "end": 1724415000160,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1724415000160,
+      "end": 1724415000160,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1724415000160,
+      "end": 1724415000160,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1724415000160,
+      "end": 1724415000160,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1724415000160,
+      "end": 1724415000160,
+      "order": "normal"
     }
   ]
 }

@@ -4,9 +4,99 @@
     {
       "name": "vite:load-fallback",
       "result": "export { VDataTable } from \"./VDataTable.mjs\";\nexport { VDataTableHeaders } from \"./VDataTableHeaders.mjs\";\nexport { VDataTableFooter } from \"./VDataTableFooter.mjs\";\nexport { VDataTableRows } from \"./VDataTableRows.mjs\";\nexport { VDataTableRow } from \"./VDataTableRow.mjs\";\nexport { VDataTableVirtual } from \"./VDataTableVirtual.mjs\";\nexport { VDataTableServer } from \"./VDataTableServer.mjs\";\n//# sourceMappingURL=index.mjs.map",
-      "start": 1724363577000,
-      "end": 1724363577012,
+      "start": 1724414998863,
+      "end": 1724414998879,
       "sourcemaps": null
+    },
+    {
+      "name": "vite:css",
+      "start": 1724414998879,
+      "end": 1724414998879,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1724414998879,
+      "end": 1724414998879,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1724414998879,
+      "end": 1724414998879,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1724414998879,
+      "end": 1724414998879,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1724414998879,
+      "end": 1724414998879,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1724414998879,
+      "end": 1724414998879,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1724414998879,
+      "end": 1724414998879,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1724414998879,
+      "end": 1724414998879,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1724414998879,
+      "end": 1724414998879,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1724414998879,
+      "end": 1724414998879,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1724414998879,
+      "end": 1724414998879,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1724414998879,
+      "end": 1724414998879,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1724414998880,
+      "end": 1724414998880,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1724414998880,
+      "end": 1724414998880,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1724414998880,
+      "end": 1724414998880,
+      "order": "normal"
     }
   ]
 }

@@ -4,9 +4,99 @@
     {
       "name": "vite:load-fallback",
       "result": "// Composables\nimport { makeDelayProps, useDelay } from \"../../composables/delay.mjs\";\nimport { useProxiedModel } from \"../../composables/proxiedModel.mjs\"; // Utilities\nimport { genericComponent, propsFactory } from \"../../util/index.mjs\";\nexport const makeVHoverProps = propsFactory({\n  disabled: Boolean,\n  modelValue: {\n    type: Boolean,\n    default: null\n  },\n  ...makeDelayProps()\n}, 'VHover');\nexport const VHover = genericComponent()({\n  name: 'VHover',\n  props: makeVHoverProps(),\n  emits: {\n    'update:modelValue': value => true\n  },\n  setup(props, _ref) {\n    let {\n      slots\n    } = _ref;\n    const isHovering = useProxiedModel(props, 'modelValue');\n    const {\n      runOpenDelay,\n      runCloseDelay\n    } = useDelay(props, value => !props.disabled && (isHovering.value = value));\n    return () => slots.default?.({\n      isHovering: isHovering.value,\n      props: {\n        onMouseenter: runOpenDelay,\n        onMouseleave: runCloseDelay\n      }\n    });\n  }\n});\n//# sourceMappingURL=VHover.mjs.map",
-      "start": 1724363577114,
-      "end": 1724363577117,
+      "start": 1724414999626,
+      "end": 1724414999784,
       "sourcemaps": null
+    },
+    {
+      "name": "vite:css",
+      "start": 1724414999784,
+      "end": 1724414999784,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1724414999784,
+      "end": 1724414999784,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1724414999784,
+      "end": 1724414999784,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1724414999784,
+      "end": 1724414999784,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1724414999784,
+      "end": 1724414999784,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1724414999784,
+      "end": 1724414999784,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1724414999785,
+      "end": 1724414999785,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1724414999785,
+      "end": 1724414999785,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1724414999785,
+      "end": 1724414999785,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1724414999785,
+      "end": 1724414999785,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1724414999785,
+      "end": 1724414999785,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1724414999785,
+      "end": 1724414999785,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1724414999785,
+      "end": 1724414999785,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1724414999785,
+      "end": 1724414999785,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1724414999785,
+      "end": 1724414999785,
+      "order": "normal"
     }
   ]
 }

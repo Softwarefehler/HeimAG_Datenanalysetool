@@ -8,7 +8,8 @@ export type Foto = { url: string; name: string }
 const foto = ref<Foto | null>(null)
 
 
-function logout() {
+// Da Bild statisch hinterlegt ist und der Fehler passiert, melden wir uns ab
+async function logout() {
   alert(`Die Anmeldezeit ist abgelaufen`)
   location.href = '/login'
 }
@@ -35,7 +36,7 @@ onMounted(fetchFotoFromServer)
         <h4 class="text-h5 font-weight-bold mb-0">Karte Wetterstationen Schweiz</h4>
       </v-col>
       <v-col cols="auto" class="d-flex align-center">
-        <img v-if="foto" :src="foto.url" :alt="foto.name"  class="my-image" />
+        <img v-if="foto" :src="foto.url" :alt="foto.name" @error=" logout" class="my-image" />
       </v-col>
     </v-row>
     <v-btn :to="{ path: '/' }" color="green lighten-3" class="my-button">Zurück</v-btn>

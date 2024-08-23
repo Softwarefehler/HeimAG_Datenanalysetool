@@ -1,9 +1,8 @@
 package ch.heimag.datenanalysetool.routes
 
 import ch.heimag.datenanalysetool.conditions.OperatingConditions
-import ch.heimag.datenanalysetool.converter.converter
-
-import ch.heimag.datenanalysetool.weatherdata.Weatherdata
+import ch.heimag.datenanalysetool.converter.Converter
+import ch.heimag.datenanalysetool.weatherdata.WeatherData
 import ch.heimag.datenanalysetool.databases.Data
 import ch.heimag.datenanalysetool.databases.DataPoint
 import ch.heimag.datenanalysetool.country.FileReader
@@ -46,28 +45,38 @@ const val IMAGE_DIRECTORY = "src/main/resources/images"
 
 fun Application.webPageApplication() {
     val logger = LoggerFactory.getLogger("WebPageApplication")
+
     routing {
         authenticate("auth-session") {
 
             val databaseStatus = Data.database.checkDatabaseStatus()
             var latestDateString = Data.database.loadLatestDate()
             val countryList = FileReader.country.loadToSelectCountry("/document/Wetterstationen.xlsx")
-            logger.info("Datenbankstatus: $databaseStatus")
+
 
 
             get("/get-DatenanalyseView") {
-
+                logger.info("GET-Anfrage auf /get-DatenanalyseView")
 
                 val firstResponse = FirstResponseDatenanalyseView(
                     databaseStatus = databaseStatus,
                     countryList = countryList,
                     latestDate = latestDateString
                 )
+                logger.debug(
+                    "DatenanalyseView response: {},{},{},{}",
+                    firstResponse.latestDate,
+                    firstResponse.databaseStatus,
+                    firstResponse.countryList,
+                    firstResponse.latestDate
+                )
                 call.respond(firstResponse)
             }
 
 
             post("/search") {
+                logger.info("POST-Anfrage auf /search")
+
                 var startDateReceive: String? = null
                 var endDateReceive: String? = null
                 var selectedCountryReceive: String? = null
@@ -94,9 +103,11 @@ fun Application.webPageApplication() {
                 val endDateString = endDateReceive.toString()
                 val selectedCountry = selectedCountryReceive.toString()
 
+                logger.debug("Empfangene Daten - Start Date: $startDateString, End Date: $endDateString, Selected Country: $selectedCountry")
+
                 // Parse Daten
-                val startDate = converter.frontendDateStringToInt(startDateString)
-                val endDate = converter.frontendDateStringToInt(endDateString)
+                val startDate = Converter.databaseDateStringToInt(startDateString)
+                val endDate = Converter.databaseDateStringToInt(endDateString)
 
                 val operatingState = OperatingConditions(startDate, endDate, selectedCountry)
 
@@ -107,24 +118,23 @@ fun Application.webPageApplication() {
 
                 val operatingStateValueList =
                     OperatingStateValueList(valueListKaltPeriode, valueListHauptanteilHeizperiode, valueListSchwachlast)
-                // Debug-Ausgabe
-                println("Input: Start Date: $startDate")
-                println("Input: End Date: $endDate")
-                println("Input: Selected Country: $selectedCountryReceive")
-                println("Input: CountryCode: ${operatingState.countryCode}")
+
+                logger.debug("Berechneter CountryCode: ${operatingState.countryCode}")
 
                 call.respond(operatingStateValueList)
             }
 
             post("/csv-upload") {
+                logger.info("POST-Anfrage auf /csv-upload")
+
                 val multipart = call.receiveMultipart()
-                val csvRecords = mutableListOf<Weatherdata>()
+                val csvRecords = mutableListOf<WeatherData>()
 
                 val oldDate = 18000101
                 val latestDateCheck = if (latestDateString == "Keine Daten") {
                     oldDate
                 } else {
-                    converter.dateStringToInt(latestDateString)
+                    Converter.dateStringToInt(latestDateString)
                 }
 
                 multipart.forEachPart { part ->
@@ -140,7 +150,7 @@ fun Application.webPageApplication() {
                             iterator.forEach { line ->
                                 val values = line.split(';')
                                 if (values.size == 30) { // Ensure it matches the number of columns
-                                    val record = Weatherdata(
+                                    val record = WeatherData(
                                         datum = values[0].toIntOrNull(),
                                         alt = values[1].toDoubleOrNull(),
                                         ant = values[2].toDoubleOrNull(),
@@ -176,17 +186,18 @@ fun Application.webPageApplication() {
                                     if (record.datum != null && latestDateCheck < record.datum) {
                                         csvRecords.add(record)
                                     }
-
                                 }
                             }
                         }
-
+                        logger.debug("CSV-Datei verarbeitet, Anzahl der Datensätze: ${csvRecords.size}")
                     }
                     part.dispose()
                 }
 
                 Data.database.setWeatherdataToDatabase(csvRecords)
                 latestDateString = Data.database.loadLatestDate()
+                logger.info("Datenbank aktualisiert, neuestes Datum: $latestDateString")
+
                 call.respond(
                     HttpStatusCode.OK,
                     mapOf("message" to "File successfully processed. Records count: ${csvRecords.size}")
@@ -194,19 +205,31 @@ fun Application.webPageApplication() {
             }
 
             get("/get-SettingsView") {
+                logger.info("GET-Anfrage auf /get-SettingsView")
+
                 val firstResponse = FirstResponseSettingsView(
                     databaseStatus = databaseStatus,
                     latestDate = latestDateString
+                )
+                logger.debug(
+                    "SettingsView response: {},{},{}",
+                    firstResponse.latestDate,
+                    firstResponse.databaseStatus,
+                    firstResponse.latestDate
                 )
                 call.respond(firstResponse)
             }
 
             get("/swisstopographic") {
+                logger.info("GET-Anfrage auf /swisstopographic")
+
                 val imageName = "Switzerland_topographic.png"
                 val file = File("$IMAGE_DIRECTORY/$imageName")
                 if (file.exists()) {
+                    logger.debug("Bild $imageName gefunden, sende Datei.")
                     call.respondFile(file)
                 } else {
+                    logger.error("Bild $imageName nicht gefunden.")
                     call.respond(HttpStatusCode.NotFound, "Bild nicht gefunden")
                 }
             }
