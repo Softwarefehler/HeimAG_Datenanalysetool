@@ -3,9 +3,9 @@
   "transforms": [
     {
       "name": "vite:load-fallback",
-      "result": "import { createRouter, createWebHashHistory } from 'vue-router'\r\nimport DatenanalyseVue from '@/routes/DatenanalyseView.vue'\r\nimport SettingsVue from '@/routes/SettingsView.vue'\r\nimport Swisstopo from '@/routes/SwitzerlandTopographicView.vue'\r\n\r\nconst routes = [\r\n { path: '/', component: DatenanalyseVue },\r\n  { path: '/settings', component: SettingsVue },\r\n  { path: '/swisstopo', component: Swisstopo }\r\n]\r\n\r\nexport const router = createRouter({\r\n  routes,\r\n  history: createWebHashHistory()\r\n})\r\n",
-      "start": 1724142507854,
-      "end": 1724142507855,
+      "result": "import { createRouter, createWebHashHistory } from 'vue-router'\r\nimport DatenanalyseVue from '@/routes/DatenanalyseView.vue'\r\nimport SettingsVue from '@/routes/SettingsView.vue'\r\nimport SwisstopoVue from '@/routes/SwitzerlandTopographicView.vue'\r\n\r\n\r\nconst routes = [\r\n { path: '/', component: DatenanalyseVue },\r\n  { path: '/settings', component: SettingsVue },\r\n  { path: '/swisstopo', component: SwisstopoVue },\r\n]\r\n\r\nexport const router = createRouter({\r\n  routes,\r\n  history: createWebHashHistory()\r\n})\r\n",
+      "start": 1724363576933,
+      "end": 1724363576941,
       "sourcemaps": null
     }
   ]

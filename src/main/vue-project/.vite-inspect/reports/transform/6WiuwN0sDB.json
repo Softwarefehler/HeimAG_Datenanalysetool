@@ -1,0 +1,124 @@
+{
+  "resolvedId": "C:/Users/MAG/IdeaProjects/Datenanalysetool/src/main/vue-project/src/routes/LoginView.vue?vue&type=script&setup=true&lang.ts",
+  "transforms": [
+    {
+      "name": "vite:vue",
+      "result": "import { defineComponent as _defineComponent } from 'vue'\nimport { resolveComponent as _resolveComponent, openBlock as _openBlock, createBlock as _createBlock } from \"vue\"\n\nimport { onMounted } from 'vue'\r\n\r\n\r\n\nexport default /*#__PURE__*/_defineComponent({\n  __name: 'LoginView',\n  setup(__props) {\n\r\nfunction logout() {\r\n  location.href = '/login'\r\n}\r\nonMounted(async () => {\r\n   logout()\r\n})\r\n\nreturn (_ctx: any,_cache: any) => {\n  const _component_v_container = _resolveComponent(\"v-container\")!\n\n  return (_openBlock(), _createBlock(_component_v_container))\n}\n}\n\n})",
+      "start": 1724363417246,
+      "end": 1724363417246,
+      "sourcemaps": {
+        "version": 3,
+        "sources": [
+          "C:/Users/MAG/IdeaProjects/Datenanalysetool/src/main/vue-project/src/routes/LoginView.vue"
+        ],
+        "sourcesContent": [
+          "<script setup lang=\"ts\">\r\nimport { onMounted } from 'vue'\r\n\r\n\r\nfunction logout() {\r\n  location.href = '/login'\r\n}\r\nonMounted(async () => {\r\n   logout()\r\n})\r\n</script>\r\n\r\n<template>\r\n<v-container></v-container>\r\n</template>\r\n\r\n<style scoped>\r\n\r\n</style>"
+        ],
+        "names": [],
+        "mappings": ";;;AACA,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AAChC,CAAC;AACD,CAAC;;;;;AAHuB,CAAC;AAIzB,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACpB,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AAC3B,CAAC,CAAC;AACF,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACxB,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACZ,CAAC,CAAC,CAAC;;;;;;;;;"
+      }
+    },
+    {
+      "name": "vite:css",
+      "start": 1724363417246,
+      "end": 1724363417246,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "result": "import { defineComponent as _defineComponent } from \"vue\";\nimport { resolveComponent as _resolveComponent, openBlock as _openBlock, createBlock as _createBlock } from \"vue\";\nimport { onMounted } from \"vue\";\nexport default /* @__PURE__ */ _defineComponent({\n  __name: \"LoginView\",\n  setup(__props) {\n    function logout() {\n      location.href = \"/login\";\n    }\n    onMounted(async () => {\n      logout();\n    });\n    return (_ctx, _cache) => {\n      const _component_v_container = _resolveComponent(\"v-container\");\n      return _openBlock(), _createBlock(_component_v_container);\n    };\n  }\n});\n",
+      "start": 1724363417246,
+      "end": 1724363417303,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "sources": [
+          "C:/Users/MAG/IdeaProjects/Datenanalysetool/src/main/vue-project/src/routes/LoginView.vue?vue&type=script&setup=true&lang.ts"
+        ],
+        "sourcesContent": [
+          "import { defineComponent as _defineComponent } from 'vue'\nimport { resolveComponent as _resolveComponent, openBlock as _openBlock, createBlock as _createBlock } from \"vue\"\n\nimport { onMounted } from 'vue'\r\n\r\n\r\n\nexport default /*#__PURE__*/_defineComponent({\n  __name: 'LoginView',\n  setup(__props) {\n\r\nfunction logout() {\r\n  location.href = '/login'\r\n}\r\nonMounted(async () => {\r\n   logout()\r\n})\r\n\nreturn (_ctx: any,_cache: any) => {\n  const _component_v_container = _resolveComponent(\"v-container\")!\n\n  return (_openBlock(), _createBlock(_component_v_container))\n}\n}\n\n})"
+        ],
+        "mappings": "AAAA,SAAS,mBAAmB,wBAAwB;AACpD,SAAS,oBAAoB,mBAAmB,aAAa,YAAY,eAAe,oBAAoB;AAE5G,SAAS,iBAAiB;AAI1B,eAA4B,iCAAiB;AAAA,EAC3C,QAAQ;AAAA,EACR,MAAM,SAAS;AAEjB,aAAS,SAAS;AAChB,eAAS,OAAO;AAAA,IAClB;AACA,cAAU,YAAY;AACnB,aAAO;AAAA,IACV,CAAC;AAED,WAAO,CAAC,MAAU,WAAgB;AAChC,YAAM,yBAAyB,kBAAkB,aAAa;AAE9D,aAAQ,WAAW,GAAG,aAAa,sBAAsB;AAAA,IAC3D;AAAA,EACA;AAEA,CAAC;",
+        "names": []
+      }
+    },
+    {
+      "name": "vite:json",
+      "start": 1724363417303,
+      "end": 1724363417303,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1724363417303,
+      "end": 1724363417303,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1724363417303,
+      "end": 1724363417303,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1724363417303,
+      "end": 1724363417303,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1724363417303,
+      "end": 1724363417303,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1724363417303,
+      "end": 1724363417303,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1724363417303,
+      "end": 1724363417303,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1724363417303,
+      "end": 1724363417303,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1724363417303,
+      "end": 1724363417303,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1724363417303,
+      "end": 1724363417303,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1724363417304,
+      "end": 1724363417304,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1724363417304,
+      "end": 1724363417304,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1724363417304,
+      "end": 1724363417304,
+      "order": "normal"
+    }
+  ]
+}

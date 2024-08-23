@@ -4,8 +4,8 @@
     {
       "name": "vite:load-fallback",
       "result": "export { VBreadcrumbs } from \"./VBreadcrumbs.mjs\";\nexport { VBreadcrumbsItem } from \"./VBreadcrumbsItem.mjs\";\nexport { VBreadcrumbsDivider } from \"./VBreadcrumbsDivider.mjs\";\n//# sourceMappingURL=index.mjs.map",
-      "start": 1724142507978,
-      "end": 1724142507992,
+      "start": 1724363576954,
+      "end": 1724363577001,
       "sourcemaps": null
     }
   ]

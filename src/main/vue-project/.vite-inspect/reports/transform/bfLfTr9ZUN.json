@@ -4,8 +4,8 @@
     {
       "name": "vite:load-fallback",
       "result": "// Utilities\nimport { createSimpleFunctional } from \"../../util/index.mjs\";\nexport const VListItemTitle = createSimpleFunctional('v-list-item-title');\n//# sourceMappingURL=VListItemTitle.mjs.map",
-      "start": 1724142508226,
-      "end": 1724142508228,
+      "start": 1724363577117,
+      "end": 1724363577119,
       "sourcemaps": null
     }
   ]

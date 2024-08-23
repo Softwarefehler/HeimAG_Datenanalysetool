@@ -4,8 +4,8 @@
     {
       "name": "vite:load-fallback",
       "result": ".v-chip-group {\n  display: flex;\n  max-width: 100%;\n  min-width: 0;\n  overflow-x: auto;\n  padding: 4px 0;\n}\n.v-chip-group .v-chip {\n  margin: 4px 8px 4px 0;\n}\n.v-chip-group .v-chip.v-chip--selected:not(.v-chip--disabled) .v-chip__overlay {\n  opacity: var(--v-activated-opacity);\n}\n\n.v-chip-group--column .v-slide-group__content {\n  white-space: normal;\n  flex-wrap: wrap;\n  max-width: 100%;\n}",
-      "start": 1724142508320,
-      "end": 1724142508345,
+      "start": 1724363577471,
+      "end": 1724363577561,
       "sourcemaps": null
     }
   ]

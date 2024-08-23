@@ -4,8 +4,8 @@
     {
       "name": "vite:load-fallback",
       "result": "// Utilities\nimport { createSimpleFunctional } from \"../../util/index.mjs\";\nexport const VCardTitle = createSimpleFunctional('v-card-title');\n//# sourceMappingURL=VCardTitle.mjs.map",
-      "start": 1724142508216,
-      "end": 1724142508220,
+      "start": 1724363577101,
+      "end": 1724363577106,
       "sourcemaps": null
     }
   ]

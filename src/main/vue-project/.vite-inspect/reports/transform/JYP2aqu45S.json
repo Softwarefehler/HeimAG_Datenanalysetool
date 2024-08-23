@@ -4,8 +4,8 @@
     {
       "name": "vite:load-fallback",
       "result": ".v-theme-provider {\n  background: rgb(var(--v-theme-background));\n  color: rgb(var(--v-theme-on-background));\n}",
-      "start": 1724142508447,
-      "end": 1724142508493,
+      "start": 1724363577753,
+      "end": 1724363577832,
       "sourcemaps": null
     }
   ]

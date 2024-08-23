@@ -4,8 +4,8 @@
     {
       "name": "vite:load-fallback",
       "result": "export { VDivider } from \"./VDivider.mjs\";\n//# sourceMappingURL=index.mjs.map",
-      "start": 1724142507992,
-      "end": 1724142508002,
+      "start": 1724363577001,
+      "end": 1724363577012,
       "sourcemaps": null
     }
   ]

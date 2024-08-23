@@ -4,8 +4,8 @@
     {
       "name": "vite:load-fallback",
       "result": "/* eslint-disable no-console */\n\n// Utilities\nimport { warn } from 'vue';\nexport function consoleWarn(message) {\n  warn(`Vuetify: ${message}`);\n}\nexport function consoleError(message) {\n  warn(`Vuetify error: ${message}`);\n}\nexport function deprecate(original, replacement) {\n  replacement = Array.isArray(replacement) ? replacement.slice(0, -1).map(s => `'${s}'`).join(', ') + ` or '${replacement.at(-1)}'` : `'${replacement}'`;\n  warn(`[Vuetify UPGRADE] '${original}' is deprecated, use ${replacement} instead.`);\n}\nexport function breaking(original, replacement) {\n  // warn(`[Vuetify BREAKING] '${original}' has been removed, use '${replacement}' instead. For more information, see the upgrade guide https://github.com/vuetifyjs/vuetify/releases/tag/v2.0.0#user-content-upgrade-guide`)\n}\nexport function removed(original) {\n  // warn(`[Vuetify REMOVED] '${original}' has been removed. You can safely omit it.`)\n}\n//# sourceMappingURL=console.mjs.map",
-      "start": 1724142507906,
-      "end": 1724142507964,
+      "start": 1724363577038,
+      "end": 1724363577066,
       "sourcemaps": null
     }
   ]

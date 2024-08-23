@@ -4,8 +4,8 @@
     {
       "name": "vite:load-fallback",
       "result": "export { VVirtualScroll } from \"./VVirtualScroll.mjs\";\n//# sourceMappingURL=index.mjs.map",
-      "start": 1724142508006,
-      "end": 1724142508009,
+      "start": 1724363577019,
+      "end": 1724363577025,
       "sourcemaps": null
     }
   ]

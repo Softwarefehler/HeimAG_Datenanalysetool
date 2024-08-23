@@ -4,8 +4,8 @@
     {
       "name": "vite:load-fallback",
       "result": "// Types\n\nexport const VMenuSymbol = Symbol.for('vuetify:v-menu');\n//# sourceMappingURL=shared.mjs.map",
-      "start": 1724142508234,
-      "end": 1724142508277,
+      "start": 1724363577660,
+      "end": 1724363577700,
       "sourcemaps": null
     }
   ]

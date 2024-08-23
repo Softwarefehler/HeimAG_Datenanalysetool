@@ -4,8 +4,8 @@
     {
       "name": "vite:load-fallback",
       "result": "export { VSelect } from \"./VSelect.mjs\";\n//# sourceMappingURL=index.mjs.map",
-      "start": 1724142508003,
-      "end": 1724142508005,
+      "start": 1724363577016,
+      "end": 1724363577019,
       "sourcemaps": null
     }
   ]

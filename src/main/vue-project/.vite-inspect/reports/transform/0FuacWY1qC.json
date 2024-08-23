@@ -4,8 +4,8 @@
     {
       "name": "vite:load-fallback",
       "result": "// Utilities\nimport { computed } from 'vue';\nimport { getPropertyFromItem, propsFactory } from \"../../../util/index.mjs\"; // Types\n// Composables\nexport const makeDataIteratorItemsProps = propsFactory({\n  items: {\n    type: Array,\n    default: () => []\n  },\n  itemValue: {\n    type: [String, Array, Function],\n    default: 'id'\n  },\n  itemSelectable: {\n    type: [String, Array, Function],\n    default: null\n  },\n  returnObject: Boolean\n}, 'DataIterator-items');\nexport function transformItem(props, item) {\n  const value = props.returnObject ? item : getPropertyFromItem(item, props.itemValue);\n  const selectable = getPropertyFromItem(item, props.itemSelectable, true);\n  return {\n    type: 'item',\n    value,\n    selectable,\n    raw: item\n  };\n}\nexport function transformItems(props, items) {\n  const array = [];\n  for (const item of items) {\n    array.push(transformItem(props, item));\n  }\n  return array;\n}\nexport function useDataIteratorItems(props) {\n  const items = computed(() => transformItems(props, props.items));\n  return {\n    items\n  };\n}\n//# sourceMappingURL=items.mjs.map",
-      "start": 1724142508345,
-      "end": 1724142508352,
+      "start": 1724363577557,
+      "end": 1724363577589,
       "sourcemaps": null
     }
   ]

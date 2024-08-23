@@ -4,8 +4,8 @@
     {
       "name": "vite:load-fallback",
       "result": ".v-layout {\n  --v-scrollbar-offset: 0px;\n  display: flex;\n  flex: 1 1 auto;\n}\n.v-layout--full-height {\n  --v-scrollbar-offset: inherit;\n  height: 100%;\n}",
-      "start": 1724142508381,
-      "end": 1724142508412,
+      "start": 1724363577641,
+      "end": 1724363577679,
       "sourcemaps": null
     }
   ]

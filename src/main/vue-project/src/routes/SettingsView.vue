@@ -1,46 +1,32 @@
 <script lang="ts" setup>
 import { onMounted, ref } from 'vue'
+import { router } from '@/routes/router'
 
-// Reaktive Variablen für die Datenbankinformationen und den Dateiupload
+
 const databaseStatus = ref<string | null>(null)
 const latestDate = ref<string | null>(null)
-
-// CSV Upload Variablen
 const csvFile = ref<File | null>(null)
 const csvFileInputError = ref<string | null>(null)
 const csvIsLoading = ref<boolean>(false) // Variable für den Ladezustand
 const csvUploadMessage = ref<string | null>(null)
 const csvUploadError = ref<boolean>(false) // Variable für Fehlerstatus
 
-
-// Validierungsregel für das Dateifeld
+// Validierung
 const csvRequiredRule = (value: File | null) => {
   return !!value || 'Dieses Feld ist erforderlich'
 }
 
 
-
-// Funktion zum Abrufen der Datenbankinformationen
-async function infoDatabase() {
-  try {
-    const info = await fetch('/get-SettingsView').then((response) => response.json())
-    databaseStatus.value = info.databaseStatus
-    latestDate.value = info.latestDate
-  } catch (error) {
-    alert(`Fehler beim Laden der Daten`)
-  }
-}
-
 // Funktion zum Hochladen der Datei
 async function csvUploadFile() {
   csvFileInputError.value = null
   csvUploadMessage.value = null
-  csvIsLoading.value = true // Ladezustand setzen
-  csvUploadError.value = false // Fehlerstatus zurücksetzen
+  csvIsLoading.value = true
+  csvUploadError.value = false
 
   if (!csvFile.value) {
     csvFileInputError.value = 'Bitte wählen Sie eine Datei aus'
-    csvIsLoading.value = false // Ladezustand beenden, falls kein Upload gestartet wird
+    csvIsLoading.value = false
     return
   }
 
@@ -60,31 +46,44 @@ async function csvUploadFile() {
       csvUploadMessage.value = 'Datei erfolgreich hochgeladen'
     } else {
       csvUploadMessage.value = 'Fehler beim Hochladen der Datei.'
-      csvUploadError.value = true // Fehlerstatus setzen
+      csvUploadError.value = true
     }
   } catch (error) {
-    csvUploadMessage.value = `Anmeldezeit ist Abgelaufen: ${error}`
-    csvUploadError.value = true // Fehlerstatus setzen
+    csvUploadMessage.value = 'Anmeldezeit ist Abgelaufen: ${error}'
+    csvUploadError.value = true
     location.href = '/login'
   } finally {
-    csvIsLoading.value = false // Ladezustand beenden, wenn der Upload abgeschlossen ist
-    await infoDatabase()
+    csvIsLoading.value = false
+    await firstPayload()
   }
 }
 
-// Funktion zum Zurücksetzen der Upload-Nachricht und des Fehlerstatus, wenn die Datei entfernt wird
+
+// Funktion zum Zurücksetzen der Upload-Nachricht / Fehlerstatus, wenn die Datei entfernt wird
 function csvHandleFileChange(event: Event) {
   const input = event.target as HTMLInputElement
   if (!input.files?.length) {
-    csvUploadMessage.value = null // Nachricht zurücksetzen, wenn keine Datei ausgewählt ist
-    csvUploadError.value = false // Fehlerstatus zurücksetzen
+    csvUploadMessage.value = null
+    csvUploadError.value = false
   }
 }
 
 
-// Funktion wird beim Laden der Komponente ausgeführt
+
+async function firstPayload() {
+  try {
+    const info = await fetch('/get-SettingsView').then((response) => response.json())
+    databaseStatus.value = info.databaseStatus
+    latestDate.value = info.latestDate
+  } catch (error) {
+    alert(`Die Anmeldezeit ist abgelaufen`)
+    //await router.push('/login')
+    location.href = '/login'
+  }
+}
+
 onMounted(async () => {
-  await infoDatabase()
+  await firstPayload()
 })
 </script>
 
@@ -110,8 +109,8 @@ onMounted(async () => {
     <v-form @submit.prevent="csvUploadFile">
       <v-file-input
         v-model="csvFile"
-        label="Wähle die Datei merged_output.csv"
-        accept="merged_output.csv"
+        label="Wähle die Datei wetterdaten.csv"
+        accept="wetterdaten.csv"
         prepend-icon=""
         prepend-inner-icon="mdi-upload"
         :rules="[csvRequiredRule]"

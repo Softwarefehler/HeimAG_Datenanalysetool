@@ -4,8 +4,8 @@
     {
       "name": "vite:load-fallback",
       "result": "// Components\nimport { VTooltip } from \"../../components/VTooltip/index.mjs\"; // Composables\nimport { useDirectiveComponent } from \"../../composables/directiveComponent.mjs\"; // Types\nexport const Tooltip = useDirectiveComponent(VTooltip, binding => {\n  return {\n    activator: 'parent',\n    location: binding.arg?.replace('-', ' ') ?? 'top',\n    text: typeof binding.value === 'boolean' ? undefined : binding.value\n  };\n});\nexport default Tooltip;\n//# sourceMappingURL=index.mjs.map",
-      "start": 1724142508007,
-      "end": 1724142508013,
+      "start": 1724363577025,
+      "end": 1724363577037,
       "sourcemaps": null
     }
   ]

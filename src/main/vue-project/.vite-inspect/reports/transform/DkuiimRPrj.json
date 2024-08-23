@@ -4,8 +4,8 @@
     {
       "name": "vite:load-fallback",
       "result": "// Utilities\nimport { getCurrentInstance } from \"./getCurrentInstance.mjs\"; // Types\nexport function injectSelf(key) {\n  let vm = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : getCurrentInstance('injectSelf');\n  const {\n    provides\n  } = vm;\n  if (provides && key in provides) {\n    // TS doesn't allow symbol as index type\n    return provides[key];\n  }\n  return undefined;\n}\n//# sourceMappingURL=injectSelf.mjs.map",
-      "start": 1724142507898,
-      "end": 1724142507950,
+      "start": 1724363577033,
+      "end": 1724363577057,
       "sourcemaps": null
     }
   ]

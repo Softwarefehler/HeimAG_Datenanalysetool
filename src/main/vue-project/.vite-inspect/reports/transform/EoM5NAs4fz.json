@@ -4,8 +4,8 @@
     {
       "name": "vite:load-fallback",
       "result": "export { VDataTable } from \"./VDataTable.mjs\";\nexport { VDataTableHeaders } from \"./VDataTableHeaders.mjs\";\nexport { VDataTableFooter } from \"./VDataTableFooter.mjs\";\nexport { VDataTableRows } from \"./VDataTableRows.mjs\";\nexport { VDataTableRow } from \"./VDataTableRow.mjs\";\nexport { VDataTableVirtual } from \"./VDataTableVirtual.mjs\";\nexport { VDataTableServer } from \"./VDataTableServer.mjs\";\n//# sourceMappingURL=index.mjs.map",
-      "start": 1724142507988,
-      "end": 1724142508001,
+      "start": 1724363577000,
+      "end": 1724363577012,
       "sourcemaps": null
     }
   ]

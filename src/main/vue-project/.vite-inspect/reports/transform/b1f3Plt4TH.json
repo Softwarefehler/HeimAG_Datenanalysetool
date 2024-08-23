@@ -4,8 +4,8 @@
     {
       "name": "vite:load-fallback",
       "result": "export { VCard } from \"./VCard.mjs\";\nexport { VCardActions } from \"./VCardActions.mjs\";\nexport { VCardItem } from \"./VCardItem.mjs\";\nexport { VCardSubtitle } from \"./VCardSubtitle.mjs\";\nexport { VCardText } from \"./VCardText.mjs\";\nexport { VCardTitle } from \"./VCardTitle.mjs\";\n//# sourceMappingURL=index.mjs.map",
-      "start": 1724142507979,
-      "end": 1724142507993,
+      "start": 1724363576960,
+      "end": 1724363577007,
       "sourcemaps": null
     }
   ]

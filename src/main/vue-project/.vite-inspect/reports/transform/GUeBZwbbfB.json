@@ -4,8 +4,8 @@
     {
       "name": "vite:load-fallback",
       "result": ".v-layout-item {\n  position: absolute;\n  transition: 0.2s cubic-bezier(0.4, 0, 0.2, 1);\n}\n\n.v-layout-item--absolute {\n  position: absolute;\n}",
-      "start": 1724142508383,
-      "end": 1724142508412,
+      "start": 1724363577643,
+      "end": 1724363577680,
       "sourcemaps": null
     }
   ]

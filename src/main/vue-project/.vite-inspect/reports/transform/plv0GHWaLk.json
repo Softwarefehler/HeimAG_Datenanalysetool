@@ -4,8 +4,8 @@
     {
       "name": "vite:load-fallback",
       "result": ".v-item-group {\n  flex: 0 1 auto;\n  max-width: 100%;\n  position: relative;\n  transition: 0.2s cubic-bezier(0.4, 0, 0.2, 1);\n}",
-      "start": 1724142508379,
-      "end": 1724142508409,
+      "start": 1724363577626,
+      "end": 1724363577676,
       "sourcemaps": null
     }
   ]

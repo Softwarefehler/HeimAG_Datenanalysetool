@@ -4,8 +4,8 @@
     {
       "name": "vite:load-fallback",
       "result": "// Composables\nimport { useDisplay } from \"./display.mjs\"; // Utilities\nimport { onMounted, shallowRef } from 'vue';\nimport { IN_BROWSER } from \"../util/index.mjs\";\nexport function useHydration() {\n  if (!IN_BROWSER) return shallowRef(false);\n  const {\n    ssr\n  } = useDisplay();\n  if (ssr) {\n    const isMounted = shallowRef(false);\n    onMounted(() => {\n      isMounted.value = true;\n    });\n    return isMounted;\n  } else {\n    return shallowRef(true);\n  }\n}\n//# sourceMappingURL=hydration.mjs.map",
-      "start": 1724142508390,
-      "end": 1724142508423,
+      "start": 1724363577675,
+      "end": 1724363577708,
       "sourcemaps": null
     }
   ]

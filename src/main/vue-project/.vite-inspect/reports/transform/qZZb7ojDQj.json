@@ -4,8 +4,8 @@
     {
       "name": "vite:load-fallback",
       "result": ".v-code {\n  background-color: rgb(var(--v-theme-code));\n  color: rgb(var(--v-theme-on-code));\n  border-radius: 4px;\n  line-height: 1.8;\n  font-size: 0.9em;\n  font-weight: normal;\n  padding: 0.2em 0.4em;\n}",
-      "start": 1724142508219,
-      "end": 1724142508222,
+      "start": 1724363577103,
+      "end": 1724363577107,
       "sourcemaps": null
     }
   ]

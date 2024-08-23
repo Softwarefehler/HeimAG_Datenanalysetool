@@ -13,11 +13,13 @@ import org.koin.ktor.ext.inject
 
 data class UserSession(val name: String) : Principal
 
+
 const val LOGIN_URL = "/login"
 const val USER_PARAM_NAME = "username"
 const val PASSWORD_PARAM_NAME = "password"
 
 var databaseStatus = Data.database.checkDatabaseStatus()
+
 
 
 fun Application.installSessionAndAuthentication() {
@@ -26,7 +28,7 @@ fun Application.installSessionAndAuthentication() {
     install(Sessions) {
         cookie<UserSession>("user_session") {
             cookie.path = "/"
-            cookie.maxAgeInSeconds = 300
+            cookie.maxAgeInSeconds = 30 // 300
         }
     }
 
@@ -44,22 +46,23 @@ fun Application.installSessionAndAuthentication() {
             }
             challenge {
                 call.respondRedirect(LOGIN_URL)
+
             }
         }
     }
+
 
     data class LoginModel(val postUrl: String, val userParamName: String, val passwordParamName: String, var databaseStatus: String)
 
     routing {
         get(LOGIN_URL) {
+            call.sessions.clear<UserSession>()
             val loginModel = LoginModel(LOGIN_URL, USER_PARAM_NAME, PASSWORD_PARAM_NAME, databaseStatus)
             call.respond(FreeMarkerContent("login.ftl", mapOf("login" to loginModel)))
         }
 
-        // Konfiguration für statische Inhalte (Bilder, CSS, JS, etc.)
-        static("/images") {
-            resources("images")
-        }
+        staticResources("/images","images")
+
 
         authenticate("auth-form") {
             post(LOGIN_URL) {
@@ -70,6 +73,7 @@ fun Application.installSessionAndAuthentication() {
                 if (databaseStatus == "Datenbank vorhanden") {
                     call.respondRedirect("/")
                 } else {
+                    call.sessions.clear<UserSession>()
                     call.respondRedirect(LOGIN_URL)
                 }
             }
@@ -82,3 +86,4 @@ fun Application.installSessionAndAuthentication() {
         }
     }
 }
+

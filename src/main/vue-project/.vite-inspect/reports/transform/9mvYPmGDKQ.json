@@ -4,8 +4,8 @@
     {
       "name": "vite:load-fallback",
       "result": "// Styles\nimport \"./VKbd.css\";\n\n// Utilities\nimport { createSimpleFunctional } from \"../../util/index.mjs\";\nexport const VKbd = createSimpleFunctional('v-kbd');\n//# sourceMappingURL=index.mjs.map",
-      "start": 1724142507995,
-      "end": 1724142508003,
+      "start": 1724363577011,
+      "end": 1724363577016,
       "sourcemaps": null
     }
   ]

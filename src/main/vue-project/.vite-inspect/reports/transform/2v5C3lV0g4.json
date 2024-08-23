@@ -4,8 +4,8 @@
     {
       "name": "vite:load-fallback",
       "result": "// Types\n\nexport const VTabsSymbol = Symbol.for('vuetify:v-tabs');\n//# sourceMappingURL=shared.mjs.map",
-      "start": 1724142508444,
-      "end": 1724142508481,
+      "start": 1724363577737,
+      "end": 1724363577783,
       "sourcemaps": null
     }
   ]

@@ -4,8 +4,8 @@
     {
       "name": "vite:load-fallback",
       "result": "// Utilities\nimport { computed } from 'vue';\nimport { getCurrentInstanceName, propsFactory } from \"../util/index.mjs\"; // Types\nconst allowedDensities = [null, 'default', 'comfortable', 'compact'];\n\n// typeof allowedDensities[number] evalutes to any\n// when generating api types for whatever reason.\n\n// Composables\nexport const makeDensityProps = propsFactory({\n  density: {\n    type: String,\n    default: 'default',\n    validator: v => allowedDensities.includes(v)\n  }\n}, 'density');\nexport function useDensity(props) {\n  let name = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : getCurrentInstanceName();\n  const densityClasses = computed(() => {\n    return `${name}--density-${props.density}`;\n  });\n  return {\n    densityClasses\n  };\n}\n//# sourceMappingURL=density.mjs.map",
-      "start": 1724142508196,
-      "end": 1724142508213,
+      "start": 1724363577140,
+      "end": 1724363577164,
       "sourcemaps": null
     }
   ]

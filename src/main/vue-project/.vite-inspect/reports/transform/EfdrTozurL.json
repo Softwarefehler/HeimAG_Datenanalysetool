@@ -4,8 +4,8 @@
     {
       "name": "vite:load-fallback",
       "result": "// Utilities\nimport { nextTick, watch } from 'vue';\n\n// Types\n\nexport function useSelectLink(link, select) {\n  watch(() => link.isActive?.value, isActive => {\n    if (link.isLink.value && isActive && select) {\n      nextTick(() => {\n        select(true);\n      });\n    }\n  }, {\n    immediate: true\n  });\n}\n//# sourceMappingURL=selectLink.mjs.map",
-      "start": 1724142508309,
-      "end": 1724142508335,
+      "start": 1724363577436,
+      "end": 1724363577516,
       "sourcemaps": null
     }
   ]

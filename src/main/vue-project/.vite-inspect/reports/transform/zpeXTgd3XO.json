@@ -4,8 +4,8 @@
     {
       "name": "vite:load-fallback",
       "result": ".v-label {\n  align-items: center;\n  color: inherit;\n  display: inline-flex;\n  font-size: 1rem;\n  letter-spacing: 0.009375em;\n  min-width: 0;\n  opacity: var(--v-medium-emphasis-opacity);\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}\n\n.v-label--clickable {\n  cursor: pointer;\n}",
-      "start": 1724142508380,
-      "end": 1724142508410,
+      "start": 1724363577640,
+      "end": 1724363577678,
       "sourcemaps": null
     }
   ]

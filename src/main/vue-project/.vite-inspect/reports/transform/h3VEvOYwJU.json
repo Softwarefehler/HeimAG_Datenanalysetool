@@ -4,8 +4,8 @@
     {
       "name": "vite:load-fallback",
       "result": "export { VSnackbarQueue } from \"./VSnackbarQueue.mjs\";\n//# sourceMappingURL=index.mjs.map",
-      "start": 1724142507868,
-      "end": 1724142507905,
+      "start": 1724363576938,
+      "end": 1724363576953,
       "sourcemaps": null
     }
   ]

@@ -4,8 +4,8 @@
     {
       "name": "vite:load-fallback",
       "result": "export { VBottomNavigation } from \"./VBottomNavigation.mjs\";\n//# sourceMappingURL=index.mjs.map",
-      "start": 1724142507978,
-      "end": 1724142507991,
+      "start": 1724363576954,
+      "end": 1724363577001,
       "sourcemaps": null
     }
   ]

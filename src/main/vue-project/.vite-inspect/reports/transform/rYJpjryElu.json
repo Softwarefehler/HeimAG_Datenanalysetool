@@ -4,8 +4,8 @@
     {
       "name": "vite:load-fallback",
       "result": "// Utilities\nimport { createSimpleFunctional } from \"../../util/index.mjs\";\nexport const VStepperHeader = createSimpleFunctional('v-stepper-header');\n//# sourceMappingURL=VStepperHeader.mjs.map",
-      "start": 1724142508228,
-      "end": 1724142508232,
+      "start": 1724363577120,
+      "end": 1724363577132,
       "sourcemaps": null
     }
   ]

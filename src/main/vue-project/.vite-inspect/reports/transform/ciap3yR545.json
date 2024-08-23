@@ -4,8 +4,8 @@
     {
       "name": "vite:load-fallback",
       "result": "export { VCarousel } from \"./VCarousel.mjs\";\nexport { VCarouselItem } from \"./VCarouselItem.mjs\";\n//# sourceMappingURL=index.mjs.map",
-      "start": 1724142507979,
-      "end": 1724142507994,
+      "start": 1724363576960,
+      "end": 1724363577006,
       "sourcemaps": null
     }
   ]

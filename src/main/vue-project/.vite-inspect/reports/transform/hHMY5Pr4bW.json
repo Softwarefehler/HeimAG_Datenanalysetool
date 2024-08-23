@@ -4,8 +4,8 @@
     {
       "name": "vite:load-fallback",
       "result": "export { VTimePicker } from \"./VTimePicker.mjs\";\nexport { VTimePickerClock } from \"./VTimePickerClock.mjs\";\nexport { VTimePickerControls } from \"./VTimePickerControls.mjs\";\n//# sourceMappingURL=index.mjs.map",
-      "start": 1724142507876,
-      "end": 1724142507906,
+      "start": 1724363576938,
+      "end": 1724363576953,
       "sourcemaps": null
     }
   ]

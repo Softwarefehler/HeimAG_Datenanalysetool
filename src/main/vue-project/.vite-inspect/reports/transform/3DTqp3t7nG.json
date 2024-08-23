@@ -4,8 +4,8 @@
     {
       "name": "vite:load-fallback",
       "result": "// Utilities\nimport { computed, onMounted, readonly, shallowRef } from 'vue';\n\n// Composables\nexport function useSsrBoot() {\n  const isBooted = shallowRef(false);\n  onMounted(() => {\n    window.requestAnimationFrame(() => {\n      isBooted.value = true;\n    });\n  });\n  const ssrBootStyles = computed(() => !isBooted.value ? {\n    transition: 'none !important'\n  } : undefined);\n  return {\n    ssrBootStyles,\n    isBooted: readonly(isBooted)\n  };\n}\n//# sourceMappingURL=ssrBoot.mjs.map",
-      "start": 1724142508295,
-      "end": 1724142508317,
+      "start": 1724363577160,
+      "end": 1724363577209,
       "sourcemaps": null
     }
   ]

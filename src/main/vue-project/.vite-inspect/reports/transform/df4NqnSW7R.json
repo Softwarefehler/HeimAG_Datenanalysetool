@@ -4,8 +4,8 @@
     {
       "name": "vite:load-fallback",
       "result": "export { VAutocomplete } from \"./VAutocomplete.mjs\";\n//# sourceMappingURL=index.mjs.map",
-      "start": 1724142507975,
-      "end": 1724142507983,
+      "start": 1724363576953,
+      "end": 1724363576998,
       "sourcemaps": null
     }
   ]

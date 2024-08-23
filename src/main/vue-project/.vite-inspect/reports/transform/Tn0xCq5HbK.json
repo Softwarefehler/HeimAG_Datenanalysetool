@@ -4,8 +4,8 @@
     {
       "name": "vite:load-fallback",
       "result": "// Utilities\nimport { propsFactory } from \"../util/index.mjs\"; // Types\n// Composables\nexport const makeTagProps = propsFactory({\n  tag: {\n    type: String,\n    default: 'div'\n  }\n}, 'tag');\n//# sourceMappingURL=tag.mjs.map",
-      "start": 1724142508245,
-      "end": 1724142508290,
+      "start": 1724363577170,
+      "end": 1724363577417,
       "sourcemaps": null
     }
   ]

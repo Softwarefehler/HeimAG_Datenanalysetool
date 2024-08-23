@@ -4,8 +4,8 @@
     {
       "name": "vite:load-fallback",
       "result": "// Styles\nimport \"./VGrid.css\";\n\n// Utilities\nimport { createSimpleFunctional } from \"../../util/index.mjs\";\nexport const VSpacer = createSimpleFunctional('v-spacer', 'div', 'VSpacer');\n//# sourceMappingURL=VSpacer.mjs.map",
-      "start": 1724142508223,
-      "end": 1724142508226,
+      "start": 1724363577112,
+      "end": 1724363577116,
       "sourcemaps": null
     }
   ]

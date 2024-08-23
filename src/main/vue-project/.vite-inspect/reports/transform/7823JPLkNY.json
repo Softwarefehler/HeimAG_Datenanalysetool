@@ -4,8 +4,8 @@
     {
       "name": "vite:load-fallback",
       "result": ".v-parallax {\n  position: relative;\n  overflow: hidden;\n}\n.v-parallax--active > .v-img__img {\n  will-change: transform;\n}",
-      "start": 1724142508410,
-      "end": 1724142508439,
+      "start": 1724363577679,
+      "end": 1724363577716,
       "sourcemaps": null
     }
   ]

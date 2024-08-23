@@ -4,8 +4,8 @@
     {
       "name": "vite:load-fallback",
       "result": ".v-responsive {\n  display: flex;\n  flex: 1 0 auto;\n  max-height: 100%;\n  max-width: 100%;\n  overflow: hidden;\n  position: relative;\n}\n.v-responsive--inline {\n  display: inline-flex;\n  flex: 0 0 auto;\n}\n\n.v-responsive__content {\n  flex: 1 0 0px;\n  max-width: 100%;\n}\n\n.v-responsive__sizer ~ .v-responsive__content {\n  margin-inline-start: -100%;\n}\n\n.v-responsive__sizer {\n  flex: 1 0 0px;\n  transition: padding-bottom 0.2s cubic-bezier(0.4, 0, 0.2, 1);\n  pointer-events: none;\n}",
-      "start": 1724142508426,
-      "end": 1724142508453,
+      "start": 1724363577699,
+      "end": 1724363577731,
       "sourcemaps": null
     }
   ]

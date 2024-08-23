@@ -4,8 +4,8 @@
     {
       "name": "vite:load-fallback",
       "result": ".v-time-picker.v-picker {\n  padding: 24px;\n  width: 328px;\n}\n.v-time-picker.v-picker .v-picker-title {\n  padding: 0;\n  margin-bottom: 20px;\n}",
-      "start": 1724142508177,
-      "end": 1724142508200,
+      "start": 1724363577137,
+      "end": 1724363577159,
       "sourcemaps": null
     }
   ]

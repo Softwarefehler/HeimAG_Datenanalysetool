@@ -4,8 +4,8 @@
     {
       "name": "vite:load-fallback",
       "result": "<!doctype html>\r\n<html lang=\"en\">\r\n  <head>\r\n    <meta charset=\"UTF-8\" />\r\n    <link rel=\"icon\" href=\"/favicon.svg\" type=\"image/svg+xml\" />\r\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\r\n    <title>HeimAG Analyse</title>\r\n  </head>\r\n  <body>\r\n    <div id=\"app\"></div>\r\n    <script type=\"module\" src=\"/src/main.ts\"></script>\r\n  </body>\r\n</html>\r\n",
-      "start": 1724142507850,
-      "end": 1724142507850,
+      "start": 1724363576928,
+      "end": 1724363576930,
       "sourcemaps": null
     }
   ]

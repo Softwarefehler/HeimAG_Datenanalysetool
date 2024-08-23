@@ -4,8 +4,8 @@
     {
       "name": "vite:load-fallback",
       "result": ".v-speed-dial__content {\n  gap: 8px;\n}\n.v-speed-dial__content.v-overlay__content.v-speed-dial__content--end, .v-speed-dial__content.v-overlay__content.v-speed-dial__content--end-center, .v-speed-dial__content.v-overlay__content.v-speed-dial__content--right, .v-speed-dial__content.v-overlay__content.v-speed-dial__content--right-center {\n  flex-direction: row;\n}\n.v-speed-dial__content.v-overlay__content.v-speed-dial__content--left, .v-speed-dial__content.v-overlay__content.v-speed-dial__content--left-center, .v-speed-dial__content.v-overlay__content.v-speed-dial__content--start, .v-speed-dial__content.v-overlay__content.v-speed-dial__content--start-center {\n  flex-direction: row-reverse;\n}\n.v-speed-dial__content.v-overlay__content.v-speed-dial__content--top, .v-speed-dial__content.v-overlay__content.v-speed-dial__content--top-center {\n  flex-direction: column-reverse;\n}\n.v-speed-dial__content > *:nth-child(1) {\n  transition-delay: 0s;\n}\n.v-speed-dial__content > *:nth-child(2) {\n  transition-delay: 0.05s;\n}\n.v-speed-dial__content > *:nth-child(3) {\n  transition-delay: 0.1s;\n}\n.v-speed-dial__content > *:nth-child(4) {\n  transition-delay: 0.15s;\n}\n.v-speed-dial__content > *:nth-child(5) {\n  transition-delay: 0.2s;\n}\n.v-speed-dial__content > *:nth-child(6) {\n  transition-delay: 0.25s;\n}\n.v-speed-dial__content > *:nth-child(7) {\n  transition-delay: 0.3s;\n}\n.v-speed-dial__content > *:nth-child(8) {\n  transition-delay: 0.35s;\n}\n.v-speed-dial__content > *:nth-child(9) {\n  transition-delay: 0.4s;\n}\n.v-speed-dial__content > *:nth-child(10) {\n  transition-delay: 0.45s;\n}",
-      "start": 1724142508430,
-      "end": 1724142508480,
+      "start": 1724363577723,
+      "end": 1724363577770,
       "sourcemaps": null
     }
   ]

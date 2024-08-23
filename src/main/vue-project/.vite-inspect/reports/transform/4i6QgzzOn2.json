@@ -4,8 +4,8 @@
     {
       "name": "vite:load-fallback",
       "result": "export {};\n",
-      "start": 1724142508007,
-      "end": 1724142508015,
+      "start": 1724363577226,
+      "end": 1724363577475,
       "sourcemaps": null
     }
   ]

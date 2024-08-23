@@ -4,8 +4,8 @@
     {
       "name": "vite:load-fallback",
       "result": "export { VMenu } from \"./VMenu.mjs\";\n//# sourceMappingURL=index.mjs.map",
-      "start": 1724142508002,
-      "end": 1724142508004,
+      "start": 1724363577013,
+      "end": 1724363577017,
       "sourcemaps": null
     }
   ]

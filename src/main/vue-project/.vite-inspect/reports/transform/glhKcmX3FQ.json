@@ -4,8 +4,8 @@
     {
       "name": "vite:load-fallback",
       "result": ".v-calendar-header {\n  align-items: center;\n  display: flex;\n  min-height: 64px;\n}\n\n.v-calendar-header__today {\n  margin-inline-end: 24px;\n}\n\n.v-calendar-header__title {\n  font-size: 1.5rem;\n  margin-inline-start: 24px;\n}",
-      "start": 1724142508015,
-      "end": 1724142508177,
+      "start": 1724363577134,
+      "end": 1724363577139,
       "sourcemaps": null
     }
   ]

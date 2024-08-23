@@ -4,8 +4,8 @@
     {
       "name": "vite:load-fallback",
       "result": "export { VTooltip } from \"./VTooltip.mjs\";\n//# sourceMappingURL=index.mjs.map",
-      "start": 1724142508005,
-      "end": 1724142508008,
+      "start": 1724363577019,
+      "end": 1724363577025,
       "sourcemaps": null
     }
   ]

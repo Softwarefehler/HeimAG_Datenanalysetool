@@ -4,8 +4,8 @@
     {
       "name": "vite:load-fallback",
       "result": "// Adds leading zero to month/day if necessary, returns 'YYYY' if type = 'year',\n// 'YYYY-MM' if 'month' and 'YYYY-MM-DD' if 'date'\nimport pad from \"./pad.mjs\";\nexport default ((dateString, type) => {\n  const [year, month = 1, date = 1] = dateString.split('-');\n  return `${year}-${pad(month)}-${pad(date)}`.substr(0, {\n    date: 10,\n    month: 7,\n    year: 4\n  }[type]);\n});\n//# sourceMappingURL=sanitizeDateString.mjs.map",
-      "start": 1724142508286,
-      "end": 1724142508305,
+      "start": 1724363577772,
+      "end": 1724363577929,
       "sourcemaps": null
     }
   ]

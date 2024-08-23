@@ -4,8 +4,8 @@
     {
       "name": "vite:load-fallback",
       "result": ".v-locale-provider {\n  display: contents;\n}",
-      "start": 1724142508401,
-      "end": 1724142508426,
+      "start": 1724363577656,
+      "end": 1724363577689,
       "sourcemaps": null
     }
   ]

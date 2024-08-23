@@ -4,8 +4,8 @@
     {
       "name": "vite:load-fallback",
       "result": ".v-checkbox.v-input {\n  flex: 0 1 auto;\n}\n.v-checkbox .v-selection-control {\n  min-height: var(--v-input-control-height);\n}",
-      "start": 1724142508317,
-      "end": 1724142508345,
+      "start": 1724363577468,
+      "end": 1724363577561,
       "sourcemaps": null
     }
   ]

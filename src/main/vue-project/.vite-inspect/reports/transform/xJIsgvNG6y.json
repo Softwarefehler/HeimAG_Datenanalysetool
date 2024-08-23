@@ -4,8 +4,8 @@
     {
       "name": "vite:load-fallback",
       "result": ".v-virtual-scroll {\n  display: block;\n  flex: 1 1 auto;\n  max-width: 100%;\n  overflow: auto;\n  position: relative;\n}\n.v-virtual-scroll__container {\n  display: block;\n}",
-      "start": 1724142508456,
-      "end": 1724142508511,
+      "start": 1724363577763,
+      "end": 1724363577859,
       "sourcemaps": null
     }
   ]

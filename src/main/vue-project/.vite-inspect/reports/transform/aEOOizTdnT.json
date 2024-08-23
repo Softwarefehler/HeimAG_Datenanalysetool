@@ -4,8 +4,8 @@
     {
       "name": "vite:load-fallback",
       "result": "export { VLabel } from \"./VLabel.mjs\";\n//# sourceMappingURL=index.mjs.map",
-      "start": 1724142508001,
-      "end": 1724142508003,
+      "start": 1724363577012,
+      "end": 1724363577015,
       "sourcemaps": null
     }
   ]

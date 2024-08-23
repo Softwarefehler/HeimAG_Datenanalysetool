@@ -4,8 +4,8 @@
     {
       "name": "vite:load-fallback",
       "result": "export * from \"./VCalendar/index.mjs\";\nexport * from \"./VDateInput/index.mjs\";\nexport * from \"./VNumberInput/index.mjs\";\nexport * from \"./VPicker/index.mjs\";\nexport * from \"./VStepperVertical/index.mjs\";\nexport * from \"./VPullToRefresh/index.mjs\";\nexport * from \"./VSnackbarQueue/index.mjs\";\nexport * from \"./VTimePicker/index.mjs\";\nexport * from \"./VTreeview/index.mjs\";\n//# sourceMappingURL=components.mjs.map",
-      "start": 1724142507854,
-      "end": 1724142507857,
+      "start": 1724363576933,
+      "end": 1724363576937,
       "sourcemaps": null
     }
   ]

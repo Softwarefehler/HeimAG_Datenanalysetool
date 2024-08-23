@@ -15,6 +15,7 @@ import io.ktor.server.request.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
 import kotlinx.serialization.Serializable
+import org.slf4j.LoggerFactory
 import java.io.InputStreamReader
 import java.io.BufferedReader
 import java.io.File
@@ -43,13 +44,15 @@ data class OperatingStateValueList(
 const val IMAGE_DIRECTORY = "src/main/resources/images"
 
 
-fun Application.configureDatenanalyse() {
+fun Application.webPageApplication() {
+    val logger = LoggerFactory.getLogger("WebPageApplication")
     routing {
         authenticate("auth-session") {
 
             val databaseStatus = Data.database.checkDatabaseStatus()
             var latestDateString = Data.database.loadLatestDate()
             val countryList = FileReader.country.loadToSelectCountry("/document/Wetterstationen.xlsx")
+            logger.info("Datenbankstatus: $databaseStatus")
 
 
             get("/get-DatenanalyseView") {
@@ -210,6 +213,9 @@ fun Application.configureDatenanalyse() {
         }
     }
 }
+
+
+
 
 
 

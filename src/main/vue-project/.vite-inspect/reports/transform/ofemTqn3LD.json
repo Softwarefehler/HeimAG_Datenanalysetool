@@ -4,8 +4,8 @@
     {
       "name": "vite:load-fallback",
       "result": "export { VStepper } from \"./VStepper.mjs\";\nexport { VStepperActions } from \"./VStepperActions.mjs\";\nexport { VStepperHeader } from \"./VStepperHeader.mjs\";\nexport { VStepperItem } from \"./VStepperItem.mjs\";\nexport { VStepperWindow } from \"./VStepperWindow.mjs\";\nexport { VStepperWindowItem } from \"./VStepperWindowItem.mjs\";\n//# sourceMappingURL=index.mjs.map",
-      "start": 1724142508005,
-      "end": 1724142508006,
+      "start": 1724363577018,
+      "end": 1724363577021,
       "sourcemaps": null
     }
   ]

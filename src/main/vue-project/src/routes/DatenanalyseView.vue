@@ -1,9 +1,8 @@
-
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
 import { VDateInput } from 'vuetify/labs/VDateInput'
 import { VSelect, VRow, VCol, VContainer, VBtn, VSheet, VDataTable } from 'vuetify/components'
-
+import { router } from '@/routes/router'
 
 export type DataPoint = { date: string; temperature: string }
 
@@ -13,46 +12,38 @@ type PayloadType = {
   schwachlast: DataPoint[]
 }
 
-// Reaktive Variablen für die Date-Picker
 const startDate = ref<string | null>(null)
 const endDate = ref<string | null>(null)
 const selectedCountry = ref<string | null>(null)
 const tableData1 = ref<DataPoint[]>([])
 const tableData2 = ref<DataPoint[]>([])
 const tableData3 = ref<DataPoint[]>([])
-
 const databaseStatus = ref<string | null>(null)
 const countryList = ref<string[]>([])
 const latestDate = ref<string | null>(null)
-
 const startDateError = ref<string | null>(null)
 const endDateError = ref<string | null>(null)
 const selectedCountryError = ref<string | null>(null)
 
-// Validierungsregeln
+// Validierung
 const requiredRule = (value: any) => !!value || 'Dieses Feld ist erforderlich'
 
- async function firstPayload() {
-  try {
-    const data = await fetch('/get-DatenanalyseView').then((response) => response.json())
-    databaseStatus.value = data.databaseStatus
-    countryList.value = data.countryList
-    latestDate.value = data.latestDate
-  } catch (error) {
-    alert(`Fehler beim Laden der Daten: ${error}`)
-  }
-}
 
 async function sendData() {
-
   startDateError.value = null
   endDateError.value = null
   selectedCountryError.value = null
 
   // Validierung
-  if (!startDate.value) startDateError.value = 'Bitte wählen Sie ein Startdatum'
-  if (!endDate.value) endDateError.value = 'Bitte wählen Sie ein Enddatum'
-  if (!selectedCountry.value) selectedCountryError.value = 'Bitte wählen Sie ein Land aus'
+  if (!startDate.value) {
+    startDateError.value = 'Bitte wählen Sie ein Startdatum'
+  }
+  if (!endDate.value) {
+    endDateError.value = 'Bitte wählen Sie ein Enddatum'
+  }
+  if (!selectedCountry.value) {
+    selectedCountryError.value = 'Bitte wählen Sie einen Ort aus'
+  }
 
 
   if (startDate.value !== null && endDate.value !== null && selectedCountry.value !== null) {
@@ -73,19 +64,30 @@ async function sendData() {
         processPayload(payload)
       }
     } catch (error) {
-      alert(`Anmeldezeit ist Abgelaufen: ${error}`)
+      alert(`Anmeldezeit ist Abgelaufen`)
       location.href = '/login'
     }
   }
 }
 
-
-
 function processPayload(payload: PayloadType) {
-  // Verarbeitung der drei Listen
   tableData1.value = payload.kaltPeriode
   tableData2.value = payload.hauptanteilHeizperiode
   tableData3.value = payload.schwachlast
+}
+
+
+async function firstPayload() {
+  try {
+    const data = await fetch('/get-DatenanalyseView').then((response) => response.json())
+    databaseStatus.value = data.databaseStatus
+    countryList.value = data.countryList
+    latestDate.value = data.latestDate
+  } catch (error) {
+    alert(`Die Anmeldezeit ist abgelaufen`)
+    //await router.push('/login')
+    location.href = '/login'
+  }
 }
 
 onMounted(async () => {
@@ -146,21 +148,21 @@ onMounted(async () => {
         <v-sheet class="mb-4">
           <h4 class="text-h6 font-weight-bold mb-1">Kalte Periode</h4>
           <p class="text-body-2 mb-2" style="margin-top: -8px;">Temperaturen zwischen -10 ... -5°C</p>
-          <v-data-table :items="tableData1" :items-per-page="-1"  class="custom-table"></v-data-table>
+          <v-data-table :items="tableData1" :items-per-page="-1" class="custom-table"></v-data-table>
         </v-sheet>
       </v-col>
       <v-col cols="12" md="4">
         <v-sheet class="mb-4">
           <h4 class="text-h6 font-weight-bold mb-1">Hauptanteil Heizperiode</h4>
           <p class="text-body-2 mb-2" style="margin-top: -8px;">Temperaturen zwischen 0 ... 20°C</p>
-          <v-data-table :items="tableData2" :items-per-page="-1"  class="custom-table"></v-data-table>
+          <v-data-table :items="tableData2" :items-per-page="-1" class="custom-table"></v-data-table>
         </v-sheet>
       </v-col>
       <v-col cols="12" md="4">
         <v-sheet class="mb-4">
           <h4 class="text-h6 font-weight-bold mb-1">Schwachlast</h4>
           <p class="text-body-2 mb-2" style="margin-top: -8px;">Temperatur möglichst nahe bei 20°C</p>
-          <v-data-table :items="tableData3" :items-per-page="-1"  class="custom-table"></v-data-table>
+          <v-data-table :items="tableData3" :items-per-page="-1" class="custom-table"></v-data-table>
         </v-sheet>
       </v-col>
     </v-row>

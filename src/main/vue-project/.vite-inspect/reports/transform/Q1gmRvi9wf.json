@@ -4,8 +4,8 @@
     {
       "name": "vite:load-fallback",
       "result": ".v-counter {\n  color: rgba(var(--v-theme-on-surface), var(--v-medium-emphasis-opacity));\n  flex: 0 1 auto;\n  font-size: 12px;\n  transition-duration: 150ms;\n}",
-      "start": 1724142508332,
-      "end": 1724142508347,
+      "start": 1724363577503,
+      "end": 1724363577573,
       "sourcemaps": null
     }
   ]

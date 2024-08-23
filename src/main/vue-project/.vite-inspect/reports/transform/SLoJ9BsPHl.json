@@ -4,8 +4,8 @@
     {
       "name": "vite:load-fallback",
       "result": ".v-selection-control-group {\n  grid-area: control;\n  display: flex;\n  flex-direction: column;\n}\n.v-selection-control-group--inline {\n  flex-direction: row;\n  flex-wrap: wrap;\n}",
-      "start": 1724142508427,
-      "end": 1724142508449,
+      "start": 1724363577709,
+      "end": 1724363577738,
       "sourcemaps": null
     }
   ]

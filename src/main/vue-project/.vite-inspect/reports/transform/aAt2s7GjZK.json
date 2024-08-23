@@ -4,8 +4,8 @@
     {
       "name": "vite:load-fallback",
       "result": "export { VIcon } from \"./VIcon.mjs\";\nexport { VComponentIcon, VSvgIcon, VLigatureIcon, VClassIcon } from \"../../composables/icons.mjs\";\n//# sourceMappingURL=index.mjs.map",
-      "start": 1724142507994,
-      "end": 1724142508003,
+      "start": 1724363577009,
+      "end": 1724363577015,
       "sourcemaps": null
     }
   ]

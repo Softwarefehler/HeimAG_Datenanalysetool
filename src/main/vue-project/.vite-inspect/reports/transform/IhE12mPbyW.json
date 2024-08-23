@@ -4,8 +4,8 @@
     {
       "name": "vite:load-fallback",
       "result": "export { VBtnToggle } from \"./VBtnToggle.mjs\";\n//# sourceMappingURL=index.mjs.map",
-      "start": 1724142507979,
-      "end": 1724142507993,
+      "start": 1724363576958,
+      "end": 1724363577002,
       "sourcemaps": null
     }
   ]

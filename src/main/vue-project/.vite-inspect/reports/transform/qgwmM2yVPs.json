@@ -4,8 +4,8 @@
     {
       "name": "vite:load-fallback",
       "result": "export { VFab } from \"./VFab.mjs\";\n//# sourceMappingURL=index.mjs.map",
-      "start": 1724142507993,
-      "end": 1724142508002,
+      "start": 1724363577002,
+      "end": 1724363577013,
       "sourcemaps": null
     }
   ]

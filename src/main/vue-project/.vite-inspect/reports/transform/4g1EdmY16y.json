@@ -4,8 +4,8 @@
     {
       "name": "vite:load-fallback",
       "result": "// @ts-nocheck\n/* eslint-disable */\nimport pad from \"./pad.mjs\";\n/**\n * @param {String} value YYYY-MM format\n * @param {Number} sign -1 or +1\n */\nexport default ((value, sign) => {\n  const [year, month] = value.split('-').map(Number);\n  if (month + sign === 0) {\n    return `${year - 1}-12`;\n  } else if (month + sign === 13) {\n    return `${year + 1}-01`;\n  } else {\n    return `${year}-${pad(month + sign)}`;\n  }\n});\n//# sourceMappingURL=monthChange.mjs.map",
-      "start": 1724142508286,
-      "end": 1724142508305,
+      "start": 1724363577771,
+      "end": 1724363577930,
       "sourcemaps": null
     }
   ]

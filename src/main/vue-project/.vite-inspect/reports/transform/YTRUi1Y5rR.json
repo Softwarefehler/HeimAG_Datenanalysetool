@@ -4,8 +4,8 @@
     {
       "name": "vite:load-fallback",
       "result": "// Utilities\nimport { createSimpleFunctional } from \"../../util/index.mjs\";\nexport const VBannerText = createSimpleFunctional('v-banner-text');\n//# sourceMappingURL=VBannerText.mjs.map",
-      "start": 1724142508210,
-      "end": 1724142508218,
+      "start": 1724363577077,
+      "end": 1724363577103,
       "sourcemaps": null
     }
   ]

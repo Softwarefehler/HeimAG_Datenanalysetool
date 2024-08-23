@@ -4,8 +4,8 @@
     {
       "name": "vite:load-fallback",
       "result": "export { VBanner } from \"./VBanner.mjs\";\nexport { VBannerActions } from \"./VBannerActions.mjs\";\nexport { VBannerText } from \"./VBannerText.mjs\";\n//# sourceMappingURL=index.mjs.map",
-      "start": 1724142507977,
-      "end": 1724142507991,
+      "start": 1724363576954,
+      "end": 1724363577000,
       "sourcemaps": null
     }
   ]

@@ -4,8 +4,8 @@
     {
       "name": "vite:load-fallback",
       "result": "import { createVNode as _createVNode } from \"vue\";\n// Components\nimport { VIcon } from \"../VIcon/index.mjs\"; // Composables\nimport { useLocale } from \"../../composables/locale.mjs\"; // Types\nexport function useInputIcon(props) {\n  const {\n    t\n  } = useLocale();\n  function InputIcon(_ref) {\n    let {\n      name\n    } = _ref;\n    const localeKey = {\n      prepend: 'prependAction',\n      prependInner: 'prependAction',\n      append: 'appendAction',\n      appendInner: 'appendAction',\n      clear: 'clear'\n    }[name];\n    const listener = props[`onClick:${name}`];\n    const label = listener && localeKey ? t(`$vuetify.input.${localeKey}`, props.label ?? '') : undefined;\n    return _createVNode(VIcon, {\n      \"icon\": props[`${name}Icon`],\n      \"aria-label\": label,\n      \"onClick\": listener\n    }, null);\n  }\n  return {\n    InputIcon\n  };\n}\n//# sourceMappingURL=InputIcon.mjs.map",
-      "start": 1724142508353,
-      "end": 1724142508390,
+      "start": 1724363577597,
+      "end": 1724363577652,
       "sourcemaps": null
     }
   ]

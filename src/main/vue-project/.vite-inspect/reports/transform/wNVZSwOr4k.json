@@ -4,8 +4,8 @@
     {
       "name": "vite:load-fallback",
       "result": "// Utilities\nimport { createSimpleFunctional } from \"../../util/index.mjs\";\nexport const VListImg = createSimpleFunctional('v-list-img');\n//# sourceMappingURL=VListImg.mjs.map",
-      "start": 1724142508225,
-      "end": 1724142508227,
+      "start": 1724363577115,
+      "end": 1724363577118,
       "sourcemaps": null
     }
   ]

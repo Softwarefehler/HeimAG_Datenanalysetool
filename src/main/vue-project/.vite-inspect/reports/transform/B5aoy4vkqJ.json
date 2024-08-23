@@ -4,8 +4,8 @@
     {
       "name": "vite:load-fallback",
       "result": ".v-radio-group > .v-input__control {\n  flex-direction: column;\n}\n.v-radio-group > .v-input__control > .v-label {\n  margin-inline-start: 16px;\n}\n.v-radio-group > .v-input__control > .v-label + .v-selection-control-group {\n  padding-inline-start: 6px;\n  margin-top: 8px;\n}\n.v-radio-group .v-input__details {\n  padding-inline: 16px;\n}",
-      "start": 1724142508413,
-      "end": 1724142508445,
+      "start": 1724363577690,
+      "end": 1724363577730,
       "sourcemaps": null
     }
   ]

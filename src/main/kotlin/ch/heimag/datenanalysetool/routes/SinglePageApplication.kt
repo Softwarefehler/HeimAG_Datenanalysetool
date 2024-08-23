@@ -18,8 +18,6 @@ fun Application.singlePageApplication() {
             singlePageApplication { vue("src/main/vue-project/dist") }
 
 
-
-
             get("/user-info") {
                 val principal = call.principal<UserSession>();
                 val userName = principal?.name.toString()

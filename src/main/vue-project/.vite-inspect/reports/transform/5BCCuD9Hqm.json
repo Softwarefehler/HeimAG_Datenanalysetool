@@ -4,8 +4,8 @@
     {
       "name": "vite:load-fallback",
       "result": "export { VSwitch } from \"./VSwitch.mjs\";\n//# sourceMappingURL=index.mjs.map",
-      "start": 1724142508005,
-      "end": 1724142508007,
+      "start": 1724363577018,
+      "end": 1724363577022,
       "sourcemaps": null
     }
   ]

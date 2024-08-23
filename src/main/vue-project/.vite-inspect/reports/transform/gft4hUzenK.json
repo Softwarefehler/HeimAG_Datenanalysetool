@@ -4,8 +4,8 @@
     {
       "name": "vite:load-fallback",
       "result": ".v-calendar-internal-event {\n  overflow: hidden;\n  padding: 4px;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}",
-      "start": 1724142508017,
-      "end": 1724142508177,
+      "start": 1724363577134,
+      "end": 1724363577140,
       "sourcemaps": null
     }
   ]

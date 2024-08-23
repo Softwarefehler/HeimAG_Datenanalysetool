@@ -4,8 +4,8 @@
     {
       "name": "vite:load-fallback",
       "result": "export { createDate, useDate, DateAdapterSymbol } from \"./date.mjs\";\n//# sourceMappingURL=index.mjs.map",
-      "start": 1724142507950,
-      "end": 1724142507973,
+      "start": 1724363577047,
+      "end": 1724363577076,
       "sourcemaps": null
     }
   ]

@@ -4,8 +4,8 @@
     {
       "name": "vite:load-fallback",
       "result": "// Types\n\nexport const VExpansionPanelSymbol = Symbol.for('vuetify:v-expansion-panel');\n//# sourceMappingURL=shared.mjs.map",
-      "start": 1724142508234,
-      "end": 1724142508286,
+      "start": 1724363577584,
+      "end": 1724363577641,
       "sourcemaps": null
     }
   ]

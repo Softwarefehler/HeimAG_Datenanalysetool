@@ -4,8 +4,8 @@
     {
       "name": "vite:load-fallback",
       "result": "export { VField } from \"./VField.mjs\";\nexport { VFieldLabel } from \"./VFieldLabel.mjs\";\n//# sourceMappingURL=index.mjs.map",
-      "start": 1724142507993,
-      "end": 1724142508003,
+      "start": 1724363577003,
+      "end": 1724363577013,
       "sourcemaps": null
     }
   ]

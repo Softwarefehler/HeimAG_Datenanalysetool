@@ -4,8 +4,8 @@
     {
       "name": "vite:load-fallback",
       "result": "// Composables\nimport { useProxiedModel } from \"./proxiedModel.mjs\"; // Utilities\nimport { computed } from 'vue';\nimport { EventProp, getCurrentInstanceName, propsFactory } from \"../util/index.mjs\"; // Types\n// Composables\nexport const makeFocusProps = propsFactory({\n  focused: Boolean,\n  'onUpdate:focused': EventProp()\n}, 'focus');\nexport function useFocus(props) {\n  let name = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : getCurrentInstanceName();\n  const isFocused = useProxiedModel(props, 'focused');\n  const focusClasses = computed(() => {\n    return {\n      [`${name}--focused`]: isFocused.value\n    };\n  });\n  function focus() {\n    isFocused.value = true;\n  }\n  function blur() {\n    isFocused.value = false;\n  }\n  return {\n    focusClasses,\n    isFocused,\n    focus,\n    blur\n  };\n}\n//# sourceMappingURL=focus.mjs.map",
-      "start": 1724142508014,
-      "end": 1724142508175,
+      "start": 1724363577134,
+      "end": 1724363577144,
       "sourcemaps": null
     }
   ]

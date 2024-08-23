@@ -4,8 +4,8 @@
     {
       "name": "vite:load-fallback",
       "result": ".v-date-picker {\n  overflow: hidden;\n  width: 328px;\n}\n.v-date-picker--show-week {\n  width: 368px;\n}",
-      "start": 1724142508233,
-      "end": 1724142508275,
+      "start": 1724363577561,
+      "end": 1724363577592,
       "sourcemaps": null
     }
   ]

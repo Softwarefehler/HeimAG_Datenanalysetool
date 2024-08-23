@@ -4,8 +4,8 @@
     {
       "name": "vite:load-fallback",
       "result": "export { VTreeview } from \"./VTreeview.mjs\";\nexport { VTreeviewItem } from \"./VTreeviewItem.mjs\";\nexport { VTreeviewGroup } from \"./VTreeviewGroup.mjs\";\n//# sourceMappingURL=index.mjs.map",
-      "start": 1724142507876,
-      "end": 1724142507906,
+      "start": 1724363576938,
+      "end": 1724363576954,
       "sourcemaps": null
     }
   ]

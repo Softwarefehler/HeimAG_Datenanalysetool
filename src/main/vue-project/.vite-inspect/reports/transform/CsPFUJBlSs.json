@@ -4,8 +4,8 @@
     {
       "name": "vite:load-fallback",
       "result": ".v-date-picker-months {\n  height: 288px;\n}\n\n.v-date-picker-months__content {\n  align-items: center;\n  display: grid;\n  flex: 1 1;\n  height: inherit;\n  justify-content: space-around;\n  grid-template-columns: repeat(2, 1fr);\n  grid-gap: 0px 24px;\n  padding-inline-start: 36px;\n  padding-inline-end: 36px;\n}\n.v-date-picker-months__content .v-btn {\n  text-transform: none;\n  padding-inline-start: 8px;\n  padding-inline-end: 8px;\n}",
-      "start": 1724142508347,
-      "end": 1724142508380,
+      "start": 1724363577563,
+      "end": 1724363577601,
       "sourcemaps": null
     }
   ]

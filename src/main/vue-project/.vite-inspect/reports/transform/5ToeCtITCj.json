@@ -4,8 +4,8 @@
     {
       "name": "vite:load-fallback",
       "result": ".v-application {\n  display: flex;\n  background: rgb(var(--v-theme-background));\n  color: rgba(var(--v-theme-on-background), var(--v-high-emphasis-opacity));\n}\n\n.v-application__wrap {\n  backface-visibility: hidden;\n  display: flex;\n  flex-direction: column;\n  flex: 1 1 auto;\n  max-width: 100%;\n  min-height: 100vh;\n  min-height: 100dvh;\n  position: relative;\n}",
-      "start": 1724142508294,
-      "end": 1724142508317,
+      "start": 1724363577164,
+      "end": 1724363577224,
       "sourcemaps": null
     }
   ]

@@ -4,8 +4,8 @@
     {
       "name": "vite:load-fallback",
       "result": "// Types\n\nexport const VStepperSymbol = Symbol.for('vuetify:v-stepper');\n//# sourceMappingURL=shared.mjs.map",
-      "start": 1724142508242,
-      "end": 1724142508289,
+      "start": 1724363577730,
+      "end": 1724363577771,
       "sourcemaps": null
     }
   ]
