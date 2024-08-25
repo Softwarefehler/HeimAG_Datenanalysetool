@@ -7,6 +7,7 @@ import org.koin.dsl.module
 import org.koin.ktor.plugin.Koin
 import org.slf4j.LoggerFactory
 
+
 // https://insert-koin.io/
 var defaultKoinModule = module {
     singleOf(::AuthenticationService)

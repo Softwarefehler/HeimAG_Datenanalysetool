@@ -8,6 +8,7 @@ import io.ktor.server.plugins.httpsredirect.*
 import java.io.File
 import org.slf4j.LoggerFactory
 
+
 fun Application.installHttpsRedirect(port: Int) {
     val logger = LoggerFactory.getLogger("HttpsRedirect")
     install(HttpsRedirect) {

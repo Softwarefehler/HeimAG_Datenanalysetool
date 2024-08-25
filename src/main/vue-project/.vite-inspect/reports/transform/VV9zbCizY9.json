@@ -4,53 +4,53 @@
     {
       "name": "vite:load-fallback",
       "result": ".v-calendar-day {\n  position: relative;\n  display: flex;\n  flex-direction: column;\n}\n\n.v-calendar-weekly .v-calendar__container {\n  display: grid;\n}\n.v-calendar-weekly .v-calendar__container.days__7 {\n  grid-template-columns: repeat(7, 1fr);\n}\n.v-calendar-weekly .v-calendar__container.days__6 {\n  grid-template-columns: repeat(6, 1fr);\n}\n.v-calendar-weekly .v-calendar__container.days__5 {\n  grid-template-columns: repeat(5, 1fr);\n}\n.v-calendar-weekly .v-calendar__container.days__4 {\n  grid-template-columns: repeat(4, 1fr);\n}\n.v-calendar-weekly .v-calendar__container.days__3 {\n  grid-template-columns: repeat(3, 1fr);\n}\n.v-calendar-weekly .v-calendar__container.days__2 {\n  grid-template-columns: repeat(2, 1fr);\n}\n.v-calendar-weekly .v-calendar__container.days__1 {\n  grid-template-columns: repeat(1, 1fr);\n}\n.v-calendar-weekly .v-calendar__container.days__0 {\n  grid-template-columns: repeat(1, 1fr);\n}",
-      "start": 1724446516649,
-      "end": 1724446516722,
+      "start": 1724585010222,
+      "end": 1724585010254,
       "sourcemaps": null
     },
     {
       "name": "vite:css",
       "result": ".v-calendar-day {\n  position: relative;\n  display: flex;\n  flex-direction: column;\n}\n\n.v-calendar-weekly .v-calendar__container {\n  display: grid;\n}\n.v-calendar-weekly .v-calendar__container.days__7 {\n  grid-template-columns: repeat(7, 1fr);\n}\n.v-calendar-weekly .v-calendar__container.days__6 {\n  grid-template-columns: repeat(6, 1fr);\n}\n.v-calendar-weekly .v-calendar__container.days__5 {\n  grid-template-columns: repeat(5, 1fr);\n}\n.v-calendar-weekly .v-calendar__container.days__4 {\n  grid-template-columns: repeat(4, 1fr);\n}\n.v-calendar-weekly .v-calendar__container.days__3 {\n  grid-template-columns: repeat(3, 1fr);\n}\n.v-calendar-weekly .v-calendar__container.days__2 {\n  grid-template-columns: repeat(2, 1fr);\n}\n.v-calendar-weekly .v-calendar__container.days__1 {\n  grid-template-columns: repeat(1, 1fr);\n}\n.v-calendar-weekly .v-calendar__container.days__0 {\n  grid-template-columns: repeat(1, 1fr);\n}",
-      "start": 1724446516722,
-      "end": 1724446516722,
+      "start": 1724585010254,
+      "end": 1724585010262,
       "order": "normal",
       "sourcemaps": null
     },
     {
       "name": "vite:esbuild",
-      "start": 1724446516722,
-      "end": 1724446516722,
+      "start": 1724585010262,
+      "end": 1724585010262,
       "order": "normal"
     },
     {
       "name": "vite:json",
-      "start": 1724446516722,
-      "end": 1724446516722,
+      "start": 1724585010262,
+      "end": 1724585010262,
       "order": "normal"
     },
     {
       "name": "vite:worker",
-      "start": 1724446516722,
-      "end": 1724446516722,
+      "start": 1724585010262,
+      "end": 1724585010262,
       "order": "normal"
     },
     {
       "name": "vite:vue",
-      "start": 1724446516722,
-      "end": 1724446516722,
+      "start": 1724585010269,
+      "end": 1724585010270,
       "order": "normal"
     },
     {
       "name": "vite:define",
-      "start": 1724446516722,
-      "end": 1724446516722,
+      "start": 1724585010270,
+      "end": 1724585010270,
       "order": "normal"
     },
     {
       "name": "vite:css-post",
       "result": "",
-      "start": 1724446516722,
-      "end": 1724446516722,
+      "start": 1724585010270,
+      "end": 1724585010270,
       "order": "normal",
       "sourcemaps": {
         "mappings": ""
@@ -58,50 +58,50 @@
     },
     {
       "name": "vite:build-html",
-      "start": 1724446516722,
-      "end": 1724446516722,
+      "start": 1724585010270,
+      "end": 1724585010270,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1724446516722,
-      "end": 1724446516722,
+      "start": 1724585010270,
+      "end": 1724585010270,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1724446516722,
-      "end": 1724446516722,
+      "start": 1724585010270,
+      "end": 1724585010270,
       "order": "normal"
     },
     {
       "name": "commonjs",
-      "start": 1724446516722,
-      "end": 1724446516722,
+      "start": 1724585010270,
+      "end": 1724585010270,
       "order": "normal"
     },
     {
       "name": "vite:dynamic-import-vars",
-      "start": 1724446516722,
-      "end": 1724446516722,
+      "start": 1724585010270,
+      "end": 1724585010270,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1724446516722,
-      "end": 1724446516722,
+      "start": 1724585010270,
+      "end": 1724585010270,
       "order": "normal"
     },
     {
       "name": "vite:build-import-analysis",
-      "start": 1724446516722,
-      "end": 1724446516722,
+      "start": 1724585010270,
+      "end": 1724585010270,
       "order": "normal"
     },
     {
       "name": "vite:reporter",
-      "start": 1724446516722,
-      "end": 1724446516722,
+      "start": 1724585010271,
+      "end": 1724585010271,
       "order": "normal"
     }
   ]

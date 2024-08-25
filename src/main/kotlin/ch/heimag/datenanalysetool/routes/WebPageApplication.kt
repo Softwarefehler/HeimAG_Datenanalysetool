@@ -50,7 +50,12 @@ fun Application.webPageApplication() {
         authenticate("auth-session") {
 
             val databaseStatus = Data.database.checkDatabaseStatus()
-            var latestDateString = Data.database.loadLatestDate()
+            var latestDateString = if (databaseStatus == "Datenbank vorhanden") {
+                Data.database.loadLatestDate()
+            } else {
+                "Datenbank nicht vorhanden"
+            }
+
             val countryList = FileReader.country.loadToSelectCountry("/document/Wetterstationen.xlsx")
 
 
@@ -124,6 +129,7 @@ fun Application.webPageApplication() {
                 call.respond(operatingStateValueList)
             }
 
+
             post("/csv-upload") {
                 logger.info("POST request for /csv-upload")
 
@@ -181,7 +187,6 @@ fun Application.webPageApplication() {
                                         sio = values[27].toDoubleOrNull(),
                                         sma = values[28].toDoubleOrNull(),
                                         stg = values[29].toDoubleOrNull()
-
                                     )
                                     if (record.datum != null && latestDateCheck < record.datum) {
                                         csvRecords.add(record)
@@ -204,6 +209,7 @@ fun Application.webPageApplication() {
                 )
             }
 
+
             get("/get-SettingsView") {
                 logger.info("GET request from /get-SettingsView")
 
@@ -219,6 +225,7 @@ fun Application.webPageApplication() {
                 )
                 call.respond(firstResponse)
             }
+
 
             get("/swisstopographic") {
                 logger.info("GET request from /swisstopographic")

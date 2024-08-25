@@ -4,6 +4,7 @@ import io.ktor.server.auth.*
 import io.ktor.util.*
 import org.slf4j.LoggerFactory
 
+
 class AuthenticationService {
     private val logger = LoggerFactory.getLogger("AuthenticationService")
 
@@ -16,6 +17,7 @@ class AuthenticationService {
 
         logger.info("AuthenticationService initialize with ${usernameToPasswordMap.size} user.")
     }
+
 
     fun authenticate(credential: UserPasswordCredential): UserIdPrincipal? {
         val username = credential.name

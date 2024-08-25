@@ -4,98 +4,98 @@
     {
       "name": "vite:load-fallback",
       "result": "// Utilities\nimport { h, mergeProps, render, resolveComponent } from 'vue';\nimport { isObject } from \"../util/index.mjs\"; // Types\nexport function useDirectiveComponent(component, props) {\n  const concreteComponent = typeof component === 'string' ? resolveComponent(component) : component;\n  const hook = mountComponent(concreteComponent, props);\n  return {\n    mounted: hook,\n    updated: hook,\n    unmounted(el) {\n      render(null, el);\n    }\n  };\n}\nfunction mountComponent(component, props) {\n  return function (el, binding, vnode) {\n    const _props = typeof props === 'function' ? props(binding) : props;\n    const text = binding.value?.text ?? binding.value ?? _props?.text;\n    const value = isObject(binding.value) ? binding.value : {};\n\n    // Get the children from the props or directive value, or the element's children\n    const children = () => text ?? el.innerHTML;\n\n    // If vnode.ctx is the same as the instance, then we're bound to a plain element\n    // and need to find the nearest parent component instance to inherit provides from\n    const provides = (vnode.ctx === binding.instance.$ ? findComponentParent(vnode, binding.instance.$)?.provides : vnode.ctx?.provides) ?? binding.instance.$.provides;\n    const node = h(component, mergeProps(_props, value), children);\n    node.appContext = Object.assign(Object.create(null), binding.instance.$.appContext, {\n      provides\n    });\n    render(node, el);\n  };\n}\nfunction findComponentParent(vnode, root) {\n  // Walk the tree from root until we find the child vnode\n  const stack = new Set();\n  const walk = children => {\n    for (const child of children) {\n      if (!child) continue;\n      if (child === vnode) {\n        return true;\n      }\n      stack.add(child);\n      let result;\n      if (child.suspense) {\n        result = walk([child.ssContent]);\n      } else if (Array.isArray(child.children)) {\n        result = walk(child.children);\n      } else if (child.component?.vnode) {\n        result = walk([child.component?.subTree]);\n      }\n      if (result) {\n        return result;\n      }\n      stack.delete(child);\n    }\n    return false;\n  };\n  if (!walk([root.subTree])) {\n    throw new Error('Could not find original vnode');\n  }\n\n  // Return the first component parent\n  const result = Array.from(stack).reverse();\n  for (const child of result) {\n    if (child.component) {\n      return child.component;\n    }\n  }\n  return root;\n}\n//# sourceMappingURL=directiveComponent.mjs.map",
-      "start": 1724446517792,
-      "end": 1724446517842,
+      "start": 1724585011129,
+      "end": 1724585011173,
       "sourcemaps": null
     },
     {
       "name": "vite:css",
-      "start": 1724446517842,
-      "end": 1724446517842,
+      "start": 1724585011173,
+      "end": 1724585011173,
       "order": "normal"
     },
     {
       "name": "vite:esbuild",
-      "start": 1724446517842,
-      "end": 1724446517842,
+      "start": 1724585011173,
+      "end": 1724585011173,
       "order": "normal"
     },
     {
       "name": "vite:json",
-      "start": 1724446517842,
-      "end": 1724446517842,
+      "start": 1724585011173,
+      "end": 1724585011173,
       "order": "normal"
     },
     {
       "name": "vite:worker",
-      "start": 1724446517842,
-      "end": 1724446517842,
+      "start": 1724585011173,
+      "end": 1724585011173,
       "order": "normal"
     },
     {
       "name": "vite:vue",
-      "start": 1724446517842,
-      "end": 1724446517842,
+      "start": 1724585011173,
+      "end": 1724585011173,
       "order": "normal"
     },
     {
       "name": "vite:define",
-      "start": 1724446517842,
-      "end": 1724446517842,
+      "start": 1724585011173,
+      "end": 1724585011173,
       "order": "normal"
     },
     {
       "name": "vite:css-post",
-      "start": 1724446517843,
-      "end": 1724446517843,
+      "start": 1724585011173,
+      "end": 1724585011173,
       "order": "normal"
     },
     {
       "name": "vite:build-html",
-      "start": 1724446517843,
-      "end": 1724446517843,
+      "start": 1724585011173,
+      "end": 1724585011173,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1724446517843,
-      "end": 1724446517843,
+      "start": 1724585011173,
+      "end": 1724585011173,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1724446517843,
-      "end": 1724446517843,
+      "start": 1724585011173,
+      "end": 1724585011173,
       "order": "normal"
     },
     {
       "name": "commonjs",
-      "start": 1724446517843,
-      "end": 1724446517843,
+      "start": 1724585011173,
+      "end": 1724585011173,
       "order": "normal"
     },
     {
       "name": "vite:dynamic-import-vars",
-      "start": 1724446517843,
-      "end": 1724446517843,
+      "start": 1724585011173,
+      "end": 1724585011173,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1724446517843,
-      "end": 1724446517843,
+      "start": 1724585011173,
+      "end": 1724585011173,
       "order": "normal"
     },
     {
       "name": "vite:build-import-analysis",
-      "start": 1724446517843,
-      "end": 1724446517843,
+      "start": 1724585011173,
+      "end": 1724585011173,
       "order": "normal"
     },
     {
       "name": "vite:reporter",
-      "start": 1724446517843,
-      "end": 1724446517843,
+      "start": 1724585011173,
+      "end": 1724585011173,
       "order": "normal"
     }
   ]

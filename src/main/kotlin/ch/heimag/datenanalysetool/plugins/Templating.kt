@@ -5,6 +5,7 @@ import io.ktor.server.application.*
 import io.ktor.server.freemarker.*
 import org.slf4j.LoggerFactory
 
+
 fun Application.installFreeMarkerTemplating() {
     val logger = LoggerFactory.getLogger("FreeMarkerTemplating")
 

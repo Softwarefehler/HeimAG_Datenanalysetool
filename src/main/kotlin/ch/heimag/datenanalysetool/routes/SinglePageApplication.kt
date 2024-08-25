@@ -10,6 +10,7 @@ import io.ktor.server.routing.*
 import kotlinx.serialization.Serializable
 import org.slf4j.LoggerFactory
 
+
 @Serializable
 data class UserInfo(val username: String)
 
@@ -29,8 +30,6 @@ fun Application.singlePageApplication() {
 
                 call.respond(HttpStatusCode.OK, UserInfo(userName))
             }
-
-
         }
     }
 }

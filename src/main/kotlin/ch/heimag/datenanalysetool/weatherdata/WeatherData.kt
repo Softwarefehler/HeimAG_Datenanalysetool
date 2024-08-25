@@ -2,6 +2,7 @@ package ch.heimag.datenanalysetool.weatherdata
 
 import kotlinx.serialization.Serializable
 
+
 @Serializable
 data class WeatherData(
     val datum: Int?,

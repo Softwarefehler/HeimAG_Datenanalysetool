@@ -5,6 +5,7 @@ import ch.heimag.datenanalysetool.routes.webPageApplication
 import io.ktor.server.application.*
 import org.slf4j.LoggerFactory
 
+
 fun Application.configureRouting() {
     val logger = LoggerFactory.getLogger("HttpsRedirect")
     singlePageApplication()

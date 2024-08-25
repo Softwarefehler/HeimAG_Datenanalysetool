@@ -12,8 +12,15 @@ import io.ktor.server.sessions.*
 import org.koin.ktor.ext.inject
 import org.slf4j.LoggerFactory
 
+
 data class UserSession(val name: String) : Principal
 
+data class LoginModel(
+    val postUrl: String,
+    val userParamName: String,
+    val passwordParamName: String,
+    var databaseStatus: String
+)
 
 const val LOGIN_URL = "/login"
 const val USER_PARAM_NAME = "username"
@@ -24,12 +31,13 @@ var databaseStatus = Data.database.checkDatabaseStatus()
 
 fun Application.installSessionAndAuthentication() {
     val logger = LoggerFactory.getLogger("SessionAndAuthentication")
+
     val authenticationService by inject<AuthenticationService>()
 
     install(Sessions) {
         cookie<UserSession>("user_session") {
             cookie.path = "/"
-            cookie.maxAgeInSeconds = 30 // 300
+            cookie.maxAgeInSeconds = 300000 // 300
             logger.info("UserSession cookie configured mit ${cookie.path} und max. Zeit von ${cookie.maxAgeInSeconds}")
         }
     }
@@ -43,6 +51,7 @@ fun Application.installSessionAndAuthentication() {
                 authenticationService.authenticate(credential)
             }
         }
+
         session<UserSession>("auth-session") {
             validate { session ->
                 logger.debug("Validating session for user: ${session.name}")
@@ -56,13 +65,6 @@ fun Application.installSessionAndAuthentication() {
         }
     }
 
-
-    data class LoginModel(
-        val postUrl: String,
-        val userParamName: String,
-        val passwordParamName: String,
-        var databaseStatus: String
-    )
 
     routing {
         get(LOGIN_URL) {
@@ -87,6 +89,7 @@ fun Application.installSessionAndAuthentication() {
                 call.sessions.set(userSession)
                 logger.debug("Session created for user: $userName")
 
+                databaseStatus = Data.database.checkDatabaseStatus()
                 if (databaseStatus == "Datenbank vorhanden") {
                     logger.info("Status Database: ${databaseStatus} -> Forwarding to '/' WebPageApplication")
                     call.respondRedirect("/")

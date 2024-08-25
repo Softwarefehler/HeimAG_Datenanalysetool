@@ -4,98 +4,98 @@
     {
       "name": "vite:load-fallback",
       "result": "import { mergeProps as _mergeProps, createVNode as _createVNode } from \"vue\";\n// Styles\nimport \"./VCalendarDay.css\";\n\n// Components\nimport { makeVCalendarIntervalProps, VCalendarInterval } from \"./VCalendarInterval.mjs\";\nimport { VBtn } from \"../../components/VBtn/index.mjs\"; // Composables\nimport { useDate } from \"../../composables/date/index.mjs\"; // Utilities\nimport { computed } from 'vue';\nimport { genericComponent, propsFactory, useRender } from \"../../util/index.mjs\";\nexport const makeVCalendarDayProps = propsFactory({\n  hideDayHeader: Boolean,\n  intervals: {\n    type: Number,\n    default: 24\n  },\n  ...makeVCalendarIntervalProps()\n}, 'VCalendarDay');\nexport const VCalendarDay = genericComponent()({\n  name: 'VCalendarDay',\n  props: makeVCalendarDayProps(),\n  setup(props) {\n    const adapter = useDate();\n    const intervals = computed(() => [...Array.from({\n      length: props.intervals\n    }, (v, i) => i).filter((int, index) => props.intervalDuration * (index + props.intervalStart) < 1440)]);\n    useRender(() => {\n      const calendarIntervalProps = VCalendarInterval.filterProps(props);\n      return _createVNode(\"div\", {\n        \"class\": \"v-calendar-day__container\"\n      }, [!props.hideDayHeader && _createVNode(\"div\", {\n        \"key\": \"calender-week-name\",\n        \"class\": \"v-calendar-weekly__head-weekday\"\n      }, [adapter.format(props.day.date, 'weekdayShort'), _createVNode(\"div\", null, [_createVNode(VBtn, {\n        \"icon\": true,\n        \"text\": adapter.format(props.day.date, 'dayOfMonth'),\n        \"variant\": \"text\"\n      }, null)])]), intervals.value.map((_, index) => _createVNode(VCalendarInterval, _mergeProps({\n        \"index\": index\n      }, calendarIntervalProps), null))]);\n    });\n    return {\n      intervals\n    };\n  }\n});\n//# sourceMappingURL=VCalendarDay.mjs.map",
-      "start": 1724446515829,
-      "end": 1724446516029,
+      "start": 1724585009645,
+      "end": 1724585009861,
       "sourcemaps": null
     },
     {
       "name": "vite:css",
-      "start": 1724446516029,
-      "end": 1724446516029,
+      "start": 1724585009861,
+      "end": 1724585009861,
       "order": "normal"
     },
     {
       "name": "vite:esbuild",
-      "start": 1724446516029,
-      "end": 1724446516029,
+      "start": 1724585009861,
+      "end": 1724585009861,
       "order": "normal"
     },
     {
       "name": "vite:json",
-      "start": 1724446516029,
-      "end": 1724446516029,
+      "start": 1724585009861,
+      "end": 1724585009861,
       "order": "normal"
     },
     {
       "name": "vite:worker",
-      "start": 1724446516029,
-      "end": 1724446516029,
+      "start": 1724585009861,
+      "end": 1724585009861,
       "order": "normal"
     },
     {
       "name": "vite:vue",
-      "start": 1724446516029,
-      "end": 1724446516029,
+      "start": 1724585009861,
+      "end": 1724585009861,
       "order": "normal"
     },
     {
       "name": "vite:define",
-      "start": 1724446516029,
-      "end": 1724446516035,
+      "start": 1724585009861,
+      "end": 1724585009861,
       "order": "normal"
     },
     {
       "name": "vite:css-post",
-      "start": 1724446516035,
-      "end": 1724446516035,
+      "start": 1724585009861,
+      "end": 1724585009861,
       "order": "normal"
     },
     {
       "name": "vite:build-html",
-      "start": 1724446516035,
-      "end": 1724446516035,
+      "start": 1724585009861,
+      "end": 1724585009861,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1724446516035,
-      "end": 1724446516035,
+      "start": 1724585009861,
+      "end": 1724585009861,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1724446516035,
-      "end": 1724446516036,
+      "start": 1724585009861,
+      "end": 1724585009861,
       "order": "normal"
     },
     {
       "name": "commonjs",
-      "start": 1724446516036,
-      "end": 1724446516036,
+      "start": 1724585009861,
+      "end": 1724585009861,
       "order": "normal"
     },
     {
       "name": "vite:dynamic-import-vars",
-      "start": 1724446516036,
-      "end": 1724446516036,
+      "start": 1724585009861,
+      "end": 1724585009861,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1724446516036,
-      "end": 1724446516036,
+      "start": 1724585009861,
+      "end": 1724585009861,
       "order": "normal"
     },
     {
       "name": "vite:build-import-analysis",
-      "start": 1724446516036,
-      "end": 1724446516036,
+      "start": 1724585009861,
+      "end": 1724585009861,
       "order": "normal"
     },
     {
       "name": "vite:reporter",
-      "start": 1724446516036,
-      "end": 1724446516036,
+      "start": 1724585009861,
+      "end": 1724585009861,
       "order": "normal"
     }
   ]

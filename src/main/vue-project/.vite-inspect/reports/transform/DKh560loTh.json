@@ -4,98 +4,98 @@
     {
       "name": "vite:load-fallback",
       "result": "// Utilities\nimport { effectScope, onScopeDispose, watch } from 'vue';\n\n// Types\n\nexport function useToggleScope(source, fn) {\n  let scope;\n  function start() {\n    scope = effectScope();\n    scope.run(() => fn.length ? fn(() => {\n      scope?.stop();\n      start();\n    }) : fn());\n  }\n  watch(source, active => {\n    if (active && !scope) {\n      start();\n    } else if (!active) {\n      scope?.stop();\n      scope = undefined;\n    }\n  }, {\n    immediate: true\n  });\n  onScopeDispose(() => {\n    scope?.stop();\n  });\n}\n//# sourceMappingURL=toggleScope.mjs.map",
-      "start": 1724446517794,
-      "end": 1724446517844,
+      "start": 1724585011159,
+      "end": 1724585011190,
       "sourcemaps": null
     },
     {
       "name": "vite:css",
-      "start": 1724446517844,
-      "end": 1724446517844,
+      "start": 1724585011190,
+      "end": 1724585011190,
       "order": "normal"
     },
     {
       "name": "vite:esbuild",
-      "start": 1724446517844,
-      "end": 1724446517844,
+      "start": 1724585011190,
+      "end": 1724585011190,
       "order": "normal"
     },
     {
       "name": "vite:json",
-      "start": 1724446517844,
-      "end": 1724446517844,
+      "start": 1724585011190,
+      "end": 1724585011190,
       "order": "normal"
     },
     {
       "name": "vite:worker",
-      "start": 1724446517844,
-      "end": 1724446517844,
+      "start": 1724585011190,
+      "end": 1724585011190,
       "order": "normal"
     },
     {
       "name": "vite:vue",
-      "start": 1724446517844,
-      "end": 1724446517844,
+      "start": 1724585011190,
+      "end": 1724585011190,
       "order": "normal"
     },
     {
       "name": "vite:define",
-      "start": 1724446517845,
-      "end": 1724446517845,
+      "start": 1724585011190,
+      "end": 1724585011190,
       "order": "normal"
     },
     {
       "name": "vite:css-post",
-      "start": 1724446517845,
-      "end": 1724446517845,
+      "start": 1724585011190,
+      "end": 1724585011190,
       "order": "normal"
     },
     {
       "name": "vite:build-html",
-      "start": 1724446517845,
-      "end": 1724446517845,
+      "start": 1724585011190,
+      "end": 1724585011190,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1724446517845,
-      "end": 1724446517845,
+      "start": 1724585011190,
+      "end": 1724585011190,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1724446517845,
-      "end": 1724446517845,
+      "start": 1724585011190,
+      "end": 1724585011190,
       "order": "normal"
     },
     {
       "name": "commonjs",
-      "start": 1724446517845,
-      "end": 1724446517845,
+      "start": 1724585011190,
+      "end": 1724585011190,
       "order": "normal"
     },
     {
       "name": "vite:dynamic-import-vars",
-      "start": 1724446517845,
-      "end": 1724446517845,
+      "start": 1724585011190,
+      "end": 1724585011190,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1724446517845,
-      "end": 1724446517845,
+      "start": 1724585011190,
+      "end": 1724585011190,
       "order": "normal"
     },
     {
       "name": "vite:build-import-analysis",
-      "start": 1724446517845,
-      "end": 1724446517845,
+      "start": 1724585011190,
+      "end": 1724585011190,
       "order": "normal"
     },
     {
       "name": "vite:reporter",
-      "start": 1724446517845,
-      "end": 1724446517845,
+      "start": 1724585011190,
+      "end": 1724585011190,
       "order": "normal"
     }
   ]
