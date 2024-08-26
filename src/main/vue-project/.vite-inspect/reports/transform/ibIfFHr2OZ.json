@@ -3,40 +3,40 @@
   "transforms": [
     {
       "name": "vite:load-fallback",
-      "result": "<script lang=\"ts\" setup>\r\nimport { onMounted, ref } from 'vue'\r\n\r\n\r\nconst databaseStatus = ref<string | null>(null)\r\nconst latestDate = ref<string | null>(null)\r\nconst csvFile = ref<File | null>(null)\r\nconst csvFileInputError = ref<string | null>(null)\r\nconst csvIsLoading = ref<boolean>(false) // Variable für den Ladezustand\r\nconst csvUploadMessage = ref<string | null>(null)\r\nconst csvUploadError = ref<boolean>(false) // Variable für Fehlerstatus\r\n\r\n// Validierung\r\nconst csvRequiredRule = (value: File | null) => {\r\n  return !!value || 'Dieses Feld ist erforderlich'\r\n}\r\n\r\n\r\n// Funktion zum Hochladen der Datei\r\nasync function csvUploadFile() {\r\n  csvFileInputError.value = null\r\n  csvUploadMessage.value = null\r\n  csvIsLoading.value = true\r\n  csvUploadError.value = false\r\n\r\n  if (!csvFile.value) {\r\n    csvFileInputError.value = 'Bitte wählen Sie eine Datei aus'\r\n    csvIsLoading.value = false\r\n    return\r\n  }\r\n\r\n  if (csvFile.value.name !== 'wetterdaten.csv') {\r\n    csvFileInputError.value = 'Die Datei muss den Namen \"wetterdaten.csv\" haben.'\r\n    csvIsLoading.value = false\r\n    return\r\n  }\r\n\r\n  const formData = new FormData()\r\n  formData.append('file', csvFile.value)\r\n\r\n  try {\r\n    const response = await fetch('/csv-upload', {\r\n      method: 'POST',\r\n      body: formData,\r\n      headers: {\r\n        'Accept': 'application/json'\r\n      }\r\n    })\r\n\r\n    if (response.ok) {\r\n      csvUploadMessage.value = 'Datei erfolgreich hochgeladen'\r\n    } else {\r\n      csvUploadMessage.value = 'Fehler beim Hochladen der Datei.'\r\n      csvUploadError.value = true\r\n    }\r\n  } catch (error) {\r\n    csvUploadMessage.value = 'Anmeldezeit ist Abgelaufen: ${error}'\r\n    csvUploadError.value = true\r\n    location.href = '/login'\r\n  } finally {\r\n    csvIsLoading.value = false\r\n    await firstPayload()\r\n  }\r\n}\r\n\r\n\r\n// Funktion zum Zurücksetzen der Upload-Nachricht / Fehlerstatus, wenn die Datei entfernt wird\r\nfunction csvHandleFileChange(event: Event) {\r\n  const input = event.target as HTMLInputElement\r\n  if (!input.files?.length) {\r\n    csvUploadMessage.value = null\r\n    csvUploadError.value = false\r\n    return\r\n  }\r\n  csvFile.value = input.files[0]\r\n\r\n  // Überprüfen des Dateinamens\r\n  if (csvFile.value.name !== 'wetterdaten.csv') {\r\n    csvFileInputError.value = 'Die Datei muss den Namen \"wetterdaten.csv\" haben.'\r\n    csvUploadError.value = true\r\n    csvFile.value = null\r\n  } else {\r\n    csvFileInputError.value = null\r\n    csvUploadError.value = false\r\n  }\r\n}\r\n\r\n\r\nasync function firstPayload() {\r\n  try {\r\n    const info = await fetch('/get-SettingsView').then((response) => response.json())\r\n    databaseStatus.value = info.databaseStatus\r\n    latestDate.value = info.latestDate\r\n  } catch (error) {\r\n    alert(`Die Anmeldezeit ist abgelaufen`)\r\n    //await router.push('/login')\r\n    location.href = '/login'\r\n  }\r\n}\r\n\r\nonMounted(async () => {\r\n  await firstPayload()\r\n})\r\n</script>\r\n\r\n<template>\r\n  <v-container>\r\n    <h4>Datenbankinformation</h4>\r\n    <br>\r\n    <div class=\"d-flex align-center flex-wrap\">\r\n      <p>Aktuellstes Datum in der Datenbank:</p>\r\n      <v-chip\r\n        color=\"green darken-2\"\r\n        text-color=\"white\"\r\n        :style=\"{ marginLeft: '10px' }\"\r\n      >\r\n        {{ latestDate }}\r\n      </v-chip>\r\n    </div>\r\n    <v-spacer class=\"my-6\"></v-spacer>\r\n    <v-divider class=\"my-7\" :style=\"{ height: '20px'}\"></v-divider>\r\n    <v-spacer class=\"my-6\"></v-spacer>\r\n    <h4>Datenbankerweiterung / CSV-File Upload</h4>\r\n    <br>\r\n    <v-form @submit.prevent=\"csvUploadFile\">\r\n      <v-file-input\r\n        v-model=\"csvFile\"\r\n        label=\"Wähle die Datei wetterdaten.csv\"\r\n        accept=\"wetterdaten.csv\"\r\n        prepend-icon=\"\"\r\n        prepend-inner-icon=\"mdi-upload\"\r\n        :rules=\"[csvRequiredRule]\"\r\n        :error=\"!!csvFileInputError || csvUploadError\"\r\n        :error-messages=\"csvFileInputError || (csvUploadError ? 'Fehler beim Hochladen der Datei.' : '')\"\r\n        required\r\n        @change=\"csvHandleFileChange\"\r\n      ></v-file-input>\r\n\r\n      <!-- Progress Linear -->\r\n      <v-progress-linear\r\n        v-if=\"csvIsLoading\"\r\n        color=\"primary\"\r\n        height=\"6\"\r\n        indeterminate\r\n        class=\"my-4\"\r\n      ></v-progress-linear>\r\n\r\n      <!-- Nachricht, die nach dem Upload angezeigt wird -->\r\n      <v-alert\r\n        v-if=\"csvUploadMessage\"\r\n        :type=\"csvUploadError ? 'error' : 'success'\"\r\n        dismissible\r\n      >\r\n        {{ csvUploadMessage }}\r\n      </v-alert>\r\n      <br>\r\n      <v-btn type=\"submit\" color=\"green lighten-3\">Datei hochladen</v-btn>\r\n    </v-form>\r\n\r\n  </v-container>\r\n</template>",
-      "start": 1724585009635,
-      "end": 1724585009831,
+      "result": "<script lang=\"ts\" setup>\r\nimport { onMounted, ref } from 'vue'\r\n\r\n\r\nconst latestDate = ref<string | null>(null)\r\nconst csvFile = ref<File | null>(null)\r\nconst csvFileInputError = ref<string | null>(null)\r\nconst csvIsLoading = ref<boolean>(false) // Variable für den Ladezustand\r\nconst csvUploadMessage = ref<string | null>(null)\r\nconst csvUploadError = ref<boolean>(false) // Variable für Fehlerstatus\r\n\r\n// Validierung\r\nconst csvRequiredRule = (value: File | null) => {\r\n  return !!value || 'Dieses Feld ist erforderlich'\r\n}\r\n\r\n\r\n// Funktion zum Hochladen der Datei\r\nasync function csvUploadFile() {\r\n  csvFileInputError.value = null\r\n  csvUploadMessage.value = null\r\n  csvIsLoading.value = true\r\n  csvUploadError.value = false\r\n\r\n  if (!csvFile.value) {\r\n    csvFileInputError.value = 'Bitte wählen Sie eine Datei aus'\r\n    csvIsLoading.value = false\r\n    return\r\n  }\r\n\r\n  if (csvFile.value.name !== 'wetterdaten.csv') {\r\n    csvFileInputError.value = 'Die Datei muss den Namen \"wetterdaten.csv\" haben.'\r\n    csvIsLoading.value = false\r\n    return\r\n  }\r\n\r\n  const formData = new FormData()\r\n  formData.append('file', csvFile.value)\r\n\r\n  try {\r\n    const response = await fetch('/csv-upload', {\r\n      method: 'POST',\r\n      body: formData,\r\n      headers: {\r\n        'Accept': 'application/json'\r\n      }\r\n    })\r\n\r\n    if (response.ok) {\r\n      csvUploadMessage.value = 'Datei erfolgreich hochgeladen'\r\n    } else {\r\n      csvUploadMessage.value = 'Fehler beim Hochladen der Datei.'\r\n      csvUploadError.value = true\r\n    }\r\n  } catch (error) {\r\n    csvUploadMessage.value = 'Anmeldezeit ist Abgelaufen: ${error}'\r\n    csvUploadError.value = true\r\n    location.href = '/login'\r\n  } finally {\r\n    csvIsLoading.value = false\r\n    await firstPayload()\r\n  }\r\n}\r\n\r\n\r\n// Funktion zum Zurücksetzen der Upload-Nachricht / Fehlerstatus, wenn die Datei entfernt wird\r\nfunction csvHandleFileChange(event: Event) {\r\n  const input = event.target as HTMLInputElement\r\n  if (!input.files?.length) {\r\n    csvUploadMessage.value = null\r\n    csvUploadError.value = false\r\n    return\r\n  }\r\n  csvFile.value = input.files[0]\r\n\r\n  // Überprüfen des Dateinamens\r\n  if (csvFile.value.name !== 'wetterdaten.csv') {\r\n    csvFileInputError.value = 'Die Datei muss den Namen \"wetterdaten.csv\" haben.'\r\n    csvUploadError.value = true\r\n    csvFile.value = null\r\n  } else {\r\n    csvFileInputError.value = null\r\n    csvUploadError.value = false\r\n  }\r\n}\r\n\r\n\r\nasync function firstPayload() {\r\n  try {\r\n    const info = await fetch('/settingsView').then((response) => response.json())\r\n    latestDate.value = info.latestDate\r\n  } catch (error) {\r\n    alert(`Die Anmeldezeit ist abgelaufen`)\r\n    location.href = '/login'\r\n  }\r\n}\r\n\r\nonMounted(async () => {\r\n  await firstPayload()\r\n})\r\n</script>\r\n\r\n<template>\r\n  <v-container>\r\n    <h4>Datenbankinformation</h4>\r\n    <br>\r\n    <div class=\"d-flex align-center flex-wrap\">\r\n      <p>Aktuellstes Datum in der Datenbank:</p>\r\n      <v-chip\r\n        color=\"green darken-2\"\r\n        text-color=\"white\"\r\n        :style=\"{ marginLeft: '10px' }\">\r\n        {{ latestDate }}\r\n      </v-chip>\r\n    </div>\r\n    <v-spacer class=\"my-6\"></v-spacer>\r\n    <v-divider class=\"my-7\" :style=\"{ height: '20px'}\"></v-divider>\r\n    <v-spacer class=\"my-6\"></v-spacer>\r\n    <h4>Datenbankerweiterung / CSV-File Upload</h4>\r\n    <br>\r\n    <v-form @submit.prevent=\"csvUploadFile\">\r\n      <v-file-input\r\n        v-model=\"csvFile\"\r\n        label=\"Wähle die Datei wetterdaten.csv\"\r\n        accept=\"wetterdaten.csv\"\r\n        prepend-icon=\"\"\r\n        prepend-inner-icon=\"mdi-upload\"\r\n        :rules=\"[csvRequiredRule]\"\r\n        :error=\"!!csvFileInputError || csvUploadError\"\r\n        :error-messages=\"csvFileInputError || (csvUploadError ? 'Fehler beim Hochladen der Datei.' : '')\"\r\n        required\r\n        @change=\"csvHandleFileChange\"\r\n      ></v-file-input>\r\n      <v-progress-linear\r\n        v-if=\"csvIsLoading\"\r\n        color=\"primary\"\r\n        height=\"6\"\r\n        indeterminate\r\n        class=\"my-4\"\r\n      ></v-progress-linear>\r\n      <v-alert\r\n        v-if=\"csvUploadMessage\"\r\n        :type=\"csvUploadError ? 'error' : 'success'\"\r\n        dismissible>\r\n        {{ csvUploadMessage }}\r\n      </v-alert>\r\n      <br>\r\n      <v-btn type=\"submit\" color=\"green lighten-3\">Datei hochladen</v-btn>\r\n    </v-form>\r\n  </v-container>\r\n</template>",
+      "start": 1724686263204,
+      "end": 1724686263233,
       "sourcemaps": null
     },
     {
       "name": "vite:css",
-      "start": 1724585009831,
-      "end": 1724585009831,
+      "start": 1724686263233,
+      "end": 1724686263233,
       "order": "normal"
     },
     {
       "name": "vite:esbuild",
-      "start": 1724585009831,
-      "end": 1724585009831,
+      "start": 1724686263233,
+      "end": 1724686263233,
       "order": "normal"
     },
     {
       "name": "vite:json",
-      "start": 1724585009831,
-      "end": 1724585009831,
+      "start": 1724686263233,
+      "end": 1724686263233,
       "order": "normal"
     },
     {
       "name": "vite:worker",
-      "start": 1724585009831,
-      "end": 1724585009831,
+      "start": 1724686263233,
+      "end": 1724686263233,
       "order": "normal"
     },
     {
       "name": "vite:vue",
       "result": "import _sfc_main from \"C:/Users/MAG/IdeaProjects/Datenanalysetool/src/main/vue-project/src/routes/SettingsView.vue?vue&type=script&setup=true&lang.ts\";\nexport * from \"C:/Users/MAG/IdeaProjects/Datenanalysetool/src/main/vue-project/src/routes/SettingsView.vue?vue&type=script&setup=true&lang.ts\";\nexport default _sfc_main;\n",
-      "start": 1724585009831,
-      "end": 1724585009944,
+      "start": 1724686263233,
+      "end": 1724686263340,
       "order": "normal",
       "sourcemaps": {
         "mappings": ""
@@ -44,62 +44,62 @@
     },
     {
       "name": "vite:define",
-      "start": 1724585009945,
-      "end": 1724585009945,
+      "start": 1724686263340,
+      "end": 1724686263340,
       "order": "normal"
     },
     {
       "name": "vite:css-post",
-      "start": 1724585009945,
-      "end": 1724585009945,
+      "start": 1724686263340,
+      "end": 1724686263340,
       "order": "normal"
     },
     {
       "name": "vite:build-html",
-      "start": 1724585009945,
-      "end": 1724585009945,
+      "start": 1724686263340,
+      "end": 1724686263340,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1724585009945,
-      "end": 1724585009945,
+      "start": 1724686263340,
+      "end": 1724686263340,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1724585009945,
-      "end": 1724585009945,
+      "start": 1724686263340,
+      "end": 1724686263340,
       "order": "normal"
     },
     {
       "name": "commonjs",
-      "start": 1724585009945,
-      "end": 1724585009945,
+      "start": 1724686263340,
+      "end": 1724686263340,
       "order": "normal"
     },
     {
       "name": "vite:dynamic-import-vars",
-      "start": 1724585009945,
-      "end": 1724585009945,
+      "start": 1724686263340,
+      "end": 1724686263341,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1724585009945,
-      "end": 1724585009945,
+      "start": 1724686263341,
+      "end": 1724686263341,
       "order": "normal"
     },
     {
       "name": "vite:build-import-analysis",
-      "start": 1724585009946,
-      "end": 1724585009946,
+      "start": 1724686263342,
+      "end": 1724686263342,
       "order": "normal"
     },
     {
       "name": "vite:reporter",
-      "start": 1724585009946,
-      "end": 1724585009949,
+      "start": 1724686263342,
+      "end": 1724686263346,
       "order": "normal"
     }
   ]

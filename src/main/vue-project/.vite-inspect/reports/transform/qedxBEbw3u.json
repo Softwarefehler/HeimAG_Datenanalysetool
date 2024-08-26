@@ -4,98 +4,98 @@
     {
       "name": "vite:load-fallback",
       "result": "import { createVNode as _createVNode } from \"vue\";\n// Styles\nimport \"./VMain.css\";\n\n// Composables\nimport { makeComponentProps } from \"../../composables/component.mjs\";\nimport { makeDimensionProps, useDimension } from \"../../composables/dimensions.mjs\";\nimport { useLayout } from \"../../composables/layout.mjs\";\nimport { useSsrBoot } from \"../../composables/ssrBoot.mjs\";\nimport { makeTagProps } from \"../../composables/tag.mjs\"; // Utilities\nimport { genericComponent, propsFactory, useRender } from \"../../util/index.mjs\";\nexport const makeVMainProps = propsFactory({\n  scrollable: Boolean,\n  ...makeComponentProps(),\n  ...makeDimensionProps(),\n  ...makeTagProps({\n    tag: 'main'\n  })\n}, 'VMain');\nexport const VMain = genericComponent()({\n  name: 'VMain',\n  props: makeVMainProps(),\n  setup(props, _ref) {\n    let {\n      slots\n    } = _ref;\n    const {\n      dimensionStyles\n    } = useDimension(props);\n    const {\n      mainStyles,\n      layoutIsReady\n    } = useLayout();\n    const {\n      ssrBootStyles\n    } = useSsrBoot();\n    useRender(() => _createVNode(props.tag, {\n      \"class\": ['v-main', {\n        'v-main--scrollable': props.scrollable\n      }, props.class],\n      \"style\": [mainStyles.value, ssrBootStyles.value, dimensionStyles.value, props.style]\n    }, {\n      default: () => [props.scrollable ? _createVNode(\"div\", {\n        \"class\": \"v-main__scroller\"\n      }, [slots.default?.()]) : slots.default?.()]\n    }));\n    return layoutIsReady;\n  }\n});\n//# sourceMappingURL=VMain.mjs.map",
-      "start": 1724585010817,
-      "end": 1724585010889,
+      "start": 1724686264348,
+      "end": 1724686264399,
       "sourcemaps": null
     },
     {
       "name": "vite:css",
-      "start": 1724585010889,
-      "end": 1724585010889,
+      "start": 1724686264399,
+      "end": 1724686264399,
       "order": "normal"
     },
     {
       "name": "vite:esbuild",
-      "start": 1724585010889,
-      "end": 1724585010889,
+      "start": 1724686264399,
+      "end": 1724686264399,
       "order": "normal"
     },
     {
       "name": "vite:json",
-      "start": 1724585010889,
-      "end": 1724585010889,
+      "start": 1724686264399,
+      "end": 1724686264399,
       "order": "normal"
     },
     {
       "name": "vite:worker",
-      "start": 1724585010889,
-      "end": 1724585010889,
+      "start": 1724686264399,
+      "end": 1724686264399,
       "order": "normal"
     },
     {
       "name": "vite:vue",
-      "start": 1724585010889,
-      "end": 1724585010889,
+      "start": 1724686264399,
+      "end": 1724686264399,
       "order": "normal"
     },
     {
       "name": "vite:define",
-      "start": 1724585010889,
-      "end": 1724585010889,
+      "start": 1724686264399,
+      "end": 1724686264399,
       "order": "normal"
     },
     {
       "name": "vite:css-post",
-      "start": 1724585010889,
-      "end": 1724585010889,
+      "start": 1724686264399,
+      "end": 1724686264399,
       "order": "normal"
     },
     {
       "name": "vite:build-html",
-      "start": 1724585010889,
-      "end": 1724585010889,
+      "start": 1724686264399,
+      "end": 1724686264399,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1724585010889,
-      "end": 1724585010889,
+      "start": 1724686264399,
+      "end": 1724686264399,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1724585010889,
-      "end": 1724585010889,
+      "start": 1724686264399,
+      "end": 1724686264399,
       "order": "normal"
     },
     {
       "name": "commonjs",
-      "start": 1724585010889,
-      "end": 1724585010889,
+      "start": 1724686264399,
+      "end": 1724686264399,
       "order": "normal"
     },
     {
       "name": "vite:dynamic-import-vars",
-      "start": 1724585010889,
-      "end": 1724585010889,
+      "start": 1724686264399,
+      "end": 1724686264399,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1724585010889,
-      "end": 1724585010889,
+      "start": 1724686264399,
+      "end": 1724686264399,
       "order": "normal"
     },
     {
       "name": "vite:build-import-analysis",
-      "start": 1724585010889,
-      "end": 1724585010889,
+      "start": 1724686264399,
+      "end": 1724686264399,
       "order": "normal"
     },
     {
       "name": "vite:reporter",
-      "start": 1724585010889,
-      "end": 1724585010889,
+      "start": 1724686264399,
+      "end": 1724686264399,
       "order": "normal"
     }
   ]

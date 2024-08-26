@@ -4,98 +4,98 @@
     {
       "name": "vite:load-fallback",
       "result": "import { createVNode as _createVNode } from \"vue\";\n// Styles\nimport \"./VPullToRefresh.css\";\n\n// Components\nimport { VIcon } from \"../../components/VIcon/index.mjs\";\nimport { VProgressCircular } from \"../../components/VProgressCircular/index.mjs\"; // Utilities\nimport { computed, onMounted, ref, shallowRef, watch } from 'vue';\nimport { clamp, convertToUnit, genericComponent, getScrollParents, useRender } from \"../../util/index.mjs\";\nexport const VPullToRefresh = genericComponent()({\n  name: 'VPullToRefresh',\n  props: {\n    pullDownThreshold: {\n      type: Number,\n      default: 64\n    }\n  },\n  emits: {\n    load: options => true\n  },\n  setup(props, _ref) {\n    let {\n      slots,\n      emit\n    } = _ref;\n    let touchstartY = 0;\n    let scrollParents = [];\n    const touchDiff = shallowRef(0);\n    const containerRef = ref();\n    const refreshing = shallowRef(false);\n    const goingUp = shallowRef(false);\n    const touching = shallowRef(false);\n    const canRefresh = computed(() => touchDiff.value >= props.pullDownThreshold && !refreshing.value);\n    const topOffset = computed(() => clamp(touchDiff.value, 0, props.pullDownThreshold));\n    function onTouchstart(e) {\n      if (refreshing.value) return;\n      touching.value = true;\n      touchstartY = 'clientY' in e ? e.clientY : e.touches[0].clientY;\n    }\n    function onTouchmove(e) {\n      if (refreshing.value || !touching.value) return;\n      const touchY = 'clientY' in e ? e.clientY : e.touches[0].clientY;\n      if (scrollParents.length && !scrollParents[0].scrollTop) {\n        touchDiff.value = touchY - touchstartY;\n      }\n    }\n    function onTouchend(e) {\n      if (refreshing.value) return;\n      touching.value = false;\n      if (canRefresh.value) {\n        function done() {\n          if (!refreshing.value) return;\n          touchDiff.value = 0;\n          refreshing.value = false;\n        }\n        emit('load', {\n          done\n        });\n        refreshing.value = true;\n      } else {\n        touchDiff.value = 0;\n      }\n    }\n    onMounted(() => {\n      scrollParents = getScrollParents(containerRef.value);\n    });\n    watch([topOffset, refreshing], () => {\n      if (scrollParents.length) {\n        const stopScrolling = topOffset.value && !refreshing.value;\n        scrollParents.forEach(p => p.style.overflow = stopScrolling ? 'hidden' : 'auto');\n      }\n    });\n    watch(topOffset, (newVal, oldVal) => {\n      goingUp.value = newVal < oldVal;\n    });\n    useRender(() => {\n      return _createVNode(\"div\", {\n        \"class\": ['v-pull-to-refresh'],\n        \"onTouchstart\": onTouchstart,\n        \"onTouchmove\": onTouchmove,\n        \"onTouchend\": onTouchend,\n        \"onMousedown\": onTouchstart,\n        \"onMouseup\": onTouchend,\n        \"onMouseleave\": onTouchend,\n        \"onMousemove\": onTouchmove,\n        \"ref\": containerRef\n      }, [_createVNode(\"div\", {\n        \"class\": ['v-pull-to-refresh__pull-down', {\n          'v-pull-to-refresh__pull-down--touching': touching.value\n        }],\n        \"style\": {\n          top: convertToUnit(-1 * props.pullDownThreshold + topOffset.value),\n          height: convertToUnit(props.pullDownThreshold)\n        }\n      }, [slots.pullDownPanel ? slots.pullDownPanel({\n        canRefresh: canRefresh.value,\n        goingUp: goingUp.value,\n        refreshing: refreshing.value\n      }) : _createVNode(\"div\", {\n        \"class\": ['v-pull-to-refresh__pull-down-default']\n      }, [refreshing.value ? _createVNode(VProgressCircular, {\n        \"indeterminate\": true,\n        \"active\": false\n      }, null) : _createVNode(VIcon, {\n        \"icon\": canRefresh.value || goingUp.value ? '$sortAsc' : '$sortDesc'\n      }, null)])]), _createVNode(\"div\", {\n        \"class\": ['v-pull-to-refresh__scroll-container', {\n          'v-pull-to-refresh__scroll-container--touching': touching.value\n        }],\n        \"style\": {\n          top: convertToUnit(topOffset.value)\n        }\n      }, [slots.default?.()])]);\n    });\n  }\n});\n//# sourceMappingURL=VPullToRefresh.mjs.map",
-      "start": 1724585009830,
-      "end": 1724585009958,
+      "start": 1724686263227,
+      "end": 1724686263364,
       "sourcemaps": null
     },
     {
       "name": "vite:css",
-      "start": 1724585009958,
-      "end": 1724585009958,
+      "start": 1724686263364,
+      "end": 1724686263364,
       "order": "normal"
     },
     {
       "name": "vite:esbuild",
-      "start": 1724585009958,
-      "end": 1724585009958,
+      "start": 1724686263364,
+      "end": 1724686263364,
       "order": "normal"
     },
     {
       "name": "vite:json",
-      "start": 1724585009958,
-      "end": 1724585009958,
+      "start": 1724686263364,
+      "end": 1724686263364,
       "order": "normal"
     },
     {
       "name": "vite:worker",
-      "start": 1724585009958,
-      "end": 1724585009958,
+      "start": 1724686263364,
+      "end": 1724686263364,
       "order": "normal"
     },
     {
       "name": "vite:vue",
-      "start": 1724585009958,
-      "end": 1724585009958,
+      "start": 1724686263364,
+      "end": 1724686263364,
       "order": "normal"
     },
     {
       "name": "vite:define",
-      "start": 1724585009958,
-      "end": 1724585009958,
+      "start": 1724686263364,
+      "end": 1724686263364,
       "order": "normal"
     },
     {
       "name": "vite:css-post",
-      "start": 1724585009958,
-      "end": 1724585009958,
+      "start": 1724686263364,
+      "end": 1724686263364,
       "order": "normal"
     },
     {
       "name": "vite:build-html",
-      "start": 1724585009958,
-      "end": 1724585009958,
+      "start": 1724686263364,
+      "end": 1724686263364,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1724585009958,
-      "end": 1724585009958,
+      "start": 1724686263364,
+      "end": 1724686263364,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1724585009958,
-      "end": 1724585009958,
+      "start": 1724686263364,
+      "end": 1724686263364,
       "order": "normal"
     },
     {
       "name": "commonjs",
-      "start": 1724585009958,
-      "end": 1724585009958,
+      "start": 1724686263364,
+      "end": 1724686263364,
       "order": "normal"
     },
     {
       "name": "vite:dynamic-import-vars",
-      "start": 1724585009958,
-      "end": 1724585009958,
+      "start": 1724686263364,
+      "end": 1724686263364,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1724585009958,
-      "end": 1724585009958,
+      "start": 1724686263364,
+      "end": 1724686263364,
       "order": "normal"
     },
     {
       "name": "vite:build-import-analysis",
-      "start": 1724585009958,
-      "end": 1724585009958,
+      "start": 1724686263364,
+      "end": 1724686263364,
       "order": "normal"
     },
     {
       "name": "vite:reporter",
-      "start": 1724585009958,
-      "end": 1724585009958,
+      "start": 1724686263364,
+      "end": 1724686263364,
       "order": "normal"
     }
   ]

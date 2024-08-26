@@ -32,11 +32,10 @@ class Database : DatabaseInfo {
             connection = DriverManager.getConnection(URL, USER, PASSWORD)
             logger.info("Connection to the database established.")
 
-            // Führe eine einfache Abfrage aus, um die Verbindung zu testen
+            // Make an easy request, to check the connection
             val statement = connection.createStatement()
             val resultSet = statement.executeQuery("SELECT 1")
 
-            // Überprüfe, ob die Abfrage erfolgreich war
             if (resultSet.next()) {
                 logger.warn("Database is available and accessible.")
                 "Datenbank vorhanden"
@@ -299,9 +298,9 @@ class Database : DatabaseInfo {
                 logger.info("Batch insert for weather data is executed.")
                 preparedStatement.executeBatch()
             }
-
             connection.close()
             logger.info("Weather data successfully saved.")
+
         } catch (e: SQLException) {
             logger.error("Error when saving the weather data: ${e.message}", e)
         }

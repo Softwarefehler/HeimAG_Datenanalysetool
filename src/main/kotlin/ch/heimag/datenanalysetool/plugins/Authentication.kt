@@ -37,7 +37,7 @@ fun Application.installSessionAndAuthentication() {
     install(Sessions) {
         cookie<UserSession>("user_session") {
             cookie.path = "/"
-            cookie.maxAgeInSeconds = 300000 // 300
+            cookie.maxAgeInSeconds = 300000000000000 // 300
             logger.info("UserSession cookie configured mit ${cookie.path} und max. Zeit von ${cookie.maxAgeInSeconds}")
         }
     }

@@ -4,98 +4,98 @@
     {
       "name": "vite:load-fallback",
       "result": "import { createVNode as _createVNode, mergeProps as _mergeProps, resolveDirective as _resolveDirective } from \"vue\";\n// Components\nimport { makeVWindowProps, VWindow } from \"../VWindow/VWindow.mjs\"; // Composables\nimport { useProxiedModel } from \"../../composables/proxiedModel.mjs\"; // Utilities\nimport { computed, inject } from 'vue';\nimport { genericComponent, omit, propsFactory, useRender } from \"../../util/index.mjs\"; // Types\nimport { VTabsSymbol } from \"./shared.mjs\";\nexport const makeVTabsWindowProps = propsFactory({\n  ...omit(makeVWindowProps(), ['continuous', 'nextIcon', 'prevIcon', 'showArrows', 'touch', 'mandatory'])\n}, 'VTabsWindow');\nexport const VTabsWindow = genericComponent()({\n  name: 'VTabsWindow',\n  props: makeVTabsWindowProps(),\n  emits: {\n    'update:modelValue': v => true\n  },\n  setup(props, _ref) {\n    let {\n      slots\n    } = _ref;\n    const group = inject(VTabsSymbol, null);\n    const _model = useProxiedModel(props, 'modelValue');\n    const model = computed({\n      get() {\n        // Always return modelValue if defined\n        // or if not within a VTabs group\n        if (_model.value != null || !group) return _model.value;\n\n        // If inside of a VTabs, find the currently selected\n        // item by id. Item value may be assigned by its index\n        return group.items.value.find(item => group.selected.value.includes(item.id))?.value;\n      },\n      set(val) {\n        _model.value = val;\n      }\n    });\n    useRender(() => {\n      const windowProps = VWindow.filterProps(props);\n      return _createVNode(VWindow, _mergeProps({\n        \"_as\": \"VTabsWindow\"\n      }, windowProps, {\n        \"modelValue\": model.value,\n        \"onUpdate:modelValue\": $event => model.value = $event,\n        \"class\": ['v-tabs-window', props.class],\n        \"style\": props.style,\n        \"mandatory\": false,\n        \"touch\": false\n      }), slots);\n    });\n    return {};\n  }\n});\n//# sourceMappingURL=VTabsWindow.mjs.map",
-      "start": 1724585011061,
-      "end": 1724585011129,
+      "start": 1724686264431,
+      "end": 1724686264505,
       "sourcemaps": null
     },
     {
       "name": "vite:css",
-      "start": 1724585011129,
-      "end": 1724585011129,
+      "start": 1724686264505,
+      "end": 1724686264505,
       "order": "normal"
     },
     {
       "name": "vite:esbuild",
-      "start": 1724585011129,
-      "end": 1724585011129,
+      "start": 1724686264505,
+      "end": 1724686264505,
       "order": "normal"
     },
     {
       "name": "vite:json",
-      "start": 1724585011129,
-      "end": 1724585011129,
+      "start": 1724686264505,
+      "end": 1724686264505,
       "order": "normal"
     },
     {
       "name": "vite:worker",
-      "start": 1724585011129,
-      "end": 1724585011129,
+      "start": 1724686264505,
+      "end": 1724686264505,
       "order": "normal"
     },
     {
       "name": "vite:vue",
-      "start": 1724585011129,
-      "end": 1724585011129,
+      "start": 1724686264505,
+      "end": 1724686264505,
       "order": "normal"
     },
     {
       "name": "vite:define",
-      "start": 1724585011129,
-      "end": 1724585011129,
+      "start": 1724686264505,
+      "end": 1724686264505,
       "order": "normal"
     },
     {
       "name": "vite:css-post",
-      "start": 1724585011129,
-      "end": 1724585011129,
+      "start": 1724686264505,
+      "end": 1724686264505,
       "order": "normal"
     },
     {
       "name": "vite:build-html",
-      "start": 1724585011129,
-      "end": 1724585011129,
+      "start": 1724686264505,
+      "end": 1724686264505,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1724585011129,
-      "end": 1724585011129,
+      "start": 1724686264505,
+      "end": 1724686264505,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1724585011129,
-      "end": 1724585011129,
+      "start": 1724686264505,
+      "end": 1724686264505,
       "order": "normal"
     },
     {
       "name": "commonjs",
-      "start": 1724585011129,
-      "end": 1724585011129,
+      "start": 1724686264505,
+      "end": 1724686264505,
       "order": "normal"
     },
     {
       "name": "vite:dynamic-import-vars",
-      "start": 1724585011129,
-      "end": 1724585011129,
+      "start": 1724686264505,
+      "end": 1724686264505,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1724585011129,
-      "end": 1724585011129,
+      "start": 1724686264505,
+      "end": 1724686264505,
       "order": "normal"
     },
     {
       "name": "vite:build-import-analysis",
-      "start": 1724585011129,
-      "end": 1724585011129,
+      "start": 1724686264505,
+      "end": 1724686264505,
       "order": "normal"
     },
     {
       "name": "vite:reporter",
-      "start": 1724585011129,
-      "end": 1724585011129,
+      "start": 1724686264505,
+      "end": 1724686264505,
       "order": "normal"
     }
   ]

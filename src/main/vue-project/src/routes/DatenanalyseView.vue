@@ -18,9 +18,7 @@ const selectedCountry = ref<string | null>(null)
 const tableData1 = ref<DataPoint[]>([])
 const tableData2 = ref<DataPoint[]>([])
 const tableData3 = ref<DataPoint[]>([])
-const databaseStatus = ref<string | null>(null)
 const countryList = ref<string[]>([])
-const latestDate = ref<string | null>(null)
 const startDateError = ref<string | null>(null)
 const endDateError = ref<string | null>(null)
 const selectedCountryError = ref<string | null>(null)
@@ -34,7 +32,6 @@ async function sendData() {
   endDateError.value = null
   selectedCountryError.value = null
 
-  // Validierung
   if (!startDate.value) {
     startDateError.value = 'Bitte wählen Sie ein Startdatum'
   }
@@ -44,7 +41,6 @@ async function sendData() {
   if (!selectedCountry.value) {
     selectedCountryError.value = 'Bitte wählen Sie einen Ort aus'
   }
-
 
   if (startDate.value !== null && endDate.value !== null && selectedCountry.value !== null) {
     const formData = new FormData()
@@ -70,6 +66,7 @@ async function sendData() {
   }
 }
 
+
 function processPayload(payload: PayloadType) {
   tableData1.value = payload.kaltPeriode
   tableData2.value = payload.hauptanteilHeizperiode
@@ -79,10 +76,8 @@ function processPayload(payload: PayloadType) {
 
 async function firstPayload() {
   try {
-    const data = await fetch('/get-DatenanalyseView').then((response) => response.json())
-    databaseStatus.value = data.databaseStatus
+    const data = await fetch('/datenanalyseView').then((response) => response.json())
     countryList.value = data.countryList
-    latestDate.value = data.latestDate
   } catch (error) {
     alert(`Die Anmeldezeit ist abgelaufen`)
     location.href = '/login'

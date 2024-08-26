@@ -4,8 +4,8 @@
     {
       "name": "vite:vue",
       "result": "\r\n.my-image {\r\n  display: block; /* Macht das Bild zu einem Blockelement, sodass es eine neue Zeile einnimmt */\r\n  margin: 0 auto; /* Zentriert das Bild horizontal */\r\n  max-width: 100%; /* Stellt sicher, dass das Bild nicht breiter als sein Container ist */\r\n}\r\n\r\n/* Stil für den Button */\r\n.my-button {\r\n  margin-top: 20px; /* Abstand oben, damit der Button unterhalb des Bildes ist */\r\n}\r\n",
-      "start": 1724585010274,
-      "end": 1724585010274,
+      "start": 1724686263659,
+      "end": 1724686263659,
       "sourcemaps": {
         "version": 3,
         "sources": [
@@ -23,34 +23,34 @@
     {
       "name": "vite:css",
       "result": "\r\n.my-image {\r\n  display: block; /* Macht das Bild zu einem Blockelement, sodass es eine neue Zeile einnimmt */\r\n  margin: 0 auto; /* Zentriert das Bild horizontal */\r\n  max-width: 100%; /* Stellt sicher, dass das Bild nicht breiter als sein Container ist */\r\n}\r\n\r\n/* Stil für den Button */\r\n.my-button {\r\n  margin-top: 20px; /* Abstand oben, damit der Button unterhalb des Bildes ist */\r\n}\r\n",
-      "start": 1724585010274,
-      "end": 1724585010274,
+      "start": 1724686263659,
+      "end": 1724686263659,
       "order": "normal",
       "sourcemaps": null
     },
     {
       "name": "vite:esbuild",
-      "start": 1724585010274,
-      "end": 1724585010274,
+      "start": 1724686263659,
+      "end": 1724686263659,
       "order": "normal"
     },
     {
       "name": "vite:json",
-      "start": 1724585010274,
-      "end": 1724585010274,
+      "start": 1724686263659,
+      "end": 1724686263659,
       "order": "normal"
     },
     {
       "name": "vite:worker",
-      "start": 1724585010274,
-      "end": 1724585010274,
+      "start": 1724686263659,
+      "end": 1724686263659,
       "order": "normal"
     },
     {
       "name": "vite:vue",
       "result": "\n.my-image[data-v-5e2fb596] {\r\n  display: block; /* Macht das Bild zu einem Blockelement, sodass es eine neue Zeile einnimmt */\r\n  margin: 0 auto; /* Zentriert das Bild horizontal */\r\n  max-width: 100%; /* Stellt sicher, dass das Bild nicht breiter als sein Container ist */\n}\r\n\r\n/* Stil für den Button */\n.my-button[data-v-5e2fb596] {\r\n  margin-top: 20px; /* Abstand oben, damit der Button unterhalb des Bildes ist */\n}\r\n",
-      "start": 1724585010274,
-      "end": 1724585010276,
+      "start": 1724686263659,
+      "end": 1724686263661,
       "order": "normal",
       "sourcemaps": {
         "mappings": ""
@@ -58,15 +58,15 @@
     },
     {
       "name": "vite:define",
-      "start": 1724585010276,
-      "end": 1724585010276,
+      "start": 1724686263661,
+      "end": 1724686263661,
       "order": "normal"
     },
     {
       "name": "vite:css-post",
       "result": "",
-      "start": 1724585010276,
-      "end": 1724585010276,
+      "start": 1724686263661,
+      "end": 1724686263661,
       "order": "normal",
       "sourcemaps": {
         "mappings": ""
@@ -74,50 +74,50 @@
     },
     {
       "name": "vite:build-html",
-      "start": 1724585010276,
-      "end": 1724585010276,
+      "start": 1724686263661,
+      "end": 1724686263661,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1724585010276,
-      "end": 1724585010276,
+      "start": 1724686263661,
+      "end": 1724686263661,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1724585010276,
-      "end": 1724585010276,
+      "start": 1724686263661,
+      "end": 1724686263661,
       "order": "normal"
     },
     {
       "name": "commonjs",
-      "start": 1724585010276,
-      "end": 1724585010276,
+      "start": 1724686263661,
+      "end": 1724686263661,
       "order": "normal"
     },
     {
       "name": "vite:dynamic-import-vars",
-      "start": 1724585010276,
-      "end": 1724585010276,
+      "start": 1724686263661,
+      "end": 1724686263661,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1724585010276,
-      "end": 1724585010276,
+      "start": 1724686263661,
+      "end": 1724686263661,
       "order": "normal"
     },
     {
       "name": "vite:build-import-analysis",
-      "start": 1724585010276,
-      "end": 1724585010276,
+      "start": 1724686263661,
+      "end": 1724686263661,
       "order": "normal"
     },
     {
       "name": "vite:reporter",
-      "start": 1724585010276,
-      "end": 1724585010276,
+      "start": 1724686263661,
+      "end": 1724686263661,
       "order": "normal"
     }
   ]

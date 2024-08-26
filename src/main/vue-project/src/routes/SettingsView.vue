@@ -2,7 +2,6 @@
 import { onMounted, ref } from 'vue'
 
 
-const databaseStatus = ref<string | null>(null)
 const latestDate = ref<string | null>(null)
 const csvFile = ref<File | null>(null)
 const csvFileInputError = ref<string | null>(null)
@@ -88,12 +87,10 @@ function csvHandleFileChange(event: Event) {
 
 async function firstPayload() {
   try {
-    const info = await fetch('/get-SettingsView').then((response) => response.json())
-    databaseStatus.value = info.databaseStatus
+    const info = await fetch('/settingsView').then((response) => response.json())
     latestDate.value = info.latestDate
   } catch (error) {
     alert(`Die Anmeldezeit ist abgelaufen`)
-    //await router.push('/login')
     location.href = '/login'
   }
 }
@@ -112,8 +109,7 @@ onMounted(async () => {
       <v-chip
         color="green darken-2"
         text-color="white"
-        :style="{ marginLeft: '10px' }"
-      >
+        :style="{ marginLeft: '10px' }">
         {{ latestDate }}
       </v-chip>
     </div>
@@ -135,8 +131,6 @@ onMounted(async () => {
         required
         @change="csvHandleFileChange"
       ></v-file-input>
-
-      <!-- Progress Linear -->
       <v-progress-linear
         v-if="csvIsLoading"
         color="primary"
@@ -144,18 +138,14 @@ onMounted(async () => {
         indeterminate
         class="my-4"
       ></v-progress-linear>
-
-      <!-- Nachricht, die nach dem Upload angezeigt wird -->
       <v-alert
         v-if="csvUploadMessage"
         :type="csvUploadError ? 'error' : 'success'"
-        dismissible
-      >
+        dismissible>
         {{ csvUploadMessage }}
       </v-alert>
       <br>
       <v-btn type="submit" color="green lighten-3">Datei hochladen</v-btn>
     </v-form>
-
   </v-container>
 </template>

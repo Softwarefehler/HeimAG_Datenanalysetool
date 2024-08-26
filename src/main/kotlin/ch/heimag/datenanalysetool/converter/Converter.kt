@@ -44,10 +44,10 @@ object Converter {
             val dateStringBuild = "$yearString-$monthValueString-$dayString"
             logger.warn("Transcribed string: $dateStringBuild")
 
-            // Definiere das Date-Format
+            // Define the format of the date
             val dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
 
-            // Parsen des Strings in ein LocalDate-Objekt
+            // Parse the String in to al Local date-object
             date = LocalDate.parse(dateStringBuild, dateFormatter)
             logger.debug("Parsed variable: {}", date)
 
@@ -56,7 +56,7 @@ object Converter {
             logger.error("Variable could not be parsed. current time value is used: $date")
         }
 
-        // Formatieren zu yyyymmdd
+        // Formatting in to yyyymmdd
         val year = date.year
         val month = date.monthValue
         val day = date.dayOfMonth
@@ -73,7 +73,7 @@ object Converter {
 
         val dateStringRaw = dateInt.toString()
 
-        // String in das Format yyyy-MM-dd umwandeln
+        // Change the String in to Format yyyy-MM-dd
         val dateString =
             "${dateStringRaw.substring(0, 4)}-${dateStringRaw.substring(4, 6)}-${dateStringRaw.substring(6, 8)}"
 

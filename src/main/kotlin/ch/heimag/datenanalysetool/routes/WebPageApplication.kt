@@ -22,14 +22,11 @@ import java.io.File
 
 @Serializable
 data class FirstResponseDatenanalyseView(
-    val databaseStatus: String,
     val countryList: MutableList<String>,
-    val latestDate: String
 )
 
 @Serializable
 data class FirstResponseSettingsView(
-    val databaseStatus: String,
     val latestDate: String
 )
 
@@ -49,6 +46,7 @@ fun Application.webPageApplication() {
     routing {
         authenticate("auth-session") {
 
+            // First steps, wenn you start de routing
             val databaseStatus = Data.database.checkDatabaseStatus()
             var latestDateString = if (databaseStatus == "Datenbank vorhanden") {
                 Data.database.loadLatestDate()
@@ -59,36 +57,31 @@ fun Application.webPageApplication() {
             val countryList = FileReader.country.loadToSelectCountry("/document/Wetterstationen.xlsx")
 
 
-
-            get("/get-DatenanalyseView") {
-                logger.info("GET request from /get-DatenanalyseView")
+            get("/datenanalyseView") {
+                logger.info("GET request from /datenanalyseView")
 
                 val firstResponse = FirstResponseDatenanalyseView(
-                    databaseStatus = databaseStatus,
                     countryList = countryList,
-                    latestDate = latestDateString
                 )
                 logger.debug(
-                    "DatenanalyseView response: {},{},{},{}",
-                    firstResponse.latestDate,
-                    firstResponse.databaseStatus,
-                    firstResponse.countryList,
-                    firstResponse.latestDate
+                    "DatenanalyseView response: {}",
+                    firstResponse.countryList
                 )
                 call.respond(firstResponse)
             }
 
 
+            // Search Date and Temperature
             post("/search") {
                 logger.info("POST request for /search")
 
+                // Init
                 var startDateReceive: String? = null
                 var endDateReceive: String? = null
                 var selectedCountryReceive: String? = null
 
-
+                // Receive data
                 val multipart = call.receiveMultipart()
-
                 multipart.forEachPart { part ->
                     when (part) {
                         is PartData.FormItem -> {
@@ -110,17 +103,21 @@ fun Application.webPageApplication() {
 
                 logger.debug("Received Data - Start date: $startDateString, End date: $endDateString, Selected country: $selectedCountry")
 
-                // Parse Daten
+                // Parse Data
                 val startDate = Converter.databaseDateStringToInt(startDateString)
                 val endDate = Converter.databaseDateStringToInt(endDateString)
 
+                // Group data into an object
                 val operatingState = OperatingConditions(startDate, endDate, selectedCountry)
+                logger.debug("Search parameters: {}", operatingState)
 
+                // Database request for every period
                 val valueListKaltPeriode = Data.database.loadOperatingStateKaltePeriode(operatingState)
                 val valueListHauptanteilHeizperiode =
                     Data.database.loadOperatingStateHaupanteilHeizperiode(operatingState)
                 val valueListSchwachlast = Data.database.loadOperatingStateSchwachlast(operatingState)
 
+                // Group every List to one Value
                 val operatingStateValueList =
                     OperatingStateValueList(valueListKaltPeriode, valueListHauptanteilHeizperiode, valueListSchwachlast)
 
@@ -136,13 +133,15 @@ fun Application.webPageApplication() {
                 val multipart = call.receiveMultipart()
                 val csvRecords = mutableListOf<WeatherData>()
 
-                val oldDate = 18000101
+                //Init
+                val actualDateInt = 18000101 // 01.01.1800
                 val latestDateCheck = if (latestDateString == "Keine Daten") {
-                    oldDate
+                    actualDateInt
                 } else {
                     Converter.dateStringToInt(latestDateString)
                 }
 
+                // Receive data
                 multipart.forEachPart { part ->
                     if (part is PartData.FileItem) {
                         val reader = BufferedReader(InputStreamReader(part.streamProvider()))
@@ -153,9 +152,10 @@ fun Application.webPageApplication() {
                                 iterator.next() // Skip the header line
                             }
 
+                            // Group all data from a csv-line to an object
                             iterator.forEach { line ->
                                 val values = line.split(';')
-                                if (values.size == 30) { // Ensure it matches the number of columns
+                                if (values.size == 30) {
                                     val record = WeatherData(
                                         datum = values[0].toIntOrNull(),
                                         alt = values[1].toDoubleOrNull(),
@@ -188,6 +188,7 @@ fun Application.webPageApplication() {
                                         sma = values[28].toDoubleOrNull(),
                                         stg = values[29].toDoubleOrNull()
                                     )
+                                    // Check date from database with date from object and add it to a list
                                     if (record.datum != null && latestDateCheck < record.datum) {
                                         csvRecords.add(record)
                                     }
@@ -199,6 +200,7 @@ fun Application.webPageApplication() {
                     part.dispose()
                 }
 
+                // transfer the List to the database
                 Data.database.setWeatherdataToDatabase(csvRecords)
                 latestDateString = Data.database.loadLatestDate()
                 logger.info("Database updated, newest date: $latestDateString")
@@ -210,17 +212,15 @@ fun Application.webPageApplication() {
             }
 
 
-            get("/get-SettingsView") {
-                logger.info("GET request from /get-SettingsView")
+            get("/settingsView") {
+                logger.info("GET request from /settingsView")
 
                 val firstResponse = FirstResponseSettingsView(
-                    databaseStatus = databaseStatus,
                     latestDate = latestDateString
                 )
                 logger.debug(
-                    "SettingsView response: {},{},{}",
+                    "SettingsView response: {},{}",
                     firstResponse.latestDate,
-                    firstResponse.databaseStatus,
                     firstResponse.latestDate
                 )
                 call.respond(firstResponse)

@@ -4,8 +4,8 @@
     {
       "name": "vite:vue",
       "result": "import { defineComponent as _defineComponent } from 'vue'\nimport { createElementVNode as _createElementVNode, resolveComponent as _resolveComponent, withCtx as _withCtx, createVNode as _createVNode, openBlock as _openBlock, createElementBlock as _createElementBlock, createCommentVNode as _createCommentVNode, createTextVNode as _createTextVNode, unref as _unref, createBlock as _createBlock, pushScopeId as _pushScopeId, popScopeId as _popScopeId } from \"vue\"\n\nconst _withScopeId = n => (_pushScopeId(\"data-v-5e2fb596\"),n=n(),_popScopeId(),n)\nconst _hoisted_1 = /*#__PURE__*/ _withScopeId(() => /*#__PURE__*/_createElementVNode(\"h4\", { class: \"text-h5 font-weight-bold mb-0\" }, \"Karte Wetterstationen Schweiz\", -1))\nconst _hoisted_2 = [\"src\", \"alt\"]\n\nimport { onMounted, ref } from 'vue'\r\nimport { VBtn } from 'vuetify/components'\r\n\r\n\r\nexport type Foto = { url: string; name: string }\r\n\r\n\nexport default /*#__PURE__*/_defineComponent({\n  __name: 'SwitzerlandTopographicView',\n  setup(__props) {\n\r\nconst foto = ref<Foto | null>(null)\r\n\r\n\r\n// Da Bild statisch hinterlegt ist und der Fehler passiert, melden wir uns ab\r\nasync function logout() {\r\n  alert(`Die Anmeldezeit ist abgelaufen`)\r\n  location.href = '/login'\r\n}\r\n\r\n\r\nasync function fetchFotoFromServer() {\r\n  try {\r\n    const swisstopo = await fetch('/swisstopographic').then((response) => response.blob())\r\n    const url = URL.createObjectURL(swisstopo)\r\n    foto.value = { url, name: 'Switzerland_topographic.png' }\r\n  } catch (error) {\r\n    alert('Die Anmeldezeit ist abgelaufen')\r\n   location.href = '/login'\r\n  }\r\n}\r\n\r\nonMounted(fetchFotoFromServer)\r\n\nreturn (_ctx: any,_cache: any) => {\n  const _component_v_col = _resolveComponent(\"v-col\")!\n  const _component_v_row = _resolveComponent(\"v-row\")!\n  const _component_v_container = _resolveComponent(\"v-container\")!\n\n  return (_openBlock(), _createBlock(_component_v_container, null, {\n    default: _withCtx(() => [\n      _createVNode(_component_v_row, { class: \"d-flex align-center\" }, {\n        default: _withCtx(() => [\n          _createVNode(_component_v_col, {\n            cols: \"auto\",\n            class: \"d-flex align-center\"\n          }, {\n            default: _withCtx(() => [\n              _hoisted_1\n            ]),\n            _: 1\n          }),\n          _createVNode(_component_v_col, {\n            cols: \"auto\",\n            class: \"d-flex align-center\"\n          }, {\n            default: _withCtx(() => [\n              (foto.value)\n                ? (_openBlock(), _createElementBlock(\"img\", {\n                    key: 0,\n                    src: foto.value.url,\n                    alt: foto.value.name,\n                    onError: _cache[0] || (_cache[0] = \n//@ts-ignore\n(...args) => ( logout &&  logout(...args))),\n                    class: \"my-image\"\n                  }, null, 40, _hoisted_2))\n                : _createCommentVNode(\"\", true)\n            ]),\n            _: 1\n          })\n        ]),\n        _: 1\n      }),\n      _createVNode(_unref(VBtn), {\n        to: { path: '/' },\n        color: \"green lighten-3\",\n        class: \"my-button\"\n      }, {\n        default: _withCtx(() => [\n          _createTextVNode(\"Zurück\")\n        ]),\n        _: 1\n      })\n    ]),\n    _: 1\n  }))\n}\n}\n\n})",
-      "start": 1724585010274,
-      "end": 1724585010274,
+      "start": 1724686263658,
+      "end": 1724686263658,
       "sourcemaps": {
         "version": 3,
         "sources": [
@@ -20,15 +20,15 @@
     },
     {
       "name": "vite:css",
-      "start": 1724585010274,
-      "end": 1724585010274,
+      "start": 1724686263658,
+      "end": 1724686263658,
       "order": "normal"
     },
     {
       "name": "vite:esbuild",
       "result": "import { defineComponent as _defineComponent } from \"vue\";\nimport { createElementVNode as _createElementVNode, resolveComponent as _resolveComponent, withCtx as _withCtx, createVNode as _createVNode, openBlock as _openBlock, createElementBlock as _createElementBlock, createCommentVNode as _createCommentVNode, createTextVNode as _createTextVNode, unref as _unref, createBlock as _createBlock, pushScopeId as _pushScopeId, popScopeId as _popScopeId } from \"vue\";\nconst _withScopeId = (n) => (_pushScopeId(\"data-v-5e2fb596\"), n = n(), _popScopeId(), n);\nconst _hoisted_1 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ _createElementVNode(\"h4\", { class: \"text-h5 font-weight-bold mb-0\" }, \"Karte Wetterstationen Schweiz\", -1));\nconst _hoisted_2 = [\"src\", \"alt\"];\nimport { onMounted, ref } from \"vue\";\nimport { VBtn } from \"vuetify/components\";\nexport default /* @__PURE__ */ _defineComponent({\n  __name: \"SwitzerlandTopographicView\",\n  setup(__props) {\n    const foto = ref(null);\n    async function logout() {\n      alert(`Die Anmeldezeit ist abgelaufen`);\n      location.href = \"/login\";\n    }\n    async function fetchFotoFromServer() {\n      try {\n        const swisstopo = await fetch(\"/swisstopographic\").then((response) => response.blob());\n        const url = URL.createObjectURL(swisstopo);\n        foto.value = { url, name: \"Switzerland_topographic.png\" };\n      } catch (error) {\n        alert(\"Die Anmeldezeit ist abgelaufen\");\n        location.href = \"/login\";\n      }\n    }\n    onMounted(fetchFotoFromServer);\n    return (_ctx, _cache) => {\n      const _component_v_col = _resolveComponent(\"v-col\");\n      const _component_v_row = _resolveComponent(\"v-row\");\n      const _component_v_container = _resolveComponent(\"v-container\");\n      return _openBlock(), _createBlock(_component_v_container, null, {\n        default: _withCtx(() => [\n          _createVNode(_component_v_row, { class: \"d-flex align-center\" }, {\n            default: _withCtx(() => [\n              _createVNode(_component_v_col, {\n                cols: \"auto\",\n                class: \"d-flex align-center\"\n              }, {\n                default: _withCtx(() => [\n                  _hoisted_1\n                ]),\n                _: 1\n              }),\n              _createVNode(_component_v_col, {\n                cols: \"auto\",\n                class: \"d-flex align-center\"\n              }, {\n                default: _withCtx(() => [\n                  foto.value ? (_openBlock(), _createElementBlock(\"img\", {\n                    key: 0,\n                    src: foto.value.url,\n                    alt: foto.value.name,\n                    onError: _cache[0] || (_cache[0] = //@ts-ignore\n                    (...args) => logout && logout(...args)),\n                    class: \"my-image\"\n                  }, null, 40, _hoisted_2)) : _createCommentVNode(\"\", true)\n                ]),\n                _: 1\n              })\n            ]),\n            _: 1\n          }),\n          _createVNode(_unref(VBtn), {\n            to: { path: \"/\" },\n            color: \"green lighten-3\",\n            class: \"my-button\"\n          }, {\n            default: _withCtx(() => [\n              _createTextVNode(\"Zurück\")\n            ]),\n            _: 1\n          })\n        ]),\n        _: 1\n      });\n    };\n  }\n});\n",
-      "start": 1724585010274,
-      "end": 1724585010446,
+      "start": 1724686263658,
+      "end": 1724686263703,
       "order": "normal",
       "sourcemaps": {
         "version": 3,
@@ -44,80 +44,80 @@
     },
     {
       "name": "vite:json",
-      "start": 1724585010446,
-      "end": 1724585010446,
+      "start": 1724686263703,
+      "end": 1724686263703,
       "order": "normal"
     },
     {
       "name": "vite:worker",
-      "start": 1724585010446,
-      "end": 1724585010446,
+      "start": 1724686263703,
+      "end": 1724686263703,
       "order": "normal"
     },
     {
       "name": "vite:vue",
-      "start": 1724585010446,
-      "end": 1724585010446,
+      "start": 1724686263703,
+      "end": 1724686263704,
       "order": "normal"
     },
     {
       "name": "vite:define",
-      "start": 1724585010446,
-      "end": 1724585010446,
+      "start": 1724686263704,
+      "end": 1724686263704,
       "order": "normal"
     },
     {
       "name": "vite:css-post",
-      "start": 1724585010446,
-      "end": 1724585010446,
+      "start": 1724686263704,
+      "end": 1724686263704,
       "order": "normal"
     },
     {
       "name": "vite:build-html",
-      "start": 1724585010446,
-      "end": 1724585010446,
+      "start": 1724686263704,
+      "end": 1724686263704,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1724585010446,
-      "end": 1724585010446,
+      "start": 1724686263704,
+      "end": 1724686263704,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1724585010446,
-      "end": 1724585010446,
+      "start": 1724686263704,
+      "end": 1724686263704,
       "order": "normal"
     },
     {
       "name": "commonjs",
-      "start": 1724585010446,
-      "end": 1724585010446,
+      "start": 1724686263704,
+      "end": 1724686263704,
       "order": "normal"
     },
     {
       "name": "vite:dynamic-import-vars",
-      "start": 1724585010446,
-      "end": 1724585010446,
+      "start": 1724686263704,
+      "end": 1724686263704,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1724585010446,
-      "end": 1724585010446,
+      "start": 1724686263704,
+      "end": 1724686263704,
       "order": "normal"
     },
     {
       "name": "vite:build-import-analysis",
-      "start": 1724585010446,
-      "end": 1724585010446,
+      "start": 1724686263704,
+      "end": 1724686263704,
       "order": "normal"
     },
     {
       "name": "vite:reporter",
-      "start": 1724585010446,
-      "end": 1724585010446,
+      "start": 1724686263704,
+      "end": 1724686263704,
       "order": "normal"
     }
   ]

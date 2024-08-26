@@ -4,53 +4,53 @@
     {
       "name": "vite:load-fallback",
       "result": ".v-date-picker-header {\n  align-items: flex-end;\n  height: 70px;\n  display: grid;\n  grid-template-areas: \"prepend content append\";\n  grid-template-columns: min-content minmax(0, 1fr) min-content;\n  overflow: hidden;\n  padding-inline: 24px 12px;\n  padding-bottom: 12px;\n}\n\n.v-date-picker-header__append {\n  grid-area: append;\n}\n\n.v-date-picker-header__prepend {\n  grid-area: prepend;\n  padding-inline-start: 8px;\n}\n\n.v-date-picker-header__content {\n  align-items: center;\n  display: inline-flex;\n  font-size: 32px;\n  line-height: 40px;\n  grid-area: content;\n  justify-content: space-between;\n}\n.v-date-picker-header--clickable .v-date-picker-header__content {\n  cursor: pointer;\n}\n.v-date-picker-header--clickable .v-date-picker-header__content:not(:hover) {\n  opacity: 0.7;\n}\n\n.date-picker-header-transition-enter-active,\n.date-picker-header-reverse-transition-enter-active {\n  transition-duration: 0.3s;\n  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);\n}\n.date-picker-header-transition-leave-active,\n.date-picker-header-reverse-transition-leave-active {\n  transition-duration: 0.3s;\n  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);\n}\n\n.date-picker-header-transition-enter-from {\n  transform: translate(0, 100%);\n}\n.date-picker-header-transition-leave-to {\n  opacity: 0;\n  transform: translate(0, -100%);\n}\n\n.date-picker-header-reverse-transition-enter-from {\n  transform: translate(0, -100%);\n}\n.date-picker-header-reverse-transition-leave-to {\n  opacity: 0;\n  transform: translate(0, 100%);\n}",
-      "start": 1724585011274,
-      "end": 1724585011301,
+      "start": 1724686264632,
+      "end": 1724686264650,
       "sourcemaps": null
     },
     {
       "name": "vite:css",
       "result": ".v-date-picker-header {\n  align-items: flex-end;\n  height: 70px;\n  display: grid;\n  grid-template-areas: \"prepend content append\";\n  grid-template-columns: min-content minmax(0, 1fr) min-content;\n  overflow: hidden;\n  padding-inline: 24px 12px;\n  padding-bottom: 12px;\n}\n\n.v-date-picker-header__append {\n  grid-area: append;\n}\n\n.v-date-picker-header__prepend {\n  grid-area: prepend;\n  padding-inline-start: 8px;\n}\n\n.v-date-picker-header__content {\n  align-items: center;\n  display: inline-flex;\n  font-size: 32px;\n  line-height: 40px;\n  grid-area: content;\n  justify-content: space-between;\n}\n.v-date-picker-header--clickable .v-date-picker-header__content {\n  cursor: pointer;\n}\n.v-date-picker-header--clickable .v-date-picker-header__content:not(:hover) {\n  opacity: 0.7;\n}\n\n.date-picker-header-transition-enter-active,\n.date-picker-header-reverse-transition-enter-active {\n  transition-duration: 0.3s;\n  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);\n}\n.date-picker-header-transition-leave-active,\n.date-picker-header-reverse-transition-leave-active {\n  transition-duration: 0.3s;\n  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);\n}\n\n.date-picker-header-transition-enter-from {\n  transform: translate(0, 100%);\n}\n.date-picker-header-transition-leave-to {\n  opacity: 0;\n  transform: translate(0, -100%);\n}\n\n.date-picker-header-reverse-transition-enter-from {\n  transform: translate(0, -100%);\n}\n.date-picker-header-reverse-transition-leave-to {\n  opacity: 0;\n  transform: translate(0, 100%);\n}",
-      "start": 1724585011301,
-      "end": 1724585011301,
+      "start": 1724686264650,
+      "end": 1724686264651,
       "order": "normal",
       "sourcemaps": null
     },
     {
       "name": "vite:esbuild",
-      "start": 1724585011301,
-      "end": 1724585011301,
+      "start": 1724686264651,
+      "end": 1724686264651,
       "order": "normal"
     },
     {
       "name": "vite:json",
-      "start": 1724585011301,
-      "end": 1724585011301,
+      "start": 1724686264651,
+      "end": 1724686264651,
       "order": "normal"
     },
     {
       "name": "vite:worker",
-      "start": 1724585011301,
-      "end": 1724585011301,
+      "start": 1724686264651,
+      "end": 1724686264651,
       "order": "normal"
     },
     {
       "name": "vite:vue",
-      "start": 1724585011301,
-      "end": 1724585011301,
+      "start": 1724686264651,
+      "end": 1724686264651,
       "order": "normal"
     },
     {
       "name": "vite:define",
-      "start": 1724585011301,
-      "end": 1724585011301,
+      "start": 1724686264651,
+      "end": 1724686264651,
       "order": "normal"
     },
     {
       "name": "vite:css-post",
       "result": "",
-      "start": 1724585011301,
-      "end": 1724585011301,
+      "start": 1724686264651,
+      "end": 1724686264651,
       "order": "normal",
       "sourcemaps": {
         "mappings": ""
@@ -58,50 +58,50 @@
     },
     {
       "name": "vite:build-html",
-      "start": 1724585011301,
-      "end": 1724585011301,
+      "start": 1724686264651,
+      "end": 1724686264651,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1724585011301,
-      "end": 1724585011301,
+      "start": 1724686264651,
+      "end": 1724686264651,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1724585011301,
-      "end": 1724585011301,
+      "start": 1724686264651,
+      "end": 1724686264651,
       "order": "normal"
     },
     {
       "name": "commonjs",
-      "start": 1724585011301,
-      "end": 1724585011301,
+      "start": 1724686264651,
+      "end": 1724686264651,
       "order": "normal"
     },
     {
       "name": "vite:dynamic-import-vars",
-      "start": 1724585011301,
-      "end": 1724585011301,
+      "start": 1724686264651,
+      "end": 1724686264651,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1724585011301,
-      "end": 1724585011301,
+      "start": 1724686264651,
+      "end": 1724686264651,
       "order": "normal"
     },
     {
       "name": "vite:build-import-analysis",
-      "start": 1724585011301,
-      "end": 1724585011301,
+      "start": 1724686264651,
+      "end": 1724686264651,
       "order": "normal"
     },
     {
       "name": "vite:reporter",
-      "start": 1724585011301,
-      "end": 1724585011301,
+      "start": 1724686264651,
+      "end": 1724686264651,
       "order": "normal"
     }
   ]

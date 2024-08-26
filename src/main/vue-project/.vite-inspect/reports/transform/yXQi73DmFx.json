@@ -4,98 +4,98 @@
     {
       "name": "vite:load-fallback",
       "result": "// Composables\nimport { useToggleScope } from \"./toggleScope.mjs\"; // Utilities\nimport { computed, inject, onScopeDispose, provide, reactive, readonly, shallowRef, toRaw, watchEffect } from 'vue';\nimport { getCurrentInstance } from \"../util/index.mjs\"; // Types\nconst StackSymbol = Symbol.for('vuetify:stack');\nconst globalStack = reactive([]);\nexport function useStack(isActive, zIndex, disableGlobalStack) {\n  const vm = getCurrentInstance('useStack');\n  const createStackEntry = !disableGlobalStack;\n  const parent = inject(StackSymbol, undefined);\n  const stack = reactive({\n    activeChildren: new Set()\n  });\n  provide(StackSymbol, stack);\n  const _zIndex = shallowRef(+zIndex.value);\n  useToggleScope(isActive, () => {\n    const lastZIndex = globalStack.at(-1)?.[1];\n    _zIndex.value = lastZIndex ? lastZIndex + 10 : +zIndex.value;\n    if (createStackEntry) {\n      globalStack.push([vm.uid, _zIndex.value]);\n    }\n    parent?.activeChildren.add(vm.uid);\n    onScopeDispose(() => {\n      if (createStackEntry) {\n        const idx = toRaw(globalStack).findIndex(v => v[0] === vm.uid);\n        globalStack.splice(idx, 1);\n      }\n      parent?.activeChildren.delete(vm.uid);\n    });\n  });\n  const globalTop = shallowRef(true);\n  if (createStackEntry) {\n    watchEffect(() => {\n      const _isTop = globalStack.at(-1)?.[0] === vm.uid;\n      setTimeout(() => globalTop.value = _isTop);\n    });\n  }\n  const localTop = computed(() => !stack.activeChildren.size);\n  return {\n    globalTop: readonly(globalTop),\n    localTop,\n    stackStyles: computed(() => ({\n      zIndex: _zIndex.value\n    }))\n  };\n}\n//# sourceMappingURL=stack.mjs.map",
-      "start": 1724585011316,
-      "end": 1724585011350,
+      "start": 1724686264654,
+      "end": 1724686264672,
       "sourcemaps": null
     },
     {
       "name": "vite:css",
-      "start": 1724585011350,
-      "end": 1724585011350,
+      "start": 1724686264672,
+      "end": 1724686264672,
       "order": "normal"
     },
     {
       "name": "vite:esbuild",
-      "start": 1724585011350,
-      "end": 1724585011350,
+      "start": 1724686264672,
+      "end": 1724686264672,
       "order": "normal"
     },
     {
       "name": "vite:json",
-      "start": 1724585011350,
-      "end": 1724585011350,
+      "start": 1724686264672,
+      "end": 1724686264672,
       "order": "normal"
     },
     {
       "name": "vite:worker",
-      "start": 1724585011350,
-      "end": 1724585011350,
+      "start": 1724686264672,
+      "end": 1724686264672,
       "order": "normal"
     },
     {
       "name": "vite:vue",
-      "start": 1724585011350,
-      "end": 1724585011350,
+      "start": 1724686264672,
+      "end": 1724686264672,
       "order": "normal"
     },
     {
       "name": "vite:define",
-      "start": 1724585011350,
-      "end": 1724585011350,
+      "start": 1724686264672,
+      "end": 1724686264672,
       "order": "normal"
     },
     {
       "name": "vite:css-post",
-      "start": 1724585011350,
-      "end": 1724585011350,
+      "start": 1724686264672,
+      "end": 1724686264672,
       "order": "normal"
     },
     {
       "name": "vite:build-html",
-      "start": 1724585011350,
-      "end": 1724585011350,
+      "start": 1724686264672,
+      "end": 1724686264672,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1724585011350,
-      "end": 1724585011350,
+      "start": 1724686264672,
+      "end": 1724686264672,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1724585011350,
-      "end": 1724585011350,
+      "start": 1724686264672,
+      "end": 1724686264672,
       "order": "normal"
     },
     {
       "name": "commonjs",
-      "start": 1724585011350,
-      "end": 1724585011350,
+      "start": 1724686264672,
+      "end": 1724686264672,
       "order": "normal"
     },
     {
       "name": "vite:dynamic-import-vars",
-      "start": 1724585011350,
-      "end": 1724585011350,
+      "start": 1724686264672,
+      "end": 1724686264672,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1724585011350,
-      "end": 1724585011350,
+      "start": 1724686264672,
+      "end": 1724686264672,
       "order": "normal"
     },
     {
       "name": "vite:build-import-analysis",
-      "start": 1724585011350,
-      "end": 1724585011350,
+      "start": 1724686264672,
+      "end": 1724686264672,
       "order": "normal"
     },
     {
       "name": "vite:reporter",
-      "start": 1724585011350,
-      "end": 1724585011350,
+      "start": 1724686264672,
+      "end": 1724686264672,
       "order": "normal"
     }
   ]
