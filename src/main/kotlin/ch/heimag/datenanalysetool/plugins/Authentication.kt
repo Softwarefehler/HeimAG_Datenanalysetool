@@ -79,6 +79,7 @@ fun Application.installSessionAndAuthentication() {
         staticResources("/images", "images")
         logger.info("Operation of static resource under /images.")
 
+
         authenticate("auth-form") {
             post(LOGIN_URL) {
                 logger.info(" POST request to $LOGIN_URL for user Authentication.")
