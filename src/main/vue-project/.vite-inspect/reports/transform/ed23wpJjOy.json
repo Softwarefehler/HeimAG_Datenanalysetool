@@ -4,53 +4,53 @@
     {
       "name": "vite:load-fallback",
       "result": ".v-chip-group {\n  display: flex;\n  max-width: 100%;\n  min-width: 0;\n  overflow-x: auto;\n  padding: 4px 0;\n}\n.v-chip-group .v-chip {\n  margin: 4px 8px 4px 0;\n}\n.v-chip-group .v-chip.v-chip--selected:not(.v-chip--disabled) .v-chip__overlay {\n  opacity: var(--v-activated-opacity);\n}\n\n.v-chip-group--column .v-slide-group__content {\n  white-space: normal;\n  flex-wrap: wrap;\n  max-width: 100%;\n}",
-      "start": 1724686264590,
-      "end": 1724686264610,
+      "start": 1724718169499,
+      "end": 1724718169515,
       "sourcemaps": null
     },
     {
       "name": "vite:css",
       "result": ".v-chip-group {\n  display: flex;\n  max-width: 100%;\n  min-width: 0;\n  overflow-x: auto;\n  padding: 4px 0;\n}\n.v-chip-group .v-chip {\n  margin: 4px 8px 4px 0;\n}\n.v-chip-group .v-chip.v-chip--selected:not(.v-chip--disabled) .v-chip__overlay {\n  opacity: var(--v-activated-opacity);\n}\n\n.v-chip-group--column .v-slide-group__content {\n  white-space: normal;\n  flex-wrap: wrap;\n  max-width: 100%;\n}",
-      "start": 1724686264610,
-      "end": 1724686264610,
+      "start": 1724718169515,
+      "end": 1724718169515,
       "order": "normal",
       "sourcemaps": null
     },
     {
       "name": "vite:esbuild",
-      "start": 1724686264610,
-      "end": 1724686264610,
+      "start": 1724718169515,
+      "end": 1724718169515,
       "order": "normal"
     },
     {
       "name": "vite:json",
-      "start": 1724686264610,
-      "end": 1724686264610,
+      "start": 1724718169515,
+      "end": 1724718169515,
       "order": "normal"
     },
     {
       "name": "vite:worker",
-      "start": 1724686264610,
-      "end": 1724686264610,
+      "start": 1724718169515,
+      "end": 1724718169515,
       "order": "normal"
     },
     {
       "name": "vite:vue",
-      "start": 1724686264610,
-      "end": 1724686264610,
+      "start": 1724718169515,
+      "end": 1724718169515,
       "order": "normal"
     },
     {
       "name": "vite:define",
-      "start": 1724686264610,
-      "end": 1724686264610,
+      "start": 1724718169515,
+      "end": 1724718169515,
       "order": "normal"
     },
     {
       "name": "vite:css-post",
       "result": "",
-      "start": 1724686264610,
-      "end": 1724686264610,
+      "start": 1724718169515,
+      "end": 1724718169515,
       "order": "normal",
       "sourcemaps": {
         "mappings": ""
@@ -58,50 +58,50 @@
     },
     {
       "name": "vite:build-html",
-      "start": 1724686264610,
-      "end": 1724686264610,
+      "start": 1724718169515,
+      "end": 1724718169515,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1724686264610,
-      "end": 1724686264610,
+      "start": 1724718169515,
+      "end": 1724718169515,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1724686264610,
-      "end": 1724686264610,
+      "start": 1724718169515,
+      "end": 1724718169515,
       "order": "normal"
     },
     {
       "name": "commonjs",
-      "start": 1724686264610,
-      "end": 1724686264610,
+      "start": 1724718169515,
+      "end": 1724718169515,
       "order": "normal"
     },
     {
       "name": "vite:dynamic-import-vars",
-      "start": 1724686264610,
-      "end": 1724686264610,
+      "start": 1724718169515,
+      "end": 1724718169515,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1724686264610,
-      "end": 1724686264610,
+      "start": 1724718169515,
+      "end": 1724718169515,
       "order": "normal"
     },
     {
       "name": "vite:build-import-analysis",
-      "start": 1724686264610,
-      "end": 1724686264610,
+      "start": 1724718169515,
+      "end": 1724718169515,
       "order": "normal"
     },
     {
       "name": "vite:reporter",
-      "start": 1724686264610,
-      "end": 1724686264610,
+      "start": 1724718169515,
+      "end": 1724718169515,
       "order": "normal"
     }
   ]

@@ -37,6 +37,7 @@ data class OperatingStateValueList(
     val schwachlast: MutableList<DataPoint>,
 )
 
+
 const val IMAGE_DIRECTORY = "src/main/resources/images"
 
 
@@ -47,9 +48,9 @@ fun Application.webPageApplication() {
         authenticate("auth-session") {
 
             // First steps, wenn you start de routing
-            val databaseStatus = Data.database.checkDatabaseStatus()
+            val databaseStatus = Data.databaseStatus()
             var latestDateString = if (databaseStatus == "Datenbank vorhanden") {
-                Data.database.loadLatestDate()
+                Data.loadLatestDate()
             } else {
                 "Datenbank nicht vorhanden"
             }
@@ -112,10 +113,9 @@ fun Application.webPageApplication() {
                 logger.debug("Search parameters: {}", operatingState)
 
                 // Database request for every period
-                val valueListKaltPeriode = Data.database.loadOperatingStateKaltePeriode(operatingState)
-                val valueListHauptanteilHeizperiode =
-                    Data.database.loadOperatingStateHaupanteilHeizperiode(operatingState)
-                val valueListSchwachlast = Data.database.loadOperatingStateSchwachlast(operatingState)
+                val valueListKaltPeriode = Data.loadOperatingStateKaltePeriode(operatingState)
+                val valueListHauptanteilHeizperiode = Data.loadOperatingStateHaupanteilHeizperiode(operatingState)
+                val valueListSchwachlast = Data.loadOperatingStateSchwachlast(operatingState)
 
                 // Group every List to one Value
                 val operatingStateValueList =
@@ -200,14 +200,13 @@ fun Application.webPageApplication() {
                     part.dispose()
                 }
 
-                // transfer the List to the database
-                Data.database.setWeatherdataToDatabase(csvRecords)
-                latestDateString = Data.database.loadLatestDate()
+                // transfer the List to the database with an answer
+                val reply = Data.setWeatherdataToDatabase(csvRecords)
+                latestDateString = Data.loadLatestDate()
                 logger.info("Database updated, newest date: $latestDateString")
 
                 call.respond(
-                    HttpStatusCode.OK,
-                    mapOf("message" to "File successfully processed. records count: ${csvRecords.size}")
+                    mapOf("reply" to reply)
                 )
             }
 

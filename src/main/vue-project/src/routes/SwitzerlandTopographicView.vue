@@ -8,7 +8,7 @@ export type Foto = { url: string; name: string }
 const foto = ref<Foto | null>(null)
 
 
-// Da Bild statisch hinterlegt ist und der Fehler passiert, melden wir uns ab
+// Da Bild statisch hinterlegt ist und der Fehler passiert, melden wir uns ab (Workaround)
 async function logout() {
   alert(`Die Anmeldezeit ist abgelaufen`)
   location.href = '/login'
@@ -45,13 +45,13 @@ onMounted(fetchFotoFromServer)
 
 <style scoped>
 .my-image {
-  display: block; /* Macht das Bild zu einem Blockelement, sodass es eine neue Zeile einnimmt */
-  margin: 0 auto; /* Zentriert das Bild horizontal */
-  max-width: 100%; /* Stellt sicher, dass das Bild nicht breiter als sein Container ist */
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;
 }
 
 /* Stil für den Button */
 .my-button {
-  margin-top: 20px; /* Abstand oben, damit der Button unterhalb des Bildes ist */
+  margin-top: 20px;
 }
 </style>

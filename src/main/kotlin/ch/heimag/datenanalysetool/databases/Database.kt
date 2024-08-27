@@ -244,8 +244,9 @@ class Database : DatabaseInfo {
     }
 
 
-    fun setWeatherdataToDatabase(save: MutableList<WeatherData>) {
+    fun setWeatherdataToDatabase(save: MutableList<WeatherData>): String {
         logger.info("Save weather data in the database.")
+        var reply: String
 
         try {
             val connection = DriverManager.getConnection(URL, USER, PASSWORD)
@@ -254,7 +255,7 @@ class Database : DatabaseInfo {
             INSERT INTO heimag.wetterdaten (
                 datum, alt, ant, bas, ber, cdf, chd, chm, dav, elm, eng, grc, grh, gsb, gve, jun, lug, luz, mer, neu, otl, pay, rag, sae, sam, sbe, sia, sio, sma, stg
             ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-        """
+         """
 
             // Prepare statement
             connection.prepareStatement(sql).use { preparedStatement ->
@@ -300,10 +301,13 @@ class Database : DatabaseInfo {
             }
             connection.close()
             logger.info("Weather data successfully saved.")
+            reply = "Erfolgreich"
 
         } catch (e: SQLException) {
             logger.error("Error when saving the weather data: ${e.message}", e)
+            reply = "Fehler"
         }
+        return reply
     }
 }
 

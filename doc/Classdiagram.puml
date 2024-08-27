@@ -32,7 +32,7 @@ package ch.heimag.datenanalysetool.country {
 package ch.heimag.datenanalysetool.databases {
     class DataPoint(String,String){}
 
-    class Database {
+     class Database {
         + PROTOCOL
         + HOST
         + PORT
@@ -42,7 +42,6 @@ package ch.heimag.datenanalysetool.databases {
         + USER
         + PASSWORD
         - logger
-
         + checkDatabaseStatus(): String
         + loadLatestDate(): String
         + loadOperatingStateKaltePeriode(OperatingConditions): MutableList<DataPoint>
@@ -51,6 +50,16 @@ package ch.heimag.datenanalysetool.databases {
         + setWeatherdataToDatabase(MutableList<WeatherData>)
     }
 
+    class Data {
+        - logger
+        + database
+        + databaseStatus(): String
+        + loadLatestDate(): String
+        + loadOperatingStateKaltePeriode(OperatingConditions): MutableList<DataPoint>
+        + loadOperatingStateHaupanteilHeizperiode(OperatingConditions): MutableList<DataPoint>
+        + loadOperatingStateSchwachlast(void,OperatingConditions): MutableList<DataPoint>
+        + setWeatherdataToDatabase(MutableList<WeatherData>):String
+    }
 
     interface DatabaseInfo {
         + PROTOCOL: String

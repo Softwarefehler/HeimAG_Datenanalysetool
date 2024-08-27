@@ -4,98 +4,98 @@
     {
       "name": "vite:load-fallback",
       "result": "import { createVNode as _createVNode } from \"vue\";\n// Components\nimport { VIcon } from \"../VIcon/index.mjs\"; // Composables\nimport { useLocale } from \"../../composables/locale.mjs\"; // Types\nexport function useInputIcon(props) {\n  const {\n    t\n  } = useLocale();\n  function InputIcon(_ref) {\n    let {\n      name\n    } = _ref;\n    const localeKey = {\n      prepend: 'prependAction',\n      prependInner: 'prependAction',\n      append: 'appendAction',\n      appendInner: 'appendAction',\n      clear: 'clear'\n    }[name];\n    const listener = props[`onClick:${name}`];\n    const label = listener && localeKey ? t(`$vuetify.input.${localeKey}`, props.label ?? '') : undefined;\n    return _createVNode(VIcon, {\n      \"icon\": props[`${name}Icon`],\n      \"aria-label\": label,\n      \"onClick\": listener\n    }, null);\n  }\n  return {\n    InputIcon\n  };\n}\n//# sourceMappingURL=InputIcon.mjs.map",
-      "start": 1724686264635,
-      "end": 1724686264652,
+      "start": 1724718169533,
+      "end": 1724718169549,
       "sourcemaps": null
     },
     {
       "name": "vite:css",
-      "start": 1724686264652,
-      "end": 1724686264653,
+      "start": 1724718169549,
+      "end": 1724718169549,
       "order": "normal"
     },
     {
       "name": "vite:esbuild",
-      "start": 1724686264653,
-      "end": 1724686264653,
+      "start": 1724718169549,
+      "end": 1724718169550,
       "order": "normal"
     },
     {
       "name": "vite:json",
-      "start": 1724686264653,
-      "end": 1724686264653,
+      "start": 1724718169550,
+      "end": 1724718169550,
       "order": "normal"
     },
     {
       "name": "vite:worker",
-      "start": 1724686264653,
-      "end": 1724686264653,
+      "start": 1724718169550,
+      "end": 1724718169550,
       "order": "normal"
     },
     {
       "name": "vite:vue",
-      "start": 1724686264653,
-      "end": 1724686264653,
+      "start": 1724718169550,
+      "end": 1724718169550,
       "order": "normal"
     },
     {
       "name": "vite:define",
-      "start": 1724686264653,
-      "end": 1724686264653,
+      "start": 1724718169550,
+      "end": 1724718169550,
       "order": "normal"
     },
     {
       "name": "vite:css-post",
-      "start": 1724686264653,
-      "end": 1724686264653,
+      "start": 1724718169550,
+      "end": 1724718169550,
       "order": "normal"
     },
     {
       "name": "vite:build-html",
-      "start": 1724686264653,
-      "end": 1724686264653,
+      "start": 1724718169550,
+      "end": 1724718169550,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1724686264653,
-      "end": 1724686264653,
+      "start": 1724718169550,
+      "end": 1724718169550,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1724686264653,
-      "end": 1724686264653,
+      "start": 1724718169550,
+      "end": 1724718169550,
       "order": "normal"
     },
     {
       "name": "commonjs",
-      "start": 1724686264653,
-      "end": 1724686264653,
+      "start": 1724718169550,
+      "end": 1724718169550,
       "order": "normal"
     },
     {
       "name": "vite:dynamic-import-vars",
-      "start": 1724686264653,
-      "end": 1724686264653,
+      "start": 1724718169550,
+      "end": 1724718169550,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1724686264653,
-      "end": 1724686264653,
+      "start": 1724718169550,
+      "end": 1724718169550,
       "order": "normal"
     },
     {
       "name": "vite:build-import-analysis",
-      "start": 1724686264653,
-      "end": 1724686264653,
+      "start": 1724718169550,
+      "end": 1724718169550,
       "order": "normal"
     },
     {
       "name": "vite:reporter",
-      "start": 1724686264653,
-      "end": 1724686264653,
+      "start": 1724718169550,
+      "end": 1724718169550,
       "order": "normal"
     }
   ]

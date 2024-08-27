@@ -4,98 +4,98 @@
     {
       "name": "vite:load-fallback",
       "result": "// Utilities\nimport { eventName, isOn } from \"./helpers.mjs\";\nconst handlers = new WeakMap();\nexport function bindProps(el, props) {\n  Object.keys(props).forEach(k => {\n    if (isOn(k)) {\n      const name = eventName(k);\n      const handler = handlers.get(el);\n      if (props[k] == null) {\n        handler?.forEach(v => {\n          const [n, fn] = v;\n          if (n === name) {\n            el.removeEventListener(name, fn);\n            handler.delete(v);\n          }\n        });\n      } else if (!handler || ![...handler]?.some(v => v[0] === name && v[1] === props[k])) {\n        el.addEventListener(name, props[k]);\n        const _handler = handler || new Set();\n        _handler.add([name, props[k]]);\n        if (!handlers.has(el)) handlers.set(el, _handler);\n      }\n    } else {\n      if (props[k] == null) {\n        el.removeAttribute(k);\n      } else {\n        el.setAttribute(k, props[k]);\n      }\n    }\n  });\n}\nexport function unbindProps(el, props) {\n  Object.keys(props).forEach(k => {\n    if (isOn(k)) {\n      const name = eventName(k);\n      const handler = handlers.get(el);\n      handler?.forEach(v => {\n        const [n, fn] = v;\n        if (n === name) {\n          el.removeEventListener(name, fn);\n          handler.delete(v);\n        }\n      });\n    } else {\n      el.removeAttribute(k);\n    }\n  });\n}\n//# sourceMappingURL=bindProps.mjs.map",
-      "start": 1724686263365,
-      "end": 1724686263437,
+      "start": 1724718167596,
+      "end": 1724718167751,
       "sourcemaps": null
     },
     {
       "name": "vite:css",
-      "start": 1724686263437,
-      "end": 1724686263437,
+      "start": 1724718167751,
+      "end": 1724718167751,
       "order": "normal"
     },
     {
       "name": "vite:esbuild",
-      "start": 1724686263437,
-      "end": 1724686263437,
+      "start": 1724718167751,
+      "end": 1724718167751,
       "order": "normal"
     },
     {
       "name": "vite:json",
-      "start": 1724686263437,
-      "end": 1724686263437,
+      "start": 1724718167751,
+      "end": 1724718167751,
       "order": "normal"
     },
     {
       "name": "vite:worker",
-      "start": 1724686263437,
-      "end": 1724686263437,
+      "start": 1724718167751,
+      "end": 1724718167751,
       "order": "normal"
     },
     {
       "name": "vite:vue",
-      "start": 1724686263437,
-      "end": 1724686263437,
+      "start": 1724718167751,
+      "end": 1724718167751,
       "order": "normal"
     },
     {
       "name": "vite:define",
-      "start": 1724686263437,
-      "end": 1724686263437,
+      "start": 1724718167751,
+      "end": 1724718167751,
       "order": "normal"
     },
     {
       "name": "vite:css-post",
-      "start": 1724686263437,
-      "end": 1724686263437,
+      "start": 1724718167751,
+      "end": 1724718167751,
       "order": "normal"
     },
     {
       "name": "vite:build-html",
-      "start": 1724686263437,
-      "end": 1724686263437,
+      "start": 1724718167751,
+      "end": 1724718167751,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1724686263437,
-      "end": 1724686263437,
+      "start": 1724718167751,
+      "end": 1724718167751,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1724686263437,
-      "end": 1724686263437,
+      "start": 1724718167751,
+      "end": 1724718167751,
       "order": "normal"
     },
     {
       "name": "commonjs",
-      "start": 1724686263437,
-      "end": 1724686263437,
+      "start": 1724718167751,
+      "end": 1724718167751,
       "order": "normal"
     },
     {
       "name": "vite:dynamic-import-vars",
-      "start": 1724686263437,
-      "end": 1724686263437,
+      "start": 1724718167751,
+      "end": 1724718167751,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1724686263437,
-      "end": 1724686263437,
+      "start": 1724718167752,
+      "end": 1724718167752,
       "order": "normal"
     },
     {
       "name": "vite:build-import-analysis",
-      "start": 1724686263437,
-      "end": 1724686263437,
+      "start": 1724718167752,
+      "end": 1724718167752,
       "order": "normal"
     },
     {
       "name": "vite:reporter",
-      "start": 1724686263437,
-      "end": 1724686263437,
+      "start": 1724718167752,
+      "end": 1724718167752,
       "order": "normal"
     }
   ]

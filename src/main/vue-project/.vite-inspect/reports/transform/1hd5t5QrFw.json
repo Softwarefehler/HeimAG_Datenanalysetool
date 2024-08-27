@@ -4,98 +4,98 @@
     {
       "name": "vite:load-fallback",
       "result": "// Composables\nimport { useProxiedModel } from \"../../../composables/proxiedModel.mjs\"; // Utilities\nimport { computed, inject, provide, watch, watchEffect } from 'vue';\nimport { clamp, getCurrentInstance, propsFactory } from \"../../../util/index.mjs\"; // Types\nexport const makeDataTablePaginateProps = propsFactory({\n  page: {\n    type: [Number, String],\n    default: 1\n  },\n  itemsPerPage: {\n    type: [Number, String],\n    default: 10\n  }\n}, 'DataTable-paginate');\nconst VDataTablePaginationSymbol = Symbol.for('vuetify:data-table-pagination');\nexport function createPagination(props) {\n  const page = useProxiedModel(props, 'page', undefined, value => +(value ?? 1));\n  const itemsPerPage = useProxiedModel(props, 'itemsPerPage', undefined, value => +(value ?? 10));\n  return {\n    page,\n    itemsPerPage\n  };\n}\nexport function providePagination(options) {\n  const {\n    page,\n    itemsPerPage,\n    itemsLength\n  } = options;\n  const startIndex = computed(() => {\n    if (itemsPerPage.value === -1) return 0;\n    return itemsPerPage.value * (page.value - 1);\n  });\n  const stopIndex = computed(() => {\n    if (itemsPerPage.value === -1) return itemsLength.value;\n    return Math.min(itemsLength.value, startIndex.value + itemsPerPage.value);\n  });\n  const pageCount = computed(() => {\n    if (itemsPerPage.value === -1 || itemsLength.value === 0) return 1;\n    return Math.ceil(itemsLength.value / itemsPerPage.value);\n  });\n  watchEffect(() => {\n    if (page.value > pageCount.value) {\n      page.value = pageCount.value;\n    }\n  });\n  function setItemsPerPage(value) {\n    itemsPerPage.value = value;\n    page.value = 1;\n  }\n  function nextPage() {\n    page.value = clamp(page.value + 1, 1, pageCount.value);\n  }\n  function prevPage() {\n    page.value = clamp(page.value - 1, 1, pageCount.value);\n  }\n  function setPage(value) {\n    page.value = clamp(value, 1, pageCount.value);\n  }\n  const data = {\n    page,\n    itemsPerPage,\n    startIndex,\n    stopIndex,\n    pageCount,\n    itemsLength,\n    nextPage,\n    prevPage,\n    setPage,\n    setItemsPerPage\n  };\n  provide(VDataTablePaginationSymbol, data);\n  return data;\n}\nexport function usePagination() {\n  const data = inject(VDataTablePaginationSymbol);\n  if (!data) throw new Error('Missing pagination!');\n  return data;\n}\nexport function usePaginatedItems(options) {\n  const vm = getCurrentInstance('usePaginatedItems');\n  const {\n    items,\n    startIndex,\n    stopIndex,\n    itemsPerPage\n  } = options;\n  const paginatedItems = computed(() => {\n    if (itemsPerPage.value <= 0) return items.value;\n    return items.value.slice(startIndex.value, stopIndex.value);\n  });\n  watch(paginatedItems, val => {\n    vm.emit('update:currentItems', val);\n  });\n  return {\n    paginatedItems\n  };\n}\n//# sourceMappingURL=paginate.mjs.map",
-      "start": 1724686264609,
-      "end": 1724686264635,
+      "start": 1724718169506,
+      "end": 1724718169518,
       "sourcemaps": null
     },
     {
       "name": "vite:css",
-      "start": 1724686264635,
-      "end": 1724686264635,
+      "start": 1724718169518,
+      "end": 1724718169518,
       "order": "normal"
     },
     {
       "name": "vite:esbuild",
-      "start": 1724686264635,
-      "end": 1724686264635,
+      "start": 1724718169518,
+      "end": 1724718169518,
       "order": "normal"
     },
     {
       "name": "vite:json",
-      "start": 1724686264635,
-      "end": 1724686264635,
+      "start": 1724718169518,
+      "end": 1724718169518,
       "order": "normal"
     },
     {
       "name": "vite:worker",
-      "start": 1724686264635,
-      "end": 1724686264635,
+      "start": 1724718169518,
+      "end": 1724718169518,
       "order": "normal"
     },
     {
       "name": "vite:vue",
-      "start": 1724686264635,
-      "end": 1724686264635,
+      "start": 1724718169518,
+      "end": 1724718169518,
       "order": "normal"
     },
     {
       "name": "vite:define",
-      "start": 1724686264635,
-      "end": 1724686264635,
+      "start": 1724718169518,
+      "end": 1724718169518,
       "order": "normal"
     },
     {
       "name": "vite:css-post",
-      "start": 1724686264635,
-      "end": 1724686264635,
+      "start": 1724718169518,
+      "end": 1724718169518,
       "order": "normal"
     },
     {
       "name": "vite:build-html",
-      "start": 1724686264635,
-      "end": 1724686264635,
+      "start": 1724718169518,
+      "end": 1724718169518,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1724686264635,
-      "end": 1724686264635,
+      "start": 1724718169518,
+      "end": 1724718169518,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1724686264635,
-      "end": 1724686264635,
+      "start": 1724718169518,
+      "end": 1724718169518,
       "order": "normal"
     },
     {
       "name": "commonjs",
-      "start": 1724686264635,
-      "end": 1724686264635,
+      "start": 1724718169518,
+      "end": 1724718169518,
       "order": "normal"
     },
     {
       "name": "vite:dynamic-import-vars",
-      "start": 1724686264635,
-      "end": 1724686264635,
+      "start": 1724718169518,
+      "end": 1724718169518,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1724686264635,
-      "end": 1724686264635,
+      "start": 1724718169518,
+      "end": 1724718169518,
       "order": "normal"
     },
     {
       "name": "vite:build-import-analysis",
-      "start": 1724686264635,
-      "end": 1724686264635,
+      "start": 1724718169518,
+      "end": 1724718169518,
       "order": "normal"
     },
     {
       "name": "vite:reporter",
-      "start": 1724686264635,
-      "end": 1724686264635,
+      "start": 1724718169518,
+      "end": 1724718169518,
       "order": "normal"
     }
   ]

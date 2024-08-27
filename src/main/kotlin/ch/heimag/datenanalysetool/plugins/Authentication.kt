@@ -26,7 +26,7 @@ const val LOGIN_URL = "/login"
 const val USER_PARAM_NAME = "username"
 const val PASSWORD_PARAM_NAME = "password"
 
-var databaseStatus = Data.database.checkDatabaseStatus()
+var databaseStatus = Data.databaseStatus()
 
 
 fun Application.installSessionAndAuthentication() {
@@ -90,7 +90,7 @@ fun Application.installSessionAndAuthentication() {
                 call.sessions.set(userSession)
                 logger.debug("Session created for user: $userName")
 
-                databaseStatus = Data.database.checkDatabaseStatus()
+                databaseStatus = Data.databaseStatus()
                 if (databaseStatus == "Datenbank vorhanden") {
                     logger.info("Status Database: ${databaseStatus} -> Forwarding to '/' WebPageApplication")
                     call.respondRedirect("/")

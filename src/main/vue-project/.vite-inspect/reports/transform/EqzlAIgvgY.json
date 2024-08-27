@@ -4,98 +4,98 @@
     {
       "name": "vite:load-fallback",
       "result": "// Utilities\nimport { computed } from 'vue';\nimport { getPropertyFromItem, propsFactory } from \"../../../util/index.mjs\"; // Types\n// Composables\nexport const makeDataTableItemsProps = propsFactory({\n  items: {\n    type: Array,\n    default: () => []\n  },\n  itemValue: {\n    type: [String, Array, Function],\n    default: 'id'\n  },\n  itemSelectable: {\n    type: [String, Array, Function],\n    default: null\n  },\n  rowProps: [Object, Function],\n  cellProps: [Object, Function],\n  returnObject: Boolean\n}, 'DataTable-items');\nexport function transformItem(props, item, index, columns) {\n  const value = props.returnObject ? item : getPropertyFromItem(item, props.itemValue);\n  const selectable = getPropertyFromItem(item, props.itemSelectable, true);\n  const itemColumns = columns.reduce((obj, column) => {\n    if (column.key != null) obj[column.key] = getPropertyFromItem(item, column.value);\n    return obj;\n  }, {});\n  return {\n    type: 'item',\n    key: props.returnObject ? getPropertyFromItem(item, props.itemValue) : value,\n    index,\n    value,\n    selectable,\n    columns: itemColumns,\n    raw: item\n  };\n}\nexport function transformItems(props, items, columns) {\n  return items.map((item, index) => transformItem(props, item, index, columns));\n}\nexport function useDataTableItems(props, columns) {\n  const items = computed(() => transformItems(props, props.items, columns.value));\n  return {\n    items\n  };\n}\n//# sourceMappingURL=items.mjs.map",
-      "start": 1724686264609,
-      "end": 1724686264634,
+      "start": 1724718169515,
+      "end": 1724718169532,
       "sourcemaps": null
     },
     {
       "name": "vite:css",
-      "start": 1724686264634,
-      "end": 1724686264634,
+      "start": 1724718169532,
+      "end": 1724718169532,
       "order": "normal"
     },
     {
       "name": "vite:esbuild",
-      "start": 1724686264634,
-      "end": 1724686264634,
+      "start": 1724718169532,
+      "end": 1724718169532,
       "order": "normal"
     },
     {
       "name": "vite:json",
-      "start": 1724686264634,
-      "end": 1724686264634,
+      "start": 1724718169532,
+      "end": 1724718169532,
       "order": "normal"
     },
     {
       "name": "vite:worker",
-      "start": 1724686264634,
-      "end": 1724686264634,
+      "start": 1724718169532,
+      "end": 1724718169532,
       "order": "normal"
     },
     {
       "name": "vite:vue",
-      "start": 1724686264634,
-      "end": 1724686264634,
+      "start": 1724718169532,
+      "end": 1724718169532,
       "order": "normal"
     },
     {
       "name": "vite:define",
-      "start": 1724686264634,
-      "end": 1724686264634,
+      "start": 1724718169532,
+      "end": 1724718169532,
       "order": "normal"
     },
     {
       "name": "vite:css-post",
-      "start": 1724686264634,
-      "end": 1724686264634,
+      "start": 1724718169532,
+      "end": 1724718169532,
       "order": "normal"
     },
     {
       "name": "vite:build-html",
-      "start": 1724686264634,
-      "end": 1724686264634,
+      "start": 1724718169532,
+      "end": 1724718169532,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1724686264634,
-      "end": 1724686264634,
+      "start": 1724718169532,
+      "end": 1724718169533,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1724686264634,
-      "end": 1724686264634,
+      "start": 1724718169533,
+      "end": 1724718169533,
       "order": "normal"
     },
     {
       "name": "commonjs",
-      "start": 1724686264634,
-      "end": 1724686264634,
+      "start": 1724718169533,
+      "end": 1724718169533,
       "order": "normal"
     },
     {
       "name": "vite:dynamic-import-vars",
-      "start": 1724686264634,
-      "end": 1724686264634,
+      "start": 1724718169533,
+      "end": 1724718169533,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1724686264634,
-      "end": 1724686264634,
+      "start": 1724718169533,
+      "end": 1724718169533,
       "order": "normal"
     },
     {
       "name": "vite:build-import-analysis",
-      "start": 1724686264634,
-      "end": 1724686264634,
+      "start": 1724718169533,
+      "end": 1724718169533,
       "order": "normal"
     },
     {
       "name": "vite:reporter",
-      "start": 1724686264634,
-      "end": 1724686264634,
+      "start": 1724718169533,
+      "end": 1724718169533,
       "order": "normal"
     }
   ]

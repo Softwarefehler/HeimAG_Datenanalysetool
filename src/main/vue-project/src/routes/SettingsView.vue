@@ -1,6 +1,9 @@
 <script lang="ts" setup>
 import { onMounted, ref } from 'vue'
 
+type PayloadType = {
+  reply: String
+}
 
 const latestDate = ref<string | null>(null)
 const csvFile = ref<File | null>(null)
@@ -8,6 +11,7 @@ const csvFileInputError = ref<string | null>(null)
 const csvIsLoading = ref<boolean>(false) // Variable für den Ladezustand
 const csvUploadMessage = ref<string | null>(null)
 const csvUploadError = ref<boolean>(false) // Variable für Fehlerstatus
+const csvUploadFeedback = ref<PayloadType | null>(null)
 
 // Validierung
 const csvRequiredRule = (value: File | null) => {
@@ -47,7 +51,13 @@ async function csvUploadFile() {
     })
 
     if (response.ok) {
-      csvUploadMessage.value = 'Datei erfolgreich hochgeladen'
+      csvUploadFeedback.value = await response.json() as PayloadType
+      if (csvUploadFeedback.value.reply === 'Erfolgreich') {
+        csvUploadMessage.value = 'Datei erfolgreich hochgeladen'
+      } else {
+        csvUploadMessage.value = 'Fehler beim Hochladen der Datei.'
+        csvUploadError.value = true
+      }
     } else {
       csvUploadMessage.value = 'Fehler beim Hochladen der Datei.'
       csvUploadError.value = true
