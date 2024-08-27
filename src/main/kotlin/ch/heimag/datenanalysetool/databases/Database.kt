@@ -14,13 +14,13 @@ data class DataPoint(val date: String, val temperature: String)
 
 class Database : DatabaseInfo {
     override val PROTOCOL = "jdbc:mysql"
-    override val HOST = "localhost"
-    override val PORT = 3306
-    override val DATABASE = "heimag"
+    override val HOST = System.getenv("MYSQL_HOST") ?: "localhost"
+    override val PORT = System.getenv("MYSQL_PORT")?.toIntOrNull() ?: 3306
+    override val DATABASE = System.getenv("MYSQL_DATABASE") ?: "heimag"
     override val OPTIONS = "useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Europe/Berlin"
     override val URL = "$PROTOCOL://$HOST:$PORT/$DATABASE?$OPTIONS"
-    override val USER = "datenanalysetool"
-    override val PASSWORD = "HeimAGS2we@!"
+    override val USER = System.getenv("MYSQL_USER") ?: "datenanalysetool"
+    override val PASSWORD = System.getenv("MYSQL_PASSWORD") ?: "Heim"
 
     private val logger = LoggerFactory.getLogger("Data.Database")
 

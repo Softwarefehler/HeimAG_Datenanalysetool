@@ -38,7 +38,7 @@ data class OperatingStateValueList(
 )
 
 
-const val IMAGE_DIRECTORY = "src/main/resources/images"
+val IMAGE_DIRECTORY = System.getenv("IMAGE_DIRECTORY") ?: "/app/resources/images"
 
 
 fun Application.webPageApplication() {

@@ -1,0 +1,47 @@
+services:
+  mysql:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: Heim
+      MYSQL_DATABASE: heimag
+      MYSQL_USER: datenanalysetool
+      MYSQL_PASSWORD: Heim
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+    networks:
+      - app-net
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin ping -h localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+
+  datenanalysetool:
+    image: datenanalysetool:dev-latest  # Verwende das Image, das aus der .tar-Datei geladen wurde
+    ports:
+      - "8080:8080"
+      - "8443:8443"
+    environment:
+      - IMAGE_DIRECTORY=/app/resources/images
+      - DISABLE_HTTPS=false
+      - MYSQL_HOST=mysql
+      - MYSQL_PORT=3306
+      - MYSQL_DATABASE=heimag
+      - MYSQL_USER=datenanalysetool
+      - MYSQL_PASSWORD=Heim
+    depends_on:
+      mysql:
+        condition: service_healthy
+    networks:
+      - app-net
+    volumes:
+      - ./src/main/resources/images:/app/resources/images
+
+networks:
+  app-net:
+    driver: bridge
+
+volumes:
+  mysql_data:
