@@ -4,98 +4,98 @@
     {
       "name": "vite:load-fallback",
       "result": "import { createVNode as _createVNode, mergeProps as _mergeProps, resolveDirective as _resolveDirective } from \"vue\";\n// Components\nimport { makeVWindowItemProps, VWindowItem } from \"../VWindow/VWindowItem.mjs\"; // Utilities\nimport { genericComponent, propsFactory, useRender } from \"../../util/index.mjs\";\nexport const makeVTabsWindowItemProps = propsFactory({\n  ...makeVWindowItemProps()\n}, 'VTabsWindowItem');\nexport const VTabsWindowItem = genericComponent()({\n  name: 'VTabsWindowItem',\n  props: makeVTabsWindowItemProps(),\n  setup(props, _ref) {\n    let {\n      slots\n    } = _ref;\n    useRender(() => {\n      const windowItemProps = VWindowItem.filterProps(props);\n      return _createVNode(VWindowItem, _mergeProps({\n        \"_as\": \"VTabsWindowItem\"\n      }, windowItemProps, {\n        \"class\": ['v-tabs-window-item', props.class],\n        \"style\": props.style\n      }), slots);\n    });\n    return {};\n  }\n});\n//# sourceMappingURL=VTabsWindowItem.mjs.map",
-      "start": 1724750474777,
-      "end": 1724750474857,
+      "start": 1724767983038,
+      "end": 1724767983103,
       "sourcemaps": null
     },
     {
       "name": "vite:css",
-      "start": 1724750474857,
-      "end": 1724750474857,
+      "start": 1724767983103,
+      "end": 1724767983103,
       "order": "normal"
     },
     {
       "name": "vite:esbuild",
-      "start": 1724750474857,
-      "end": 1724750474857,
+      "start": 1724767983103,
+      "end": 1724767983103,
       "order": "normal"
     },
     {
       "name": "vite:json",
-      "start": 1724750474857,
-      "end": 1724750474857,
+      "start": 1724767983103,
+      "end": 1724767983103,
       "order": "normal"
     },
     {
       "name": "vite:worker",
-      "start": 1724750474857,
-      "end": 1724750474857,
+      "start": 1724767983104,
+      "end": 1724767983104,
       "order": "normal"
     },
     {
       "name": "vite:vue",
-      "start": 1724750474857,
-      "end": 1724750474857,
+      "start": 1724767983104,
+      "end": 1724767983104,
       "order": "normal"
     },
     {
       "name": "vite:define",
-      "start": 1724750474857,
-      "end": 1724750474857,
+      "start": 1724767983104,
+      "end": 1724767983104,
       "order": "normal"
     },
     {
       "name": "vite:css-post",
-      "start": 1724750474857,
-      "end": 1724750474857,
+      "start": 1724767983104,
+      "end": 1724767983104,
       "order": "normal"
     },
     {
       "name": "vite:build-html",
-      "start": 1724750474857,
-      "end": 1724750474857,
+      "start": 1724767983104,
+      "end": 1724767983104,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1724750474857,
-      "end": 1724750474857,
+      "start": 1724767983104,
+      "end": 1724767983104,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1724750474857,
-      "end": 1724750474857,
+      "start": 1724767983104,
+      "end": 1724767983104,
       "order": "normal"
     },
     {
       "name": "commonjs",
-      "start": 1724750474857,
-      "end": 1724750474857,
+      "start": 1724767983104,
+      "end": 1724767983104,
       "order": "normal"
     },
     {
       "name": "vite:dynamic-import-vars",
-      "start": 1724750474857,
-      "end": 1724750474857,
+      "start": 1724767983104,
+      "end": 1724767983104,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1724750474857,
-      "end": 1724750474857,
+      "start": 1724767983104,
+      "end": 1724767983104,
       "order": "normal"
     },
     {
       "name": "vite:build-import-analysis",
-      "start": 1724750474857,
-      "end": 1724750474857,
+      "start": 1724767983104,
+      "end": 1724767983104,
       "order": "normal"
     },
     {
       "name": "vite:reporter",
-      "start": 1724750474857,
-      "end": 1724750474857,
+      "start": 1724767983104,
+      "end": 1724767983104,
       "order": "normal"
     }
   ]

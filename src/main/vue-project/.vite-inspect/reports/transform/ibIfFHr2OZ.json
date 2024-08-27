@@ -4,39 +4,39 @@
     {
       "name": "vite:load-fallback",
       "result": "<script lang=\"ts\" setup>\r\nimport { onMounted, ref } from 'vue'\r\n\r\ntype PayloadType = {\r\n  reply: String\r\n}\r\n\r\nconst latestDate = ref<string | null>(null)\r\nconst csvFile = ref<File | null>(null)\r\nconst csvFileInputError = ref<string | null>(null)\r\nconst csvIsLoading = ref<boolean>(false) // Variable für den Ladezustand\r\nconst csvUploadMessage = ref<string | null>(null)\r\nconst csvUploadError = ref<boolean>(false) // Variable für Fehlerstatus\r\nconst csvUploadFeedback = ref<PayloadType | null>(null)\r\n\r\n// validate\r\nconst csvRequiredRule = (value: File | null) => {\r\n  return !!value || 'Dieses Feld ist erforderlich'\r\n}\r\n\r\n\r\n// csv-Upload function\r\nasync function csvUploadFile() {\r\n  csvFileInputError.value = null\r\n  csvUploadMessage.value = null\r\n  csvIsLoading.value = true\r\n  csvUploadError.value = false\r\n\r\n  if (!csvFile.value) {\r\n    csvFileInputError.value = 'Bitte wählen Sie eine Datei aus'\r\n    csvIsLoading.value = false\r\n    return\r\n  }\r\n\r\n  if (csvFile.value.name !== 'wetterdaten.csv') {\r\n    csvFileInputError.value = 'Die Datei muss den Namen \"wetterdaten.csv\" haben.'\r\n    csvIsLoading.value = false\r\n    return\r\n  }\r\n\r\n  const formData = new FormData()\r\n  formData.append('file', csvFile.value)\r\n\r\n  try {\r\n    const response = await fetch('/csv-upload', {\r\n      method: 'POST',\r\n      body: formData,\r\n      headers: {\r\n        'Accept': 'application/json'\r\n      }\r\n    })\r\n\r\n    if (response.ok) {\r\n      csvUploadFeedback.value = await response.json() as PayloadType\r\n      if (csvUploadFeedback.value.reply === 'Erfolgreich') {\r\n        csvUploadMessage.value = 'Datei erfolgreich hochgeladen'\r\n      } else {\r\n        csvUploadMessage.value = 'Fehler beim Hochladen der Datei.'\r\n        csvUploadError.value = true\r\n      }\r\n    } else {\r\n      csvUploadMessage.value = 'Fehler beim Hochladen der Datei.'\r\n      csvUploadError.value = true\r\n    }\r\n  } catch (error) {\r\n    csvUploadMessage.value = 'Anmeldezeit ist Abgelaufen: ${error}'\r\n    csvUploadError.value = true\r\n    location.href = '/login'\r\n  } finally {\r\n    csvIsLoading.value = false\r\n    await firstPayload()\r\n  }\r\n}\r\n\r\n\r\n// Reset the Upload-Message/Error-Message\r\nfunction csvHandleFileChange(event: Event) {\r\n  const input = event.target as HTMLInputElement\r\n  if (!input.files?.length) {\r\n    csvUploadMessage.value = null\r\n    csvUploadError.value = false\r\n    return\r\n  }\r\n  csvFile.value = input.files[0]\r\n\r\n  // Check the filename\r\n  if (csvFile.value.name !== 'wetterdaten.csv') {\r\n    csvFileInputError.value = 'Die Datei muss den Namen \"wetterdaten.csv\" haben.'\r\n    csvUploadError.value = true\r\n    csvFile.value = null\r\n  } else {\r\n    csvFileInputError.value = null\r\n    csvUploadError.value = false\r\n  }\r\n}\r\n\r\n\r\n// The First Payload from this side\r\nasync function firstPayload() {\r\n  try {\r\n    const info = await fetch('/settingsView').then((response) => response.json())\r\n    latestDate.value = info.latestDate\r\n  } catch (error) {\r\n    alert(`Die Anmeldezeit ist abgelaufen`)\r\n    location.href = '/login'\r\n  }\r\n}\r\n\r\nonMounted(async () => {\r\n  await firstPayload()\r\n})\r\n</script>\r\n\r\n<template>\r\n  <v-container>\r\n    <h4>Datenbankinformation</h4>\r\n    <br>\r\n    <div class=\"d-flex align-center flex-wrap\">\r\n      <p>Aktuellstes Datum in der Datenbank:</p>\r\n      <v-chip\r\n        color=\"green darken-2\"\r\n        text-color=\"white\"\r\n        :style=\"{ marginLeft: '10px' }\">\r\n        {{ latestDate }}\r\n      </v-chip>\r\n    </div>\r\n    <v-spacer class=\"my-6\"></v-spacer>\r\n    <v-divider class=\"my-7\" :style=\"{ height: '20px'}\"></v-divider>\r\n    <v-spacer class=\"my-6\"></v-spacer>\r\n    <h4>Datenbankerweiterung / CSV-File Upload</h4>\r\n    <br>\r\n    <v-form @submit.prevent=\"csvUploadFile\">\r\n      <v-file-input\r\n        v-model=\"csvFile\"\r\n        label=\"Wähle die Datei wetterdaten.csv\"\r\n        accept=\"wetterdaten.csv\"\r\n        prepend-icon=\"\"\r\n        prepend-inner-icon=\"mdi-upload\"\r\n        :rules=\"[csvRequiredRule]\"\r\n        :error=\"!!csvFileInputError || csvUploadError\"\r\n        :error-messages=\"csvFileInputError || (csvUploadError ? 'Fehler beim Hochladen der Datei.' : '')\"\r\n        required\r\n        @change=\"csvHandleFileChange\"\r\n      ></v-file-input>\r\n      <v-progress-linear\r\n        v-if=\"csvIsLoading\"\r\n        color=\"primary\"\r\n        height=\"6\"\r\n        indeterminate\r\n        class=\"my-4\"\r\n      ></v-progress-linear>\r\n      <v-alert\r\n        v-if=\"csvUploadMessage\"\r\n        :type=\"csvUploadError ? 'error' : 'success'\"\r\n        dismissible>\r\n        {{ csvUploadMessage }}\r\n      </v-alert>\r\n      <br>\r\n      <v-btn type=\"submit\" color=\"green lighten-3\">Datei hochladen</v-btn>\r\n    </v-form>\r\n  </v-container>\r\n</template>",
-      "start": 1724750473632,
-      "end": 1724750473708,
+      "start": 1724767981398,
+      "end": 1724767981508,
       "sourcemaps": null
     },
     {
       "name": "vite:css",
-      "start": 1724750473708,
-      "end": 1724750473708,
+      "start": 1724767981508,
+      "end": 1724767981508,
       "order": "normal"
     },
     {
       "name": "vite:esbuild",
-      "start": 1724750473708,
-      "end": 1724750473708,
+      "start": 1724767981508,
+      "end": 1724767981508,
       "order": "normal"
     },
     {
       "name": "vite:json",
-      "start": 1724750473708,
-      "end": 1724750473708,
+      "start": 1724767981508,
+      "end": 1724767981508,
       "order": "normal"
     },
     {
       "name": "vite:worker",
-      "start": 1724750473708,
-      "end": 1724750473708,
+      "start": 1724767981508,
+      "end": 1724767981508,
       "order": "normal"
     },
     {
       "name": "vite:vue",
       "result": "import _sfc_main from \"C:/Users/MAG/IdeaProjects/Datenanalysetool/src/main/vue-project/src/routes/SettingsView.vue?vue&type=script&setup=true&lang.ts\";\nexport * from \"C:/Users/MAG/IdeaProjects/Datenanalysetool/src/main/vue-project/src/routes/SettingsView.vue?vue&type=script&setup=true&lang.ts\";\nexport default _sfc_main;\n",
-      "start": 1724750473708,
-      "end": 1724750473806,
+      "start": 1724767981508,
+      "end": 1724767981601,
       "order": "normal",
       "sourcemaps": {
         "mappings": ""
@@ -44,62 +44,62 @@
     },
     {
       "name": "vite:define",
-      "start": 1724750473806,
-      "end": 1724750473806,
+      "start": 1724767981602,
+      "end": 1724767981602,
       "order": "normal"
     },
     {
       "name": "vite:css-post",
-      "start": 1724750473806,
-      "end": 1724750473806,
+      "start": 1724767981602,
+      "end": 1724767981602,
       "order": "normal"
     },
     {
       "name": "vite:build-html",
-      "start": 1724750473806,
-      "end": 1724750473806,
+      "start": 1724767981602,
+      "end": 1724767981602,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1724750473806,
-      "end": 1724750473806,
+      "start": 1724767981602,
+      "end": 1724767981602,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1724750473806,
-      "end": 1724750473806,
+      "start": 1724767981602,
+      "end": 1724767981602,
       "order": "normal"
     },
     {
       "name": "commonjs",
-      "start": 1724750473806,
-      "end": 1724750473806,
+      "start": 1724767981602,
+      "end": 1724767981602,
       "order": "normal"
     },
     {
       "name": "vite:dynamic-import-vars",
-      "start": 1724750473806,
-      "end": 1724750473806,
+      "start": 1724767981602,
+      "end": 1724767981602,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1724750473806,
-      "end": 1724750473806,
+      "start": 1724767981602,
+      "end": 1724767981602,
       "order": "normal"
     },
     {
       "name": "vite:build-import-analysis",
-      "start": 1724750473806,
-      "end": 1724750473806,
+      "start": 1724767981603,
+      "end": 1724767981603,
       "order": "normal"
     },
     {
       "name": "vite:reporter",
-      "start": 1724750473806,
-      "end": 1724750473806,
+      "start": 1724767981603,
+      "end": 1724767981618,
       "order": "normal"
     }
   ]

@@ -4,98 +4,98 @@
     {
       "name": "vite:load-fallback",
       "result": "// Utilities\nimport { computed, shallowRef, watch } from 'vue';\nimport { propsFactory } from \"../util/index.mjs\"; // Types\nexport const makeLazyProps = propsFactory({\n  eager: Boolean\n}, 'lazy');\nexport function useLazy(props, active) {\n  const isBooted = shallowRef(false);\n  const hasContent = computed(() => isBooted.value || props.eager || active.value);\n  watch(active, () => isBooted.value = true);\n  function onAfterLeave() {\n    if (!props.eager) isBooted.value = false;\n  }\n  return {\n    isBooted,\n    hasContent,\n    onAfterLeave\n  };\n}\n//# sourceMappingURL=lazy.mjs.map",
-      "start": 1724750474997,
-      "end": 1724750475014,
+      "start": 1724767983223,
+      "end": 1724767983276,
       "sourcemaps": null
     },
     {
       "name": "vite:css",
-      "start": 1724750475014,
-      "end": 1724750475014,
+      "start": 1724767983276,
+      "end": 1724767983276,
       "order": "normal"
     },
     {
       "name": "vite:esbuild",
-      "start": 1724750475014,
-      "end": 1724750475014,
+      "start": 1724767983276,
+      "end": 1724767983276,
       "order": "normal"
     },
     {
       "name": "vite:json",
-      "start": 1724750475014,
-      "end": 1724750475014,
+      "start": 1724767983276,
+      "end": 1724767983276,
       "order": "normal"
     },
     {
       "name": "vite:worker",
-      "start": 1724750475014,
-      "end": 1724750475014,
+      "start": 1724767983276,
+      "end": 1724767983276,
       "order": "normal"
     },
     {
       "name": "vite:vue",
-      "start": 1724750475014,
-      "end": 1724750475014,
+      "start": 1724767983276,
+      "end": 1724767983276,
       "order": "normal"
     },
     {
       "name": "vite:define",
-      "start": 1724750475014,
-      "end": 1724750475014,
+      "start": 1724767983276,
+      "end": 1724767983276,
       "order": "normal"
     },
     {
       "name": "vite:css-post",
-      "start": 1724750475014,
-      "end": 1724750475014,
+      "start": 1724767983276,
+      "end": 1724767983276,
       "order": "normal"
     },
     {
       "name": "vite:build-html",
-      "start": 1724750475014,
-      "end": 1724750475014,
+      "start": 1724767983276,
+      "end": 1724767983276,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1724750475014,
-      "end": 1724750475014,
+      "start": 1724767983276,
+      "end": 1724767983276,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1724750475014,
-      "end": 1724750475014,
+      "start": 1724767983276,
+      "end": 1724767983276,
       "order": "normal"
     },
     {
       "name": "commonjs",
-      "start": 1724750475014,
-      "end": 1724750475014,
+      "start": 1724767983276,
+      "end": 1724767983276,
       "order": "normal"
     },
     {
       "name": "vite:dynamic-import-vars",
-      "start": 1724750475014,
-      "end": 1724750475014,
+      "start": 1724767983276,
+      "end": 1724767983276,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1724750475014,
-      "end": 1724750475014,
+      "start": 1724767983276,
+      "end": 1724767983276,
       "order": "normal"
     },
     {
       "name": "vite:build-import-analysis",
-      "start": 1724750475014,
-      "end": 1724750475014,
+      "start": 1724767983276,
+      "end": 1724767983276,
       "order": "normal"
     },
     {
       "name": "vite:reporter",
-      "start": 1724750475014,
-      "end": 1724750475014,
+      "start": 1724767983276,
+      "end": 1724767983276,
       "order": "normal"
     }
   ]

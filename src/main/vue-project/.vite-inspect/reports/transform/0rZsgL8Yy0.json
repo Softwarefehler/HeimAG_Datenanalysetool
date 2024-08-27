@@ -4,98 +4,98 @@
     {
       "name": "vite:load-fallback",
       "result": "import { mergeProps as _mergeProps, resolveDirective as _resolveDirective, createVNode as _createVNode } from \"vue\";\n// Components\nimport { VListGroup } from \"./VListGroup.mjs\";\nimport { VListItem } from \"./VListItem.mjs\";\nimport { VListSubheader } from \"./VListSubheader.mjs\";\nimport { VDivider } from \"../VDivider/index.mjs\"; // Utilities\nimport { createList } from \"./list.mjs\";\nimport { genericComponent, propsFactory } from \"../../util/index.mjs\"; // Types\nexport const makeVListChildrenProps = propsFactory({\n  items: Array,\n  returnObject: Boolean\n}, 'VListChildren');\nexport const VListChildren = genericComponent()({\n  name: 'VListChildren',\n  props: makeVListChildrenProps(),\n  setup(props, _ref) {\n    let {\n      slots\n    } = _ref;\n    createList();\n    return () => slots.default?.() ?? props.items?.map(_ref2 => {\n      let {\n        children,\n        props: itemProps,\n        type,\n        raw: item\n      } = _ref2;\n      if (type === 'divider') {\n        return slots.divider?.({\n          props: itemProps\n        }) ?? _createVNode(VDivider, itemProps, null);\n      }\n      if (type === 'subheader') {\n        return slots.subheader?.({\n          props: itemProps\n        }) ?? _createVNode(VListSubheader, itemProps, null);\n      }\n      const slotsWithItem = {\n        subtitle: slots.subtitle ? slotProps => slots.subtitle?.({\n          ...slotProps,\n          item\n        }) : undefined,\n        prepend: slots.prepend ? slotProps => slots.prepend?.({\n          ...slotProps,\n          item\n        }) : undefined,\n        append: slots.append ? slotProps => slots.append?.({\n          ...slotProps,\n          item\n        }) : undefined,\n        title: slots.title ? slotProps => slots.title?.({\n          ...slotProps,\n          item\n        }) : undefined\n      };\n      const listGroupProps = VListGroup.filterProps(itemProps);\n      return children ? _createVNode(VListGroup, _mergeProps({\n        \"value\": itemProps?.value\n      }, listGroupProps), {\n        activator: _ref3 => {\n          let {\n            props: activatorProps\n          } = _ref3;\n          const listItemProps = {\n            ...itemProps,\n            ...activatorProps,\n            value: props.returnObject ? item : itemProps.value\n          };\n          return slots.header ? slots.header({\n            props: listItemProps\n          }) : _createVNode(VListItem, listItemProps, slotsWithItem);\n        },\n        default: () => _createVNode(VListChildren, {\n          \"items\": children,\n          \"returnObject\": props.returnObject\n        }, slots)\n      }) : slots.item ? slots.item({\n        props: itemProps\n      }) : _createVNode(VListItem, _mergeProps(itemProps, {\n        \"value\": props.returnObject ? item : itemProps.value\n      }), slotsWithItem);\n    });\n  }\n});\n//# sourceMappingURL=VListChildren.mjs.map",
-      "start": 1724750474919,
-      "end": 1724750474945,
+      "start": 1724767983167,
+      "end": 1724767983184,
       "sourcemaps": null
     },
     {
       "name": "vite:css",
-      "start": 1724750474945,
-      "end": 1724750474945,
+      "start": 1724767983184,
+      "end": 1724767983184,
       "order": "normal"
     },
     {
       "name": "vite:esbuild",
-      "start": 1724750474945,
-      "end": 1724750474945,
+      "start": 1724767983184,
+      "end": 1724767983184,
       "order": "normal"
     },
     {
       "name": "vite:json",
-      "start": 1724750474945,
-      "end": 1724750474945,
+      "start": 1724767983184,
+      "end": 1724767983184,
       "order": "normal"
     },
     {
       "name": "vite:worker",
-      "start": 1724750474945,
-      "end": 1724750474945,
+      "start": 1724767983184,
+      "end": 1724767983184,
       "order": "normal"
     },
     {
       "name": "vite:vue",
-      "start": 1724750474945,
-      "end": 1724750474945,
+      "start": 1724767983184,
+      "end": 1724767983184,
       "order": "normal"
     },
     {
       "name": "vite:define",
-      "start": 1724750474945,
-      "end": 1724750474945,
+      "start": 1724767983184,
+      "end": 1724767983184,
       "order": "normal"
     },
     {
       "name": "vite:css-post",
-      "start": 1724750474945,
-      "end": 1724750474945,
+      "start": 1724767983184,
+      "end": 1724767983184,
       "order": "normal"
     },
     {
       "name": "vite:build-html",
-      "start": 1724750474945,
-      "end": 1724750474945,
+      "start": 1724767983184,
+      "end": 1724767983184,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1724750474945,
-      "end": 1724750474945,
+      "start": 1724767983184,
+      "end": 1724767983184,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1724750474945,
-      "end": 1724750474945,
+      "start": 1724767983184,
+      "end": 1724767983184,
       "order": "normal"
     },
     {
       "name": "commonjs",
-      "start": 1724750474945,
-      "end": 1724750474945,
+      "start": 1724767983184,
+      "end": 1724767983184,
       "order": "normal"
     },
     {
       "name": "vite:dynamic-import-vars",
-      "start": 1724750474945,
-      "end": 1724750474945,
+      "start": 1724767983184,
+      "end": 1724767983184,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1724750474945,
-      "end": 1724750474945,
+      "start": 1724767983184,
+      "end": 1724767983184,
       "order": "normal"
     },
     {
       "name": "vite:build-import-analysis",
-      "start": 1724750474945,
-      "end": 1724750474945,
+      "start": 1724767983184,
+      "end": 1724767983184,
       "order": "normal"
     },
     {
       "name": "vite:reporter",
-      "start": 1724750474945,
-      "end": 1724750474945,
+      "start": 1724767983184,
+      "end": 1724767983184,
       "order": "normal"
     }
   ]

@@ -4,98 +4,98 @@
     {
       "name": "vite:load-fallback",
       "result": "// Utilities\nimport { computed } from 'vue';\nimport { convertToUnit, propsFactory } from \"../util/index.mjs\"; // Types\n// Composables\nexport const makeDimensionProps = propsFactory({\n  height: [Number, String],\n  maxHeight: [Number, String],\n  maxWidth: [Number, String],\n  minHeight: [Number, String],\n  minWidth: [Number, String],\n  width: [Number, String]\n}, 'dimension');\nexport function useDimension(props) {\n  const dimensionStyles = computed(() => {\n    const styles = {};\n    const height = convertToUnit(props.height);\n    const maxHeight = convertToUnit(props.maxHeight);\n    const maxWidth = convertToUnit(props.maxWidth);\n    const minHeight = convertToUnit(props.minHeight);\n    const minWidth = convertToUnit(props.minWidth);\n    const width = convertToUnit(props.width);\n    if (height != null) styles.height = height;\n    if (maxHeight != null) styles.maxHeight = maxHeight;\n    if (maxWidth != null) styles.maxWidth = maxWidth;\n    if (minHeight != null) styles.minHeight = minHeight;\n    if (minWidth != null) styles.minWidth = minWidth;\n    if (width != null) styles.width = width;\n    return styles;\n  });\n  return {\n    dimensionStyles\n  };\n}\n//# sourceMappingURL=dimensions.mjs.map",
-      "start": 1724750474877,
-      "end": 1724750474915,
+      "start": 1724767983128,
+      "end": 1724767983167,
       "sourcemaps": null
     },
     {
       "name": "vite:css",
-      "start": 1724750474915,
-      "end": 1724750474915,
+      "start": 1724767983167,
+      "end": 1724767983167,
       "order": "normal"
     },
     {
       "name": "vite:esbuild",
-      "start": 1724750474915,
-      "end": 1724750474915,
+      "start": 1724767983167,
+      "end": 1724767983167,
       "order": "normal"
     },
     {
       "name": "vite:json",
-      "start": 1724750474915,
-      "end": 1724750474915,
+      "start": 1724767983167,
+      "end": 1724767983167,
       "order": "normal"
     },
     {
       "name": "vite:worker",
-      "start": 1724750474915,
-      "end": 1724750474915,
+      "start": 1724767983167,
+      "end": 1724767983167,
       "order": "normal"
     },
     {
       "name": "vite:vue",
-      "start": 1724750474915,
-      "end": 1724750474915,
+      "start": 1724767983167,
+      "end": 1724767983167,
       "order": "normal"
     },
     {
       "name": "vite:define",
-      "start": 1724750474915,
-      "end": 1724750474915,
+      "start": 1724767983167,
+      "end": 1724767983167,
       "order": "normal"
     },
     {
       "name": "vite:css-post",
-      "start": 1724750474915,
-      "end": 1724750474915,
+      "start": 1724767983167,
+      "end": 1724767983167,
       "order": "normal"
     },
     {
       "name": "vite:build-html",
-      "start": 1724750474915,
-      "end": 1724750474915,
+      "start": 1724767983167,
+      "end": 1724767983167,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1724750474915,
-      "end": 1724750474915,
+      "start": 1724767983167,
+      "end": 1724767983167,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1724750474915,
-      "end": 1724750474915,
+      "start": 1724767983167,
+      "end": 1724767983167,
       "order": "normal"
     },
     {
       "name": "commonjs",
-      "start": 1724750474915,
-      "end": 1724750474915,
+      "start": 1724767983167,
+      "end": 1724767983167,
       "order": "normal"
     },
     {
       "name": "vite:dynamic-import-vars",
-      "start": 1724750474915,
-      "end": 1724750474915,
+      "start": 1724767983167,
+      "end": 1724767983167,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1724750474915,
-      "end": 1724750474915,
+      "start": 1724767983167,
+      "end": 1724767983167,
       "order": "normal"
     },
     {
       "name": "vite:build-import-analysis",
-      "start": 1724750474915,
-      "end": 1724750474915,
+      "start": 1724767983167,
+      "end": 1724767983167,
       "order": "normal"
     },
     {
       "name": "vite:reporter",
-      "start": 1724750474915,
-      "end": 1724750474915,
+      "start": 1724767983167,
+      "end": 1724767983167,
       "order": "normal"
     }
   ]
