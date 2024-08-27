@@ -3,40 +3,40 @@
   "transforms": [
     {
       "name": "vite:load-fallback",
-      "result": "<script setup lang=\"ts\">\r\nimport { onMounted, ref } from 'vue'\r\nimport { VBtn } from 'vuetify/components'\r\n\r\n\r\nexport type Foto = { url: string; name: string }\r\n\r\nconst foto = ref<Foto | null>(null)\r\n\r\n\r\n// Da Bild statisch hinterlegt ist und der Fehler passiert, melden wir uns ab\r\nasync function logout() {\r\n  alert(`Die Anmeldezeit ist abgelaufen`)\r\n  location.href = '/login'\r\n}\r\n\r\n\r\nasync function fetchFotoFromServer() {\r\n  try {\r\n    const swisstopo = await fetch('/swisstopographic').then((response) => response.blob())\r\n    const url = URL.createObjectURL(swisstopo)\r\n    foto.value = { url, name: 'Switzerland_topographic.png' }\r\n  } catch (error) {\r\n    alert('Die Anmeldezeit ist abgelaufen')\r\n   location.href = '/login'\r\n  }\r\n}\r\n\r\nonMounted(fetchFotoFromServer)\r\n</script>\r\n\r\n<template>\r\n  <v-container>\r\n    <v-row class=\"d-flex align-center\">\r\n      <v-col cols=\"auto\" class=\"d-flex align-center\">\r\n        <h4 class=\"text-h5 font-weight-bold mb-0\">Karte Wetterstationen Schweiz</h4>\r\n      </v-col>\r\n      <v-col cols=\"auto\" class=\"d-flex align-center\">\r\n        <img v-if=\"foto\" :src=\"foto.url\" :alt=\"foto.name\" @error=\" logout\" class=\"my-image\" />\r\n      </v-col>\r\n    </v-row>\r\n    <v-btn :to=\"{ path: '/' }\" color=\"green lighten-3\" class=\"my-button\">Zurück</v-btn>\r\n  </v-container>\r\n</template>\r\n\r\n<style scoped>\r\n.my-image {\r\n  display: block; /* Macht das Bild zu einem Blockelement, sodass es eine neue Zeile einnimmt */\r\n  margin: 0 auto; /* Zentriert das Bild horizontal */\r\n  max-width: 100%; /* Stellt sicher, dass das Bild nicht breiter als sein Container ist */\r\n}\r\n\r\n/* Stil für den Button */\r\n.my-button {\r\n  margin-top: 20px; /* Abstand oben, damit der Button unterhalb des Bildes ist */\r\n}\r\n</style>\r\n",
-      "start": 1724718167338,
-      "end": 1724718167514,
+      "result": "<script setup lang=\"ts\">\r\nimport { onMounted, ref } from 'vue'\r\nimport { VBtn } from 'vuetify/components'\r\n\r\nexport type Foto = { url: string; name: string }\r\n\r\nconst foto = ref<Foto | null>(null)\r\nconst latestDate = ref<string | null>(null)\r\n\r\n\r\n// Use the Value only to check the authentication\r\nasync function checkAuthentication() {\r\n  try {\r\n    const info = await fetch('/settingsView').then((response) => response.json())\r\n    latestDate.value = info.latestDate\r\n  } catch (error) {\r\n    alert(`Die Anmeldezeit ist abgelaufen`)\r\n    location.href = '/login'\r\n  }\r\n}\r\n\r\n// Load the foto path from the Backend to the frontend\r\nasync function fetchFotoFromServer() {\r\n  try {\r\n    const swisstopo = await fetch('/swisstopographic').then((response) => response.blob())\r\n    const url = URL.createObjectURL(swisstopo)\r\n    foto.value = { url, name: 'Switzerland_topographic.png' }\r\n  } catch (error) {\r\n    // Placeholder\r\n  }\r\n  await checkAuthentication()\r\n}\r\n\r\nonMounted(fetchFotoFromServer)\r\n</script>\r\n\r\n<template>\r\n  <v-container>\r\n    <v-row class=\"d-flex align-center\">\r\n      <v-col cols=\"auto\" class=\"d-flex align-center\">\r\n        <h4 class=\"text-h5 font-weight-bold mb-0\">Karte Wetterstationen Schweiz</h4>\r\n      </v-col>\r\n      <v-col cols=\"auto\" class=\"d-flex align-center\">\r\n        <img v-if=\"foto\" :src=\"foto.url\" :alt=\"foto.name\" class=\"my-image\" />\r\n      </v-col>\r\n    </v-row>\r\n    <v-btn :to=\"{ path: '/' }\" color=\"green lighten-3\" class=\"my-button\">Zurück</v-btn>\r\n  </v-container>\r\n</template>\r\n\r\n<style scoped>\r\n.my-image {\r\n  display: block;\r\n  margin: 0 auto;\r\n  max-width: 100%;\r\n}\r\n\r\n.my-button {\r\n  margin-top: 20px;\r\n}\r\n</style>\r\n",
+      "start": 1724750473632,
+      "end": 1724750473718,
       "sourcemaps": null
     },
     {
       "name": "vite:css",
-      "start": 1724718167514,
-      "end": 1724718167514,
+      "start": 1724750473718,
+      "end": 1724750473718,
       "order": "normal"
     },
     {
       "name": "vite:esbuild",
-      "start": 1724718167514,
-      "end": 1724718167514,
+      "start": 1724750473718,
+      "end": 1724750473718,
       "order": "normal"
     },
     {
       "name": "vite:json",
-      "start": 1724718167514,
-      "end": 1724718167514,
+      "start": 1724750473718,
+      "end": 1724750473718,
       "order": "normal"
     },
     {
       "name": "vite:worker",
-      "start": 1724718167514,
-      "end": 1724718167514,
+      "start": 1724750473718,
+      "end": 1724750473718,
       "order": "normal"
     },
     {
       "name": "vite:vue",
-      "result": "import _sfc_main from \"C:/Users/MAG/IdeaProjects/Datenanalysetool/src/main/vue-project/src/routes/SwitzerlandTopographicView.vue?vue&type=script&setup=true&lang.ts\";\nexport * from \"C:/Users/MAG/IdeaProjects/Datenanalysetool/src/main/vue-project/src/routes/SwitzerlandTopographicView.vue?vue&type=script&setup=true&lang.ts\";\nimport \"C:/Users/MAG/IdeaProjects/Datenanalysetool/src/main/vue-project/src/routes/SwitzerlandTopographicView.vue?vue&type=style&index=0&scoped=5e2fb596&lang.css\";\nimport _export_sfc from \"\\0plugin-vue:export-helper\";\nexport default /* @__PURE__ */ _export_sfc(_sfc_main, [[\"__scopeId\", \"data-v-5e2fb596\"]]);\n",
-      "start": 1724718167514,
-      "end": 1724718167652,
+      "result": "import _sfc_main from \"C:/Users/MAG/IdeaProjects/Datenanalysetool/src/main/vue-project/src/routes/SwitzerlandTopographicView.vue?vue&type=script&setup=true&lang.ts\";\nexport * from \"C:/Users/MAG/IdeaProjects/Datenanalysetool/src/main/vue-project/src/routes/SwitzerlandTopographicView.vue?vue&type=script&setup=true&lang.ts\";\nimport \"C:/Users/MAG/IdeaProjects/Datenanalysetool/src/main/vue-project/src/routes/SwitzerlandTopographicView.vue?vue&type=style&index=0&scoped=f4823430&lang.css\";\nimport _export_sfc from \"\\0plugin-vue:export-helper\";\nexport default /* @__PURE__ */ _export_sfc(_sfc_main, [[\"__scopeId\", \"data-v-f4823430\"]]);\n",
+      "start": 1724750473718,
+      "end": 1724750473806,
       "order": "normal",
       "sourcemaps": {
         "mappings": ""
@@ -44,62 +44,62 @@
     },
     {
       "name": "vite:define",
-      "start": 1724718167654,
-      "end": 1724718167654,
+      "start": 1724750473806,
+      "end": 1724750473806,
       "order": "normal"
     },
     {
       "name": "vite:css-post",
-      "start": 1724718167654,
-      "end": 1724718167654,
+      "start": 1724750473806,
+      "end": 1724750473806,
       "order": "normal"
     },
     {
       "name": "vite:build-html",
-      "start": 1724718167654,
-      "end": 1724718167654,
+      "start": 1724750473806,
+      "end": 1724750473806,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1724718167654,
-      "end": 1724718167654,
+      "start": 1724750473806,
+      "end": 1724750473806,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1724718167654,
-      "end": 1724718167654,
+      "start": 1724750473806,
+      "end": 1724750473806,
       "order": "normal"
     },
     {
       "name": "commonjs",
-      "start": 1724718167654,
-      "end": 1724718167654,
+      "start": 1724750473806,
+      "end": 1724750473806,
       "order": "normal"
     },
     {
       "name": "vite:dynamic-import-vars",
-      "start": 1724718167654,
-      "end": 1724718167654,
+      "start": 1724750473806,
+      "end": 1724750473806,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1724718167654,
-      "end": 1724718167655,
+      "start": 1724750473806,
+      "end": 1724750473806,
       "order": "normal"
     },
     {
       "name": "vite:build-import-analysis",
-      "start": 1724718167657,
-      "end": 1724718167657,
+      "start": 1724750473806,
+      "end": 1724750473806,
       "order": "normal"
     },
     {
       "name": "vite:reporter",
-      "start": 1724718167657,
-      "end": 1724718167664,
+      "start": 1724750473806,
+      "end": 1724750473806,
       "order": "normal"
     }
   ]

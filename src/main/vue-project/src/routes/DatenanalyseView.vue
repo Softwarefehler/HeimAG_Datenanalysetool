@@ -23,11 +23,12 @@ const startDateError = ref<string | null>(null)
 const endDateError = ref<string | null>(null)
 const selectedCountryError = ref<string | null>(null)
 
-// Validierung
+// validate
 const requiredRule = (value: any) => !!value || 'Dieses Feld ist erforderlich'
 
 
-async function sendData() {
+// search data where in the range of the parameters
+async function searchData() {
   startDateError.value = null
   endDateError.value = null
   selectedCountryError.value = null
@@ -67,6 +68,7 @@ async function sendData() {
 }
 
 
+// Split the Payload to the tables
 function processPayload(payload: PayloadType) {
   tableData1.value = payload.kaltPeriode
   tableData2.value = payload.hauptanteilHeizperiode
@@ -74,6 +76,7 @@ function processPayload(payload: PayloadType) {
 }
 
 
+// The First Payload from this side
 async function firstPayload() {
   try {
     const data = await fetch('/datenanalyseView').then((response) => response.json())
@@ -127,7 +130,7 @@ onMounted(async () => {
     <br>
     <v-row align="center">
       <v-col cols="auto">
-        <v-btn @click="sendData" color="green lighten-3">Suche starten</v-btn>
+        <v-btn @click="searchData" color="green lighten-3">Suche starten</v-btn>
       </v-col>
       <v-spacer></v-spacer>
       <v-col cols="auto">
@@ -163,7 +166,3 @@ onMounted(async () => {
   </v-container>
 </template>
 
-
-<style scoped>
-
-</style>

@@ -4,98 +4,98 @@
     {
       "name": "vite:load-fallback",
       "result": "import { createVNode as _createVNode } from \"vue\";\n// Components\nimport { VExpansionPanelSymbol } from \"./shared.mjs\";\nimport { makeVExpansionPanelTextProps, VExpansionPanelText } from \"./VExpansionPanelText.mjs\";\nimport { makeVExpansionPanelTitleProps, VExpansionPanelTitle } from \"./VExpansionPanelTitle.mjs\";\nimport { VDefaultsProvider } from \"../VDefaultsProvider/index.mjs\"; // Composables\nimport { useBackgroundColor } from \"../../composables/color.mjs\";\nimport { makeElevationProps, useElevation } from \"../../composables/elevation.mjs\";\nimport { makeGroupItemProps, useGroupItem } from \"../../composables/group.mjs\";\nimport { makeRoundedProps, useRounded } from \"../../composables/rounded.mjs\";\nimport { makeTagProps } from \"../../composables/tag.mjs\"; // Utilities\nimport { computed, provide } from 'vue';\nimport { genericComponent, propsFactory, useRender } from \"../../util/index.mjs\";\nexport const makeVExpansionPanelProps = propsFactory({\n  title: String,\n  text: String,\n  bgColor: String,\n  ...makeElevationProps(),\n  ...makeGroupItemProps(),\n  ...makeRoundedProps(),\n  ...makeTagProps(),\n  ...makeVExpansionPanelTitleProps(),\n  ...makeVExpansionPanelTextProps()\n}, 'VExpansionPanel');\nexport const VExpansionPanel = genericComponent()({\n  name: 'VExpansionPanel',\n  props: makeVExpansionPanelProps(),\n  emits: {\n    'group:selected': val => true\n  },\n  setup(props, _ref) {\n    let {\n      slots\n    } = _ref;\n    const groupItem = useGroupItem(props, VExpansionPanelSymbol);\n    const {\n      backgroundColorClasses,\n      backgroundColorStyles\n    } = useBackgroundColor(props, 'bgColor');\n    const {\n      elevationClasses\n    } = useElevation(props);\n    const {\n      roundedClasses\n    } = useRounded(props);\n    const isDisabled = computed(() => groupItem?.disabled.value || props.disabled);\n    const selectedIndices = computed(() => groupItem.group.items.value.reduce((arr, item, index) => {\n      if (groupItem.group.selected.value.includes(item.id)) arr.push(index);\n      return arr;\n    }, []));\n    const isBeforeSelected = computed(() => {\n      const index = groupItem.group.items.value.findIndex(item => item.id === groupItem.id);\n      return !groupItem.isSelected.value && selectedIndices.value.some(selectedIndex => selectedIndex - index === 1);\n    });\n    const isAfterSelected = computed(() => {\n      const index = groupItem.group.items.value.findIndex(item => item.id === groupItem.id);\n      return !groupItem.isSelected.value && selectedIndices.value.some(selectedIndex => selectedIndex - index === -1);\n    });\n    provide(VExpansionPanelSymbol, groupItem);\n    useRender(() => {\n      const hasText = !!(slots.text || props.text);\n      const hasTitle = !!(slots.title || props.title);\n      const expansionPanelTitleProps = VExpansionPanelTitle.filterProps(props);\n      const expansionPanelTextProps = VExpansionPanelText.filterProps(props);\n      return _createVNode(props.tag, {\n        \"class\": ['v-expansion-panel', {\n          'v-expansion-panel--active': groupItem.isSelected.value,\n          'v-expansion-panel--before-active': isBeforeSelected.value,\n          'v-expansion-panel--after-active': isAfterSelected.value,\n          'v-expansion-panel--disabled': isDisabled.value\n        }, roundedClasses.value, backgroundColorClasses.value, props.class],\n        \"style\": [backgroundColorStyles.value, props.style]\n      }, {\n        default: () => [_createVNode(\"div\", {\n          \"class\": ['v-expansion-panel__shadow', ...elevationClasses.value]\n        }, null), _createVNode(VDefaultsProvider, {\n          \"defaults\": {\n            VExpansionPanelTitle: {\n              ...expansionPanelTitleProps\n            },\n            VExpansionPanelText: {\n              ...expansionPanelTextProps\n            }\n          }\n        }, {\n          default: () => [hasTitle && _createVNode(VExpansionPanelTitle, {\n            \"key\": \"title\"\n          }, {\n            default: () => [slots.title ? slots.title() : props.title]\n          }), hasText && _createVNode(VExpansionPanelText, {\n            \"key\": \"text\"\n          }, {\n            default: () => [slots.text ? slots.text() : props.text]\n          }), slots.default?.()]\n        })]\n      });\n    });\n    return {\n      groupItem\n    };\n  }\n});\n//# sourceMappingURL=VExpansionPanel.mjs.map",
-      "start": 1724718168371,
-      "end": 1724718168618,
+      "start": 1724750474137,
+      "end": 1724750474205,
       "sourcemaps": null
     },
     {
       "name": "vite:css",
-      "start": 1724718168618,
-      "end": 1724718168618,
+      "start": 1724750474205,
+      "end": 1724750474205,
       "order": "normal"
     },
     {
       "name": "vite:esbuild",
-      "start": 1724718168618,
-      "end": 1724718168618,
+      "start": 1724750474205,
+      "end": 1724750474205,
       "order": "normal"
     },
     {
       "name": "vite:json",
-      "start": 1724718168618,
-      "end": 1724718168618,
+      "start": 1724750474205,
+      "end": 1724750474205,
       "order": "normal"
     },
     {
       "name": "vite:worker",
-      "start": 1724718168618,
-      "end": 1724718168618,
+      "start": 1724750474205,
+      "end": 1724750474205,
       "order": "normal"
     },
     {
       "name": "vite:vue",
-      "start": 1724718168618,
-      "end": 1724718168618,
+      "start": 1724750474205,
+      "end": 1724750474205,
       "order": "normal"
     },
     {
       "name": "vite:define",
-      "start": 1724718168618,
-      "end": 1724718168618,
+      "start": 1724750474205,
+      "end": 1724750474205,
       "order": "normal"
     },
     {
       "name": "vite:css-post",
-      "start": 1724718168618,
-      "end": 1724718168618,
+      "start": 1724750474205,
+      "end": 1724750474205,
       "order": "normal"
     },
     {
       "name": "vite:build-html",
-      "start": 1724718168619,
-      "end": 1724718168619,
+      "start": 1724750474205,
+      "end": 1724750474205,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1724718168619,
-      "end": 1724718168619,
+      "start": 1724750474205,
+      "end": 1724750474205,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1724718168619,
-      "end": 1724718168619,
+      "start": 1724750474205,
+      "end": 1724750474205,
       "order": "normal"
     },
     {
       "name": "commonjs",
-      "start": 1724718168619,
-      "end": 1724718168619,
+      "start": 1724750474205,
+      "end": 1724750474205,
       "order": "normal"
     },
     {
       "name": "vite:dynamic-import-vars",
-      "start": 1724718168619,
-      "end": 1724718168619,
+      "start": 1724750474205,
+      "end": 1724750474205,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1724718168619,
-      "end": 1724718168619,
+      "start": 1724750474205,
+      "end": 1724750474205,
       "order": "normal"
     },
     {
       "name": "vite:build-import-analysis",
-      "start": 1724718168619,
-      "end": 1724718168619,
+      "start": 1724750474205,
+      "end": 1724750474205,
       "order": "normal"
     },
     {
       "name": "vite:reporter",
-      "start": 1724718168619,
-      "end": 1724718168619,
+      "start": 1724750474205,
+      "end": 1724750474205,
       "order": "normal"
     }
   ]

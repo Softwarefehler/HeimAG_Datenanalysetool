@@ -4,98 +4,98 @@
     {
       "name": "vite:load-fallback",
       "result": "// Utilities\nimport { onBeforeUnmount, readonly, ref, watch } from 'vue';\nimport { templateRef } from \"../util/index.mjs\";\nimport { IN_BROWSER } from \"../util/globals.mjs\"; // Types\nexport function useResizeObserver(callback) {\n  let box = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'content';\n  const resizeRef = templateRef();\n  const contentRect = ref();\n  if (IN_BROWSER) {\n    const observer = new ResizeObserver(entries => {\n      callback?.(entries, observer);\n      if (!entries.length) return;\n      if (box === 'content') {\n        contentRect.value = entries[0].contentRect;\n      } else {\n        contentRect.value = entries[0].target.getBoundingClientRect();\n      }\n    });\n    onBeforeUnmount(() => {\n      observer.disconnect();\n    });\n    watch(() => resizeRef.el, (newValue, oldValue) => {\n      if (oldValue) {\n        observer.unobserve(oldValue);\n        contentRect.value = undefined;\n      }\n      if (newValue) observer.observe(newValue);\n    }, {\n      flush: 'post'\n    });\n  }\n  return {\n    resizeRef,\n    contentRect: readonly(contentRect)\n  };\n}\n//# sourceMappingURL=resizeObserver.mjs.map",
-      "start": 1724718168770,
-      "end": 1724718168851,
+      "start": 1724750474418,
+      "end": 1724750474489,
       "sourcemaps": null
     },
     {
       "name": "vite:css",
-      "start": 1724718168851,
-      "end": 1724718168851,
+      "start": 1724750474489,
+      "end": 1724750474489,
       "order": "normal"
     },
     {
       "name": "vite:esbuild",
-      "start": 1724718168851,
-      "end": 1724718168851,
+      "start": 1724750474489,
+      "end": 1724750474489,
       "order": "normal"
     },
     {
       "name": "vite:json",
-      "start": 1724718168851,
-      "end": 1724718168851,
+      "start": 1724750474489,
+      "end": 1724750474489,
       "order": "normal"
     },
     {
       "name": "vite:worker",
-      "start": 1724718168851,
-      "end": 1724718168851,
+      "start": 1724750474490,
+      "end": 1724750474490,
       "order": "normal"
     },
     {
       "name": "vite:vue",
-      "start": 1724718168851,
-      "end": 1724718168851,
+      "start": 1724750474490,
+      "end": 1724750474490,
       "order": "normal"
     },
     {
       "name": "vite:define",
-      "start": 1724718168851,
-      "end": 1724718168851,
+      "start": 1724750474490,
+      "end": 1724750474490,
       "order": "normal"
     },
     {
       "name": "vite:css-post",
-      "start": 1724718168851,
-      "end": 1724718168851,
+      "start": 1724750474490,
+      "end": 1724750474490,
       "order": "normal"
     },
     {
       "name": "vite:build-html",
-      "start": 1724718168851,
-      "end": 1724718168851,
+      "start": 1724750474490,
+      "end": 1724750474490,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1724718168851,
-      "end": 1724718168851,
+      "start": 1724750474490,
+      "end": 1724750474490,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1724718168851,
-      "end": 1724718168851,
+      "start": 1724750474490,
+      "end": 1724750474490,
       "order": "normal"
     },
     {
       "name": "commonjs",
-      "start": 1724718168851,
-      "end": 1724718168851,
+      "start": 1724750474490,
+      "end": 1724750474490,
       "order": "normal"
     },
     {
       "name": "vite:dynamic-import-vars",
-      "start": 1724718168851,
-      "end": 1724718168851,
+      "start": 1724750474490,
+      "end": 1724750474490,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1724718168851,
-      "end": 1724718168851,
+      "start": 1724750474490,
+      "end": 1724750474490,
       "order": "normal"
     },
     {
       "name": "vite:build-import-analysis",
-      "start": 1724718168851,
-      "end": 1724718168851,
+      "start": 1724750474490,
+      "end": 1724750474490,
       "order": "normal"
     },
     {
       "name": "vite:reporter",
-      "start": 1724718168851,
-      "end": 1724718168851,
+      "start": 1724750474490,
+      "end": 1724750474490,
       "order": "normal"
     }
   ]

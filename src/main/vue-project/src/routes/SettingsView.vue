@@ -13,13 +13,13 @@ const csvUploadMessage = ref<string | null>(null)
 const csvUploadError = ref<boolean>(false) // Variable für Fehlerstatus
 const csvUploadFeedback = ref<PayloadType | null>(null)
 
-// Validierung
+// validate
 const csvRequiredRule = (value: File | null) => {
   return !!value || 'Dieses Feld ist erforderlich'
 }
 
 
-// Funktion zum Hochladen der Datei
+// csv-Upload function
 async function csvUploadFile() {
   csvFileInputError.value = null
   csvUploadMessage.value = null
@@ -73,7 +73,7 @@ async function csvUploadFile() {
 }
 
 
-// Funktion zum Zurücksetzen der Upload-Nachricht / Fehlerstatus, wenn die Datei entfernt wird
+// Reset the Upload-Message/Error-Message
 function csvHandleFileChange(event: Event) {
   const input = event.target as HTMLInputElement
   if (!input.files?.length) {
@@ -83,7 +83,7 @@ function csvHandleFileChange(event: Event) {
   }
   csvFile.value = input.files[0]
 
-  // Überprüfen des Dateinamens
+  // Check the filename
   if (csvFile.value.name !== 'wetterdaten.csv') {
     csvFileInputError.value = 'Die Datei muss den Namen "wetterdaten.csv" haben.'
     csvUploadError.value = true
@@ -95,6 +95,7 @@ function csvHandleFileChange(event: Event) {
 }
 
 
+// The First Payload from this side
 async function firstPayload() {
   try {
     const info = await fetch('/settingsView').then((response) => response.json())

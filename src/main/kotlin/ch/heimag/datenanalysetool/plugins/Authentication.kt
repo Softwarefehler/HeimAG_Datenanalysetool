@@ -59,6 +59,7 @@ fun Application.installSessionAndAuthentication() {
             }
             challenge {
                 logger.warn("Session validation failed. Redirecting to login page.")
+                call.sessions.clear<UserSession>()
                 call.respondRedirect(LOGIN_URL)
             }
             logger.info("Session-based authentication installed.")

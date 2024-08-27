@@ -4,39 +4,39 @@
     {
       "name": "vite:load-fallback",
       "result": "<script setup lang=\"ts\">\nimport { ref } from 'vue'\nimport { useTheme } from 'vuetify'\n\n\n// Theme-Setup\nconst theme = useTheme()\nconst appTitle = ref('HeimAG Datenanalysetool')\nconst appSubtitle = ref('by Renator Huber & Marcel Gräub')\nconst drawer = ref(false) // Standardmäßig eingeklappt\n\n// Funktion zum Umschalten des Themas\nfunction toggleTheme() {\n  theme.global.name.value = theme.global.current.value.dark ? 'light' : 'dark'\n}\n\nfunction logout() {\n  location.href = '/login'\n}\n\n\n</script>\n\n<template>\n  <v-app>\n    <v-responsive class=\"border rounded\">\n      <v-navigation-drawer v-model=\"drawer\">\n        <v-list-item :title=\"appTitle\" :subtitle=\"appSubtitle\" />\n        <v-divider :thickness=\"2\" class=\"border-opacity-100\"></v-divider>\n        <br>\n        <v-list-item link to=\"/\">Datenanalyse</v-list-item>\n        <v-list-item link to=\"/Settings\">Einstellungen</v-list-item>\n        <v-list-item link to=\"/swisstopo\">Karte der Schweiz</v-list-item>\n      </v-navigation-drawer>\n      <v-app-bar class=\"px-3\">\n        <v-app-bar-nav-icon @click=\"drawer = !drawer\"></v-app-bar-nav-icon>\n        <v-app-bar-title>{{ appTitle }}</v-app-bar-title>\n        <v-btn @click=\"toggleTheme\" icon=\"mdi-theme-light-dark\" />\n        <v-btn @click=\"logout\" icon=\"mdi-logout\" />\n      </v-app-bar>\n      <v-main>\n        <v-container>\n          <RouterView />\n        </v-container>\n      </v-main>\n    </v-responsive>\n  </v-app>\n</template>\n\n<style scoped>\nheader {\n  line-height: 1.5;\n}\n\n.logo {\n  display: block;\n  margin: 0 auto 2rem;\n}\n\n@media (min-width: 1024px) {\n  header {\n    display: flex;\n    place-items: center;\n    padding-right: calc(var(--section-gap) / 2);\n  }\n\n  .logo {\n    margin: 0 2rem 0 0;\n  }\n\n  header .wrapper {\n    display: flex;\n    place-items: flex-start;\n    flex-wrap: wrap;\n  }\n}\n</style>\n",
-      "start": 1724718167115,
-      "end": 1724718167119,
+      "start": 1724750473558,
+      "end": 1724750473560,
       "sourcemaps": null
     },
     {
       "name": "vite:css",
-      "start": 1724718167119,
-      "end": 1724718167119,
+      "start": 1724750473560,
+      "end": 1724750473560,
       "order": "normal"
     },
     {
       "name": "vite:esbuild",
-      "start": 1724718167119,
-      "end": 1724718167119,
+      "start": 1724750473560,
+      "end": 1724750473560,
       "order": "normal"
     },
     {
       "name": "vite:json",
-      "start": 1724718167119,
-      "end": 1724718167119,
+      "start": 1724750473560,
+      "end": 1724750473560,
       "order": "normal"
     },
     {
       "name": "vite:worker",
-      "start": 1724718167119,
-      "end": 1724718167119,
+      "start": 1724750473560,
+      "end": 1724750473560,
       "order": "normal"
     },
     {
       "name": "vite:vue",
       "result": "import _sfc_main from \"C:/Users/MAG/IdeaProjects/Datenanalysetool/src/main/vue-project/src/App.vue?vue&type=script&setup=true&lang.ts\";\nexport * from \"C:/Users/MAG/IdeaProjects/Datenanalysetool/src/main/vue-project/src/App.vue?vue&type=script&setup=true&lang.ts\";\nimport \"C:/Users/MAG/IdeaProjects/Datenanalysetool/src/main/vue-project/src/App.vue?vue&type=style&index=0&scoped=1cbfac93&lang.css\";\nimport _export_sfc from \"\\0plugin-vue:export-helper\";\nexport default /* @__PURE__ */ _export_sfc(_sfc_main, [[\"__scopeId\", \"data-v-1cbfac93\"]]);\n",
-      "start": 1724718167119,
-      "end": 1724718167236,
+      "start": 1724750473560,
+      "end": 1724750473607,
       "order": "normal",
       "sourcemaps": {
         "mappings": ""
@@ -44,62 +44,62 @@
     },
     {
       "name": "vite:define",
-      "start": 1724718167237,
-      "end": 1724718167237,
+      "start": 1724750473607,
+      "end": 1724750473607,
       "order": "normal"
     },
     {
       "name": "vite:css-post",
-      "start": 1724718167237,
-      "end": 1724718167237,
+      "start": 1724750473607,
+      "end": 1724750473607,
       "order": "normal"
     },
     {
       "name": "vite:build-html",
-      "start": 1724718167238,
-      "end": 1724718167238,
+      "start": 1724750473607,
+      "end": 1724750473607,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1724718167238,
-      "end": 1724718167238,
+      "start": 1724750473607,
+      "end": 1724750473607,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1724718167238,
-      "end": 1724718167238,
+      "start": 1724750473607,
+      "end": 1724750473607,
       "order": "normal"
     },
     {
       "name": "commonjs",
-      "start": 1724718167238,
-      "end": 1724718167238,
+      "start": 1724750473607,
+      "end": 1724750473607,
       "order": "normal"
     },
     {
       "name": "vite:dynamic-import-vars",
-      "start": 1724718167238,
-      "end": 1724718167238,
+      "start": 1724750473608,
+      "end": 1724750473608,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1724718167239,
-      "end": 1724718167239,
+      "start": 1724750473608,
+      "end": 1724750473608,
       "order": "normal"
     },
     {
       "name": "vite:build-import-analysis",
-      "start": 1724718167239,
-      "end": 1724718167240,
+      "start": 1724750473608,
+      "end": 1724750473608,
       "order": "normal"
     },
     {
       "name": "vite:reporter",
-      "start": 1724718167241,
-      "end": 1724718167241,
+      "start": 1724750473608,
+      "end": 1724750473608,
       "order": "normal"
     }
   ]

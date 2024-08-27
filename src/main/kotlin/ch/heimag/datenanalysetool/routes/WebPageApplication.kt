@@ -218,8 +218,7 @@ fun Application.webPageApplication() {
                     latestDate = latestDateString
                 )
                 logger.debug(
-                    "SettingsView response: {},{}",
-                    firstResponse.latestDate,
+                    "SettingsView response: {}",
                     firstResponse.latestDate
                 )
                 call.respond(firstResponse)

@@ -4,98 +4,98 @@
     {
       "name": "vite:load-fallback",
       "result": "// Composables\nimport { injectDefaults, internalUseDefaults } from \"../composables/defaults.mjs\"; // Utilities\nimport { defineComponent as _defineComponent // eslint-disable-line no-restricted-imports\n} from 'vue';\nimport { consoleWarn } from \"./console.mjs\";\nimport { pick } from \"./helpers.mjs\";\nimport { propsFactory } from \"./propsFactory.mjs\"; // Types\n// No props\n// Object Props\n// Implementation\nexport function defineComponent(options) {\n  options._setup = options._setup ?? options.setup;\n  if (!options.name) {\n    consoleWarn('The component is missing an explicit name, unable to generate default prop value');\n    return options;\n  }\n  if (options._setup) {\n    options.props = propsFactory(options.props ?? {}, options.name)();\n    const propKeys = Object.keys(options.props).filter(key => key !== 'class' && key !== 'style');\n    options.filterProps = function filterProps(props) {\n      return pick(props, propKeys);\n    };\n    options.props._as = String;\n    options.setup = function setup(props, ctx) {\n      const defaults = injectDefaults();\n\n      // Skip props proxy if defaults are not provided\n      if (!defaults.value) return options._setup(props, ctx);\n      const {\n        props: _props,\n        provideSubDefaults\n      } = internalUseDefaults(props, props._as ?? options.name, defaults);\n      const setupBindings = options._setup(_props, ctx);\n      provideSubDefaults();\n      return setupBindings;\n    };\n  }\n  return options;\n}\n\n// No argument - simple default slot\n\n// Generic constructor argument - generic props and slots\n\n// Slots argument - simple slots\n\n// Implementation\nexport function genericComponent() {\n  let exposeDefaults = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : true;\n  return options => (exposeDefaults ? defineComponent : _defineComponent)(options);\n}\nexport function defineFunctionalComponent(props, render) {\n  render.props = props;\n  return render;\n}\n\n// Adds a filterProps method to the component options\n\n// https://github.com/vuejs/core/pull/10557\n\n// not a vue Component\n//# sourceMappingURL=defineComponent.mjs.map",
-      "start": 1724718167601,
-      "end": 1724718167754,
+      "start": 1724750473856,
+      "end": 1724750473902,
       "sourcemaps": null
     },
     {
       "name": "vite:css",
-      "start": 1724718167754,
-      "end": 1724718167754,
+      "start": 1724750473902,
+      "end": 1724750473902,
       "order": "normal"
     },
     {
       "name": "vite:esbuild",
-      "start": 1724718167754,
-      "end": 1724718167754,
+      "start": 1724750473902,
+      "end": 1724750473902,
       "order": "normal"
     },
     {
       "name": "vite:json",
-      "start": 1724718167754,
-      "end": 1724718167754,
+      "start": 1724750473902,
+      "end": 1724750473902,
       "order": "normal"
     },
     {
       "name": "vite:worker",
-      "start": 1724718167754,
-      "end": 1724718167754,
+      "start": 1724750473902,
+      "end": 1724750473902,
       "order": "normal"
     },
     {
       "name": "vite:vue",
-      "start": 1724718167754,
-      "end": 1724718167754,
+      "start": 1724750473902,
+      "end": 1724750473902,
       "order": "normal"
     },
     {
       "name": "vite:define",
-      "start": 1724718167754,
-      "end": 1724718167754,
+      "start": 1724750473902,
+      "end": 1724750473902,
       "order": "normal"
     },
     {
       "name": "vite:css-post",
-      "start": 1724718167754,
-      "end": 1724718167754,
+      "start": 1724750473902,
+      "end": 1724750473902,
       "order": "normal"
     },
     {
       "name": "vite:build-html",
-      "start": 1724718167755,
-      "end": 1724718167755,
+      "start": 1724750473902,
+      "end": 1724750473902,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1724718167755,
-      "end": 1724718167755,
+      "start": 1724750473902,
+      "end": 1724750473902,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1724718167755,
-      "end": 1724718167755,
+      "start": 1724750473902,
+      "end": 1724750473902,
       "order": "normal"
     },
     {
       "name": "commonjs",
-      "start": 1724718167755,
-      "end": 1724718167755,
+      "start": 1724750473902,
+      "end": 1724750473902,
       "order": "normal"
     },
     {
       "name": "vite:dynamic-import-vars",
-      "start": 1724718167755,
-      "end": 1724718167755,
+      "start": 1724750473902,
+      "end": 1724750473902,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1724718167755,
-      "end": 1724718167755,
+      "start": 1724750473902,
+      "end": 1724750473902,
       "order": "normal"
     },
     {
       "name": "vite:build-import-analysis",
-      "start": 1724718167755,
-      "end": 1724718167755,
+      "start": 1724750473902,
+      "end": 1724750473902,
       "order": "normal"
     },
     {
       "name": "vite:reporter",
-      "start": 1724718167755,
-      "end": 1724718167755,
+      "start": 1724750473902,
+      "end": 1724750473902,
       "order": "normal"
     }
   ]

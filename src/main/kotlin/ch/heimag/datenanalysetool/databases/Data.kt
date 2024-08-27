@@ -59,7 +59,7 @@ object Data {
     fun setWeatherdataToDatabase(save: MutableList<WeatherData>): String {
         logger.info("Saving weather data to the database with ${save.size} records...")
         val reply = database.setWeatherdataToDatabase(save)
-        logger.info("Saving weather is $reply")
+        logger.info("Saving weather is '$reply'")
         return reply
     }
 

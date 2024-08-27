@@ -4,98 +4,98 @@
     {
       "name": "vite:load-fallback",
       "result": "import { createVNode as _createVNode, mergeProps as _mergeProps } from \"vue\";\n// Components\nimport { makeVConfirmEditProps, VConfirmEdit } from \"../../components/VConfirmEdit/VConfirmEdit.mjs\";\nimport { makeVDatePickerProps, VDatePicker } from \"../../components/VDatePicker/VDatePicker.mjs\";\nimport { VMenu } from \"../../components/VMenu/VMenu.mjs\";\nimport { makeVTextFieldProps, VTextField } from \"../../components/VTextField/VTextField.mjs\"; // Composables\nimport { useDate } from \"../../composables/date/index.mjs\";\nimport { makeFocusProps, useFocus } from \"../../composables/focus.mjs\";\nimport { useLocale } from \"../../composables/locale.mjs\";\nimport { useProxiedModel } from \"../../composables/proxiedModel.mjs\"; // Utilities\nimport { computed, shallowRef } from 'vue';\nimport { genericComponent, omit, propsFactory, useRender, wrapInArray } from \"../../util/index.mjs\"; // Types\nexport const makeVDateInputProps = propsFactory({\n  hideActions: Boolean,\n  ...makeFocusProps(),\n  ...makeVConfirmEditProps(),\n  ...makeVTextFieldProps({\n    placeholder: 'mm/dd/yyyy',\n    prependIcon: '$calendar'\n  }),\n  ...omit(makeVDatePickerProps({\n    weeksInMonth: 'dynamic',\n    hideHeader: true\n  }), ['active'])\n}, 'VDateInput');\nexport const VDateInput = genericComponent()({\n  name: 'VDateInput',\n  props: makeVDateInputProps(),\n  emits: {\n    'update:modelValue': val => true\n  },\n  setup(props, _ref) {\n    let {\n      slots\n    } = _ref;\n    const {\n      t\n    } = useLocale();\n    const adapter = useDate();\n    const {\n      isFocused,\n      focus,\n      blur\n    } = useFocus(props);\n    const model = useProxiedModel(props, 'modelValue', props.multiple ? [] : null);\n    const menu = shallowRef(false);\n    const display = computed(() => {\n      const value = wrapInArray(model.value);\n      if (!value.length) return null;\n      if (props.multiple === true) {\n        return t('$vuetify.datePicker.itemsSelected', value.length);\n      }\n      if (props.multiple === 'range') {\n        const start = value[0];\n        const end = value[value.length - 1];\n        return adapter.isValid(start) && adapter.isValid(end) ? `${adapter.format(start, 'keyboardDate')} - ${adapter.format(end, 'keyboardDate')}` : '';\n      }\n      return adapter.isValid(model.value) ? adapter.format(model.value, 'keyboardDate') : '';\n    });\n    function onKeydown(e) {\n      if (e.key !== 'Enter') return;\n      if (!menu.value || !isFocused.value) {\n        menu.value = true;\n        return;\n      }\n      const target = e.target;\n      model.value = adapter.date(target.value);\n    }\n    function onClick(e) {\n      e.preventDefault();\n      e.stopPropagation();\n      menu.value = true;\n    }\n    function onSave() {\n      menu.value = false;\n    }\n    useRender(() => {\n      const confirmEditProps = VConfirmEdit.filterProps(props);\n      const datePickerProps = VDatePicker.filterProps(omit(props, ['active']));\n      const textFieldProps = VTextField.filterProps(props);\n      return _createVNode(VTextField, _mergeProps(textFieldProps, {\n        \"modelValue\": display.value,\n        \"onKeydown\": onKeydown,\n        \"focused\": menu.value || isFocused.value,\n        \"onFocus\": focus,\n        \"onBlur\": blur,\n        \"onClick:control\": onClick,\n        \"onClick:prepend\": onClick\n      }), {\n        default: () => [_createVNode(VMenu, {\n          \"modelValue\": menu.value,\n          \"onUpdate:modelValue\": $event => menu.value = $event,\n          \"activator\": \"parent\",\n          \"min-width\": \"0\",\n          \"closeOnContentClick\": false,\n          \"openOnClick\": false\n        }, {\n          default: () => [_createVNode(VConfirmEdit, _mergeProps(confirmEditProps, {\n            \"modelValue\": model.value,\n            \"onUpdate:modelValue\": $event => model.value = $event,\n            \"onSave\": onSave\n          }), {\n            default: _ref2 => {\n              let {\n                actions,\n                model: proxyModel\n              } = _ref2;\n              return _createVNode(VDatePicker, _mergeProps(datePickerProps, {\n                \"modelValue\": props.hideActions ? model.value : proxyModel.value,\n                \"onUpdate:modelValue\": val => {\n                  if (!props.hideActions) {\n                    proxyModel.value = val;\n                  } else {\n                    model.value = val;\n                    if (!props.multiple) menu.value = false;\n                  }\n                },\n                \"onMousedown\": e => e.preventDefault()\n              }), {\n                actions: !props.hideActions ? () => actions : undefined\n              });\n            }\n          })]\n        }), slots.default?.()]\n      });\n    });\n  }\n});\n//# sourceMappingURL=VDateInput.mjs.map",
-      "start": 1724718167349,
-      "end": 1724718167553,
+      "start": 1724750473649,
+      "end": 1724750473830,
       "sourcemaps": null
     },
     {
       "name": "vite:css",
-      "start": 1724718167553,
-      "end": 1724718167553,
+      "start": 1724750473830,
+      "end": 1724750473830,
       "order": "normal"
     },
     {
       "name": "vite:esbuild",
-      "start": 1724718167553,
-      "end": 1724718167553,
+      "start": 1724750473830,
+      "end": 1724750473830,
       "order": "normal"
     },
     {
       "name": "vite:json",
-      "start": 1724718167553,
-      "end": 1724718167553,
+      "start": 1724750473830,
+      "end": 1724750473830,
       "order": "normal"
     },
     {
       "name": "vite:worker",
-      "start": 1724718167553,
-      "end": 1724718167553,
+      "start": 1724750473830,
+      "end": 1724750473830,
       "order": "normal"
     },
     {
       "name": "vite:vue",
-      "start": 1724718167553,
-      "end": 1724718167553,
+      "start": 1724750473830,
+      "end": 1724750473830,
       "order": "normal"
     },
     {
       "name": "vite:define",
-      "start": 1724718167553,
-      "end": 1724718167553,
+      "start": 1724750473830,
+      "end": 1724750473830,
       "order": "normal"
     },
     {
       "name": "vite:css-post",
-      "start": 1724718167553,
-      "end": 1724718167553,
+      "start": 1724750473830,
+      "end": 1724750473830,
       "order": "normal"
     },
     {
       "name": "vite:build-html",
-      "start": 1724718167553,
-      "end": 1724718167553,
+      "start": 1724750473830,
+      "end": 1724750473830,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1724718167553,
-      "end": 1724718167553,
+      "start": 1724750473830,
+      "end": 1724750473830,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1724718167553,
-      "end": 1724718167553,
+      "start": 1724750473830,
+      "end": 1724750473830,
       "order": "normal"
     },
     {
       "name": "commonjs",
-      "start": 1724718167553,
-      "end": 1724718167553,
+      "start": 1724750473830,
+      "end": 1724750473830,
       "order": "normal"
     },
     {
       "name": "vite:dynamic-import-vars",
-      "start": 1724718167553,
-      "end": 1724718167553,
+      "start": 1724750473830,
+      "end": 1724750473830,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1724718167553,
-      "end": 1724718167553,
+      "start": 1724750473830,
+      "end": 1724750473830,
       "order": "normal"
     },
     {
       "name": "vite:build-import-analysis",
-      "start": 1724718167553,
-      "end": 1724718167553,
+      "start": 1724750473830,
+      "end": 1724750473830,
       "order": "normal"
     },
     {
       "name": "vite:reporter",
-      "start": 1724718167553,
-      "end": 1724718167553,
+      "start": 1724750473830,
+      "end": 1724750473830,
       "order": "normal"
     }
   ]

@@ -1,7 +1,8 @@
 <html lang="de">
+
 <head>
     <style>
-        /* Grundstil für das gesamte Dokument */
+
         body {
             margin: 0;
             padding: 0;
@@ -13,7 +14,6 @@
             background-color: #f0f0f0;
         }
 
-        /* Stil für das Formular */
         form {
             background-color: #fff;
             padding: 20px;
@@ -27,31 +27,27 @@
         }
 
         .logo-container img {
-            width: 235px; /* 50% der Originalbreite */
-            height: auto; /* Höhe proportional zur Breite */
+            width: 235px; /* 50% from the originalsize */
+            height: auto; /* The height is proportional to the width */
         }
 
-        /* Stil für den Übertitel */
         h2 {
             margin: 10px 0;
             font-size: 24px;
             color: #333;
         }
 
-        /* Stil für die Absätze (Labels und Inputs) */
         p {
             margin: 10px 0;
             display: flex;
             flex-direction: column;
         }
 
-        /* Stil für die Labels */
         label {
             margin-bottom: 5px;
             font-weight: bold;
         }
 
-        /* Stil für die Eingabefelder */
         input[type="text"],
         input[type="password"] {
             padding: 10px;
@@ -61,7 +57,6 @@
             width: 250px;
         }
 
-        /* Stil für den Submit-Button */
         input[type="submit"] {
             padding: 10px;
             font-size: 16px;
@@ -74,12 +69,10 @@
             margin-top: 10px;
         }
 
-        /* Hover-Effekt für den Button */
         input[type="submit"]:hover {
-            background-color: #4CAF50; /* #0056b3 */
+            background-color: #4CAF50; /* Old: #0056b3 */
         }
 
-        /* Stil für den Status */
         .status-blue {
             color: blue;
         }
@@ -88,10 +81,10 @@
             color: red;
         }
     </style>
-
+    <title></title>
 </head>
-<body>
 
+<body>
 <form action="${login.postUrl}" enctype="application/x-www-form-urlencoded" method="post">
     <div class="logo-container">
         <img src="/images/HeimAG_Logo.jpg" alt="HeimAG Logo">
